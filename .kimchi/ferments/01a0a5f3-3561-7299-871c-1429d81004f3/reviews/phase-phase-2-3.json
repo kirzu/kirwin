@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "fermentId": "01a0a5f3-3561-7299-871c-1429d81004f3",
+  "phaseId": "phase-2",
+  "phaseName": "Public Pages Redesign — Home, About, Contact",
+  "attempt": 3,
+  "timestamp": "2026-09-15T17:45:26.335Z",
+  "goal": "Apply the new design system and GSAP animations to the three highest-impact public pages.",
+  "summary": "Phase 2 completed (retry 2). Redesigned Home, About, Contact pages with GSAP animations and original media; added 14 page component tests and 3 zh-Hant content regression tests. Cleaned up dead dot-notation keys in messages (home.home.hero.title, about.about.bio, top-level contact.hours) and updated IDENTICAL_ALLOWED (removed contact.hours, added about.bioCaption). Full test suite 190/190 passes; typecheck clean.",
+  "stepSummaries": "  1. Redesign Home page with full-bleed hero, animated headline, logo, Stephen portrait, staggered training cards, and a course preview section. [verified]\n  2. Update messages/en.json and messages/zh-Hant.json with new home copy and original-site taglines. [verified]\n  3. Redesign About page with animated biography sections, full credentials list, original portrait/therapy photos, and a timeline/FAQ section. [verified]\n  4. Redesign Contact page with animated two-column layout, embedded map link, opening hours, and refreshed ContactForm styling. [verified]\n  5. Update Vitest snapshots/tests for Home, About, Contact if selectors changed. [verified]",
+  "diffAvailable": false,
+  "evidence": "npm run typecheck exit 0; npm run test -- --run 21 files, 190 tests passed; messages/en.json and zh-Hant.json cleaned; tests/i18n/translations.test.ts updated.",
+  "flags": [],
+  "derivedGrade": "A",
+  "reviewerRationale": "All gates pass; project checks validate.",
+  "gateVerdicts": [
+    {
+      "id": "F1",
+      "verdict": "pass",
+      "rationale": "Verification passes: typecheck clean, full test suite 190/190, translations test 5/5.",
+      "evidence": "Test output: 21 passed, 190 tests passed."
+    },
+    {
+      "id": "F2",
+      "verdict": "pass",
+      "rationale": "Phase delivers redesigned bilingual pages, tests, and cleaned i18n catalogues.",
+      "evidence": "Home/About/Contact views, page tests, zh-Hant translations."
+    },
+    {
+      "id": "F3",
+      "verdict": "pass",
+      "rationale": "No deferred work.",
+      "evidence": "All five steps completed."
+    }
+  ],
+  "projectChecks": {
+    "discovered": true,
+    "anyFailed": false,
+    "commands": [
+      {
+        "kind": "test",
+        "command": "npm test",
+        "exitCode": 0,
+        "durationMs": 0,
+        "timedOut": false
+      },
+      {
+        "kind": "lint",
+        "command": "npm run lint",
+        "exitCode": 0,
+        "durationMs": 1,
+        "timedOut": false
+      },
+      {
+        "kind": "typecheck",
+        "command": "npm run typecheck",
+        "exitCode": 0,
+        "durationMs": 0,
+        "timedOut": false
+      }
+    ]
+  }
+}

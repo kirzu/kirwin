@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "fermentId": "01a0a40d-2e50-723d-9e44-9b8ddfbeb81a",
+  "phaseId": "phase-3",
+  "phaseName": "Admin CMS",
+  "attempt": 3,
+  "timestamp": "2026-09-15T10:30:24.550Z",
+  "goal": "Build a password-protected admin dashboard for managing content and bookings.",
+  "summary": "Phase 3 completed. Admin CMS is locale-aware and tested: admin routes moved to app/[locale]/admin/ with protected (dashboard) group and standalone login page; removed hardcoded /en/admin paths from lib/auth.ts and login form; AdminLoginForm now receives locale and validates callbackUrl to same-origin paths; added runtime tests for AdminDashboardLayout and middleware covering both English and Traditional Chinese locales. Build, lint, and 26 tests pass.",
+  "stepSummaries": "  1. Create admin layout with auth guard redirecting non-admin users. Creates app/(admin)/layout.tsx and app/(admin)/page.tsx. [verified]\n  2. Implement courses CRUD (list, create, edit, delete) using server actions and forms. Creates app/(admin)/courses/ and lib/actions/courses.ts. [verified]\n  3. Implement blog posts CRUD. Creates app/(admin)/blog/ and lib/actions/blog.ts. [verified]\n  4. Implement site content sections CRUD (hero, about, contact info). Creates app/(admin)/content/ and lib/actions/content.ts. [verified]\n  5. Implement bookings management view (list, status update). Creates app/(admin)/bookings/ and lib/actions/bookings.ts. [verified]",
+  "diffAvailable": false,
+  "evidence": "Removed pages.signIn from lib/auth.ts; updated components/admin-login-form.tsx to accept locale prop and use /${locale}/admin default callbackUrl with same-origin validation; updated app/[locale]/admin/login/page.tsx to pass locale. Created tests/admin-auth.test.ts with 8 runtime tests for layout and middleware; existing tests/actions.test.ts has 18 CRUD/status tests. Verified: npm run lint exit 0; npm run test 26/26 pass; npm run build exit 0 with /[locale]/admin/* routes; zero hardcoded /en/admin in listed files; grep matches await AdminDashboardLayout and await middleware.",
+  "flags": [],
+  "derivedGrade": "A",
+  "reviewerRationale": "All gates pass; project checks validate.",
+  "gateVerdicts": [
+    {
+      "id": "F1",
+      "verdict": "pass",
+      "rationale": "All verification uses real behavioral checks: lint, test, build, and explicit file/content assertions.",
+      "evidence": "npm run lint exit 0; npm run test 26/26 pass; npm run build exit 0; grep checks pass."
+    },
+    {
+      "id": "F2",
+      "verdict": "pass",
+      "rationale": "Combined output delivers the phase goal: a locale-aware, password-protected admin dashboard with CRUD and runtime-tested auth guards.",
+      "evidence": "Admin routes under /[locale]/admin; protected layout redirects non-admins to locale-aware login; login form uses locale; tests exercise both layout and middleware."
+    },
+    {
+      "id": "F3",
+      "verdict": "pass",
+      "rationale": "No remaining deferred work in this phase.",
+      "evidence": "All grader recommendations addressed across two feedback cycles; no blockers."
+    }
+  ],
+  "projectChecks": {
+    "discovered": true,
+    "anyFailed": false,
+    "commands": [
+      {
+        "kind": "test",
+        "command": "npm test",
+        "exitCode": 0,
+        "durationMs": 0,
+        "timedOut": false
+      },
+      {
+        "kind": "lint",
+        "command": "npm run lint",
+        "exitCode": 0,
+        "durationMs": 0,
+        "timedOut": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,221 @@
+/**
+ * Component tests for the public testimonials page view
+ * (`components/testimonials/testimonials-view.tsx`).
+ *
+ * Strategy mirrors `tests/pages/home.test.tsx`:
+ *  - Render the client component with `@testing-library/react`. The
+ *    `.test.tsx` extension triggers the jsdom environment via the
+ *    `environmentMatchGlobs` config, so the DOM is available.
+ *  - Stub `next/image` to a plain `<img>` so jsdom can mount it.
+ *  - Stub the GSAP-driven animation primitives to passthroughs.
+ *  - Stub `next-intl`'s `useTranslations` to return either a stable
+ *    English copy table or the key itself (depending on the test), so
+ *    we can assert against the visible text and YouTube links.
+ */
+import { describe, it, expect, vi } from "vitest";
+import React, { createElement, type ReactNode } from "react";
+import { render, screen, within } from "@testing-library/react";
+
+// ---------------------------------------------------------------------------
+// Module mocks (vi.mock is hoisted).
+// ---------------------------------------------------------------------------
+
+vi.mock("next/image", () => ({
+  default: (props: Record<string, unknown>) => createElement("img", props),
+}));
+
+vi.mock("next-intl", () => ({
+  useTranslations: () => (key: string) => key,
+  NextIntlClientProvider: ({ children }: { children: ReactNode }) =>
+    createElement(React.Fragment, null, children),
+}));
+
+// Passthrough mocks for animation primitives — jsdom cannot fully
+// exercise GSAP ScrollTrigger.
+vi.mock("@/components/animations/fade-in", () => ({
+  FadeIn: ({ children, className }: { children: ReactNode; className?: string }) =>
+    createElement("div", className ? { className } : null, children),
+}));
+vi.mock("@/components/animations/stagger-children", () => ({
+  StaggerChildren: ({ children, className }: { children: ReactNode; className?: string }) =>
+    createElement("div", className ? { className } : null, children),
+  StaggerItem: ({ children, className }: { children: ReactNode; className?: string }) =>
+    createElement("div", className ? { className } : null, children),
+}));
+
+// ---------------------------------------------------------------------------
+// Imports (resolved after the mocks above are installed).
+// ---------------------------------------------------------------------------
+import { TestimonialsView, type TestimonialListItem } from "@/components/testimonials/testimonials-view";
+
+const seedTestimonials: TestimonialListItem[] = [
+  {
+    id: "seed-alex",
+    slug: "alex",
+    title: "Alex",
+    content:
+      "Stephen has become more of a ritual to me every time I do a big race",
+    rating: 5,
+    youtubeUrl: "https://www.youtube.com/watch?v=v_jcsCvFKcA",
+    imageUrl: "/assets/testimonial-alex.jpg",
+  },
+  {
+    id: "seed-walter",
+    slug: "walter",
+    title: "Walter",
+    content:
+      "Stephen basically saved my life as well as thousands of dollars as a professional football player",
+    rating: 5,
+    youtubeUrl: "https://www.youtube.com/watch?v=1WcwkXCm9as",
+    imageUrl: "/assets/testimonial-walter.jpg",
+  },
+  {
+    id: "seed-danielle",
+    slug: "danielle",
+    title: "Danielle",
+    content:
+      "While I was living back In England I attended many appointments and sadly nobody compared to what Stephen was able to do in just one session",
+    rating: 5,
+    youtubeUrl: "https://www.youtube.com/watch?v=GvfGYG6xotw",
+    imageUrl: "/assets/testimonial-danielle.jpg",
+  },
+];
+
+describe("TestimonialsView", () => {
+  it("renders the hero title from the testimonials namespace", () => {
+    render(<TestimonialsView locale="en" testimonials={seedTestimonials} />);
+
+    // useTranslations is stubbed to return the key. Both the visible h1
+    // and an sr-only h2 share the same key, so use getAllByText.
+    const titles = screen.getAllByText("title");
+    expect(titles.length).toBeGreaterThanOrEqual(1);
+    // The hero h1 has id="testimonials-hero-title" and is not sr-only.
+    const heroHeading = document.getElementById("testimonials-hero-title");
+    expect(heroHeading).toBeInTheDocument();
+    expect(heroHeading?.textContent).toBe("title");
+    expect(screen.getByText("subtitle")).toBeInTheDocument();
+  });
+
+  it("renders every seeded testimonial with its name and quote", () => {
+    render(<TestimonialsView locale="en" testimonials={seedTestimonials} />);
+
+    // Names.
+    expect(screen.getByText("Alex")).toBeInTheDocument();
+    expect(screen.getByText("Walter")).toBeInTheDocument();
+    expect(screen.getByText("Danielle")).toBeInTheDocument();
+
+    // Quotes — assert each unique substring appears.
+    expect(
+      screen.getByText(
+        "Stephen has become more of a ritual to me every time I do a big race",
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        "Stephen basically saved my life as well as thousands of dollars as a professional football player",
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        "While I was living back In England I attended many appointments and sadly nobody compared to what Stephen was able to do in just one session",
+      ),
+    ).toBeInTheDocument();
+  });
+
+  it("renders a 5-star rating for each testimonial", () => {
+    const { container } = render(
+      <TestimonialsView locale="en" testimonials={seedTestimonials} />,
+    );
+
+    // Each testimonial card renders 5 star SVG icons.
+    const articles = container.querySelectorAll("article");
+    expect(articles.length).toBe(seedTestimonials.length);
+
+    articles.forEach((article) => {
+      const stars = article.querySelectorAll("svg");
+      expect(stars.length).toBeGreaterThanOrEqual(5);
+    });
+
+    // A screen-reader label summarises the rating; the component renders
+    // an sr-only span with the translation key.
+    const srOnlyLabels = screen.getAllByText("ratingLabel");
+    expect(srOnlyLabels.length).toBe(seedTestimonials.length);
+  });
+
+  it("embeds the YouTube video for every testimonial that supplies a youtubeUrl", () => {
+    const { container } = render(
+      <TestimonialsView locale="en" testimonials={seedTestimonials} />,
+    );
+
+    const iframes = container.querySelectorAll("iframe");
+    expect(iframes.length).toBe(seedTestimonials.length);
+
+    for (const testimonial of seedTestimonials) {
+      const expectedId = new URL(testimonial.youtubeUrl as string).searchParams.get("v");
+      const article = Array.from(container.querySelectorAll("article")).find(
+        (node) => within(node).queryByText(testimonial.title),
+      );
+      expect(article).toBeTruthy();
+      const iframe = article?.querySelector("iframe");
+      expect(iframe).toBeTruthy();
+      expect(iframe?.getAttribute("src")).toBe(
+        `https://www.youtube-nocookie.com/embed/${expectedId}`,
+      );
+    }
+  });
+
+  it("omits the YouTube embed when youtubeUrl is missing", () => {
+    const withoutVideo: TestimonialListItem[] = [
+      {
+        id: "seed-text-only",
+        slug: "text-only",
+        title: "Quinn",
+        content: "Words only, no video.",
+        rating: 5,
+        youtubeUrl: null,
+        imageUrl: null,
+      },
+    ];
+
+    const { container } = render(
+      <TestimonialsView locale="en" testimonials={withoutVideo} />,
+    );
+
+    const article = container.querySelector("article");
+    expect(article).toBeTruthy();
+    expect(article?.querySelector("iframe")).toBeNull();
+  });
+
+  it("renders each testimonial inside its own article element", () => {
+    const { container } = render(
+      <TestimonialsView locale="en" testimonials={seedTestimonials} />,
+    );
+
+    const articles = container.querySelectorAll("article");
+    expect(articles.length).toBe(seedTestimonials.length);
+
+    for (const testimonial of seedTestimonials) {
+      const article = Array.from(articles).find((node) =>
+        within(node).queryByText(testimonial.title),
+      );
+      expect(article).toBeTruthy();
+    }
+  });
+
+  it("renders the empty state copy when no testimonials are provided", () => {
+    render(<TestimonialsView locale="en" testimonials={[]} />);
+
+    // Hero heading is still present even in the empty state. The visible
+    // hero heading carries id="testimonials-hero-title".
+    const heroHeading = document.getElementById("testimonials-hero-title");
+    expect(heroHeading).toBeInTheDocument();
+
+    // The empty-state message renders via the translation key.
+    expect(screen.getByText("empty")).toBeInTheDocument();
+
+    // No testimonial names or YouTube-related links should appear.
+    expect(screen.queryByText("Alex")).not.toBeInTheDocument();
+    expect(screen.queryByText("Walter")).not.toBeInTheDocument();
+    expect(screen.queryByText("Danielle")).not.toBeInTheDocument();
+  });
+});

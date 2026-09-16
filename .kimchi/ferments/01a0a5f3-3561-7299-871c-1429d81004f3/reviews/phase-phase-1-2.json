@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "fermentId": "01a0a5f3-3561-7299-871c-1429d81004f3",
+  "phaseId": "phase-1",
+  "phaseName": "Design Foundation & Asset Pipeline",
+  "attempt": 2,
+  "timestamp": "2026-09-15T16:55:37.547Z",
+  "goal": "Scrape original site assets, establish the new brand tokens, and create reusable animation primitives.",
+  "summary": "Phase 1 completed (retry). Downloaded original brand assets, created manifest, updated Tailwind theme and globals.css palette, installed GSAP, built reusable animation components, added RTL unit tests, fixed setup.ts to import vi explicitly, and fixed StaggerChildren to avoid double-wrapping StaggerItem children. typecheck and animation tests pass.",
+  "stepSummaries": "  1. Scrape original site and download logo + photos to public/assets/, skipping failures with manifest notes. [verified]\n  2. Update tailwind.config.js with derived brand colors, custom font (e.g., Inter + a serif display), and extended animation tokens. [verified]\n  3. Update globals.css CSS variables to match the new palette for both light and dark modes. [verified]\n  4. Install gsap and @gsap/react as dependencies. [verified]\n  5. Create reusable animation components: AnimatedSection, FadeIn, StaggerChildren, ParallaxImage, and a useScrollReveal hook. [verified]\n  6. Add unit tests for animation utilities and smoke test that GSAP registers correctly. [verified]",
+  "diffAvailable": false,
+  "evidence": "public/assets/* and manifest.json, tailwind.config.js, app/globals.css, package.json gsap, components/animations/*, tests/setup.ts with import { vi }, tests/animations/animations.test.tsx (4/4 pass), npm run typecheck exit 0.",
+  "flags": [],
+  "derivedGrade": "A",
+  "reviewerRationale": "All gates pass; project checks validate.",
+  "gateVerdicts": [
+    {
+      "id": "F1",
+      "verdict": "pass",
+      "rationale": "All steps verified with real behavior: file existence, grep, install, tests pass, typecheck clean.",
+      "evidence": "Step verifies passed; npm run typecheck exit 0; npm run test -- --run tests/animations 4/4 pass."
+    },
+    {
+      "id": "F2",
+      "verdict": "pass",
+      "rationale": "Phase delivers design foundation: local assets, brand tokens, animation primitives, tests.",
+      "evidence": "Assets local, palette configured, components tested."
+    },
+    {
+      "id": "F3",
+      "verdict": "pass",
+      "rationale": "No deferred work.",
+      "evidence": "All six steps completed."
+    }
+  ],
+  "projectChecks": {
+    "discovered": true,
+    "anyFailed": false,
+    "commands": [
+      {
+        "kind": "test",
+        "command": "npm test",
+        "exitCode": 0,
+        "durationMs": 0,
+        "timedOut": false
+      },
+      {
+        "kind": "lint",
+        "command": "npm run lint",
+        "exitCode": 0,
+        "durationMs": 0,
+        "timedOut": false
+      },
+      {
+        "kind": "typecheck",
+        "command": "npm run typecheck",
+        "exitCode": 0,
+        "durationMs": 0,
+        "timedOut": false
+      }
+    ]
+  }
+}

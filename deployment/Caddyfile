@@ -1,0 +1,47 @@
+# Caddy reverse proxy for the Kirwin Bodywork Seminars Next.js app.
+# Place this file at /etc/caddy/Caddyfile on your Hostinger VPS and run:
+#   sudo caddy reload
+#
+# Replace kirwinbodyworks.com with your actual domain before deploying.
+
+# Main site: apex domain -> Next.js on localhost:3000 with auto HTTPS.
+kirwinbodyworks.com {
+	# Serve the Next.js app running on localhost:3000.
+	reverse_proxy localhost:3000
+
+	# Enable automatic HTTPS with Let's Encrypt.
+	# Uses HTTP-01 challenge by default; no extra DNS config needed.
+	tls {
+		protocols tls1.2 tls1.3
+	}
+
+	# Compress responses (gzip + zstd).
+	encode gzip zstd
+
+	# Basic security headers.
+	header {
+		# Prevent MIME-type sniffing.
+		X-Content-Type-Options "nosniff"
+		# Clickjacking protection.
+		X-Frame-Options "SAMEORIGIN"
+		# Send full Referer only on same-origin, no Referer on downgrade.
+		Referrer-Policy "strict-origin-when-cross-origin"
+		# Sensible default permissions policy.
+		Permissions-Policy "geolocation=(), microphone=(), camera=()"
+		# Remove Server header for a tiny bit of obscurity (Caddy adds Server: Caddy by default).
+		-Server
+	}
+
+	# Access and error logs go to /var/log/caddy by default.
+	log {
+		output file /var/log/caddy/kirwin.log {
+			roll_size 10MiB
+			roll_keep 5
+		}
+	}
+}
+
+# Optional: redirect www to apex (apex -> www also possible, just swap the redir target).
+www.kirwinbodyworks.com {
+	redir https://kirwinbodyworks.com{uri} permanent
+}

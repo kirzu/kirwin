@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "fermentId": "01a0a40d-2e50-723d-9e44-9b8ddfbeb81a",
+  "phaseId": "phase-2",
+  "phaseName": "Public Site Pages",
+  "attempt": 4,
+  "timestamp": "2026-09-15T09:24:13.316Z",
+  "goal": "Implement public-facing pages that carry over the current brand content.",
+  "summary": "Phase 2 completed. All public-facing pages implemented and refined: Home, About (with real Stephen Kirwin portrait), Courses listing, Course detail with booking CTA, and Contact form with DB persistence, rate limiting, honeypot, try/catch error handling, and server-returned messages displayed to users. Duplicated format helpers extracted to lib/format.ts. Build and lint pass.",
+  "stepSummaries": "  1. Build the Home page (hero, training/experience/support sections). Creates app/[locale]/page.tsx. [verified]\n  2. Build the About page with biography and images. Creates app/[locale]/about/page.tsx. [verified]\n  3. Build the Courses listing page. Creates app/[locale]/courses/page.tsx. [verified]\n  4. Build the Course detail page with a booking CTA. Creates app/[locale]/courses/[slug]/page.tsx. [verified]\n  5. Build the Contact page with contact form. Creates app/[locale]/contact/page.tsx. [verified]",
+  "diffAvailable": false,
+  "evidence": "Applied final grader feedback: (1) contact-form.tsx error banner now renders result.message when present, falling back to error.generic; (2) rate-limit lookup moved inside the try/catch so DB failures are caught and return a generic error. Verified: grep -n 'result.message' shows match inside error banner; awk shows try block enclosing both findFirst and create. Build and lint pass.",
+  "flags": [],
+  "derivedGrade": "A",
+  "reviewerRationale": "All gates pass; project checks validate.",
+  "gateVerdicts": [
+    {
+      "id": "F1",
+      "verdict": "pass",
+      "rationale": "Every step used real behavioral verification. All grader feedback cycles verified with source checks and passing build/lint.",
+      "evidence": "Step verifies used npm run build + grep; all grader checks pass including PII removal, helper extraction, real image, try/catch, rate limit, honeypot, stale comment removal, and result.message display."
+    },
+    {
+      "id": "F2",
+      "verdict": "pass",
+      "rationale": "Combined output delivers the phase goal: all public pages exist, are bilingual/responsive, preserve brand content, and include a robust contact form.",
+      "evidence": "npm run build exits 0 generating all locale variants; /images/stephen.jpg referenced in /en/about.html; ContactInquiry model and migration applied; lib/format.ts shared by courses pages."
+    },
+    {
+      "id": "F3",
+      "verdict": "pass",
+      "rationale": "No remaining deferred work. Booking page URL remains a stable downstream contract for Phase 4.",
+      "evidence": "All steps done; all grader recommendations addressed across three feedback cycles."
+    }
+  ],
+  "projectChecks": {
+    "discovered": true,
+    "anyFailed": false,
+    "commands": [
+      {
+        "kind": "lint",
+        "command": "npm run lint",
+        "exitCode": 0,
+        "durationMs": 0,
+        "timedOut": false
+      }
+    ]
+  }
+}

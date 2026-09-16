@@ -1,0 +1,68 @@
+# systemd unit file for the Kirwin Bodywork Seminars Next.js app.
+#
+# Install on a Hostinger VPS (Ubuntu 22.04+) that is NOT using PM2:
+#
+#   1. Create the user (only once):
+#        sudo useradd --system --create-home --shell /bin/bash kirwin
+#
+#   2. Place the code at /var/www/kirwin and chown it:
+#        sudo chown -R kirwin:kirwin /var/www/kirwin
+#
+#   3. Install this file:
+#        sudo cp deployment/kirwin.service /etc/systemd/system/kirwin.service
+#
+#   4. Ensure the log directory exists:
+#        sudo mkdir -p /var/log/kirwin
+#        sudo chown kirwin:kirwin /var/log/kirwin
+#
+#   5. Enable and start:
+#        sudo systemctl daemon-reload
+#        sudo systemctl enable --now kirwin
+#
+#   6. Inspect:
+#        sudo systemctl status kirwin
+#        sudo journalctl -u kirwin -f
+
+[Unit]
+Description=Kirwin Bodywork Seminars (Next.js)
+Documentation=https://nextjs.org/
+After=network.target
+
+[Service]
+# Run as the unprivileged "kirwin" user created above.
+User=kirwin
+Group=kirwin
+WorkingDirectory=/var/www/kirwin
+Environment=NODE_ENV=production
+Environment=PORT=3000
+# Pick up the production env file if present.
+EnvironmentFile=-/var/www/kirwin/.env.production
+
+Type=simple
+ExecStart=/usr/bin/npm run start
+
+# Restart policy.
+Restart=always
+RestartSec=5
+StartLimitInterval=60
+StartLimitBurst=10
+
+# Give the app a graceful shutdown window.
+TimeoutStopSec=20
+KillMode=mixed
+KillSignal=SIGTERM
+
+# Hardening.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+ReadWritePaths=/var/www/kirwin
+
+# Logging.
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=kirwin
+
+[Install]
+WantedBy=multi-user.target

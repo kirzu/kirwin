@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "fermentId": "01a0a40d-2e50-723d-9e44-9b8ddfbeb81a",
+  "phaseId": "phase-3",
+  "phaseName": "Admin CMS",
+  "attempt": 2,
+  "timestamp": "2026-09-15T10:20:40.741Z",
+  "goal": "Build a password-protected admin dashboard for managing content and bookings.",
+  "summary": "Phase 3 completed after grader feedback. Admin CMS routes moved from app/(admin)/ to locale-aware app/[locale]/admin/ paths; legacy app/[locale]/admin/page.tsx replaced with a useful dashboard; all hardcoded /en/admin/ links removed; test infrastructure added with vitest and 18 passing smoke tests covering courses/blog/content CRUD and booking status updates. Build, lint, and tests pass.",
+  "stepSummaries": "  1. Create admin layout with auth guard redirecting non-admin users. Creates app/(admin)/layout.tsx and app/(admin)/page.tsx. [verified]\n  2. Implement courses CRUD (list, create, edit, delete) using server actions and forms. Creates app/(admin)/courses/ and lib/actions/courses.ts. [verified]\n  3. Implement blog posts CRUD. Creates app/(admin)/blog/ and lib/actions/blog.ts. [verified]\n  4. Implement site content sections CRUD (hero, about, contact info). Creates app/(admin)/content/ and lib/actions/content.ts. [verified]\n  5. Implement bookings management view (list, status update). Creates app/(admin)/bookings/ and lib/actions/bookings.ts. [verified]",
+  "diffAvailable": false,
+  "evidence": "Moved admin CRUD pages into app/[locale]/admin/(dashboard)/ with auth guard layout; login page stays at app/[locale]/admin/login outside the protected group. Verified: app/(admin) directory removed; app/[locale]/admin/page.tsx exists and contains 'Create, edit, and publish training course listings'; zero hardcoded /en/admin/ matches in app/, components/admin, lib/actions; package.json has test script; npm run test passes 18 tests; npm run lint and npm run build exit 0 with /[locale]/admin/courses, /[locale]/admin/blog, /[locale]/admin/bookings, /[locale]/admin/content routes present.",
+  "flags": [],
+  "derivedGrade": "A",
+  "reviewerRationale": "All gates pass; project checks validate.",
+  "gateVerdicts": [
+    {
+      "id": "F1",
+      "verdict": "pass",
+      "rationale": "All verification uses real behavioral checks: lint, test, build, and explicit file/content assertions.",
+      "evidence": "npm run lint exit 0; npm run test 18/18 pass; npm run build exit 0; grep/file checks confirm route restructuring."
+    },
+    {
+      "id": "F2",
+      "verdict": "pass",
+      "rationale": "Combined output delivers the phase goal: a locale-aware, password-protected admin dashboard with CRUD for courses, blog posts, content sections, and booking management, plus automated tests.",
+      "evidence": "Auth guard layout protects admin routes; CRUD pages and server actions exist for all four areas; tests exercise the server actions."
+    },
+    {
+      "id": "F3",
+      "verdict": "pass",
+      "rationale": "No remaining deferred work in this phase.",
+      "evidence": "All grader recommendations addressed; build, lint, tests pass; no blockers."
+    }
+  ],
+  "projectChecks": {
+    "discovered": true,
+    "anyFailed": false,
+    "commands": [
+      {
+        "kind": "test",
+        "command": "npm test",
+        "exitCode": 0,
+        "durationMs": 0,
+        "timedOut": false
+      },
+      {
+        "kind": "lint",
+        "command": "npm run lint",
+        "exitCode": 0,
+        "durationMs": 0,
+        "timedOut": false
+      }
+    ]
+  }
+}

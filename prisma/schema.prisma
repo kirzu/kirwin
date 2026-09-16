@@ -1,0 +1,172 @@
+// Prisma schema for Kirwin Bodyworks Dynamic Site
+// Database: PostgreSQL (development, tests, production)
+// Docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------------------------------------------------------------------
+// Enums (SQLite stores these as strings under the hood; Prisma enforces values)
+// ---------------------------------------------------------------------------
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
+
+// ---------------------------------------------------------------------------
+// Models
+// ---------------------------------------------------------------------------
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  passwordHash String
+  role         Role     @default(USER)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([email])
+}
+
+model Course {
+  id              String        @id @default(cuid())
+  slug            String        @unique
+  title           String
+  titleZh         String?
+  description     String?
+  descriptionZh   String?
+  price           Int           // amount in cents (HKD)
+  durationMinutes Int?
+  maxParticipants Int           @default(8)
+  imageUrl        String?
+  published       Boolean       @default(false)
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  bookings      Booking[]
+  availability Availability[]
+
+  @@index([slug])
+  @@index([published])
+}
+
+model Booking {
+  id             String        @id @default(cuid())
+  courseId       String
+  name           String
+  email          String
+  phone          String?
+  status         BookingStatus @default(PENDING)
+  paymentStatus  PaymentStatus @default(PENDING)
+  notes          String?
+  preferredDate  DateTime?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  course  Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  payment Payment?
+
+  @@index([courseId])
+  @@index([email])
+  @@index([status])
+  @@index([paymentStatus])
+}
+
+model BlogPost {
+  id        String   @id @default(cuid())
+  slug      String   @unique
+  title     String
+  titleZh   String?
+  excerpt   String?
+  excerptZh String?
+  content   String
+  contentZh String?
+  rating    Int?
+  youtubeUrl String?
+  imageUrl   String?
+  published Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([slug])
+  @@index([published])
+}
+
+model ContentSection {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  label     String
+  value     String
+  valueZh   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([key])
+}
+
+model Payment {
+  id                    String        @id @default(cuid())
+  stripePaymentIntentId String        @unique
+  amount                Int           // amount in cents
+  currency              String        @default("hkd")
+  status                PaymentStatus @default(PENDING)
+  bookingId             String        @unique
+  createdAt             DateTime      @default(now())
+  updatedAt             DateTime      @updatedAt
+
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  @@index([bookingId])
+  @@index([status])
+}
+
+model Availability {
+  id            String   @id @default(cuid())
+  courseId      String
+  startDateTime DateTime
+  endDateTime   DateTime
+  capacity      Int
+  bookedCount   Int      @default(0)
+  isAvailable   Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@index([courseId, startDateTime])
+}
+
+model ContactInquiry {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  message   String
+  locale    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([createdAt])
+}

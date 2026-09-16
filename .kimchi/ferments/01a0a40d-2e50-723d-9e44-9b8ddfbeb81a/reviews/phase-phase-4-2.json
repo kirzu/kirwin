@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "fermentId": "01a0a40d-2e50-723d-9e44-9b8ddfbeb81a",
+  "phaseId": "phase-4",
+  "phaseName": "Booking System",
+  "attempt": 2,
+  "timestamp": "2026-09-15T11:23:29.021Z",
+  "goal": "Implement the booking flow and availability management.",
+  "summary": "Phase 4 completed after grader fixes. Booking creation now records the reserved session time (preferredDate from Availability.startDateTime). The booking-details API is protected by an email query-parameter ownership check (400 missing, 401 mismatch, 404 not found). The booking form redirects with bookingId and email; the confirmation page passes email to the API. Added route-level tests for the API. Build, lint, and 84 tests pass.",
+  "stepSummaries": "  1. Add Availability model and admin availability CRUD. Updates prisma/schema.prisma and creates app/(admin)/availability/ and lib/actions/availability.ts. [verified]\n  2. Implement booking form on course detail pages with Zod + React Hook Form validation. Updates app/[locale]/courses/[slug]/page.tsx and creates components/booking-form.tsx. [verified]\n  3. Create booking server action that checks availability atomically and creates a Booking record. Creates lib/actions/booking.ts. [verified]\n  4. Add booking confirmation page. Creates app/[locale]/booking/confirmed/page.tsx. [verified]",
+  "diffAvailable": false,
+  "evidence": "lib/actions/booking.ts assigns preferredDate from availability row; app/api/bookings/[id]/route.ts enforces email ownership; components/booking-form.tsx and components/booking-confirmation.tsx pass/include email; tests/booking/create.test.ts asserts preferredDate; tests/api/bookings.test.ts covers 200/401/400/404. Verified grep shows preferredDate assignment; npm run test -- booking/create 17/17 pass; npm run test 84/84 pass; npm run lint and npm run build exit 0.",
+  "flags": [],
+  "derivedGrade": "A",
+  "reviewerRationale": "All gates pass; project checks validate.",
+  "gateVerdicts": [
+    {
+      "id": "F1",
+      "verdict": "pass",
+      "rationale": "Every fix verified with real behavioral checks: grep source inspection, tests, lint, and build.",
+      "evidence": "grep -A 20 tx.booking.create shows preferredDate from availability; npm run test 84/84 pass; npm run lint exit 0; npm run build exit 0."
+    },
+    {
+      "id": "F2",
+      "verdict": "pass",
+      "rationale": "Combined output delivers the phase goal: atomic booking with session time recorded and PII-protected confirmation lookup.",
+      "evidence": "createBooking transaction records preferredDate; API route requires email proof; confirmation page fetches only with email."
+    },
+    {
+      "id": "F3",
+      "verdict": "pass",
+      "rationale": "No remaining deferred work in this phase.",
+      "evidence": "All grader recommendations addressed; no blockers."
+    }
+  ],
+  "projectChecks": {
+    "discovered": true,
+    "anyFailed": false,
+    "commands": [
+      {
+        "kind": "test",
+        "command": "npm test",
+        "exitCode": 0,
+        "durationMs": 0,
+        "timedOut": false
+      },
+      {
+        "kind": "lint",
+        "command": "npm run lint",
+        "exitCode": 0,
+        "durationMs": 0,
+        "timedOut": false
+      }
+    ]
+  }
+}

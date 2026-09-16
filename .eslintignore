@@ -1,0 +1,9 @@
+.next
+node_modules
+prisma/migrations
+*.db
+*.db-journal
+public
+playwright-report
+test-results
+e2e

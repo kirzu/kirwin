@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "fermentId": "01a0a40d-2e50-723d-9e44-9b8ddfbeb81a",
+  "phaseId": "phase-2",
+  "phaseName": "Public Site Pages",
+  "attempt": 3,
+  "timestamp": "2026-09-15T09:21:41.700Z",
+  "goal": "Implement public-facing pages that carry over the current brand content.",
+  "summary": "Phase 2 completed. All public-facing pages implemented and refined: Home, About (with real Stephen Kirwin portrait), Courses listing, Course detail with booking CTA, and Contact form with DB persistence, rate limiting, honeypot, and error handling. Duplicated format helpers extracted to lib/format.ts. Build and lint pass.",
+  "stepSummaries": "  1. Build the Home page (hero, training/experience/support sections). Creates app/[locale]/page.tsx. [verified]\n  2. Build the About page with biography and images. Creates app/[locale]/about/page.tsx. [verified]\n  3. Build the Courses listing page. Creates app/[locale]/courses/page.tsx. [verified]\n  4. Build the Course detail page with a booking CTA. Creates app/[locale]/courses/[slug]/page.tsx. [verified]\n  5. Build the Contact page with contact form. Creates app/[locale]/contact/page.tsx. [verified]",
+  "diffAvailable": false,
+  "evidence": "Applied grader feedback: (1) wrapped prisma.contactInquiry.create in try/catch returning a generic error message and logging non-PII diagnostics; (2) added per-email hourly rate limit and a hidden honeypot field to the contact form; (3) removed stale '(currently mocked)' JSDoc reference. Added error.rateLimit translation to both locales. Verified checks: no 'currently mocked' comment, rateLimit/honeypot present in actions.ts, try/catch present. Build and lint pass.",
+  "flags": [],
+  "derivedGrade": "A",
+  "reviewerRationale": "All gates pass; project checks validate.",
+  "gateVerdicts": [
+    {
+      "id": "F1",
+      "verdict": "pass",
+      "rationale": "Every step used real behavioral verification. Grader feedback items verified with concrete source checks.",
+      "evidence": "Step verifies used npm run build + grep; grader checks pass for PII logging removal, helper extraction, real image, try/catch, rate limit, honeypot, and stale comment removal."
+    },
+    {
+      "id": "F2",
+      "verdict": "pass",
+      "rationale": "Combined output delivers the phase goal: all public pages exist, are bilingual/responsive, preserve brand content, and include robust contact form handling.",
+      "evidence": "npm run build exits 0 and generates all locale variants; /images/stephen.jpg referenced in /en/about.html; ContactInquiry model and migration applied; lib/format.ts shared by courses pages."
+    },
+    {
+      "id": "F3",
+      "verdict": "pass",
+      "rationale": "No remaining deferred work. Booking page URL remains a stable downstream contract for Phase 4.",
+      "evidence": "All steps done; all grader recommendations addressed."
+    }
+  ],
+  "projectChecks": {
+    "discovered": true,
+    "anyFailed": false,
+    "commands": [
+      {
+        "kind": "lint",
+        "command": "npm run lint",
+        "exitCode": 0,
+        "durationMs": 0,
+        "timedOut": false
+      }
+    ]
+  }
+}

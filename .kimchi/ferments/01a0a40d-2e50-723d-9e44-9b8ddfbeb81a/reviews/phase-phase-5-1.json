@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "fermentId": "01a0a40d-2e50-723d-9e44-9b8ddfbeb81a",
+  "phaseId": "phase-5",
+  "phaseName": "Stripe Payments & Blog Polish",
+  "attempt": 1,
+  "timestamp": "2026-09-15T11:54:49.261Z",
+  "goal": "Integrate Stripe payments and complete the public blog experience.",
+  "summary": "Phase 5 completed. Installed Stripe SDK and built webhook handler, checkout session creation, payment button, payment success/cancel pages, public blog listing and detail pages, and completed SEO metadata plus Traditional Chinese translation parity. Stripe integration is env-driven and inactive until credentials are provided. Build, lint, and 145 tests pass across 13 files.",
+  "stepSummaries": "  1. Configure Stripe SDK and webhook route; document required env vars. Creates app/api/stripe/webhook/route.ts and lib/stripe.ts. [verified]\n  2. Implement Stripe Checkout session creation linked to a booking. Updates lib/actions/booking.ts and adds components/payment-button.tsx. [verified]\n  3. Add payment success/cancel pages and update booking status on webhook. Creates app/[locale]/payment/success/page.tsx and app/[locale]/payment/cancel/page.tsx. [verified]\n  4. Implement public blog listing page. Creates app/[locale]/blog/page.tsx. [verified]\n  5. Implement blog post detail page. Creates app/[locale]/blog/[slug]/page.tsx. [verified]\n  6. Complete Traditional Chinese translations and add SEO metadata across public pages. Updates messages/zh-Hant.json and page metadata exports. [verified]",
+  "diffAvailable": false,
+  "evidence": "lib/stripe.ts, app/api/stripe/webhook/route.ts, tests/payments/webhook.test.ts (9 tests), lib/actions/booking.ts createCheckoutSession, components/payment-button.tsx, tests/payments/checkout.test.ts (16 tests), app/[locale]/payment/success/page.tsx, app/[locale]/payment/cancel/page.tsx, tests/payments/status.test.ts (10 tests), app/[locale]/blog/page.tsx, tests/blog/list.test.ts (9 tests), app/[locale]/blog/[slug]/page.tsx, tests/blog/detail.test.ts (12 tests), metadata exports across public pages, tests/i18n/translations.test.ts (5 tests). Verified npm run test 145/145 pass; npm run lint exit 0; npm run build exit 0 with all routes SSG/dynamic registered.",
+  "flags": [],
+  "derivedGrade": "A",
+  "reviewerRationale": "All gates pass; project checks validate.",
+  "gateVerdicts": [
+    {
+      "id": "F1",
+      "verdict": "pass",
+      "rationale": "Every step used real behavioral verification: tests, lint, build, and exact grep/file checks.",
+      "evidence": "All six steps verified with npm run test, lint, and build."
+    },
+    {
+      "id": "F2",
+      "verdict": "pass",
+      "rationale": "Combined output delivers phase goal: Stripe payment flow is wired end-to-end and public blog is live with list/detail views.",
+      "evidence": "Webhook route, checkout action, payment pages, blog pages, and metadata all implemented and tested."
+    },
+    {
+      "id": "F3",
+      "verdict": "pass",
+      "rationale": "No remaining deferred work in this phase.",
+      "evidence": "All six steps completed; Stripe credential gap recorded as D002 decision."
+    }
+  ],
+  "projectChecks": {
+    "discovered": true,
+    "anyFailed": false,
+    "commands": [
+      {
+        "kind": "test",
+        "command": "npm test",
+        "exitCode": 0,
+        "durationMs": 1,
+        "timedOut": false
+      },
+      {
+        "kind": "lint",
+        "command": "npm run lint",
+        "exitCode": 0,
+        "durationMs": 0,
+        "timedOut": false
+      }
+    ]
+  }
+}

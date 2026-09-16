@@ -1,0 +1,271 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 33% 97%;
+    --foreground: 28 31% 13%;
+    --card: 40 33% 99%;
+    --card-foreground: 28 31% 13%;
+    --popover: 40 33% 99%;
+    --popover-foreground: 28 31% 13%;
+    --primary: 18 47% 44%;
+    --primary-foreground: 40 33% 97%;
+    --secondary: 120 14% 35%;
+    --secondary-foreground: 40 33% 99%;
+    --muted: 35 25% 91%;
+    --muted-foreground: 28 15% 40%;
+    --accent: 120 14% 35%;
+    --accent-foreground: 40 33% 99%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 30 20% 85%;
+    --input: 30 20% 85%;
+    --ring: 18 47% 44%;
+    --radius: 0.375rem;
+
+    --brand-primary: #b45e3e;
+    --brand-primary-dark: #7d3f2b;
+    --brand-secondary: #537953;
+    --brand-secondary-dark: #344c34;
+    --brand-warm: #faf8f5;
+    --brand-warm-dark: #2f2015;
+  }
+
+  .dark {
+    --background: 28 31% 8%;
+    --foreground: 40 25% 94%;
+    --card: 28 31% 10%;
+    --card-foreground: 40 25% 94%;
+    --popover: 28 31% 10%;
+    --popover-foreground: 40 25% 94%;
+    --primary: 18 47% 55%;
+    --primary-foreground: 28 31% 8%;
+    --secondary: 120 14% 45%;
+    --secondary-foreground: 28 31% 8%;
+    --muted: 28 20% 16%;
+    --muted-foreground: 35 15% 60%;
+    --accent: 120 14% 45%;
+    --accent-foreground: 28 31% 8%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 28 20% 18%;
+    --input: 28 20% 18%;
+    --ring: 18 47% 55%;
+
+    --brand-primary: #d5927a;
+    --brand-primary-dark: #f0d7cf;
+    --brand-secondary: #9eb99e;
+    --brand-secondary-dark: #c7d8c7;
+    --brand-warm: #2f2015;
+    --brand-warm-dark: #faf8f5;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  /* Lightweight grain layer. A simple CSS dot pattern is far cheaper
+   * than an SVG feTurbulence filter covering the viewport. Pointer
+   * events are disabled so the texture never steals interaction. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: radial-gradient(circle, hsl(var(--foreground) / 0.035) 1px, transparent 1px);
+    background-size: 24px 24px;
+    opacity: 0.5;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
+  }
+}
+
+@keyframes blob-drift {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(2%, -3%, 0) scale(1.05);
+  }
+  66% {
+    transform: translate3d(-2%, 2%, 0) scale(0.97);
+  }
+}
+
+@keyframes gradient-mesh {
+  0%, 100% {
+    background-position:
+      0% 50%,
+      100% 50%,
+      50% 0%;
+  }
+  50% {
+    background-position:
+      10% 40%,
+      90% 60%,
+      50% 10%;
+  }
+}
+
+@layer components {
+  /* Hero background scaffolding. The hero component (added in Chunk 3)
+   * stacks soft, slowly drifting radial gradients to form a warm mesh
+   * without any image, canvas, or webgl dependency. Animations respect
+   * `prefers-reduced-motion` via the .hero-no-motion modifier or the
+   * global media query below. */
+  .hero-gradient {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    contain: paint;
+    background-color: hsl(var(--background));
+  }
+  .hero-gradient__mesh {
+    position: absolute;
+    inset: -10%;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(at 20% 30%, hsl(var(--primary) / 0.22), transparent 55%),
+      radial-gradient(at 80% 70%, hsl(var(--secondary) / 0.18), transparent 55%),
+      radial-gradient(at 50% 100%, hsl(var(--primary) / 0.12), transparent 60%);
+    background-size: 60% 60%, 60% 60%, 60% 60%;
+    background-repeat: no-repeat;
+  }
+  .hero-blob {
+    position: absolute;
+    border-radius: 9999px;
+    pointer-events: none;
+    will-change: transform;
+    animation: blob-drift 18s ease-in-out infinite;
+  }
+  .hero-blob--primary {
+    background: radial-gradient(circle, hsl(var(--primary) / 0.42) 0%, transparent 70%);
+  }
+  .hero-blob--secondary {
+    background: radial-gradient(circle, hsl(var(--secondary) / 0.36) 0%, transparent 70%);
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      hsl(var(--background) / 0.05),
+      hsl(var(--background) / 0.55) 70%,
+      hsl(var(--background))
+    );
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-gradient__mesh,
+    .hero-blob {
+      animation: none;
+    }
+  }
+
+  .blog-article {
+    color: hsl(var(--foreground) / 0.92);
+  }
+  .blog-article > * + * {
+    margin-top: 1.25em;
+  }
+  .blog-article h2,
+  .blog-article h3,
+  .blog-article h4 {
+    font-family: var(--font-display), Georgia, Cambria, serif;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: hsl(var(--foreground));
+  }
+  .blog-article h2 {
+    font-size: 1.75rem;
+    margin-top: 2.25em;
+  }
+  .blog-article h3 {
+    font-size: 1.375rem;
+    margin-top: 2em;
+  }
+  .blog-article h4 {
+    font-size: 1.125rem;
+    margin-top: 1.75em;
+  }
+  .blog-article p {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: hsl(var(--foreground) / 0.88);
+  }
+  .blog-article a {
+    color: hsl(var(--primary));
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: color 0.15s ease;
+  }
+  .blog-article a:hover {
+    color: hsl(var(--primary) / 0.8);
+  }
+  .blog-article ul,
+  .blog-article ol {
+    padding-left: 1.5em;
+  }
+  .blog-article ul {
+    list-style: disc;
+  }
+  .blog-article ol {
+    list-style: decimal;
+  }
+  .blog-article li + li {
+    margin-top: 0.5em;
+  }
+  .blog-article blockquote {
+    border-left: 3px solid hsl(var(--primary) / 0.6);
+    padding: 0.25rem 0 0.25rem 1.5rem;
+    font-family: var(--font-display), Georgia, Cambria, serif;
+    font-size: 1.125rem;
+    font-style: italic;
+    line-height: 1.6;
+    color: hsl(var(--foreground) / 0.85);
+    background: linear-gradient(
+      to right,
+      hsl(var(--primary) / 0.06),
+      transparent 60%
+    );
+    border-radius: 0.5rem;
+    margin: 1.75em 0;
+  }
+  .blog-article strong {
+    color: hsl(var(--foreground));
+    font-weight: 600;
+  }
+  .blog-article code {
+    background: hsl(var(--muted));
+    padding: 0.1em 0.4em;
+    border-radius: 0.375rem;
+    font-size: 0.95em;
+  }
+  .blog-article pre {
+    background: hsl(var(--muted));
+    padding: 1rem 1.25rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    font-size: 0.9em;
+    line-height: 1.6;
+  }
+  .blog-article hr {
+    border-color: hsl(var(--border));
+    margin: 2.5em 0;
+  }
+  .blog-article img {
+    border-radius: 0.5rem;
+    margin: 1.75em 0;
+  }
+}

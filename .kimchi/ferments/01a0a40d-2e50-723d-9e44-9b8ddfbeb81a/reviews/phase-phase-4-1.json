@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "fermentId": "01a0a40d-2e50-723d-9e44-9b8ddfbeb81a",
+  "phaseId": "phase-4",
+  "phaseName": "Booking System",
+  "attempt": 1,
+  "timestamp": "2026-09-15T11:13:56.070Z",
+  "goal": "Implement the booking flow and availability management.",
+  "summary": "Phase 4 completed. Implemented the booking system: Availability model with admin CRUD, booking form on course detail pages with manual validation, atomic createBooking server action that guards capacity via Prisma transaction, and a bilingual confirmation page with static shell + client fetch. Added 47 new tests for availability, booking creation, form, and confirmation. Build, lint, and 73 tests pass.",
+  "stepSummaries": "  1. Add Availability model and admin availability CRUD. Updates prisma/schema.prisma and creates app/(admin)/availability/ and lib/actions/availability.ts. [verified]\n  2. Implement booking form on course detail pages with Zod + React Hook Form validation. Updates app/[locale]/courses/[slug]/page.tsx and creates components/booking-form.tsx. [verified]\n  3. Create booking server action that checks availability atomically and creates a Booking record. Creates lib/actions/booking.ts. [verified]\n  4. Add booking confirmation page. Creates app/[locale]/booking/confirmed/page.tsx. [verified]",
+  "diffAvailable": false,
+  "evidence": "Availability model + migration in prisma/schema.prisma; lib/actions/availability.ts and lib/actions/booking.ts; admin availability pages under app/[locale]/admin/availability/; course detail page renders BookingForm; components/booking-form.tsx, components/booking-confirmation.tsx; app/[locale]/booking/confirmed/page.tsx; app/api/bookings/[id]/route.ts; tests for admin-availability (21), booking/create (16), booking/form (2), booking/confirmed (8). Verified npm run lint exit 0; npm run test 73/73 pass; npm run build exit 0 with /[locale]/booking/confirmed SSG route.",
+  "flags": [],
+  "derivedGrade": "A",
+  "reviewerRationale": "All gates pass; project checks validate.",
+  "gateVerdicts": [
+    {
+      "id": "F1",
+      "verdict": "pass",
+      "rationale": "Every step used real behavioral verification: lint, tests, build, and explicit file/content checks.",
+      "evidence": "All four steps verified with npm run lint, npm run test, and npm run build; confirmation page verified with grep on generated static HTML."
+    },
+    {
+      "id": "F2",
+      "verdict": "pass",
+      "rationale": "Combined output delivers the phase goal: visitors can view course availability, submit bookings with atomic seat reservation, and see a confirmation page; admins can manage availability and bookings.",
+      "evidence": "Booking form on course detail; createBooking atomic transaction; confirmation page with API lookup; admin availability CRUD and bookings management from Phase 3."
+    },
+    {
+      "id": "F3",
+      "verdict": "pass",
+      "rationale": "No remaining deferred work in this phase.",
+      "evidence": "All 4 steps completed and verified; no blockers reported."
+    }
+  ],
+  "projectChecks": {
+    "discovered": true,
+    "anyFailed": false,
+    "commands": [
+      {
+        "kind": "test",
+        "command": "npm test",
+        "exitCode": 0,
+        "durationMs": 0,
+        "timedOut": false
+      },
+      {
+        "kind": "lint",
+        "command": "npm run lint",
+        "exitCode": 0,
+        "durationMs": 0,
+        "timedOut": false
+      }
+    ]
+  }
+}

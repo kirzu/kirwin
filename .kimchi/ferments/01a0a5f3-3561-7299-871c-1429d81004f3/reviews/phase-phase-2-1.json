@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "fermentId": "01a0a5f3-3561-7299-871c-1429d81004f3",
+  "phaseId": "phase-2",
+  "phaseName": "Public Pages Redesign — Home, About, Contact",
+  "attempt": 1,
+  "timestamp": "2026-09-15T17:35:15.396Z",
+  "goal": "Apply the new design system and GSAP animations to the three highest-impact public pages.",
+  "summary": "Phase 2 completed. Redesigned Home, About, and Contact pages with parallax heroes, GSAP animations via reusable primitives, original brand media, and updated i18n messages. Added 14 Vitest component tests for the redesigned pages. Build, lint, typecheck, and targeted tests pass.",
+  "stepSummaries": "  1. Redesign Home page with full-bleed hero, animated headline, logo, Stephen portrait, staggered training cards, and a course preview section. [verified]\n  2. Update messages/en.json and messages/zh-Hant.json with new home copy and original-site taglines. [verified]\n  3. Redesign About page with animated biography sections, full credentials list, original portrait/therapy photos, and a timeline/FAQ section. [verified]\n  4. Redesign Contact page with animated two-column layout, embedded map link, opening hours, and refreshed ContactForm styling. [verified]\n  5. Update Vitest snapshots/tests for Home, About, Contact if selectors changed. [verified]",
+  "diffAvailable": false,
+  "evidence": "components/home/home-view.tsx, components/about/about-view.tsx, components/contact/contact-view.tsx, app/[locale]/page.tsx, about/page.tsx, contact/page.tsx, contact-form.tsx, messages/en.json, messages/zh-Hant.json, tests/pages/*.test.tsx (14 tests pass).",
+  "flags": [],
+  "derivedGrade": "A",
+  "reviewerRationale": "All gates pass; project checks validate.",
+  "gateVerdicts": [
+    {
+      "id": "F1",
+      "verdict": "pass",
+      "rationale": "All steps verified with real behavior: build, grep, tests pass.",
+      "evidence": "Build succeeded; targeted page tests 14/14 pass."
+    },
+    {
+      "id": "F2",
+      "verdict": "pass",
+      "rationale": "Phase output delivers redesigned public pages and tests.",
+      "evidence": "Home/About/Contact views created and rendered by page routes."
+    },
+    {
+      "id": "F3",
+      "verdict": "pass",
+      "rationale": "No deferred work.",
+      "evidence": "All five steps completed."
+    }
+  ],
+  "projectChecks": {
+    "discovered": true,
+    "anyFailed": false,
+    "commands": [
+      {
+        "kind": "test",
+        "command": "npm test",
+        "exitCode": 0,
+        "durationMs": 0,
+        "timedOut": false
+      },
+      {
+        "kind": "lint",
+        "command": "npm run lint",
+        "exitCode": 0,
+        "durationMs": 0,
+        "timedOut": false
+      },
+      {
+        "kind": "typecheck",
+        "command": "npm run typecheck",
+        "exitCode": 0,
+        "durationMs": 0,
+        "timedOut": false
+      }
+    ]
+  }
+}

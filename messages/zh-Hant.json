@@ -1,0 +1,536 @@
+{
+  "site": {
+    "name": "柯文身體工作坊",
+    "tagline": "培養為客戶提供有效療癒照護並促進整體健康的實務能力。",
+    "description": "由 Stephen Kirwin 親授的實作身體工作課程。"
+  },
+  "languageSwitcher": {
+    "label": "語言",
+    "switchTo": "切換語言為 '{label}'"
+  },
+  "nav": {
+    "home": "首頁",
+    "about": "關於",
+    "courses": "課程",
+    "contact": "聯絡",
+    "testimonials": "客戶評價",
+    "admin": "管理後台"
+  },
+  "home": {
+    "hero": {
+      "title": "培養為客戶提供有效療癒照護並促進整體健康的實務能力。",
+      "subtitle": "著重神經肌肉療法與深層組織身體工作的實作研討會。",
+      "primaryCta": "瀏覽課程",
+      "secondaryCta": "聯絡我們",
+      "logoAlt": "Stephen Kirwin 身體工作坊標誌"
+    },
+    "offerings": {
+      "title": "課程內容"
+    },
+    "training": {
+      "title": "神經肌肉療法的實作課程",
+      "intro": "我們的課程著重於您在治療室第一天就能應用的實務技巧。每一個模組都承先啟後,讓您結業時具備完整且整合性的療癒照護方法。",
+      "items": [
+        {
+          "title": "學習深層組織與調整性身體工作",
+          "body": "透過姿勢分析、活動度測試與精準的軟組織觸診,自信地讀懂身體的訊息。"
+        },
+        {
+          "title": "小班制並由專家親自指導",
+          "body": "運用精準的神經肌肉療法釋放長期緊繃的模式,緩解疼痛並恢復功能。"
+        },
+        {
+          "title": "橫跨多種手法的整合評估",
+          "body": "將深層組織手法與結構調整結合,使療程有效、可持續,並兼顧施術者的安全。"
+        },
+        {
+          "title": "可重複執行的療程規劃",
+          "body": "建立客戶能理解、成效可衡量的療程計畫,並以明確的進展指標留住客戶。"
+        }
+      ]
+    },
+    "experience": {
+      "title": "二十二年的實務經驗,濃縮於每一堂課。",
+      "body": "Stephen Kirwin 投入身體工作超過二十年,協助客戶走出疼痛,重新與身體建立更完整的關係。他曾於美國科羅拉多大學波德分校與波德按摩治療學院學習,並以神經肌肉療法與深層組織身體工作為執業核心。如今他立足香港,於亞洲各地培訓實務工作者,傳遞精準、以實證為基礎的療癒照護方法。",
+      "credentials": [
+        "美國科羅拉多大學波德分校",
+        "波德按摩治療學院",
+        "超過二十二年臨床實務經驗",
+        "專精神經肌肉療法與深層組織身體工作",
+        "現居香港"
+      ],
+      "cta": "閱讀 Stephen 的完整故事",
+      "imageAlt": "Stephen 與客戶於身體工作坊中進行實作。"
+    },
+    "courses": {
+      "title": "準備好深化您的實務能力了嗎?",
+      "body": "瀏覽目前的身體工作坊課程並預約您的席次。新梯次於全年在香港及亞洲各地陸續開放。",
+      "viewAllCta": "查看所有課程",
+      "previewTitle": "精選課程",
+      "previewBody": "近期開課梯次搶先看。建議提早預約席次,課程向來額滿迅速。",
+      "previewEmpty": "新梯次日期將於近期公佈。歡迎透過聯絡頁面訂閱,取得第一手資訊。",
+      "previewReserve": "預約席次",
+      "durationLabel": "課程時長"
+    },
+    "testimonials": {
+      "title": "來自治療室的回饋",
+      "intro": "聽聽曾與 Stephen 合作的運動員與客戶分享他們的經驗。",
+      "cta": "閱讀更多客戶評價",
+      "imageAlt": "{name} 的肖像",
+      "fallbackQuote": "Stephen has become more of a ritual to me every time I do a big race.",
+      "fallbackName": "Alex"
+    },
+    "cta": {
+      "title": "與 Stephen 一起學習。",
+      "body": "瀏覽目前的身體工作坊課程,預約您的梯次席次。",
+      "primaryCta": "瀏覽課程",
+      "secondaryCta": "聯絡 Stephen"
+    }
+  },
+  "about": {
+    "title": "二十九年的實務經驗,濃縮於每一堂課。",
+    "intro": "Stephen Kirwin 是一位神經肌肉治療師與身體工作教育者,擁有超過二十年臨床實務經驗,以及包括頂尖運動員、表演工作者與知名養生品牌在內的合作名單。讓我們認識這位課程背後的實務工作者。",
+    "bio": [
+      "Stephen Kirwin 是神經肌肉治療師與身體工作教育者,擁有超過二十九年的臨床實務經驗。他曾於美國科羅拉多大學波德分校與波德按摩治療學院就讀,並在治療室中持續精進其手法工作長達數十年。",
+      "1995 至 1998 年,他在科羅拉多大學物理治療中心 (CU Physical Therapy Center) 服務,接著於 1998 至 2005 年在波德執業七年,創立自己的私人身體工作診所。這段歷程孕育出以評估為本、重視成效的風格,至今仍是他每堂課程的核心理念。",
+      "Stephen 曾與十二次鐵人三項選手以及 Scott Tinley、Dave Scott 等頂尖運動員合作,並獲選為 Lance Armstrong 環法自由車隊的隨隊治療師。他的客戶名單亦曾包括演員 Kevin Spacey 與 Oliver Stone,足見其工作所需的精準與專業。",
+      "如今他立足香港授課,於亞洲各地培訓實務工作者,傳遞沉穩、有條理的方法,既重視治療室的成效,也兼顧施術者長期的身心永續。"
+    ],
+    "credentialsTitle": "重點資歷",
+    "credentials": [
+      "美國科羅拉多大學波德分校",
+      "波德按摩治療學院",
+      "科羅拉多大學物理治療中心(1995–1998)",
+      "波德私人診所(1998–2005)",
+      "超過二十九年臨床實務經驗",
+      "專精神經肌肉療法與深層組織身體工作",
+      "現居香港"
+    ],
+    "approachTitle": "手法取向",
+    "approachBody": "Stephen 融合多種療癒手法,以讀懂身體、釋放長期緊繃模式,並擬定明確的改善計畫。",
+    "modalities": [
+      "結構整合 (Structural Integration)",
+      "肌筋膜放鬆 (Myofascial Release)",
+      "激痛點療法 (Trigger Point Therapy)",
+      "顱荐椎療法 (Craniosacral Therapy)",
+      "深層組織按摩 (Deep Tissue Massage)"
+    ],
+    "partnersTitle": "合作養生據點",
+    "partnersBody": "Stephen 曾與亞洲、歐洲等地的指標性養生中心與目的地水療品牌合作。",
+    "partners": [
+      "Aman Spas",
+      "Six Senses Spas",
+      "Conrad Spa",
+      "Kamalaya Wellness Sanctuary(泰國)",
+      "Atmanjai Detox",
+      "Phuket Cleanse(泰國)",
+      "Zenaya Spa & Wellness(比利時)",
+      "The Sanctuary Wellness(香港)",
+      "Atsumi Healing Spa",
+      "Trisara Spa"
+    ],
+    "imageAlt": "Stephen Kirwin 與客戶於身體工作坊中進行實作。",
+    "heroContactCta": "聯絡我們",
+    "bioCaption": "Stephen Kirwin",
+    "milestonesTitle": "二十九年淬鍊,濃縮為四個原則。",
+    "milestonesIntro": "每一個里程碑都形塑了 Stephen 今日所傳授的課程——從訓練、實務到教學方法的持續精煉。",
+    "milestones": [
+      {
+        "year": "基礎",
+        "title": "於 CU Boulder 與波德學院就讀",
+        "body": "於美國科羅拉多大學波德分校與波德按摩治療學院學習,奠定精準、循證的臨床基礎。"
+      },
+      {
+        "year": "1995–1998",
+        "title": "科羅拉多大學物理治療中心",
+        "body": "於科羅拉多大學物理治療中心服務,精進評估與手法技術,接觸多元臨床案例。"
+      },
+      {
+        "year": "1998–2005",
+        "title": "波德私人診所",
+        "body": "於波德自行開設身體工作診所,深化以評估為本的療癒風格,至今仍為每堂課程的核心。"
+      },
+      {
+        "year": "現在",
+        "title": "於亞洲各地培訓實務工作者",
+        "body": "如今他從香港出發授課，開設定期研討會與私人小班，將可持續、以成果為導向的身體工作帶到亞洲各地的診所。"
+      }
+    ],
+    "faqTitle": "常見問題整理。",
+    "faqIntro": "以下整理 Stephen 最常收到的提問,提供您快速參考。",
+    "faqs": [
+      {
+        "question": "什麼是神經肌肉療法?",
+        "answer": "神經肌肉療法是一種以評估為導向的軟組織手法,鎖定激痛點、肌肉代償模式以及姿勢相關的疼痛。Stephen 將其與深層組織及結構性手法結合,以達到可衡量、可重複的成效。"
+      },
+      {
+        "question": "Stephen Kirwin 是誰?",
+        "answer": "Stephen 是神經肌肉治療師與身體工作教育者,擁有超過二十九年的臨床實務經驗。他曾於美國科羅拉多大學波德分校與波德按摩治療學院就讀,並與頂尖運動員、表演工作者及指標性養生品牌合作。"
+      },
+      {
+        "question": "學校正址在哪裡?",
+        "answer": "學校正址設於香港皇后大道中 78 - 83 號文興商業大廈。Stephen 亦不定期前往亞洲各地為私人小班授課。"
+      },
+      {
+        "question": "初學者可以參加嗎?",
+        "answer": "可以。課程設計同時支持初學者與有經驗的實務工作者:初學者將補充解剖與評估基礎,有經驗的學員則專注於精煉手法。"
+      },
+      {
+        "question": "需要哪些資格?",
+        "answer": "基礎課程不設正式入學門檻。具備身體工作、物理治療或動作治療背景會有所幫助,但並非必要。如不確定課程是否適合您,歡迎透過聯絡頁面與我們討論。"
+      },
+      {
+        "question": "如何報名?",
+        "answer": "請至課程頁面瀏覽近期梯次,並透過預約表單保留席次。每一梯次皆刻意維持小班制,建議提早報名。"
+      },
+      {
+        "question": "是否會頒發證書?",
+        "answer": "會。完成課程的學員將獲頒結業證書,並於第四日的綜合評量中確認所學手法。"
+      },
+      {
+        "question": "需要攜帶什麼?",
+        "answer": "請穿著方便活動的衣物、攜帶筆記本,並以開放的心態進行實作練習。現場備有按摩床及所有按摩用油。"
+      },
+      {
+        "question": "課程內容涵蓋哪些主題?",
+        "answer": "包含解剖與生理學、觸診、神經肌肉評估、深層組織與肌筋膜手法、療程規劃、專業倫理,以及建立永續身體工作實務所需的經營知識。"
+      },
+      {
+        "question": "如何與你們聯絡?",
+        "answer": "請透過聯絡頁面留言,Stephen 親自閱讀每一則訊息,並於兩個工作日內回覆。"
+      }
+    ],
+    "ctaTitle": "與 Stephen 一起學習。",
+    "ctaBody": "瀏覽目前的身體工作坊課程,預約您即將參與的梯次席次。",
+    "ctaPrimary": "查看近期課程",
+    "ctaSecondary": "閱讀 Stephen 的完整故事"
+  },
+  "courses": {
+    "title": "我們的服務",
+    "subtitle": "神經肌肉療法與修復性身體工作的密集訓練課程。",
+    "overviewTitle": "為期四天的密集訓練。",
+    "overviewBody": "歡迎參加為期四天的密集課程,本課程專為有志成為按摩治療師的學員設計,涵蓋一般按摩療法與專業神經肌肉療法的核心技巧。透過理論與實作並重的安排,協助您提升專業能力與實務信心。",
+    "highlightsTitle": "每日學習內容。",
+    "highlightsIntro": "由基礎按摩出發,循序漸進進入進階神經肌肉療法,最後帶您了解經營可持續身體工作實務所需的知識。",
+    "heroPrimaryCta": "預約席次",
+    "heroSecondaryCta": "聯絡 Stephen",
+    "highlights": {
+      "imageAlt": "實作身體工作坊課程現場。",
+      "day1Title": "Day 1:按摩療法的基礎",
+      "day1Body": "介紹各種按摩手法、解剖學與生理學、構成每次療程的基本技巧,以及將療程轉化為具療癒性關係的溝通能力。",
+      "day2Title": "Day 2:神經肌肉療法基礎",
+      "day2Body": "神經肌肉解剖與激痛點、讀懂身體的評估策略,以及建立信心的結構化實作練習。",
+      "day3Title": "Day 3:進階技巧與應用",
+      "day3Body": "將神經肌肉療法與傳統按摩結合,設計常見個案類型的治療方案,並透過引導式練習精進手法的臨場判斷。",
+      "day4Title": "Day 4:經營實務與專業倫理",
+      "day4Body": "建立可持續的身體工作實務、保障客戶與施術者的倫理與界線,以及取得結業證書的最終評量。"
+    },
+    "dayEyebrow": "Day {day}",
+    "locationTitle": "中環工作室位置。",
+    "locationAddress": "香港皇后大道中 78 - 83 號文興商業大廈。",
+    "locationHours": "星期一至五 12:00 - 19:00",
+    "mapTitle": "工作室位置",
+    "upcomingTitle": "預約您的席次。",
+    "empty": "目前尚未上架任何課程，請稍候再回來查看。",
+    "durationLabel": "課程時長",
+    "durationValue": "{duration}",
+    "durationTba": "時程即將公告",
+    "maxParticipantsLabel": "梯次人數",
+    "maxParticipantsValue": "最多 {seats} 位學員",
+    "priceLabel": "費用",
+    "viewDetails": "查看課程內容",
+    "bookCta": "預約席次",
+    "searchLabel": "搜尋課程",
+    "searchPlaceholder": "輸入關鍵字搜尋…",
+    "filters": {
+      "all": "所有課程",
+      "halfDay": "半日",
+      "fullDay": "全日",
+      "multiDay": "多日"
+    },
+    "resultsCount": "{count, plural, =0 {沒有符合條件的課程} other {共有 # 門課程符合條件}}",
+    "emptyTitle": "找不到符合條件的課程。",
+    "emptyBody": "請嘗試清除篩選條件,或換一個關鍵字搜尋。",
+    "clearFilters": "清除篩選",
+    "imageAlt": "實作身體工作坊課程現場。",
+    "ctaTitle": "新梯次於全年陸續開放。",
+    "ctaBody": "歡迎瀏覽目前課程並提早預約席次,熱門梯次向來額滿迅速。",
+    "ctaPrimary": "查看所有課程"
+  },
+  "courseDetail": {
+    "back": "返回所有課程",
+    "overviewTitle": "關於本課程",
+    "overviewEmpty": "課程詳細介紹將於近期公佈。如欲提前了解內容,歡迎與我們聯絡。",
+    "atAGlanceTitle": "課程重點",
+    "durationLabel": "課程時長",
+    "durationValue": "{duration}",
+    "durationTba": "時程即將公告",
+    "maxParticipantsLabel": "梯次人數",
+    "maxParticipantsValue": "最多 {seats} 位學員",
+    "priceLabel": "費用",
+    "ctaTitle": "預約您的席次",
+    "ctaBody": "每一梯次都刻意維持小班制。請儘早預約席次,以免向隅。",
+    "ctaFineprint": "兩分鐘內即可完成預約。預約確認前不會向您收取任何費用。",
+    "bookCta": "預約席次",
+    "noUpcomingSessions": "此課程目前尚未公布近期梯次，請稍後再回來查看。",
+    "syllabusTitle": "課程內容",
+    "syllabusIntro": "由淺入深、循序漸進的實作課程,讓您結業時具備一套清晰、可重複執行的方法。",
+    "syllabusDefault": [
+      "目標組織的解剖學與觸診基礎",
+      "判讀緊繃模式的評估技巧",
+      "神經肌肉與深層組織的實作手法",
+      "療程規劃與進度追蹤",
+      "一對一指導下的實境演練"
+    ],
+    "instructorName": "Stephen Kirwin",
+    "instructorCredentials": [
+      "美國科羅拉多大學波德分校",
+      "波德按摩治療學院",
+      "超過二十二年臨床實務經驗"
+    ],
+    "instructorBody": "Stephen 立足香港,於亞洲各地舉辦小班制研討會,專注於神經肌肉療法與深層組織身體工作。",
+    "instructorCta": "閱讀 Stephen 的完整故事",
+    "imageAlt": "實作身體工作坊課程現場。",
+    "heroCta": "預約席次",
+    "cta": {
+      "title": "對這堂課還有疑問?",
+      "body": "歡迎與我們聯絡,洽詢梯次、入門條件或當天的課程內容。Stephen 將於兩個工作日內親自回覆。",
+      "primaryCta": "聯絡 Stephen"
+    }
+  },
+  "contact": {
+    "title": "聯絡 Stephen Kirwin",
+    "intro": "對課程、私人梯次或療癒身體工作有任何疑問嗎？歡迎與我們聯絡，Stephen 將於兩個工作日內回覆您。",
+    "heroImageAlt": "Stephen 位於中環的工作室空間，柔和的燈光與簡潔的陳設。",
+    "detailsTitle": "聯絡資訊",
+    "detailsIntro": "歡迎來電、來信，或於營業時間親臨工作室。若想洽詢課程或私人梯次，下方表單是最快速的回覆方式。",
+    "phoneLabel": "電話",
+    "phoneValue": "+852 6906 5503",
+    "emailLabel": "電子郵件",
+    "emailValue": "Stephen.kirwin.cmt@gmail.com",
+    "locationLabel": "地點",
+    "locationValue": "香港皇后大道中 78 - 83 號，文興商業大廈",
+    "hoursLabel": "營業時間",
+    "hours": "星期一至五 12:00 - 19:00",
+    "instagramLabel": "Instagram",
+    "instagramHandle": "@stephenkirwin.bodywork",
+    "mapCta": "於 Google Maps 開啟",
+    "heroCta": "傳送訊息",
+    "cta": {
+      "title": "或先瀏覽近期課程表。",
+      "body": "若想直接從近期研討會開始,歡迎至課程頁查看目前梯次,兩分鐘內即可完成預約。",
+      "primaryCta": "瀏覽課程"
+    },
+    "mapTitle": "工作室位置",
+    "formTitle": "傳送訊息",
+    "formIntro": "請填寫下列表單，Stephen 將以電子郵件回覆您。",
+    "formFootnote": "您的聯絡資料將保密，Stephen 會親自閱讀每一則訊息。",
+    "fields": {
+      "name": "姓名",
+      "namePlaceholder": "您的姓名",
+      "email": "電子郵件",
+      "emailPlaceholder": "[email protected]",
+      "phone": "電話",
+      "phonePlaceholder": "+852 0000 0000",
+      "message": "訊息內容",
+      "messagePlaceholder": "請簡要描述您的需求。"
+    },
+    "submit": "送出訊息",
+    "submitting": "送出中…",
+    "success": "感謝您的訊息，Stephen 將盡快與您聯絡。",
+    "successCta": "再傳送一則訊息",
+    "error": {
+      "generic": "發生錯誤，請稍後再試，或直接以電子郵件聯絡我們。",
+      "required": "此欄位為必填。",
+      "email": "請輸入有效的電子郵件地址。",
+      "messageTooShort": "請輸入至少 10 個字元。",
+      "rateLimit": "您最近已傳送過訊息，請稍後一小時再試。"
+    }
+  },
+  "blog": {
+    "title": "部落格",
+    "description": "來自治療室與教室的筆記——Stephen Kirwin 分享有關神經肌肉療法、深層組織身體工作,以及如何建立永續實務的實用觀察。",
+    "subtitle": "Stephen Kirwin 分享有關神經肌肉療法、深層組織身體工作,以及如何建立以客戶為本、永續經營的實務觀察。",
+    "heroEyebrow": "來自治療室",
+    "featuredImageAlt": "Stephen 接待客戶並撰寫筆記的安靜治療室。",
+    "empty": "目前尚未發佈任何文章。",
+    "readMore": "閱讀更多",
+    "publishedOn": "發佈於 {date}",
+    "backToBlog": "返回所有文章",
+    "postedOn": "發佈日期:{date}",
+    "categoryChip": "文章",
+    "cardImageAlt": "{title} 的封面圖片",
+    "articleEyebrow": "文章",
+    "articleImageAlt": "{title} 的封面圖片",
+    "instructorEyebrow": "授課講師",
+    "instructorName": "Stephen Kirwin",
+    "instructorBody": "Stephen 立足香港,於亞洲各地舉辦小班制研討會,淬鍊自二十二年的神經肌肉療法與深層組織身體工作實務經驗。",
+    "instructorCredentials": [
+      "美國科羅拉多大學波德分校",
+      "波德按摩治療學院",
+      "超過二十二年臨床實務經驗"
+    ],
+    "instructorCta": "閱讀 Stephen 的完整故事",
+    "instructorImageAlt": "Stephen Kirwin 的肖像,神經肌肉治療師與身體工作坊講師。",
+    "newsletterEyebrow": "隨時掌握新知",
+    "newsletterTitle": "更多來自課堂的最新筆記。",
+    "newsletterBody": "歡迎與我們聯絡,當 Stephen 發佈有關手法、評估與建立以客戶為本、永續實務的最新文章時,您將第一時間收到通知。",
+    "newsletterCta": "聯絡我們"
+  },
+  "testimonials": {
+    "title": "客戶怎麼說",
+    "subtitle": "聽聽曾與 Stephen 合作的運動員與客戶分享他們的經驗。",
+    "empty": "目前尚未發佈任何客戶評價。",
+    "ratingLabel": "評分",
+    "heroCta": "瀏覽課程",
+    "cta": {
+      "title": "親身體驗看看。",
+      "body": "瀏覽目前的身體工作坊課程,預約您的梯次席次。",
+      "primaryCta": "瀏覽課程"
+    }
+  },
+  "footer": {
+    "copyright": "© {year} Stephen Kirwin Bodywork Seminars. All rights reserved.",
+    "links": {
+      "privacy": "隱私權政策",
+      "terms": "使用條款"
+    }
+  },
+  "admin": {
+    "title": "管理後台",
+    "shell": {
+      "brand": "Kirwin 管理後台",
+      "userFallback": "管理員",
+      "userRole": "管理員",
+      "collapseSidebar": "收合側邊欄",
+      "expandSidebar": "展開側邊欄",
+      "openMobileNav": "開啟管理後台導覽"
+    },
+    "nav": {
+      "dashboard": "儀表板",
+      "courses": "課程",
+      "testimonials": "客戶評價",
+      "bookings": "預約",
+      "availability": "可預約時段",
+      "content": "內容區塊"
+    },
+    "login": {
+      "title": "登入",
+      "subtitle": "Kirwin 管理後台 · 登入以管理網站內容。",
+      "email": "電子郵件",
+      "password": "密碼",
+      "submit": "登入",
+      "error": "電子郵件或密碼不正確。"
+    },
+    "dashboard": {
+      "title": "儀表板",
+      "welcome": "歡迎回來,{name}。",
+      "eyebrow": "管理後台",
+      "intro": "在一處管理課程、客戶評價、網站內容、預約與可預約時段。下方色塊標示各區塊負責的工作。",
+      "sectionHeading": "前往任一區塊",
+      "openCta": "開啟 {section}"
+    }
+  },
+  "booking": {
+    "title": "預約席次",
+    "intro": "請選擇近期梯次並留下您的聯絡資料,我們將以電子郵件確認您的席次。",
+    "selectSlot": "選擇梯次",
+    "selectSlotPlaceholder": "請選擇可預約的日期",
+    "name": "姓名",
+    "email": "電子郵件",
+    "phone": "電話",
+    "notes": "備註(選填)",
+    "submit": "前往付款",
+    "submitting": "保留中…",
+    "success": "您的席次已成功保留。",
+    "error": "發生錯誤,請稍後再試。",
+    "errorCodes": {
+      "invalidLocale": "無法識別您的語言,請重新整理後再試一次。",
+      "missingFields": "請填寫所有必填欄位後再保留席次。",
+      "invalidPhone": "請輸入有效的電話號碼。",
+      "noSeats": "抱歉,此梯次已額滿,請選擇其他日期。"
+    },
+    "validation": {
+      "slotRequired": "請選擇梯次。",
+      "nameRequired": "請輸入您的姓名。",
+      "emailRequired": "請輸入您的電子郵件。",
+      "emailInvalid": "請輸入有效的電子郵件地址。",
+      "phoneRequired": "請輸入電話號碼。"
+    },
+    "confirmed": {
+      "eyebrow": "預約確認",
+      "title": "感謝您的預約!",
+      "headline": "您的席次已為您保留。",
+      "intro": "我們已收到您的預約資料,確認信件將寄送至您的信箱,以下為您的預約明細。",
+      "referenceHeading": "預約明細",
+      "referenceDescription": "請保留此編號以備查詢之用。",
+      "reference": "預約編號",
+      "course": "課程名稱",
+      "session": "梯次日期與時間",
+      "attendee": "報名者姓名",
+      "emailLabel": "電子郵件",
+      "phoneLabel": "電話",
+      "phoneNotProvided": "未提供",
+      "notes": "備註",
+      "status": "預約狀態",
+      "backToCourses": "返回課程列表",
+      "footer": "需要修改資料嗎?請回覆確認信件,我們會協助您處理。",
+      "missingReference": "未提供預約編號。",
+      "missingReferenceBody": "請返回課程列表後再試一次,或使用確認信件中的連結重新進入。",
+      "notFound": "查無此筆預約。",
+      "notFoundBody": "請確認連結是否正確,或返回課程列表重新操作。",
+      "errorTitle": "無法載入您的預約資料。",
+      "loading": "正在載入預約資料…"
+    },
+    "payment": {
+      "paymentTitle": "完成付款",
+      "paymentDescription": "支付訂金即可保留您的席次,系統將導向 Stripe 安全付款頁。",
+      "cta": "支付訂金",
+      "processing": "正在導向…",
+      "error": "無法啟動付款流程,請稍後再試。",
+      "errorCodes": {
+        "invalidLocale": "無法識別您的語言,請重新整理後再試一次。",
+        "missingFields": "缺少部分必要資料,請重新整理後再試一次。",
+        "bookingNotFound": "查無此筆預約,請重新整理後再試一次。",
+        "invalidPaymentStatus": "此筆預約已不需付款。",
+        "invalidPrice": "課程價格尚未設定,請聯絡我們以完成預約。"
+      },
+      "success": {
+        "eyebrow": "付款成功",
+        "title": "感謝您的付款!",
+        "headline": "款項已收到,課堂上見。",
+        "genericTitle": "付款完成。",
+        "intro": "我們已收到您的款項,席次已為您確認。收據將寄送至您的電子郵件信箱。",
+        "genericIntro": "我們已收到您的款項,可隨時瀏覽近期課程或查看您的預約明細。",
+        "referenceHeading": "您的預約",
+        "referenceDescription": "請保留此編號以備查詢之用。",
+        "reference": "預約編號",
+        "sessionId": "Stripe 交易編號",
+        "viewBooking": "查看預約明細",
+        "footer": "需要修改資料嗎?請回覆確認信件,我們會協助您處理。",
+        "backToCourses": "返回課程列表"
+      },
+      "cancel": {
+        "eyebrow": "付款已取消",
+        "title": "您的付款已取消。",
+        "headline": "本次未收取任何費用。",
+        "genericTitle": "付款已取消。",
+        "intro": "目前並未收取任何費用,您的席次仍為保留狀態,可隨時回來完成付款。",
+        "genericIntro": "本次並未收取任何費用,您的席次仍為保留狀態。可瀏覽近期課程,或隨時回來完成付款。",
+        "referenceHeading": "您的預約",
+        "referenceDescription": "我們仍為您保留席次。",
+        "reference": "預約編號",
+        "sessionId": "Stripe 交易編號",
+        "viewBooking": "返回預約頁",
+        "tryAgain": "再次嘗試付款",
+        "footer": "如果遇到任何問題,請回覆確認信件,我們會協助您處理。",
+        "backToCourses": "返回課程列表"
+      }
+    }
+  },
+  "common": {
+    "loading": "載入中…",
+    "comingSoon": "即將推出",
+    "back": "返回"
+  }
+}

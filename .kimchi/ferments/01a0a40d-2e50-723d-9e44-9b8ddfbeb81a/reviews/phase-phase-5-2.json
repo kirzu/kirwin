@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "fermentId": "01a0a40d-2e50-723d-9e44-9b8ddfbeb81a",
+  "phaseId": "phase-5",
+  "phaseName": "Stripe Payments & Blog Polish",
+  "attempt": 2,
+  "timestamp": "2026-09-15T11:56:57.969Z",
+  "goal": "Integrate Stripe payments and complete the public blog experience.",
+  "summary": "Phase 5 completed after grader fix. Fixed translation-namespace mismatch in components/booking-confirmation.tsx by adding a second useTranslations('booking.payment') hook for paymentTitle/paymentDescription. Stripe integration remains env-driven and inactive until user provides credentials. Public blog listing/detail, payment success/cancel, webhook, checkout, SEO metadata, and zh-Hant translations are complete. Build, lint, and 145 tests pass.",
+  "stepSummaries": "  1. Configure Stripe SDK and webhook route; document required env vars. Creates app/api/stripe/webhook/route.ts and lib/stripe.ts. [verified]\n  2. Implement Stripe Checkout session creation linked to a booking. Updates lib/actions/booking.ts and adds components/payment-button.tsx. [verified]\n  3. Add payment success/cancel pages and update booking status on webhook. Creates app/[locale]/payment/success/page.tsx and app/[locale]/payment/cancel/page.tsx. [verified]\n  4. Implement public blog listing page. Creates app/[locale]/blog/page.tsx. [verified]\n  5. Implement blog post detail page. Creates app/[locale]/blog/[slug]/page.tsx. [verified]\n  6. Complete Traditional Chinese translations and add SEO metadata across public pages. Updates messages/zh-Hant.json and page metadata exports. [verified]",
+  "diffAvailable": false,
+  "evidence": "components/booking-confirmation.tsx now uses tp('paymentTitle')/tp('paymentDescription') from booking.payment namespace; messages/en.json and zh-Hant.json contain those keys. Verified npm run lint exit 0; npm run test 145/145 pass; npm run build exit 0; grep -q zh-Hant .next/server/app/zh-Hant.html passes.",
+  "flags": [],
+  "derivedGrade": "A",
+  "reviewerRationale": "All gates pass; project checks validate.",
+  "gateVerdicts": [
+    {
+      "id": "F1",
+      "verdict": "pass",
+      "rationale": "Grader-reported translation mismatch fixed and verified with lint, tests, build, and exact grep check.",
+      "evidence": "npm run lint exit 0; npm run test 145/145 pass; npm run build exit 0; grep zh-Hant passes."
+    },
+    {
+      "id": "F2",
+      "verdict": "pass",
+      "rationale": "Combined output delivers phase goal: full Stripe payment flow wired, public blog live, SEO metadata and translations complete.",
+      "evidence": "Webhook, checkout, payment pages, blog pages, metadata, and translation tests all pass."
+    },
+    {
+      "id": "F3",
+      "verdict": "pass",
+      "rationale": "No remaining deferred work in this phase; Stripe credential gap recorded as D002.",
+      "evidence": "All six steps completed and grader recommendation addressed."
+    }
+  ],
+  "projectChecks": {
+    "discovered": true,
+    "anyFailed": false,
+    "commands": [
+      {
+        "kind": "test",
+        "command": "npm test",
+        "exitCode": 0,
+        "durationMs": 0,
+        "timedOut": false
+      },
+      {
+        "kind": "lint",
+        "command": "npm run lint",
+        "exitCode": 0,
+        "durationMs": 0,
+        "timedOut": false
+      }
+    ]
+  }
+}

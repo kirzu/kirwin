@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "fermentId": "01a0a40d-2e50-723d-9e44-9b8ddfbeb81a",
+  "phaseId": "phase-2",
+  "phaseName": "Public Site Pages",
+  "attempt": 2,
+  "timestamp": "2026-09-15T09:16:14.408Z",
+  "goal": "Implement public-facing pages that carry over the current brand content.",
+  "summary": "Phase 2 completed. All public-facing pages are implemented and refined: Home, About (with Stephen Kirwin's real portrait from the original brand site), Courses listing, Course detail (with booking CTA), and Contact (with form that persists inquiries to the database). Duplicated formatting helpers were extracted into lib/format.ts, and no PII is logged from the contact form. Build and lint pass.",
+  "stepSummaries": "  1. Build the Home page (hero, training/experience/support sections). Creates app/[locale]/page.tsx. [verified]\n  2. Build the About page with biography and images. Creates app/[locale]/about/page.tsx. [verified]\n  3. Build the Courses listing page. Creates app/[locale]/courses/page.tsx. [verified]\n  4. Build the Course detail page with a booking CTA. Creates app/[locale]/courses/[slug]/page.tsx. [verified]\n  5. Build the Contact page with contact form. Creates app/[locale]/contact/page.tsx. [verified]",
+  "diffAvailable": false,
+  "evidence": "Step 1-5 all completed. Applied grader feedback: (1) removed console.info PII logging from contact/actions.ts and replaced with prisma.contactInquiry.create after adding ContactInquiry model and migration; (2) extracted formatPriceHkd/formatDuration into lib/format.ts and removed duplicates from both courses pages; (3) downloaded Stephen Kirwin's portrait from kirwinbodyworks.com to public/images/stephen.jpg, replaced the User icon placeholder in app/[locale]/about/page.tsx with next/image, and updated imageAlt in both message files. Verified grep checks: no console.info in actions.ts, 0 occurrences of local formatPriceHkd in course pages, /images/stephen.jpg appears in rendered about HTML. Build and lint pass.",
+  "flags": [],
+  "derivedGrade": "A",
+  "reviewerRationale": "All gates pass; project checks validate.",
+  "gateVerdicts": [
+    {
+      "id": "F1",
+      "verdict": "pass",
+      "rationale": "Every step used real behavioral verification (build + grep). Grader feedback items were verified with concrete source-level checks.",
+      "evidence": "Each step's verify command exercised the built artifact; grader checks pass: no console.info, helpers extracted, real image used."
+    },
+    {
+      "id": "F2",
+      "verdict": "pass",
+      "rationale": "Combined output delivers the phase goal: all public pages exist, are bilingual, responsive, and preserve brand content; contact form persists inquiries; course helpers are shared.",
+      "evidence": "npm run build exits 0; /images/stephen.jpg referenced in /en/about.html; ContactInquiry model created; lib/format.ts used by both courses pages."
+    },
+    {
+      "id": "F3",
+      "verdict": "pass",
+      "rationale": "No remaining deferred work. The booking page URL remains a stable downstream contract for Phase 4.",
+      "evidence": "No remaining steps; all grader recommendations addressed."
+    }
+  ],
+  "projectChecks": {
+    "discovered": true,
+    "anyFailed": false,
+    "commands": [
+      {
+        "kind": "lint",
+        "command": "npm run lint",
+        "exitCode": 0,
+        "durationMs": 0,
+        "timedOut": false
+      }
+    ]
+  }
+}

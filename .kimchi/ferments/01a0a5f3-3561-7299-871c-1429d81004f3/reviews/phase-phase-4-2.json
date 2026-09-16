@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "fermentId": "01a0a5f3-3561-7299-871c-1429d81004f3",
+  "phaseId": "phase-4",
+  "phaseName": "Admin Dashboard Visual Refresh",
+  "attempt": 2,
+  "timestamp": "2026-09-15T19:19:33.571Z",
+  "goal": "Refresh the admin UI with the new brand palette and improved layout without changing behavior.",
+  "summary": "Phase 4 completed (retry). Admin dashboard refreshed with brand palette, collapsible sidebar/sheet nav, styled list pages and forms. Fixed grader feedback: Dashboard nav item active only on exact /{locale}/admin; form Cancel links use Next.js Link. All tests 198/198 pass; admin unit tests 47/47 and admin-login E2E 2/2 pass; lint/typecheck/build clean.",
+  "stepSummaries": "  1. Update admin dashboard layout and navigation with new palette and responsive sidebar/sheet. [verified]\n  2. Refresh admin list pages (courses, blog, bookings, availability, content) with styled tables/cards and hover transitions. [verified]\n  3. Refresh admin forms with new input/button styling and section animations. [verified]\n  4. Run admin-related unit and E2E tests to ensure CRUD still works. [verified]",
+  "diffAvailable": false,
+  "evidence": "components/admin-shell.tsx active logic fixed; components/admin/course-form.tsx, blog-form.tsx, availability-form.tsx, content-form.tsx use Link for Cancel; npm run test 198/198; npm run build exit 0.",
+  "flags": [],
+  "derivedGrade": "A",
+  "reviewerRationale": "All gates pass; project checks validate.",
+  "gateVerdicts": [
+    {
+      "id": "F1",
+      "verdict": "pass",
+      "rationale": "All verification passes after fixes: tests, E2E, lint/typecheck/build.",
+      "evidence": "Test output and build output."
+    },
+    {
+      "id": "F2",
+      "verdict": "pass",
+      "rationale": "Phase delivers admin UI refresh with grader fixes.",
+      "evidence": "Admin shell, list pages, forms styled; active state and Link fixes applied."
+    },
+    {
+      "id": "F3",
+      "verdict": "pass",
+      "rationale": "No deferred work.",
+      "evidence": "All four steps completed."
+    }
+  ],
+  "projectChecks": {
+    "discovered": true,
+    "anyFailed": false,
+    "commands": [
+      {
+        "kind": "test",
+        "command": "npm test",
+        "exitCode": 0,
+        "durationMs": 0,
+        "timedOut": false
+      },
+      {
+        "kind": "lint",
+        "command": "npm run lint",
+        "exitCode": 0,
+        "durationMs": 0,
+        "timedOut": false
+      },
+      {
+        "kind": "typecheck",
+        "command": "npm run typecheck",
+        "exitCode": 0,
+        "durationMs": 0,
+        "timedOut": false
+      }
+    ]
+  }
+}

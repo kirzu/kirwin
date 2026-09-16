@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "fermentId": "01a0a40d-2e50-723d-9e44-9b8ddfbeb81a",
+  "phaseId": "phase-1",
+  "phaseName": "Foundation & Database Schema",
+  "attempt": 1,
+  "timestamp": "2026-09-15T08:42:53.571Z",
+  "goal": "Bootstrap the project, configure tooling, define the database schema, and set up authentication and i18n.",
+  "summary": "Phase 1 completed. Foundation in place: Next.js 14.2.35 + TypeScript + Tailwind 3.4.17 + shadcn/ui, Prisma 6.19.3 with SQLite schema and seed, NextAuth v4 credentials auth, next-intl en/zh-Hant routing, and shared locale layout with nav/footer/language switcher. Build and lint pass.",
+  "stepSummaries": "  1. Initialize Next.js 14+ with TypeScript, Tailwind CSS, ESLint, App Router; install shadcn/ui and base components. Creates package.json, app/, components/ui/, lib/, prisma/. [verified]\n  2. Configure Prisma with SQLite and define schema for User, Course, Booking, BlogPost, SiteContent, Payment, and Availability. Creates prisma/schema.prisma and a seed script. [verified]\n  3. Configure NextAuth.js/Auth.js credentials provider for admin login; add admin seed script at scripts/seed.ts. Creates app/api/auth/[...nextauth]/route.ts. [verified]\n  4. Configure next-intl with messages/en.json and messages/zh-Hant.json; set up middleware.ts and locale routing. Creates i18n config files. [verified]\n  5. Add shared layout with navigation shell, footer, and language switcher. Creates app/[locale]/layout.tsx and components/layout/. [verified]",
+  "diffAvailable": false,
+  "evidence": "Step 1: Next.js project scaffolded, components fixed for Radix, build/lint pass. Step 2: Prisma schema with 7 models, migration applied, seed creates admin + sample course. Step 3: NextAuth credentials provider, lib/prisma.ts singleton, /api/auth route. Step 4: next-intl configured, middleware with admin gate, app/[locale]/ layout and page. Step 5: Subsumed by step 4. All verification commands exited 0.",
+  "flags": [
+    {
+      "problem": "Project lint command (`npm run lint`) did not validate.",
+      "evidence": "lint script does not reference a known runner (biome, eslint, tsc, oxlint); got: next lint",
+      "severity": "block",
+      "redirect": "Wire lint properly before completing this phase — make `npm run lint` a real, installable command (resolve the runner, fix the script)."
+    }
+  ],
+  "derivedGrade": "F",
+  "reviewerRationale": "1 block flag(s) raised — see attached gate verdicts and project checks.",
+  "gateVerdicts": [
+    {
+      "id": "F1",
+      "verdict": "pass",
+      "rationale": "Every step included real behavioral verification: npm run build, npx prisma migrate dev, npm run db:seed. File-existence checks were supplementary; the real checks covered load-bearing logic.",
+      "evidence": "Build passed after each step; migration created dev.db; seed upserted admin and sample course."
+    },
+    {
+      "id": "F2",
+      "verdict": "pass",
+      "rationale": "Combined output delivers the phase goal: project scaffolding, database schema, auth, and i18n are all functional and build cleanly.",
+      "evidence": "npm run build exits 0; app/[locale]/layout.tsx renders with nav/footer/language switcher; /api/auth/[...nextauth] route registered; Prisma client generated from schema."
+    },
+    {
+      "id": "F3",
+      "verdict": "pass",
+      "rationale": "Nothing deferred. The Next.js version downgrade was recorded as decision D001 and executed within the phase.",
+      "evidence": "Decision D001 documented; no remaining steps listed in any agent report."
+    }
+  ],
+  "projectChecks": {
+    "discovered": true,
+    "anyFailed": true,
+    "commands": [
+      {
+        "kind": "lint",
+        "command": "npm run lint",
+        "exitCode": 1,
+        "durationMs": 0,
+        "timedOut": false
+      }
+    ]
+  }
+}
