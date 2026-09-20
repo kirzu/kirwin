@@ -1,0 +1,90 @@
+{
+  "source": "https://www.kirwinbodyworks.com",
+  "scrapedAt": "2026-09-16",
+  "assets": [
+    {
+      "id": "logo",
+      "file": "logo.png",
+      "sourceUrl": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/oF0s9HPFI6pEG5MB/screenshot_2025-11-17_at_21.28.11-removebg-preview-kFB3IwlcJoKvov2f.png",
+      "description": "Stephen Kirwin Bodywork Seminars transparent logo",
+      "type": "image/png"
+    },
+    {
+      "id": "stephen-portrait",
+      "file": "stephen-portrait.jpg",
+      "sourceUrl": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1200,fit=crop/oF0s9HPFI6pEG5MB/e0c8c9df-9c4f-4b80-8a1c-e47afbe92edd-GFC66NgM0ZFKRhnG.jpeg",
+      "description": "Portrait of Stephen Kirwin",
+      "type": "image/jpeg"
+    },
+    {
+      "id": "course-hands-on",
+      "file": "course-hands-on.jpg",
+      "sourceUrl": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1200,fit=crop/oF0s9HPFI6pEG5MB/ca937eb8-fa38-4cff-b679-74a11e527ee3-AW9371B021ANRSbr.jpeg",
+      "description": "Hands-on bodywork training photo",
+      "type": "image/jpeg"
+    },
+    {
+      "id": "stephen-working",
+      "file": "stephen-working.jpg",
+      "sourceUrl": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1200,fit=crop/oF0s9HPFI6pEG5MB/stephen2-1eCHyWaIefsTjeo5.jpeg",
+      "description": "Stephen working with a client",
+      "type": "image/jpeg"
+    },
+    {
+      "id": "therapy-session",
+      "file": "therapy-session.jpg",
+      "sourceUrl": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1200,fit=crop/oF0s9HPFI6pEG5MB/86e44ed4-8159-4557-a88c-b6d52fb658c4-3DJH068DHg4dEsiV.jpeg",
+      "description": "Therapy session detail shot",
+      "type": "image/jpeg"
+    },
+    {
+      "id": "about-therapy",
+      "file": "about-therapy.jpg",
+      "sourceUrl": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1200,fit=crop/oF0s9HPFI6pEG5MB/4fb7fbbe-d8d5-49d6-a168-d2df9af3a380-hkp8q9HKEpoL9kt2.jpeg",
+      "description": "About page therapy image",
+      "type": "image/jpeg"
+    },
+    {
+      "id": "course-stephen",
+      "file": "course-stephen.jpg",
+      "sourceUrl": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1200,fit=crop/oF0s9HPFI6pEG5MB/stephen-4SoRwkNiEfEVH9rH.jpeg",
+      "description": "Portrait of Stephen used on the original courses page",
+      "type": "image/jpeg"
+    },
+    {
+      "id": "course-advanced",
+      "file": "course-advanced.jpg",
+      "sourceUrl": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1200,fit=crop/oF0s9HPFI6pEG5MB/c98be8f7-756d-48fc-a0b3-52aadddbff6f-BL6IVnuVg4gBqBq8.jpeg",
+      "description": "Advanced training photo used on the original courses page",
+      "type": "image/jpeg"
+    },
+    {
+      "id": "testimonial-alex",
+      "file": "testimonial-alex.jpg",
+      "sourceUrl": "https://i.ytimg.com/vi/v_jcsCvFKcA/hqdefault.jpg",
+      "description": "YouTube hqdefault thumbnail for Alex's testimonial video",
+      "type": "image/jpeg"
+    },
+    {
+      "id": "testimonial-walter",
+      "file": "testimonial-walter.jpg",
+      "sourceUrl": "https://i.ytimg.com/vi/1WcwkXCm9as/hqdefault.jpg",
+      "description": "YouTube hqdefault thumbnail for Walter's testimonial video",
+      "type": "image/jpeg"
+    },
+    {
+      "id": "testimonial-danielle",
+      "file": "testimonial-danielle.jpg",
+      "sourceUrl": "https://i.ytimg.com/vi/GvfGYG6xotw/hqdefault.jpg",
+      "description": "YouTube hqdefault thumbnail for Danielle's testimonial video",
+      "type": "image/jpeg"
+    },
+    {
+      "id": "page-background",
+      "file": "page-background.jpg",
+      "sourceUrl": "https://unsplash.com/photos/OvkSAWUicYM",
+      "description": "Subtle warm paper texture used as a fixed full-page background.",
+      "type": "image/jpeg"
+    }
+  ]
+}

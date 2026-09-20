@@ -51,6 +51,10 @@ test-results/
 /Movies/
 /Music/
 /Pictures/
+# Ignore the macOS home Public folder. Because the filesystem is
+# case-insensitive, this also hides the project's public/ directory from
+# `git add .`. Public assets must be force-added when they change:
+#   git add -f public/assets/new-image.jpg
 /Public/
 /Documents/
 /Downloads/
