@@ -3,6 +3,7 @@
 import { getTranslations } from "next-intl/server";
 import { isLocale, type Locale } from "@/i18n.config";
 import { prisma } from "@/lib/prisma";
+import { sendContactNotification } from "@/lib/email";
 
 /**
  * Validation result for the contact form. We keep field-level errors keyed
@@ -132,9 +133,9 @@ export async function submitContactInquiry(
       };
     }
 
-    // Persist the inquiry as a durable queue record. A future email worker
-    // can read from ContactInquiry and send an acknowledgement; for now this
-    // satisfies the queue-submission requirement without leaking PII to logs.
+    // Persist the inquiry as a durable queue record, then notify the site
+    // owner(s) by email. A failure to send mail is logged but does not
+    // block the form submission, because the record is already saved.
     await prisma.contactInquiry.create({
       data: {
         name: values.name,
@@ -144,6 +145,22 @@ export async function submitContactInquiry(
         locale,
       },
     });
+
+    try {
+      await sendContactNotification({
+        name: values.name,
+        email: values.email,
+        phone: values.phone || null,
+        message: values.message,
+        locale,
+      });
+    } catch (emailError) {
+      // eslint-disable-next-line no-console
+      console.error("[contact] failed to send notification email", {
+        locale,
+        error: emailError instanceof Error ? emailError.message : "unknown",
+      });
+    }
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error("[contact] failed to persist inquiry", {
