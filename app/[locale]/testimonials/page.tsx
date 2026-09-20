@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { isLocale, type Locale } from "@/i18n.config";
 import { getPosts } from "@/lib/actions/blog";
+import { ORIGINAL_TESTIMONIALS } from "@/lib/testimonials";
 import {
   TestimonialsView,
   type TestimonialListItem,
@@ -39,7 +40,7 @@ export default async function TestimonialsPage({
   setRequestLocale(locale);
 
   const posts = await getPosts();
-  const testimonials: TestimonialListItem[] = posts
+  const dbTestimonials: TestimonialListItem[] = posts
     .filter((p) => p.published)
     .map((p) => ({
       id: p.id,
@@ -50,6 +51,14 @@ export default async function TestimonialsPage({
       youtubeUrl: p.youtubeUrl,
       imageUrl: p.imageUrl,
     }));
+
+  // Merge original testimonials with CMS-managed ones. Database entries with
+  // matching slugs take precedence so the admin can edit them later.
+  const dbSlugs = new Set(dbTestimonials.map((t) => t.slug));
+  const testimonials: TestimonialListItem[] = [
+    ...dbTestimonials,
+    ...ORIGINAL_TESTIMONIALS.filter((t) => !dbSlugs.has(t.slug)),
+  ];
 
   return <TestimonialsView locale={locale} testimonials={testimonials} />;
 }
