@@ -382,6 +382,8 @@
     "subtitle": "Hear from athletes and clients who have worked with Stephen.",
     "empty": "No testimonials have been published yet.",
     "ratingLabel": "Rating",
+    "playVideo": "Play video testimonial from {name}",
+    "videoDialogTitle": "Video testimonial",
     "heroCta": "Browse courses",
     "cta": {
       "title": "Experience it for yourself.",

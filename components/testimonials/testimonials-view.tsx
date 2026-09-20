@@ -1,14 +1,22 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
+import * as React from "react";
+import { ArrowRight, Play } from "lucide-react";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import type { Locale } from "@/i18n.config";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { FadeIn } from "@/components/animations/fade-in";
 import {
   StaggerChildren,
   StaggerItem,
 } from "@/components/animations/stagger-children";
+
 
 export type TestimonialListItem = {
   id: string;
@@ -35,6 +43,7 @@ export function TestimonialsView({
   testimonials,
 }: TestimonialsViewProps) {
   const t = useTranslations("testimonials");
+  const [activeVideoId, setActiveVideoId] = React.useState<string | null>(null);
 
   return (
     <div className="text-foreground">
@@ -91,13 +100,41 @@ export function TestimonialsView({
             >
               {testimonials.map((testimonial) => (
                 <StaggerItem key={testimonial.id} className="h-full">
-                  <TestimonialCard testimonial={testimonial} />
+                  <TestimonialCard
+                    testimonial={testimonial}
+                    onPlay={() =>
+                      setActiveVideoId(extractYouTubeId(testimonial.youtubeUrl))
+                    }
+                  />
                 </StaggerItem>
               ))}
             </StaggerChildren>
           )}
         </div>
       </section>
+
+      <Dialog
+        open={activeVideoId !== null}
+        onOpenChange={(open) => !open && setActiveVideoId(null)}
+      >
+        <DialogContent className="max-w-4xl border-none bg-black p-0 shadow-2xl">
+          <DialogTitle className="sr-only">
+            {t("videoDialogTitle")}
+          </DialogTitle>
+          {activeVideoId && (
+            <div className="aspect-video w-full overflow-hidden rounded-lg">
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${activeVideoId}?autoplay=1&rel=0&modestbranding=1`}
+                title={t("videoDialogTitle")}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                referrerPolicy="strict-origin-when-cross-origin"
+                className="h-full w-full"
+              />
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
 
       {/* Closing CTA */}
       <section
@@ -132,14 +169,15 @@ export function TestimonialsView({
 
 interface TestimonialCardProps {
   testimonial: TestimonialListItem;
+  onPlay: () => void;
 }
 
 /**
  * Single testimonial card: 5-star rating, large pull quote, author
- * name, and (when available) an embedded YouTube video so visitors can
- * hear the story directly from the client.
+ * name, and (when available) a clickable video thumbnail that opens the
+ * YouTube video in a clean modal player.
  */
-function TestimonialCard({ testimonial }: TestimonialCardProps) {
+function TestimonialCard({ testimonial, onPlay }: TestimonialCardProps) {
   const t = useTranslations("testimonials");
 
   const rating = Math.max(0, Math.min(5, testimonial.rating ?? 5));
@@ -163,17 +201,29 @@ function TestimonialCard({ testimonial }: TestimonialCardProps) {
       </p>
 
       {youtubeId ? (
-        <div className="aspect-video overflow-hidden rounded-sm border border-border">
-          <iframe
-            src={`https://www.youtube-nocookie.com/embed/${youtubeId}`}
-            title={`YouTube video for ${testimonial.title}`}
-            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="strict-origin-when-cross-origin"
-            className="h-full w-full"
-          />
-        </div>
+        <button
+          type="button"
+          onClick={onPlay}
+          className="group relative aspect-video w-full overflow-hidden rounded-sm border border-border bg-muted focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+          aria-label={t("playVideo", { name: testimonial.title })}
+        >
+          {testimonial.imageUrl ? (
+            <Image
+              src={testimonial.imageUrl}
+              alt=""
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              sizes="(max-width: 640px) 100vw, 50vw"
+            />
+          ) : (
+            <div className="absolute inset-0 bg-gradient-to-br from-muted to-muted-foreground/20" />
+          )}
+          <span className="absolute inset-0 flex items-center justify-center bg-black/20 transition-colors group-hover:bg-black/30">
+            <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/90 text-foreground shadow-lg transition-transform group-hover:scale-110">
+              <Play className="ml-1 h-6 w-6 fill-current" aria-hidden />
+            </span>
+          </span>
+        </button>
       ) : null}
     </article>
   );

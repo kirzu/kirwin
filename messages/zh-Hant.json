@@ -382,6 +382,8 @@
     "subtitle": "聽聽曾與 Stephen 合作的運動員與客戶分享他們的經驗。",
     "empty": "目前尚未發佈任何客戶評價。",
     "ratingLabel": "評分",
+    "playVideo": "播放 {name} 的影片推薦",
+    "videoDialogTitle": "影片推薦",
     "heroCta": "瀏覽課程",
     "cta": {
       "title": "親身體驗看看。",
