@@ -9,12 +9,7 @@ import { FadeIn } from "@/components/animations/fade-in";
 import { ParallaxImage } from "@/components/animations/parallax-image";
 import ContactForm from "@/app/[locale]/contact/contact-form";
 
-/**
- * Placeholder Instagram URL — the production handle is wired up in the
- * site settings and resolved at deploy time. Until then we point at the
- * Instagram landing page so the link is always live.
- */
-const INSTAGRAM_URL = "https://www.instagram.com/stephenkirwin.bodywork";
+const INSTAGRAM_URL = "https://www.instagram.com/stephenkirwinbodyworks/";
 
 const MAP_EMBED_SRC =
   "https://maps.google.com/maps?q=78-83+Queens+Road+Central,+Man+Hing+Commercial+Building,+Hong+Kong&t=&z=15&ie=UTF8&iwloc=&output=embed";
