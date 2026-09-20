@@ -25,7 +25,7 @@ import { ParallaxImage } from "@/components/animations/parallax-image";
 const HERO_IMAGE = "/assets/course-hands-on.jpg";
 const FALLBACK_THUMB = "/assets/stephen-working.jpg";
 const MAP_EMBED_SRC =
-  "https://maps.google.com/maps?q=78-83+Queens+Road+Central,+Man+Hing+Commercial+Building,+Hong+Kong&t=&z=15&ie=UTF8&iwloc=&output=embed";
+  "https://maps.google.com/maps?q=218+Jaffe+Road,+Suite+602,+Wan+Chai,+Hong+Kong&t=&z=15&ie=UTF8&iwloc=&output=embed";
 
 export type CourseFilter = "all" | "halfDay" | "fullDay" | "multiDay";
 

@@ -169,7 +169,7 @@
       },
       {
         "question": "Where is the school located?",
-        "answer": "The school is based at 78 - 83 Queens Road Central, Man Hing Commercial Building, Hong Kong. Stephen also travels throughout Asia for private cohorts."
+        "answer": "The school is based at 218 Jaffe Road, Suite 602, Wan Chai, Hong Kong. Stephen also travels throughout Asia for private cohorts."
       },
       {
         "question": "Can beginners join?",
@@ -226,8 +226,8 @@
       "day4Body": "Building a sustainable bodywork practice, the ethics and boundaries that protect both client and practitioner, and the final assessments that earn your certificate of completion."
     },
     "dayEyebrow": "Day {day}",
-    "locationTitle": "Find us in Central.",
-    "locationAddress": "78 - 83 Queens Road Central, Man Hing Commercial Building, Hong Kong.",
+    "locationTitle": "Find us in Wan Chai.",
+    "locationAddress": "218 Jaffe Road, Suite 602, Wan Chai, Hong Kong."
     "locationHours": "Mon - Fri  12:00 - 19:00",
     "mapTitle": "Studio location",
     "upcomingTitle": "Reserve your seat.",
@@ -309,7 +309,7 @@
     "emailLabel": "Email",
     "emailValue": "Stephen.kirwin.cmt@gmail.com",
     "locationLabel": "Location",
-    "locationValue": "78 - 83 Queens Road Central, Man Hing Commercial Building, Hong Kong",
+    "locationValue": "218 Jaffe Road, Suite 602, Wan Chai, Hong Kong",
     "hoursLabel": "Opening hours",
     "hours": "Mon - Fri  12:00 - 19:00",
     "instagramLabel": "Instagram",

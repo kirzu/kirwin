@@ -12,7 +12,7 @@ import ContactForm from "@/app/[locale]/contact/contact-form";
 const INSTAGRAM_URL = "https://www.instagram.com/stephenkirwinbodyworks/";
 
 const MAP_EMBED_SRC =
-  "https://maps.google.com/maps?q=78-83+Queens+Road+Central,+Man+Hing+Commercial+Building,+Hong+Kong&t=&z=15&ie=UTF8&iwloc=&output=embed";
+  "https://maps.google.com/maps?q=218+Jaffe+Road,+Suite+602,+Wan+Chai,+Hong+Kong&t=&z=15&ie=UTF8&iwloc=&output=embed";
 
 export interface ContactViewProps {
   locale: Locale;

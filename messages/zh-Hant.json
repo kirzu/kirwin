@@ -169,7 +169,7 @@
       },
       {
         "question": "學校正址在哪裡?",
-        "answer": "學校正址設於香港皇后大道中 78 - 83 號文興商業大廈。Stephen 亦不定期前往亞洲各地為私人小班授課。"
+        "answer": "學校正址設於香港灣仔謝斐道218號602室。Stephen 亦不定期前往亞洲各地為私人小班授課。"
       },
       {
         "question": "初學者可以參加嗎?",
@@ -226,8 +226,8 @@
       "day4Body": "建立可持續的身體工作實務、保障客戶與施術者的倫理與界線,以及取得結業證書的最終評量。"
     },
     "dayEyebrow": "Day {day}",
-    "locationTitle": "中環工作室位置。",
-    "locationAddress": "香港皇后大道中 78 - 83 號文興商業大廈。",
+    "locationTitle": "灣仔工作室位置。",
+    "locationAddress": "香港灣仔謝斐道218號602室。"
     "locationHours": "星期一至五 12:00 - 19:00",
     "mapTitle": "工作室位置",
     "upcomingTitle": "預約您的席次。",
@@ -309,7 +309,7 @@
     "emailLabel": "電子郵件",
     "emailValue": "Stephen.kirwin.cmt@gmail.com",
     "locationLabel": "地點",
-    "locationValue": "香港皇后大道中 78 - 83 號，文興商業大廈",
+    "locationValue": "香港灣仔謝斐道218號602室",
     "hoursLabel": "營業時間",
     "hours": "星期一至五 12:00 - 19:00",
     "instagramLabel": "Instagram",
