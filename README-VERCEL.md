@@ -44,7 +44,8 @@ add the following keys (Production scope):
 
 | Key                       | Value                                                                                   |
 | ------------------------- | --------------------------------------------------------------------------------------- |
-| `DATABASE_URL`            | The pooled Postgres URL from step 2.                                                    |
+| `DATABASE_URL`            | The pooled Postgres URL from step 2. Used by the app / Prisma Client.                   |
+| `DATABASE_DIRECT_URL`     | The direct (unpooled) Postgres URL from step 2. Required for `prisma migrate deploy`.    |
 | `NEXTAUTH_URL`            | `https://kirwinbodyworks.com`                                                           |
 | `NEXTAUTH_SECRET`         | A long random string — generate with `openssl rand -base64 32`.                         |
 | `NEXT_PUBLIC_SITE_URL`    | `https://kirwinbodyworks.com`                                                           |
