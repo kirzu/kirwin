@@ -1,77 +1,53 @@
 # Verification Report
 
-## Changes Applied
+## Changes applied
 
-- `components/courses/courses-view.tsx`
-  - Imported `SplitText`, `MagneticButton`, and `TiltCard` from `@/components/animations`.
-  - Wrapped each `<CourseCardItem>` inside `<StaggerItem>` with `<TiltCard className="h-full" maxTiltX={4} maxTiltY={4}>`.
+- `next.config.mjs`: Added `images.remotePatterns` for `img.youtube.com` so YouTube thumbnails can be optimized by Next.js.
+- `components/animations/image-reveal.tsx`: Changed initial `visible` state from `false` to `true` so SSR/prerendered pages ship images fully visible.
+- `e2e/home.spec.ts`: Updated the English homepage tagline assertion from `"effective therapeutic care"` to `"Hands-on neuromuscular therapy and deep tissue bodywork seminars."`.
+- Resolved Prisma migration baseline error `P3005` with `npx prisma migrate resolve --applied 20260916180000_init_postgres`.
 
-- `components/contact/contact-view.tsx`
-  - Imported `SplitText`, `MagneticButton`, and `ImageReveal`.
-  - Wrapped the hero `<h1>` content in `<SplitText>`.
-  - Wrapped the hero `<ParallaxImage>` in `<ImageReveal direction="right" duration={900}>`.
-  - Wrapped the closing CTA button in `<MagneticButton>`.
+## Photo fix verification
 
-- `components/bookings/bookings-view.tsx`
-  - Imported `SplitText` and `MagneticButton`.
-  - Wrapped the hero `<h1>` content in `<SplitText>`.
-  - Wrapped the Cliniko CTA `<Button>` in `<MagneticButton>` and added the `shimmer` prop.
+- Optimized YouTube thumbnail URL returned HTTP 200:
+  - `/_next/image?url=https%3A%2F%2Fimg.youtube.com%2Fvi%2FyleywQGhYrY%2Fmaxresdefault.jpg&w=3840&q=75`
+- Prerendered HTML inspection:
+  - No `inset(0 100% 0 0)` clip-path found in `.next/server/app/**/*.html`.
+  - No `data-image-reveal="out"` found in prerendered HTML.
+  - ImageReveal wrappers render `clip-path:inset(0 0 0 0)` and `data-image-reveal="in"` in SSR output.
 
-- `components/legal/legal-page.tsx` and `components/legal/legal-title.tsx`
-  - Kept `LegalPage` server-rendered.
-  - Extracted the page title into a new client component `LegalTitle` that renders `<SplitText>`.
+## Test output
 
-- Added animation primitive unit tests:
-  - `tests/animations/split-text.test.tsx`
-  - `tests/animations/magnetic-button.test.tsx`
-  - `tests/animations/tilt-card.test.tsx`
-  - `tests/animations/image-reveal.test.tsx`
-  - Shared reduced-motion helper: `tests/utils/reduced-motion.ts`
+```
+npm run test -- --run
+ Test Files  28 passed (28)
+      Tests  204 passed (204)
+```
 
-## Verification Results
+## E2E output
 
-### Lint
+```
+npm run e2e
+  1 skipped
+  7 passed (9.9s)
+```
 
-```bash
+## Lint output
+
+```
 npm run lint
 ```
 
-Result: PASS. No ESLint errors or warnings.
+No warnings or errors reported.
 
-### Tests
-
-```bash
-npm run test -- --run
-```
-
-Result: PASS.
+## Build output
 
 ```
-Test Files  28 passed (28)
-     Tests  204 passed (204)
-```
-
-### Build
-
-Initial run:
-
-```bash
 npm run build
+... No pending migrations to apply.
+... Compiled successfully
+... Generating static pages (50/50)
 ```
-
-`prisma migrate deploy` failed with `P3005` (database schema not empty). Resolved with:
-
-```bash
-npx prisma migrate resolve --applied 20260916180000_init_postgres
-```
-
-Re-run:
-
-```bash
-npm run build
-```
-
-Result: PASS. Production build completed successfully with all static pages generated.
 
 ## Verdict
 

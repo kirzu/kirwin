@@ -54,7 +54,9 @@ export function ImageReveal({
 }: ImageRevealProps) {
   const ref = useRef<HTMLDivElement | null>(null);
   const reducedMotion = useReducedMotion();
-  const [visible, setVisible] = useState(false);
+  // Default to visible so SSR/prerendered pages never ship hidden images.
+  // We only hide the element on the client if it is below the fold.
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     if (reducedMotion) {

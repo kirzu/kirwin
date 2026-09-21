@@ -17,7 +17,9 @@ test.describe("Home page", () => {
     // resolves to the localised path.
     await expect(page.locator('a[href="/en/courses"]').first()).toBeVisible();
     // Body should mention the English hero tagline somewhere on the page.
-    await expect(page.locator("body")).toContainText("effective therapeutic care");
+    await expect(page.locator("body")).toContainText(
+      "Hands-on neuromuscular therapy and deep tissue bodywork seminars.",
+    );
   });
 
   test("renders the zh-Hant homepage", async ({ page }) => {

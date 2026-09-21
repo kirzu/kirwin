@@ -12,6 +12,13 @@ const nextConfig = {
     // Cache optimized images for 30 days; they live behind a hashed URL so
     // busting happens automatically when the source changes.
     minimumCacheTTL: 60 * 60 * 24 * 30,
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "img.youtube.com",
+        pathname: "/vi/**",
+      },
+    ],
   },
 };
 
