@@ -142,25 +142,22 @@ describe("TestimonialsView", () => {
     expect(srOnlyLabels.length).toBe(seedTestimonials.length);
   });
 
-  it("embeds the YouTube video for every testimonial that supplies a youtubeUrl", () => {
+  it("renders a clickable video thumbnail for every testimonial that supplies a youtubeUrl", () => {
     const { container } = render(
       <TestimonialsView locale="en" testimonials={seedTestimonials} />,
     );
 
-    const iframes = container.querySelectorAll("iframe");
-    expect(iframes.length).toBe(seedTestimonials.length);
+    const articles = container.querySelectorAll("article");
+    expect(articles.length).toBe(seedTestimonials.length);
 
     for (const testimonial of seedTestimonials) {
-      const expectedId = new URL(testimonial.youtubeUrl as string).searchParams.get("v");
-      const article = Array.from(container.querySelectorAll("article")).find(
+      const article = Array.from(articles).find(
         (node) => within(node).queryByText(testimonial.title),
       );
       expect(article).toBeTruthy();
-      const iframe = article?.querySelector("iframe");
-      expect(iframe).toBeTruthy();
-      expect(iframe?.getAttribute("src")).toBe(
-        `https://www.youtube-nocookie.com/embed/${expectedId}`,
-      );
+      const button = article?.querySelector("button");
+      expect(button).toBeTruthy();
+      expect(button?.getAttribute("aria-label")).toBe("playVideo");
     }
   });
 
@@ -183,7 +180,7 @@ describe("TestimonialsView", () => {
 
     const article = container.querySelector("article");
     expect(article).toBeTruthy();
-    expect(article?.querySelector("iframe")).toBeNull();
+    expect(article?.querySelector("button")).toBeNull();
   });
 
   it("renders each testimonial inside its own article element", () => {

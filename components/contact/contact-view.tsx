@@ -8,6 +8,7 @@ import { AnimatedSection } from "@/components/animations/animated-section";
 import { FadeIn } from "@/components/animations/fade-in";
 import { ParallaxImage } from "@/components/animations/parallax-image";
 import ContactForm from "@/app/[locale]/contact/contact-form";
+import { CLINIKO_BOOKING_URL } from "@/lib/cliniko";
 
 const INSTAGRAM_URL = "https://www.instagram.com/stephenkirwinbodyworks/";
 
@@ -206,7 +207,11 @@ export function ContactView({ locale, phoneHref, emailHref, mapHref }: ContactVi
             </p>
             <div className="flex flex-wrap justify-center gap-3 pt-2">
               <Button asChild size="lg" className="rounded-sm">
-                <a href={`/${locale}/courses`}>
+                <a
+                  href={CLINIKO_BOOKING_URL}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
                   {t("cta.primaryCta")}
                   <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
                 </a>

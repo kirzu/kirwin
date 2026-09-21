@@ -8,9 +8,6 @@ import {
   CourseDetailView,
   type CourseDetailSyllabusItem,
 } from "@/components/course-detail/course-detail-view";
-import {
-  type BookingFormAvailability,
-} from "@/components/booking-form";
 
 /**
  * Pre-render the detail page for every published course so each slug gets a
@@ -102,33 +99,6 @@ export default async function CourseDetailPage({
     notFound();
   }
 
-  const now = new Date();
-  const availableSlots = (await prisma.availability.findMany({
-    where: {
-      courseId: course.id,
-      isAvailable: true,
-      startDateTime: { gt: now },
-    },
-    orderBy: { startDateTime: "asc" },
-    select: {
-      id: true,
-      startDateTime: true,
-      endDateTime: true,
-      capacity: true,
-      bookedCount: true,
-    },
-  })).filter((slot) => slot.bookedCount < slot.capacity);
-
-  const bookingFormSlots: BookingFormAvailability[] = availableSlots.map(
-    (slot) => ({
-      id: slot.id,
-      startDateTime: slot.startDateTime.toISOString(),
-      endDateTime: slot.endDateTime.toISOString(),
-      capacity: slot.capacity,
-      bookedCount: slot.bookedCount,
-    }),
-  );
-
   const useChinese = locale === "zh-Hant";
 
   const title = useChinese && course.titleZh ? course.titleZh : course.title;
@@ -158,8 +128,6 @@ export default async function CourseDetailPage({
         imageUrl: course.imageUrl,
         syllabus,
       }}
-      availabilities={bookingFormSlots}
-      hasUpcomingSessions={bookingFormSlots.length > 0}
     />
   );
 }

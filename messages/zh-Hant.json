@@ -20,8 +20,8 @@
     "hero": {
       "title": "培養為客戶提供有效療癒照護並促進整體健康的實務能力。",
       "subtitle": "著重神經肌肉療法與深層組織身體工作的實作研討會。",
-      "primaryCta": "瀏覽課程",
-      "secondaryCta": "聯絡我們",
+      "primaryCta": "預約療程",
+      "secondaryCta": "瀏覽課程",
       "logoAlt": "Stephen Kirwin 身體工作坊標誌"
     },
     "offerings": {
@@ -69,7 +69,7 @@
       "previewTitle": "精選課程",
       "previewBody": "近期開課梯次搶先看。建議提早預約席次,課程向來額滿迅速。",
       "previewEmpty": "新梯次日期將於近期公佈。歡迎透過聯絡頁面訂閱,取得第一手資訊。",
-      "previewReserve": "預約席次",
+      "previewReserve": "預約療程",
       "durationLabel": "課程時長"
     },
     "testimonials": {
@@ -82,9 +82,9 @@
     },
     "cta": {
       "title": "與 Stephen 一起學習。",
-      "body": "瀏覽目前的身體工作坊課程,預約您的梯次席次。",
-      "primaryCta": "瀏覽課程",
-      "secondaryCta": "聯絡 Stephen"
+      "body": "歡迎直接透過線上預約系統安排療程,或瀏覽目前的身體工作坊課程。",
+      "primaryCta": "預約療程",
+      "secondaryCta": "瀏覽課程"
     }
   },
   "about": {
@@ -212,7 +212,7 @@
     "overviewBody": "歡迎參加為期四天的密集課程,本課程專為有志成為按摩治療師的學員設計,涵蓋一般按摩療法與專業神經肌肉療法的核心技巧。透過理論與實作並重的安排,協助您提升專業能力與實務信心。",
     "highlightsTitle": "每日學習內容。",
     "highlightsIntro": "由基礎按摩出發,循序漸進進入進階神經肌肉療法,最後帶您了解經營可持續身體工作實務所需的知識。",
-    "heroPrimaryCta": "預約席次",
+    "heroPrimaryCta": "預約療程",
     "heroSecondaryCta": "聯絡 Stephen",
     "highlights": {
       "imageAlt": "實作身體工作坊課程現場。",
@@ -239,7 +239,7 @@
     "maxParticipantsValue": "最多 {seats} 位學員",
     "priceLabel": "費用",
     "viewDetails": "查看課程內容",
-    "bookCta": "預約席次",
+    "bookCta": "預約療程",
     "searchLabel": "搜尋課程",
     "searchPlaceholder": "輸入關鍵字搜尋…",
     "filters": {
@@ -271,7 +271,7 @@
     "ctaTitle": "預約您的席次",
     "ctaBody": "每一梯次都刻意維持小班制。請儘早預約席次,以免向隅。",
     "ctaFineprint": "兩分鐘內即可完成預約。預約確認前不會向您收取任何費用。",
-    "bookCta": "預約席次",
+    "bookCta": "預約療程",
     "noUpcomingSessions": "此課程目前尚未公布近期梯次，請稍後再回來查看。",
     "syllabusTitle": "課程內容",
     "syllabusIntro": "由淺入深、循序漸進的實作課程,讓您結業時具備一套清晰、可重複執行的方法。",
@@ -291,7 +291,7 @@
     "instructorBody": "Stephen 立足香港,於亞洲各地舉辦小班制研討會,專注於神經肌肉療法與深層組織身體工作。",
     "instructorCta": "閱讀 Stephen 的完整故事",
     "imageAlt": "實作身體工作坊課程現場。",
-    "heroCta": "預約席次",
+    "heroCta": "預約療程",
     "cta": {
       "title": "對這堂課還有疑問?",
       "body": "歡迎與我們聯絡,洽詢梯次、入門條件或當天的課程內容。Stephen 將於兩個工作日內親自回覆。",
@@ -317,9 +317,9 @@
     "mapCta": "於 Google Maps 開啟",
     "heroCta": "傳送訊息",
     "cta": {
-      "title": "或先瀏覽近期課程表。",
-      "body": "若想直接從近期研討會開始,歡迎至課程頁查看目前梯次,兩分鐘內即可完成預約。",
-      "primaryCta": "瀏覽課程"
+      "title": "準備好預約療程了嗎?",
+      "body": "歡迎直接透過線上預約系統安排療程,或傳送訊息與我們聯絡,Stephen 將於兩個工作日內回覆您。",
+      "primaryCta": "預約療程"
     },
     "mapTitle": "工作室位置",
     "formTitle": "傳送訊息",

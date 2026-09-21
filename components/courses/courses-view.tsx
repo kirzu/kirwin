@@ -21,6 +21,7 @@ import {
   StaggerItem,
 } from "@/components/animations/stagger-children";
 import { ParallaxImage } from "@/components/animations/parallax-image";
+import { CLINIKO_BOOKING_URL } from "@/lib/cliniko";
 
 const HERO_IMAGE = "/assets/course-hands-on.jpg";
 const FALLBACK_THUMB = "/assets/stephen-working.jpg";
@@ -393,6 +394,7 @@ export function CoursesView({ locale, courses, hasCourses }: CoursesViewProps) {
                     course={course}
                     locale={locale}
                     titleSlot={t("viewDetails")}
+                    bookCtaLabel={t("bookCta")}
                     priceLabel={t("priceLabel")}
                     durationLabel={t("durationLabel")}
                     seatsLabel={t("maxParticipantsValue", { seats: course.seats })}
@@ -495,6 +497,7 @@ interface CourseCardItemProps {
   course: CourseListItem;
   locale: Locale;
   titleSlot: string;
+  bookCtaLabel: string;
   priceLabel: string;
   durationLabel: string;
   seatsLabel: string;
@@ -511,6 +514,7 @@ function CourseCardItem({
   course,
   locale,
   titleSlot,
+  bookCtaLabel,
   priceLabel,
   durationLabel,
   seatsLabel,
@@ -567,10 +571,25 @@ function CourseCardItem({
               </dd>
             </div>
           </dl>
-          <div>
+          <div className="flex flex-wrap gap-2">
             <Button asChild size="default" className="min-h-11 rounded-sm">
               <a href={`/${locale}/courses/${course.slug}`}>
                 {titleSlot}
+                <ArrowRight aria-hidden className="ml-2 h-3.5 w-3.5" />
+              </a>
+            </Button>
+            <Button
+              asChild
+              size="default"
+              variant="outline"
+              className="min-h-11 rounded-sm"
+            >
+              <a
+                href={CLINIKO_BOOKING_URL}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                {bookCtaLabel}
                 <ArrowRight aria-hidden className="ml-2 h-3.5 w-3.5" />
               </a>
             </Button>

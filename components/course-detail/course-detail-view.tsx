@@ -5,6 +5,7 @@ import {
   BookOpen,
   CheckCircle2,
   Clock,
+  ExternalLink,
   GraduationCap,
   Layers,
   Users,
@@ -19,10 +20,7 @@ import {
   StaggerItem,
 } from "@/components/animations/stagger-children";
 import { ParallaxImage } from "@/components/animations/parallax-image";
-import {
-  BookingForm,
-  type BookingFormAvailability,
-} from "@/components/booking-form";
+import { CLINIKO_BOOKING_URL } from "@/lib/cliniko";
 
 const HERO_IMAGE = "/assets/course-hands-on.jpg";
 const INSTRUCTOR_PORTRAIT = "/assets/stephen-portrait.jpg";
@@ -43,26 +41,20 @@ export interface CourseDetailViewProps {
     imageUrl: string | null;
     syllabus: CourseDetailSyllabusItem[];
   };
-  availabilities: BookingFormAvailability[];
-  hasUpcomingSessions: boolean;
 }
 
 /**
  * Client-side view for the redesigned Course detail page. Receives the
  * server-resolved course data and renders a parallax hero, the animated
- * curriculum (StaggerChildren), an instructor callout, a booking CTA
- * band, and embeds the existing BookingForm so logic / state stay
- * untouched.
+ * curriculum (StaggerChildren), an instructor callout, and a booking
+ * CTA band that links out to the external Cliniko booking page in a new
+ * tab.
  */
 export function CourseDetailView({
   locale,
   course,
-  availabilities,
-  hasUpcomingSessions,
 }: CourseDetailViewProps) {
   const t = useTranslations("courseDetail");
-  const tCourses = useTranslations("courses");
-  const tBooking = useTranslations("booking");
 
   const heroImage = course.imageUrl ?? HERO_IMAGE;
 
@@ -138,7 +130,11 @@ export function CourseDetailView({
                 size="lg"
                 className="rounded-sm"
               >
-                <a href={`/${locale}/courses/${course.slug}/booking`}>
+                <a
+                  href={CLINIKO_BOOKING_URL}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
                   {t("heroCta")}
                   <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
                 </a>
@@ -148,48 +144,47 @@ export function CourseDetailView({
         </div>
       </section>
 
-      {/* Booking form */}
+      {/* Booking CTA — links out to Cliniko */}
       <section
         aria-labelledby="course-detail-booking-title"
         className="border-b border-border"
       >
-        <div className="mx-auto grid max-w-5xl gap-8 px-6 py-14 sm:py-20">
+        <div className="mx-auto flex max-w-5xl flex-col gap-6 px-6 py-14 sm:py-20">
           <FadeIn direction="up">
             <div className="flex flex-col gap-3">
               <h2
                 id="course-detail-booking-title"
                 className="font-sans text-2xl font-semibold leading-snug tracking-tight sm:text-3xl"
               >
-                {tBooking("title")}
+                {t("ctaTitle")}
               </h2>
+              <p className="max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
+                {t("ctaBody")}
+              </p>
             </div>
           </FadeIn>
 
-          {hasUpcomingSessions ? (
-            <FadeIn direction="up" delay={0.05}>
-              <BookingForm
-                locale={locale}
-                course={{
-                  id: course.id,
-                  title: course.title,
-                  priceCents: course.price,
-                  slug: course.slug,
-                }}
-                availabilities={availabilities}
-              />
-            </FadeIn>
-          ) : (
-            <FadeIn direction="up" delay={0.05}>
-              <div className="border-t border-border pt-5">
-                <h3 className="font-sans text-lg font-medium text-foreground">
-                  {t("noUpcomingSessions")}
-                </h3>
-                <p className="mt-2 text-sm leading-7 text-muted-foreground">
-                  {tCourses("subtitle")}
-                </p>
-              </div>
-            </FadeIn>
-          )}
+          <FadeIn direction="up" delay={0.05}>
+            <div className="flex flex-col gap-4 border-t border-border pt-5 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-sm leading-7 text-muted-foreground">
+                {t("ctaFineprint")}
+              </p>
+              <Button
+                asChild
+                size="lg"
+                className="min-h-11 rounded-sm sm:min-w-[14rem]"
+              >
+                <a
+                  href={CLINIKO_BOOKING_URL}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  {t("bookCta")}
+                  <ExternalLink aria-hidden className="ml-2 h-4 w-4" />
+                </a>
+              </Button>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -305,9 +300,13 @@ export function CourseDetailView({
                     size="default"
                     className="mt-1 min-h-11 w-full rounded-sm"
                   >
-                    <a href={`/${locale}/courses/${course.slug}/booking`}>
+                    <a
+                      href={CLINIKO_BOOKING_URL}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
                       {t("bookCta")}
-                      <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
+                      <ExternalLink aria-hidden className="ml-2 h-4 w-4" />
                     </a>
                   </Button>
                   <p className="text-center text-xs text-muted-foreground">
