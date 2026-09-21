@@ -4,4 +4,4 @@
  * directed to Cliniko in a new tab.
  */
 export const CLINIKO_BOOKING_URL =
-  "https://stephen-kirwin-bodywork-therapies-ltd.au5.cliniko.com/bookings";
+  "https://stephen-kirwin-bodywork-therapies-ltd.au5.cliniko.com/bookings?business_id=2042647611982228849&practitioner_id=2042647609364983803";
