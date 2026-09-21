@@ -72,7 +72,7 @@ export default function ContactForm({ locale }: { locale: string }) {
   }
 
   const inputClass =
-    "h-12 rounded-sm border-border bg-background px-4 py-2 text-base transition-[border-color,box-shadow,background-color] duration-200 ease-out focus-visible:ring-primary";
+    "h-14 rounded-sm border-border bg-background px-4 py-2 text-base transition-[border-color,box-shadow,background-color] duration-200 ease-out focus-visible:ring-primary";
   const textareaClass =
     "rounded-sm border-border bg-background px-4 py-3 text-base transition-[border-color,box-shadow,background-color] duration-200 ease-out focus-visible:ring-primary";
   const errorTextClass =
@@ -80,7 +80,7 @@ export default function ContactForm({ locale }: { locale: string }) {
 
   if (result?.status === "success") {
     return (
-      <Card aria-live="polite" className="rounded-2xl border border-border bg-card luxe-card p-6 sm:p-8 lg:p-10">
+      <Card aria-live="polite" className="rounded-2xl border border-border bg-card luxe-card p-8 sm:p-10 lg:p-12">
         <CardHeader className="p-0">
           <CardTitle className="flex items-center gap-3 font-display text-2xl font-medium leading-snug text-foreground sm:text-3xl">
             <span
@@ -112,7 +112,7 @@ export default function ContactForm({ locale }: { locale: string }) {
   }
 
   return (
-    <Card className="rounded-2xl border border-border bg-card luxe-card p-6 sm:p-8 lg:p-10">
+    <Card className="rounded-2xl border border-border bg-card luxe-card p-8 sm:p-10 lg:p-12">
       <CardHeader className="p-0">
         <CardTitle className="font-display text-2xl font-medium leading-tight sm:text-3xl">
           {t("formTitle")}
