@@ -20,6 +20,9 @@ import {
 } from "@/components/animations/stagger-children";
 import { ParallaxImage } from "@/components/animations/parallax-image";
 import { AnimatedStat } from "@/components/animations/count-up";
+import { SplitText } from "@/components/animations/split-text";
+import { ImageReveal } from "@/components/animations/image-reveal";
+import { MagneticButton } from "@/components/animations/magnetic-button";
 
 const milestoneIcons = [Compass, Target, Compass, Target] as const;
 
@@ -88,7 +91,12 @@ export function AboutView({
               id="about-hero-title"
               className="max-w-3xl font-display text-4xl font-medium leading-snug tracking-tight sm:text-5xl md:text-6xl"
             >
-              {t("title")}
+              <SplitText
+                text={t("title")}
+                stagger={70}
+                offset={24}
+                duration={700}
+              />
             </h1>
             <p className="max-w-2xl text-base leading-7 text-foreground/80 sm:text-lg">
               {t("intro")}
@@ -97,20 +105,24 @@ export function AboutView({
 
           <FadeIn direction="up" delay={0.35} duration={0.8}>
             <div className="flex flex-wrap gap-3 pt-2">
-              <Button asChild size="lg" className="rounded-sm">
-                <a href={`/${locale}/courses`}>
-                  {t("ctaPrimary")}
-                  <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
-                </a>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="rounded-sm border-foreground/40 bg-transparent text-foreground hover:bg-foreground/10"
-              >
-                <a href={`/${locale}/contact`}>{t("heroContactCta")}</a>
-              </Button>
+              <MagneticButton>
+                <Button asChild size="lg" shimmer className="rounded-sm">
+                  <a href={`/${locale}/courses`}>
+                    {t("ctaPrimary")}
+                    <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+              </MagneticButton>
+              <MagneticButton>
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="rounded-sm border-foreground/40 bg-transparent text-foreground hover:bg-foreground/10"
+                >
+                  <a href={`/${locale}/contact`}>{t("heroContactCta")}</a>
+                </Button>
+              </MagneticButton>
             </div>
           </FadeIn>
         </div>
@@ -123,21 +135,27 @@ export function AboutView({
       >
         <div className="mx-auto grid max-w-5xl gap-12 px-6 py-14 sm:py-20 md:grid-cols-5 md:gap-16">
           <FadeIn direction="left" className="md:col-span-2">
-            <figure className="overflow-hidden rounded-sm border border-border">
-              <div className="relative aspect-[4/5] w-full">
-                <Image
-                  src="/assets/therapy-session.jpg"
-                  alt={t("imageAlt")}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 40vw"
-                  priority={false}
-                  className="object-cover"
-                />
-              </div>
-              <figcaption className="border-t border-border px-5 py-4 text-xs uppercase tracking-widest text-muted-foreground">
-                {t("bioCaption")}
-              </figcaption>
-            </figure>
+            <ImageReveal
+              direction="right"
+              duration={900}
+              className="overflow-hidden rounded-sm border border-border"
+            >
+              <figure>
+                <div className="relative aspect-[4/5] w-full">
+                  <Image
+                    src="/assets/therapy-session.jpg"
+                    alt={t("imageAlt")}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 40vw"
+                    priority={false}
+                    className="object-cover"
+                  />
+                </div>
+                <figcaption className="border-t border-border px-5 py-4 text-xs uppercase tracking-widest text-muted-foreground">
+                  {t("bioCaption")}
+                </figcaption>
+              </figure>
+            </ImageReveal>
           </FadeIn>
 
           <AnimatedSection
@@ -354,15 +372,19 @@ export function AboutView({
               {t("ctaBody")}
             </p>
             <div className="flex flex-wrap gap-3 pt-2">
-              <Button asChild size="lg" className="rounded-sm">
-                <a href={`/${locale}/courses`}>
-                  {t("ctaPrimary")}
-                  <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
-                </a>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="rounded-sm">
-                <a href={`/${locale}/contact`}>{t("heroContactCta")}</a>
-              </Button>
+              <MagneticButton>
+                <Button asChild size="lg" shimmer className="rounded-sm">
+                  <a href={`/${locale}/courses`}>
+                    {t("ctaPrimary")}
+                    <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+              </MagneticButton>
+              <MagneticButton>
+                <Button asChild size="lg" variant="outline" className="rounded-sm">
+                  <a href={`/${locale}/contact`}>{t("heroContactCta")}</a>
+                </Button>
+              </MagneticButton>
             </div>
           </FadeIn>
         </div>

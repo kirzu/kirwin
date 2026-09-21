@@ -21,6 +21,11 @@ import {
   StaggerItem,
 } from "@/components/animations/stagger-children";
 import { ParallaxImage } from "@/components/animations/parallax-image";
+import {
+  SplitText,
+  MagneticButton,
+  TiltCard,
+} from "@/components/animations";
 import { CLINIKO_BOOKING_URL } from "@/lib/cliniko";
 
 const HERO_IMAGE = "/assets/course-hands-on.jpg";
@@ -305,17 +310,19 @@ export function CoursesView({ locale, courses, hasCourses }: CoursesViewProps) {
             >
               {filteredCourses.map((course) => (
                 <StaggerItem key={course.id} className="h-full">
-                  <CourseCardItem
-                    course={course}
-                    locale={locale}
-                    titleSlot={t("viewDetails")}
-                    bookCtaLabel={t("bookCta")}
-                    priceLabel={t("priceLabel")}
-                    durationLabel={t("durationLabel")}
-                    seatsLabel={t("maxParticipantsValue", { seats: course.seats })}
-                    seatsSrLabel={t("maxParticipantsLabel")}
-                    emptyDurationLabel={t("durationTba")}
-                  />
+                  <TiltCard className="h-full" maxTiltX={4} maxTiltY={4}>
+                    <CourseCardItem
+                      course={course}
+                      locale={locale}
+                      titleSlot={t("viewDetails")}
+                      bookCtaLabel={t("bookCta")}
+                      priceLabel={t("priceLabel")}
+                      durationLabel={t("durationLabel")}
+                      seatsLabel={t("maxParticipantsValue", { seats: course.seats })}
+                      seatsSrLabel={t("maxParticipantsLabel")}
+                      emptyDurationLabel={t("durationTba")}
+                    />
+                  </TiltCard>
                 </StaggerItem>
               ))}
             </StaggerChildren>
@@ -331,18 +338,25 @@ export function CoursesView({ locale, courses, hasCourses }: CoursesViewProps) {
               id="courses-cta-title"
               className="font-sans text-2xl font-semibold leading-snug tracking-tight sm:text-3xl"
             >
-              {t("ctaTitle")}
+              <SplitText
+                text={t("ctaTitle")}
+                stagger={50}
+                offset={20}
+                duration={650}
+              />
             </h2>
             <p className="max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
               {t("ctaBody")}
             </p>
             <div className="flex flex-wrap justify-center gap-3 pt-2">
-              <Button asChild size="lg" className="rounded-sm">
-                <a href={`/${locale}/contact`}>
-                  {t("ctaPrimary")}
-                  <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
-                </a>
-              </Button>
+              <MagneticButton>
+                <Button asChild size="lg" shimmer className="rounded-sm">
+                  <a href={`/${locale}/contact`}>
+                    {t("ctaPrimary")}
+                    <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+              </MagneticButton>
             </div>
           </FadeIn>
         </div>

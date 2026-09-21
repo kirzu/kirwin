@@ -7,6 +7,11 @@ import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/components/animations/animated-section";
 import { FadeIn } from "@/components/animations/fade-in";
 import { ParallaxImage } from "@/components/animations/parallax-image";
+import {
+  SplitText,
+  MagneticButton,
+  ImageReveal,
+} from "@/components/animations";
 import ContactForm from "@/app/[locale]/contact/contact-form";
 import { CLINIKO_BOOKING_URL } from "@/lib/cliniko";
 
@@ -50,14 +55,20 @@ export function ContactView({ locale, phoneHref, emailHref, mapHref }: ContactVi
         aria-labelledby="contact-hero-title"
         className="relative isolate overflow-hidden text-foreground"
       >
-        <ParallaxImage
-          src="/assets/therapy-session.jpg"
-          alt=""
-          aria-hidden
-          priority
-          speed={0.18}
-          containerClassName="absolute inset-0 -z-10 h-full w-full"
-        />
+        <ImageReveal
+          direction="right"
+          duration={900}
+          className="absolute inset-0 -z-10 h-full w-full"
+        >
+          <ParallaxImage
+            src="/assets/therapy-session.jpg"
+            alt=""
+            aria-hidden
+            priority
+            speed={0.18}
+            containerClassName="absolute inset-0 h-full w-full"
+          />
+        </ImageReveal>
         <div
           aria-hidden
           className="absolute inset-0 -z-10 bg-background/70 dark:bg-background/50"
@@ -75,7 +86,7 @@ export function ContactView({ locale, phoneHref, emailHref, mapHref }: ContactVi
               id="contact-hero-title"
               className="max-w-3xl font-display text-4xl font-medium leading-snug tracking-tight sm:text-5xl md:text-6xl"
             >
-              {t("title")}
+              <SplitText text={t("title")} stagger={50} offset={20} duration={650} />
             </h1>
             <p className="max-w-2xl text-base leading-7 text-foreground/80 sm:text-lg">
               {t("intro")}
@@ -206,16 +217,18 @@ export function ContactView({ locale, phoneHref, emailHref, mapHref }: ContactVi
               {t("cta.body")}
             </p>
             <div className="flex flex-wrap justify-center gap-3 pt-2">
-              <Button asChild size="lg" className="rounded-sm">
-                <a
-                  href={CLINIKO_BOOKING_URL}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                >
-                  {t("cta.primaryCta")}
-                  <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
-                </a>
-              </Button>
+              <MagneticButton>
+                <Button asChild size="lg" className="rounded-sm">
+                  <a
+                    href={CLINIKO_BOOKING_URL}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    {t("cta.primaryCta")}
+                    <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+              </MagneticButton>
             </div>
           </FadeIn>
         </div>

@@ -19,6 +19,10 @@ import {
   StaggerChildren,
   StaggerItem,
 } from "@/components/animations/stagger-children";
+import { SplitText } from "@/components/animations/split-text";
+import { MagneticButton } from "@/components/animations/magnetic-button";
+import { TiltCard } from "@/components/animations/tilt-card";
+import { ImageReveal } from "@/components/animations/image-reveal";
 import { AnimatedHeroBackground } from "./animated-hero-background";
 
 const trainingIcons = [Compass, Hand, Target, ClipboardCheck] as const;
@@ -97,7 +101,12 @@ export function HomeView({
               id="home-hero-title"
               className="max-w-3xl font-display text-4xl font-medium leading-snug tracking-tight text-foreground sm:text-5xl md:text-6xl"
             >
-              {t("hero.title")}
+              <SplitText
+                text={t("hero.title")}
+                stagger={70}
+                offset={24}
+                duration={700}
+              />
             </h1>
             <p className="max-w-2xl text-base leading-7 text-foreground/80 sm:text-lg">
               {t("hero.subtitle")}
@@ -106,20 +115,24 @@ export function HomeView({
 
           <FadeIn direction="up" delay={0.35} duration={0.8}>
             <div className="flex flex-wrap gap-3 pt-2">
-              <Button asChild size="lg" className="rounded-sm">
-                <a href={`/${locale}/courses`}>
-                  {t("hero.primaryCta")}
-                  <ArrowRight aria-hidden="true" className="ml-2 h-4 w-4" />
-                </a>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="rounded-sm border-foreground/40 bg-transparent text-foreground hover:bg-foreground/10"
-              >
-                <a href={`/${locale}/contact`}>{t("hero.secondaryCta")}</a>
-              </Button>
+              <MagneticButton>
+                <Button asChild size="lg" shimmer className="rounded-sm">
+                  <a href={`/${locale}/courses`}>
+                    {t("hero.primaryCta")}
+                    <ArrowRight aria-hidden="true" className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+              </MagneticButton>
+              <MagneticButton>
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="rounded-sm border-foreground/40 bg-transparent text-foreground hover:bg-foreground/10"
+                >
+                  <a href={`/${locale}/contact`}>{t("hero.secondaryCta")}</a>
+                </Button>
+              </MagneticButton>
             </div>
           </FadeIn>
         </div>
@@ -207,26 +220,28 @@ export function HomeView({
             >
               {featuredCourses.map((course) => (
                 <StaggerItem key={course.id} className="h-full">
-                  <article className="flex h-full flex-col border border-border bg-background">
-                    <div className="flex flex-1 flex-col gap-4 p-6">
-                      <h3 className="font-sans text-xl font-medium leading-snug text-foreground">
-                        {course.title}
-                      </h3>
-                      {course.description ? (
-                        <p className="line-clamp-3 text-sm leading-7 text-muted-foreground">
-                          {course.description}
-                        </p>
-                      ) : null}
-                    </div>
-                    <div className="flex items-center justify-end gap-4 border-t border-border px-6 py-4">
-                      <Button asChild size="default" className="min-h-11 rounded-sm">
-                        <a href={`/${locale}/courses/${course.slug}`}>
-                          {t("courses.previewReserve")}
-                          <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
-                        </a>
-                      </Button>
-                    </div>
-                  </article>
+                  <TiltCard className="h-full" maxTiltX={5} maxTiltY={5}>
+                    <article className="flex h-full flex-col border border-border bg-background">
+                      <div className="flex flex-1 flex-col gap-4 p-6">
+                        <h3 className="font-sans text-xl font-medium leading-snug text-foreground">
+                          {course.title}
+                        </h3>
+                        {course.description ? (
+                          <p className="line-clamp-3 text-sm leading-7 text-muted-foreground">
+                            {course.description}
+                          </p>
+                        ) : null}
+                      </div>
+                      <div className="flex items-center justify-end gap-4 border-t border-border px-6 py-4">
+                        <Button asChild size="default" className="min-h-11 rounded-sm">
+                          <a href={`/${locale}/courses/${course.slug}`}>
+                            {t("courses.previewReserve")}
+                            <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
+                          </a>
+                        </Button>
+                      </div>
+                    </article>
+                  </TiltCard>
                 </StaggerItem>
               ))}
             </StaggerChildren>
@@ -238,18 +253,24 @@ export function HomeView({
       <section aria-labelledby="home-about-title">
         <div className="mx-auto grid max-w-5xl gap-12 px-6 py-14 sm:py-20 md:grid-cols-5 md:gap-16">
           <FadeIn direction="left" className="md:col-span-2">
-            <figure className="overflow-hidden rounded-sm border border-border">
-              <div className="relative aspect-[4/5] w-full">
-                <Image
-                  src="/assets/about-therapy.jpg"
-                  alt={t("experience.imageAlt")}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 40vw"
-                  priority={false}
-                  className="object-cover"
-                />
-              </div>
-            </figure>
+            <ImageReveal
+              direction="right"
+              duration={900}
+              className="overflow-hidden rounded-sm border border-border"
+            >
+              <figure>
+                <div className="relative aspect-[4/5] w-full">
+                  <Image
+                    src="/assets/about-therapy.jpg"
+                    alt={t("experience.imageAlt")}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 40vw"
+                    priority={false}
+                    className="object-cover"
+                  />
+                </div>
+              </figure>
+            </ImageReveal>
           </FadeIn>
 
           <AnimatedSection
@@ -383,15 +404,19 @@ export function HomeView({
               {t("cta.body")}
             </p>
             <div className="flex flex-wrap justify-center gap-3 pt-2">
-              <Button asChild size="lg" className="rounded-sm">
-                <a href={`/${locale}/courses`}>
-                  {t("cta.primaryCta")}
-                  <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
-                </a>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="rounded-sm">
-                <a href={`/${locale}/contact`}>{t("cta.secondaryCta")}</a>
-              </Button>
+              <MagneticButton>
+                <Button asChild size="lg" shimmer className="rounded-sm">
+                  <a href={`/${locale}/courses`}>
+                    {t("cta.primaryCta")}
+                    <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+              </MagneticButton>
+              <MagneticButton>
+                <Button asChild size="lg" variant="outline" className="rounded-sm">
+                  <a href={`/${locale}/contact`}>{t("cta.secondaryCta")}</a>
+                </Button>
+              </MagneticButton>
             </div>
           </FadeIn>
         </div>

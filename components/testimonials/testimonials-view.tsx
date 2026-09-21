@@ -16,6 +16,9 @@ import {
   StaggerChildren,
   StaggerItem,
 } from "@/components/animations/stagger-children";
+import { SplitText } from "@/components/animations/split-text";
+import { TiltCard } from "@/components/animations/tilt-card";
+import { MagneticButton } from "@/components/animations/magnetic-button";
 import { useReducedMotion } from "@/components/animations/use-reduced-motion";
 
 const CAROUSEL_AUTOPLAY_MS = 6000;
@@ -65,7 +68,12 @@ export function TestimonialsView({
               id="testimonials-hero-title"
               className="font-display text-4xl font-medium leading-snug tracking-tight sm:text-5xl md:text-6xl"
             >
-              {t("title")}
+              <SplitText
+                text={t("title")}
+                stagger={70}
+                offset={24}
+                duration={700}
+              />
             </h1>
           </FadeIn>
           <FadeIn direction="up" delay={0.2}>
@@ -148,12 +156,14 @@ export function TestimonialsView({
               {t("cta.body")}
             </p>
             <div className="flex flex-wrap justify-center gap-3 pt-2">
-              <Button asChild size="lg" className="rounded-sm">
-                <a href={`/${locale}/courses`}>
-                  {t("cta.primaryCta")}
-                  <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
-                </a>
-              </Button>
+              <MagneticButton>
+                <Button asChild size="lg" shimmer className="rounded-sm">
+                  <a href={`/${locale}/courses`}>
+                    {t("cta.primaryCta")}
+                    <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+              </MagneticButton>
             </div>
           </FadeIn>
         </div>
@@ -244,12 +254,14 @@ function TestimonialsGrid({
       >
         {testimonials.map((testimonial) => (
           <StaggerItem key={testimonial.id} className="h-full">
-            <TestimonialCard
-              testimonial={testimonial}
-              onPlay={() =>
-                onPlay(extractYouTubeId(testimonial.youtubeUrl))
-              }
-            />
+            <TiltCard className="h-full" maxTiltX={4} maxTiltY={4}>
+              <TestimonialCard
+                testimonial={testimonial}
+                onPlay={() =>
+                  onPlay(extractYouTubeId(testimonial.youtubeUrl))
+                }
+              />
+            </TiltCard>
           </StaggerItem>
         ))}
       </StaggerChildren>

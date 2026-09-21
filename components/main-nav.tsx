@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { Locale } from "@/i18n.config";
 import { cn } from "@/lib/utils";
+import { useReducedMotion } from "@/components/animations/use-reduced-motion";
 
 /**
  * Public-site navigation bar.
@@ -16,7 +17,9 @@ import { cn } from "@/lib/utils";
  * `orientation` controls the visual style:
  *   - `"horizontal"` (default): desktop header bar — small, dimmed
  *     text with a bottom border that fills with the primary colour on
- *     hover or when active.
+ *     hover or when active. Hovering/focusing a link slides the
+ *     visible label up and out while a duplicate label slides up from
+ *     below into its place (text-swap effect).
  *   - `"vertical"`: mobile drawer — large, full-width rows with a
  *     ≥44px tap target (`min-h-11 py-3`) so the menu is comfortable
  *     to use on touch devices.
@@ -44,6 +47,7 @@ export function MainNav({
   onNavigate?: () => void;
 }) {
   const pathname = usePathname() ?? "/";
+  const reducedMotion = useReducedMotion();
 
   const items: { href: string; key: keyof typeof labels }[] = [
     { href: `/${locale}`, key: "home" },
@@ -60,28 +64,21 @@ export function MainNav({
     <ul
       className={cn(
         "text-zinc-700 dark:text-zinc-300",
-        isVertical
-          ? "flex flex-col gap-1"
-          : "flex items-center gap-4"
+        isVertical ? "flex flex-col gap-1" : "flex items-center gap-4",
       )}
     >
       {items.map(({ href, key }) => {
         const isActive = isActiveRoute(pathname, href, locale, key);
-        // Vertical (mobile drawer): use a left border + bg highlight.
-        // Horizontal (desktop header): use the shared `nav-underline`
-        // class which animates a pseudo-element underline on hover and
-        // for the active route. The underline slides in via a `scale-x`
-        // transform (GPU-friendly) and disables itself entirely when
-        // the user prefers reduced motion.
         const linkClass = isVertical
           ? isActive
             ? "block w-full rounded-sm border-l-4 border-primary bg-primary/10 px-4 py-3 min-h-11 text-base font-medium text-primary"
             : "block w-full rounded-sm border-l-4 border-transparent px-4 py-3 min-h-11 text-base font-medium text-zinc-800 transition-colors hover:bg-muted hover:text-primary dark:text-zinc-100"
           : [
-              "group relative inline-flex items-center pb-1 text-sm font-medium transition-colors",
+              "group nav-text-swap relative inline-flex items-center pb-1 text-sm font-medium transition-colors",
               isActive
                 ? "text-primary"
                 : "text-zinc-700 hover:text-primary dark:text-zinc-300",
+              reducedMotion ? "nav-text-swap--reduced" : "",
             ].join(" ");
         return (
           <li key={key} className={isVertical ? "w-full" : undefined}>
@@ -91,7 +88,17 @@ export function MainNav({
               onClick={onNavigate}
               className={linkClass}
             >
-              {labels[key]}
+              <span className="nav-text-swap__track">
+                <span className="nav-text-swap__layer">
+                  {labels[key]}
+                </span>
+                <span
+                  aria-hidden="true"
+                  className="nav-text-swap__layer nav-text-swap__layer--alt"
+                >
+                  {labels[key]}
+                </span>
+              </span>
               {!isVertical ? (
                 <span
                   aria-hidden
@@ -113,10 +120,6 @@ export function MainNav({
 
 /**
  * Returns true when the current pathname matches the link target.
- *
- * The Home link (`/{locale}`) is only active on the exact root, not on
- * every nested route — otherwise it would steal the active state from
- * the About/Courses/etc links.
  */
 function isActiveRoute(
   pathname: string,

@@ -6,6 +6,7 @@ import type { Locale } from "@/i18n.config";
 import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/components/animations/animated-section";
 import { FadeIn } from "@/components/animations/fade-in";
+import { SplitText, MagneticButton } from "@/components/animations";
 import { CLINIKO_BOOKING_URL } from "@/lib/cliniko";
 
 export interface BookingsViewProps {
@@ -41,7 +42,7 @@ export function BookingsView({ locale }: BookingsViewProps) {
               id="bookings-hero-title"
               className="font-display text-4xl font-medium leading-snug tracking-tight sm:text-5xl md:text-6xl"
             >
-              {t("title")}
+              <SplitText text={t("title")} stagger={50} offset={20} duration={650} />
             </h1>
           </FadeIn>
 
@@ -59,18 +60,20 @@ export function BookingsView({ locale }: BookingsViewProps) {
 
           <FadeIn direction="up" delay={0.3} duration={0.8}>
             <div className="flex flex-wrap justify-center gap-3 pt-2">
-              <Button asChild size="lg" className="rounded-sm">
-                <a
-                  href={CLINIKO_BOOKING_URL}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  data-testid="bookings-cliniko-cta"
-                >
-                  <CalendarCheck aria-hidden className="mr-2 h-4 w-4" />
-                  {t("cta")}
-                  <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
-                </a>
-              </Button>
+              <MagneticButton>
+                <Button asChild size="lg" shimmer className="rounded-sm">
+                  <a
+                    href={CLINIKO_BOOKING_URL}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    data-testid="bookings-cliniko-cta"
+                  >
+                    <CalendarCheck aria-hidden className="mr-2 h-4 w-4" />
+                    {t("cta")}
+                    <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+              </MagneticButton>
             </div>
           </FadeIn>
         </div>

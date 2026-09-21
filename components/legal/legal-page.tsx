@@ -1,4 +1,5 @@
 import type { LegalDocument } from "@/lib/legal";
+import { LegalTitle } from "./legal-title";
 
 export interface LegalPageProps {
   document: LegalDocument;
@@ -8,9 +9,7 @@ export function LegalPage({ document }: LegalPageProps) {
   return (
     <div className="mx-auto max-w-3xl px-6 py-14 sm:py-20">
       <header className="mb-10 border-b border-border pb-8">
-        <h1 className="font-display text-4xl font-medium tracking-tight sm:text-5xl">
-          {document.title}
-        </h1>
+        <LegalTitle title={document.title} />
         <p className="mt-3 text-sm text-muted-foreground">
           {document.lastUpdated}
         </p>

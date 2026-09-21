@@ -7,15 +7,14 @@ import { cn } from "@/lib/utils"
 const buttonVariants = cva(
   // Base micro-interactions:
   //   - `transition-[color,background-color,border-color,box-shadow,transform]`
-  //     keeps the transform on a smooth 200ms curve alongside colour so
-  //     hover lift and press-down never look jittery.
-  //   - `hover:-translate-y-px` lifts the button 1px on hover for a
-  //     tactile feel without changing layout.
-  //   - `active:translate-y-0 active:scale-[0.98]` presses the button
-  //     back down and very slightly smaller so the click feels firm.
-  //   - The `motion-safe:` prefix ensures users who request reduced
-  //     motion get only colour/background transitions, no transform.
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-[color,background-color,border-color,box-shadow,transform] duration-200 ease-out motion-safe:hover:-translate-y-px motion-safe:active:translate-y-0 motion-safe:active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  //     keeps the transform on a smooth curve alongside colour so hover
+  //     lift and press-down never look jittery.
+  //   - `ease-luxury` uses the global `--ease-luxury` CSS variable so
+  //     the curve is consistent across every micro-interaction on the
+  //     site (matches the nav underline and card hover).
+  //   - `motion-safe:` prefix ensures users who request reduced motion
+  //     get only colour/background transitions, no transform.
+  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-[color,background-color,border-color,box-shadow,transform] duration-200 ease-luxury motion-safe:hover:-translate-y-px motion-safe:active:translate-y-0 motion-safe:active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
@@ -47,14 +46,22 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean
+  /** Opt-in ambient shimmer overlay (a slow diagonal sheen sweep).
+   *  Used on primary CTAs such as the Cliniko "Book appointment"
+   *  button. The shimmer is fully suppressed by `prefers-reduced-motion:
+   *  reduce` via the `.cta-shimmer` CSS rule. */
+  shimmer?: boolean
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
+  ({ className, variant, size, asChild = false, shimmer = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button"
     return (
       <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
+        className={cn(
+          buttonVariants({ variant, size, className }),
+          shimmer && "cta-shimmer",
+        )}
         ref={ref}
         {...props}
       />

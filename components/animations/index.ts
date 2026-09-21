@@ -14,3 +14,10 @@ export {
   type CountUpProps,
   type AnimatedStatProps,
 } from "./count-up";
+export { SplitText, type SplitTextProps } from "./split-text";
+export {
+  MagneticButton,
+  type MagneticButtonProps,
+} from "./magnetic-button";
+export { TiltCard, type TiltCardProps } from "./tilt-card";
+export { ImageReveal, type ImageRevealProps } from "./image-reveal";

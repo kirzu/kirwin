@@ -3,7 +3,21 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    /* Subtle native smooth scrolling for in-page anchors. The
+     * `@media (prefers-reduced-motion: reduce)` block below disables
+     * this so users who opt out of motion don't get motion when they
+     * jump between sections. */
+    scroll-behavior: smooth;
+  }
+
   :root {
+    /* A single source of truth for the luxury easing curve used across
+     * micro-interactions (nav underline, button hover, card lift, etc.).
+     * Components reference this var so updating the curve in one place
+     * retunes the whole site. */
+    --ease-luxury: cubic-bezier(0.22, 1, 0.36, 1);
+
     --background: 40 33% 97%;
     --foreground: 28 31% 13%;
     --card: 40 33% 99%;
@@ -191,6 +205,118 @@
     .hero-gradient__mesh,
     .hero-blob {
       animation: none;
+    }
+    /* Honour reduced-motion: disable smooth scroll globally. Browsers
+     * ignore `scroll-behavior` for users who request less motion. */
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  /* Nav text-swap. The link has an inline-grid track with two stacked
+   * layers (both containing the same label). On hover/focus the top
+   * layer translates up while the duplicate layer translates up into
+   * the visible row. The layers stay aligned because they share the
+   * same grid cell. The transition uses the global `--ease-luxury`
+   * curve so the motion matches the rest of the site.
+   *
+   * When the user prefers reduced motion we collapse the track to a
+   * single static label via `.nav-text-swap--reduced`. */
+  .nav-text-swap__track {
+    display: inline-grid;
+    align-items: center;
+    overflow: hidden;
+    line-height: 1.1;
+  }
+  .nav-text-swap__layer {
+    grid-column: 1;
+    grid-row: 1;
+    display: inline-block;
+    transform: translate3d(0, 0, 0);
+    transition: transform 360ms var(--ease-luxury),
+      opacity 360ms var(--ease-luxury);
+  }
+  .nav-text-swap__layer--alt {
+    transform: translate3d(0, 110%, 0);
+    opacity: 0;
+  }
+  .nav-text-swap:hover .nav-text-swap__layer,
+  .nav-text-swap:focus-visible .nav-text-swap__layer {
+    transform: translate3d(0, -110%, 0);
+    opacity: 0;
+  }
+  .nav-text-swap:hover .nav-text-swap__layer--alt,
+  .nav-text-swap:focus-visible .nav-text-swap__layer--alt {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  .nav-text-swap--reduced .nav-text-swap__track {
+    display: inline;
+    overflow: visible;
+  }
+  .nav-text-swap--reduced .nav-text-swap__layer--alt {
+    display: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .nav-text-swap__layer,
+    .nav-text-swap__layer--alt {
+      transition: none;
+      transform: none;
+      opacity: 1;
+    }
+    .nav-text-swap__layer--alt {
+      display: none;
+    }
+  }
+
+  /* Ambient shimmer for primary CTAs (e.g. the Cliniko "Book
+   * appointment" button). A diagonal gradient sweeps slowly across the
+   * button. Kept low-contrast and slow (~6s) so it feels like polished
+   * metal rather than a slot machine. Disabled entirely under
+   * `prefers-reduced-motion`. */
+  @keyframes cta-shimmer {
+    0% {
+      background-position: -150% 50%;
+    }
+    100% {
+      background-position: 250% 50%;
+    }
+  }
+
+  .cta-shimmer {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+  }
+  .cta-shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: linear-gradient(
+      115deg,
+      transparent 0%,
+      transparent 38%,
+      rgba(255, 255, 255, 0.16) 50%,
+      transparent 62%,
+      transparent 100%
+    );
+    background-size: 220% 220%;
+    background-repeat: no-repeat;
+    background-position: -150% 50%;
+    mix-blend-mode: overlay;
+    animation: cta-shimmer 6.5s var(--ease-luxury) infinite;
+    z-index: 1;
+  }
+  /* Make sure the button content stays above the sheen overlay. */
+  .cta-shimmer > * {
+    position: relative;
+    z-index: 2;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cta-shimmer::after {
+      animation: none;
+      opacity: 0;
     }
   }
 
