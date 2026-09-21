@@ -131,7 +131,7 @@ export function CoursesView({ locale, courses, hasCourses }: CoursesViewProps) {
           >
             <h1
               id="courses-hero-title"
-              className="max-w-3xl font-display text-4xl font-medium leading-snug tracking-tight sm:text-5xl md:text-6xl"
+              className="max-w-3xl font-display text-3xl font-medium leading-snug tracking-tight sm:text-5xl md:text-6xl"
             >
               {t("title")}
             </h1>

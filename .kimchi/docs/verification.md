@@ -1,53 +1,58 @@
-# Verification Report
+# Verification Report — Mobile Visual Fixes
 
-## Changes applied
+## Changed files
 
-- `next.config.mjs`: Added `images.remotePatterns` for `img.youtube.com` so YouTube thumbnails can be optimized by Next.js.
-- `components/animations/image-reveal.tsx`: Changed initial `visible` state from `false` to `true` so SSR/prerendered pages ship images fully visible.
-- `e2e/home.spec.ts`: Updated the English homepage tagline assertion from `"effective therapeutic care"` to `"Hands-on neuromuscular therapy and deep tissue bodywork seminars."`.
-- Resolved Prisma migration baseline error `P3005` with `npx prisma migrate resolve --applied 20260916180000_init_postgres`.
+- `components/cookie-banner.tsx`
+  - Changed outer wrapper from `bottom-0` to `bottom-[4.5rem] md:bottom-0` so the banner sits above the sticky mobile booking CTA on small screens and returns to the bottom on desktop where the CTA is hidden.
+  - Kept `z-50` on the banner and `z-40` on the CTA.
 
-## Photo fix verification
+- Hero `<h1>` mobile font size reduced from `text-4xl` to `text-3xl` while preserving larger viewport sizes and existing animations/translation keys:
+  - `components/home/home-view.tsx`
+  - `components/about/about-view.tsx`
+  - `components/contact/contact-view.tsx`
+  - `components/bookings/bookings-view.tsx`
+  - `components/course-detail/course-detail-view.tsx`
+  - `components/testimonials/testimonials-view.tsx`
+  - `components/courses/courses-view.tsx`
+  - `components/legal/legal-title.tsx`
 
-- Optimized YouTube thumbnail URL returned HTTP 200:
-  - `/_next/image?url=https%3A%2F%2Fimg.youtube.com%2Fvi%2FyleywQGhYrY%2Fmaxresdefault.jpg&w=3840&q=75`
-- Prerendered HTML inspection:
-  - No `inset(0 100% 0 0)` clip-path found in `.next/server/app/**/*.html`.
-  - No `data-image-reveal="out"` found in prerendered HTML.
-  - ImageReveal wrappers render `clip-path:inset(0 0 0 0)` and `data-image-reveal="in"` in SSR output.
-
-## Test output
-
-```
-npm run test -- --run
- Test Files  28 passed (28)
-      Tests  204 passed (204)
-```
-
-## E2E output
-
-```
-npm run e2e
-  1 skipped
-  7 passed (9.9s)
-```
-
-## Lint output
+## Lint
 
 ```
 npm run lint
 ```
 
-No warnings or errors reported.
+Result: passed (no warnings or errors).
 
-## Build output
+## Unit tests
+
+```
+npm run test -- --run
+```
+
+Result: 28 test files passed, 204 tests passed.
+
+## E2E tests
+
+```
+npm run e2e
+```
+
+Result: 7 passed, 1 skipped, 0 failed.
+
+## Build
 
 ```
 npm run build
-... No pending migrations to apply.
-... Compiled successfully
-... Generating static pages (50/50)
 ```
+
+Initial run failed because `prisma migrate deploy` returned `P3005`. Resolved with:
+
+```
+npx prisma migrate resolve --applied 20260916180000_init_postgres
+```
+
+Re-run result: passed. All 52 static pages generated successfully.
 
 ## Verdict
 

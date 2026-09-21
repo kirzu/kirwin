@@ -34,7 +34,7 @@ export function CookieBanner() {
     <div
       role="region"
       aria-label={t("accept")}
-      className="fixed inset-x-0 bottom-0 z-50 px-4 pb-4 sm:px-6 sm:pb-6"
+      className="fixed inset-x-0 bottom-[4.5rem] z-50 px-4 pb-4 sm:px-6 sm:pb-6 md:bottom-0"
     >
       <div className="mx-auto flex max-w-3xl flex-col items-start gap-3 rounded-sm border border-zinc-200 bg-muted/95 px-4 py-3 text-xs text-muted-foreground shadow-sm backdrop-blur supports-[backdrop-filter]:bg-muted/80 dark:border-zinc-800 dark:bg-zinc-900/90 sm:flex-row sm:items-center sm:gap-4 sm:text-sm">
         <p className="flex-1 leading-relaxed">{t("message")}</p>

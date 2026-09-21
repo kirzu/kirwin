@@ -92,7 +92,7 @@ export function ContactView({ locale, phoneHref, emailHref, mapHref }: ContactVi
             </SectionEyebrow>
             <h1
               id="contact-hero-title"
-              className="max-w-4xl font-display text-4xl font-medium leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
+              className="max-w-4xl font-display text-3xl font-medium leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
             >
               <SplitText text={t("title")} stagger={50} offset={20} duration={650} />
             </h1>

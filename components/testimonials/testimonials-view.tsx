@@ -67,7 +67,7 @@ export function TestimonialsView({
           <FadeIn direction="up" delay={0.1}>
             <h1
               id="testimonials-hero-title"
-              className="font-display text-4xl font-medium leading-snug tracking-tight sm:text-5xl md:text-6xl"
+              className="font-display text-3xl font-medium leading-snug tracking-tight sm:text-5xl md:text-6xl"
             >
               <SplitText
                 text={t("title")}

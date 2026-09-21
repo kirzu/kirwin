@@ -111,7 +111,7 @@ export function CourseDetailView({
           >
             <h1
               id="course-detail-title"
-              className="max-w-4xl font-display text-4xl font-medium leading-snug tracking-tight sm:text-5xl md:text-6xl"
+              className="max-w-4xl font-display text-3xl font-medium leading-snug tracking-tight sm:text-5xl md:text-6xl"
             >
               {course.title}
             </h1>

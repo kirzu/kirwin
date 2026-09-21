@@ -100,7 +100,7 @@ export function HomeView({
           >
             <h1
               id="home-hero-title"
-              className="max-w-3xl font-display text-4xl font-medium leading-snug tracking-tight text-foreground sm:text-5xl md:text-6xl"
+              className="max-w-3xl font-display text-3xl font-medium leading-snug tracking-tight text-foreground sm:text-5xl md:text-6xl"
             >
               <SplitText
                 text={t("hero.title")}

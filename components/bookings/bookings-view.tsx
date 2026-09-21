@@ -41,7 +41,7 @@ export function BookingsView({ locale }: BookingsViewProps) {
           <FadeIn direction="up" delay={0.15}>
             <h1
               id="bookings-hero-title"
-              className="font-display text-4xl font-medium leading-snug tracking-tight sm:text-5xl md:text-6xl"
+              className="font-display text-3xl font-medium leading-snug tracking-tight sm:text-5xl md:text-6xl"
             >
               <SplitText text={t("title")} stagger={50} offset={20} duration={650} />
             </h1>
