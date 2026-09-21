@@ -118,16 +118,30 @@ export default async function LocaleLayout({
           </header>
           <main className="flex-1">{children}</main>
           <footer className="border-t border-zinc-200 dark:border-zinc-800">
-            <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-4 py-6 text-xs text-zinc-500 dark:text-zinc-400 sm:px-6">
+            <div className="mx-auto flex max-w-5xl flex-col gap-4 px-4 py-6 text-xs text-zinc-500 dark:text-zinc-400 sm:flex-row sm:items-center sm:justify-between sm:px-6">
               <span>
                 {tFooter("copyright", { year: new Date().getFullYear() })}
               </span>
-              <Link
-                href={`/${locale}/admin`}
-                className="transition-colors hover:text-primary"
-              >
-                {t("admin")}
-              </Link>
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                <Link
+                  href={`/${locale}/privacy`}
+                  className="transition-colors hover:text-primary"
+                >
+                  {tFooter("links.privacy")}
+                </Link>
+                <Link
+                  href={`/${locale}/terms`}
+                  className="transition-colors hover:text-primary"
+                >
+                  {tFooter("links.terms")}
+                </Link>
+                <Link
+                  href={`/${locale}/admin`}
+                  className="transition-colors hover:text-primary"
+                >
+                  {t("admin")}
+                </Link>
+              </div>
             </div>
           </footer>
         </NextIntlClientProvider>
