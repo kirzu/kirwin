@@ -13,7 +13,7 @@ export type StaticTestimonial = {
   content: string;
   rating: number;
   youtubeUrl: string;
-  imageUrl: string;
+  imageUrl: string | null;
 };
 
 export const ORIGINAL_TESTIMONIALS: StaticTestimonial[] = [
@@ -46,5 +46,15 @@ export const ORIGINAL_TESTIMONIALS: StaticTestimonial[] = [
     rating: 5,
     youtubeUrl: "https://www.youtube.com/watch?v=GvfGYG6xotw",
     imageUrl: "/assets/testimonial-danielle.jpg",
+  },
+  {
+    id: "static-teresa",
+    slug: "teresa-young",
+    title: "Teresa Young",
+    content:
+      "His approach to bodywork is highly intuitive and uses a variety of techniques and makes me completely comfortable",
+    rating: 5,
+    youtubeUrl: "https://www.youtube.com/shorts/yleywQGhYrY",
+    imageUrl: null,
   },
 ];
