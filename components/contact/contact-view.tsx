@@ -18,8 +18,12 @@ import { CLINIKO_BOOKING_URL } from "@/lib/cliniko";
 
 const INSTAGRAM_URL = "https://www.instagram.com/stephenkirwinbodyworks/";
 
+// OpenStreetMap embed centred on 218 Jaffe Road, Wan Chai, Hong Kong.
+// The previous `maps.google.com/maps?q=...&output=embed` URL 404s, so we
+// use OSM's iframe-friendly export endpoint instead. The bbox brackets
+// the marker so the pin is visible without panning.
 const MAP_EMBED_SRC =
-  "https://maps.google.com/maps?q=218+Jaffe+Road,+Suite+602,+Wan+Chai,+Hong+Kong&t=&z=15&ie=UTF8&iwloc=&output=embed";
+  "https://www.openstreetmap.org/export/embed.html?bbox=114.171%2C22.276%2C114.181%2C22.282&layer=mapnik&marker=22.2786%2C114.1765";
 
 export interface ContactViewProps {
   locale: Locale;
@@ -29,9 +33,10 @@ export interface ContactViewProps {
 }
 
 /**
- * Client-side view for the redesigned Contact page. Renders a smaller
- * hero, an inline list of contact details, a Google Maps iframe, and
- * the contact form.
+ * Client-side view for the Contact page. Renders a premium hero, a
+ * two-column editorial layout with contact details / map on the left
+ * and the contact form in a floating card on the right, and a closing
+ * call-to-action section.
  */
 export function ContactView({ locale, phoneHref, emailHref, mapHref }: ContactViewProps) {
   const t = useTranslations("contact");
@@ -51,7 +56,7 @@ export function ContactView({ locale, phoneHref, emailHref, mapHref }: ContactVi
 
   return (
     <div className="text-foreground">
-      {/* Hero — smaller, lighter overlay */}
+      {/* Hero — premium, single CTA */}
       <section
         aria-labelledby="contact-hero-title"
         className="relative isolate overflow-hidden text-foreground"
@@ -83,9 +88,12 @@ export function ContactView({ locale, phoneHref, emailHref, mapHref }: ContactVi
             delay={0.1}
             className="flex flex-col gap-4"
           >
+            <SectionEyebrow className="text-foreground/70">
+              {t("detailsEyebrow")}
+            </SectionEyebrow>
             <h1
               id="contact-hero-title"
-              className="max-w-3xl font-display text-4xl font-medium leading-snug tracking-tight sm:text-5xl md:text-6xl"
+              className="max-w-3xl font-display text-4xl font-medium leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
             >
               <SplitText text={t("title")} stagger={50} offset={20} duration={650} />
             </h1>
@@ -107,13 +115,12 @@ export function ContactView({ locale, phoneHref, emailHref, mapHref }: ContactVi
         </div>
       </section>
 
-      {/* Details + form — two-column layout with animated reveal */}
-      <section
-        aria-labelledby="contact-details-title"
-      >
-        <div className="mx-auto flex max-w-6xl flex-col gap-12 px-6 py-20 sm:py-28 lg:py-32 lg:flex-row lg:gap-16">
+      {/* Details + form — two-column editorial layout */}
+      <section aria-labelledby="contact-details-title">
+        <div className="mx-auto flex max-w-6xl flex-col gap-16 px-6 py-20 sm:py-28 lg:py-32 lg:flex-row lg:gap-20">
           <LineReveal className="-mb-6" />
-          {/* Left column: contact details, hours, map */}
+
+          {/* Left column: editorial details card with details, hours, map */}
           <FadeIn direction="left" className="lg:basis-[44%]">
             <div className="flex flex-col gap-10">
               <div className="flex flex-col gap-4">
@@ -129,16 +136,13 @@ export function ContactView({ locale, phoneHref, emailHref, mapHref }: ContactVi
                 </p>
               </div>
 
-              <dl className="grid grid-cols-1 gap-x-10 gap-y-6 border-t border-border pt-5 sm:grid-cols-2">
+              <dl className="grid grid-cols-1 gap-x-10 gap-y-6 border-t border-border pt-6 sm:grid-cols-2">
                 {details.map((detail) => (
-                  <div
-                    key={detail.label}
-                    className="flex flex-col"
-                  >
-                    <dt className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+                  <div key={detail.label} className="flex flex-col gap-1.5">
+                    <dt className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
                       {detail.label}
                     </dt>
-                    <dd className="mt-1 break-words text-sm font-medium leading-7 text-foreground sm:text-base">
+                    <dd className="break-words text-base font-medium leading-7 text-foreground sm:text-lg">
                       {detail.href ? (
                         <a
                           href={detail.href}
@@ -156,27 +160,26 @@ export function ContactView({ locale, phoneHref, emailHref, mapHref }: ContactVi
                 ))}
               </dl>
 
-              {/* Embedded map */}
+              {/* Embedded map grouped with location + hours */}
               <FadeIn direction="up" delay={0.1}>
-                <iframe
-                  src={MAP_EMBED_SRC}
-                  className="h-80 w-full border-0"
-                  loading="lazy"
-                  title={t("mapTitle")}
-                />
-                <div className="mt-3 flex flex-col gap-2">
-                  <p className="text-sm font-medium text-foreground">
+                <div className="rounded-2xl overflow-hidden border border-border luxe-card luxe-card--hover">
+                  <iframe
+                    src={MAP_EMBED_SRC}
+                    className="h-80 md:h-[28rem] w-full border-0"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title={t("mapTitle")}
+                  />
+                </div>
+                <div className="mt-5 flex flex-col gap-2">
+                  <p className="text-base font-medium leading-7 text-foreground sm:text-lg">
                     {t("locationValue")}
                   </p>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm leading-7 text-muted-foreground">
                     {t("hours")}
                   </p>
-                  <div>
-                    <Button
-                      asChild
-                      variant="outline"
-                      className="rounded-sm"
-                    >
+                  <div className="pt-1">
+                    <Button asChild variant="outline" className="rounded-sm">
                       <a
                         href={mapHref}
                         target="_blank"
@@ -191,7 +194,7 @@ export function ContactView({ locale, phoneHref, emailHref, mapHref }: ContactVi
             </div>
           </FadeIn>
 
-          {/* Right column: contact form */}
+          {/* Right column: contact form in a floating luxe card */}
           <AnimatedSection
             direction="right"
             delay={0.1}
@@ -203,9 +206,7 @@ export function ContactView({ locale, phoneHref, emailHref, mapHref }: ContactVi
       </section>
 
       {/* Closing CTA */}
-      <section
-        aria-labelledby="contact-cta-title"
-      >
+      <section aria-labelledby="contact-cta-title">
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 px-6 py-20 text-center sm:py-28 lg:py-32">
           <LineReveal className="-mb-6" />
           <FadeIn direction="up" className="flex flex-col items-center gap-6">

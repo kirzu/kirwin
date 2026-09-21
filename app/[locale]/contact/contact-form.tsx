@@ -72,15 +72,17 @@ export default function ContactForm({ locale }: { locale: string }) {
   }
 
   const inputClass =
-    "h-11 rounded-sm border-border bg-background focus-visible:ring-primary";
+    "h-12 rounded-sm border-border bg-background px-4 py-2 text-base transition-[border-color,box-shadow,background-color] duration-200 ease-out focus-visible:ring-primary";
+  const textareaClass =
+    "rounded-sm border-border bg-background px-4 py-3 text-base transition-[border-color,box-shadow,background-color] duration-200 ease-out focus-visible:ring-primary";
   const errorTextClass =
     "flex items-center gap-1.5 text-sm font-medium text-destructive";
 
   if (result?.status === "success") {
     return (
-      <Card aria-live="polite" className="border border-border">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-3 font-sans text-2xl font-semibold leading-snug text-foreground">
+      <Card aria-live="polite" className="rounded-2xl border border-border bg-card luxe-card p-6 sm:p-8 lg:p-10">
+        <CardHeader className="p-0">
+          <CardTitle className="flex items-center gap-3 font-display text-2xl font-medium leading-snug text-foreground sm:text-3xl">
             <span
               aria-hidden
               className="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-primary text-primary"
@@ -90,7 +92,7 @@ export default function ContactForm({ locale }: { locale: string }) {
             {t("submit")}
           </CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="p-0 pt-6">
           <p className="text-base leading-7 text-muted-foreground">
             {result.message}
           </p>
@@ -110,16 +112,16 @@ export default function ContactForm({ locale }: { locale: string }) {
   }
 
   return (
-    <Card className="border-0 bg-transparent shadow-none">
-      <CardHeader>
-        <CardTitle className="font-sans text-2xl font-semibold leading-snug sm:text-3xl">
+    <Card className="rounded-2xl border border-border bg-card luxe-card p-6 sm:p-8 lg:p-10">
+      <CardHeader className="p-0">
+        <CardTitle className="font-display text-2xl font-medium leading-tight sm:text-3xl">
           {t("formTitle")}
         </CardTitle>
         <CardDescription className="mt-2 text-sm leading-7 text-muted-foreground sm:text-base">
           {t("formIntro")}
         </CardDescription>
       </CardHeader>
-      <CardContent className="pt-6">
+      <CardContent className="p-0 pt-8">
         <form
           onSubmit={handleSubmit}
           noValidate
@@ -261,7 +263,7 @@ export default function ContactForm({ locale }: { locale: string }) {
                 setValues((v) => ({ ...v, message: event.target.value }))
               }
               disabled={isPending}
-              className="rounded-sm border-border bg-background focus-visible:ring-primary"
+              className={textareaClass}
             />
             {fieldErrors?.message ? (
               <p id={`${messageId}-error`} className={errorTextClass}>
