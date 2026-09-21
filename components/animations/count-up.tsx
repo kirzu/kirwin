@@ -42,10 +42,10 @@ export function CountUp({
 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const reducedMotion = useReducedMotion();
-  // Default to the final value on first render. On mount we either
-  // commit the final value (reduced motion / no IO support) or reset
-  // to 0 to play the count-up animation.
-  const [display, setDisplay] = useState<number>(value);
+  // Default to 0 so the count-up plays from the start and never flashes
+  // the final value. Width is reserved with tabular-nums + min-width to
+  // prevent the surrounding sentence from reflowing as digits change.
+  const [display, setDisplay] = useState<number>(0);
 
   useEffect(() => {
     if (reducedMotion) {
@@ -61,10 +61,6 @@ export function CountUp({
       setDisplay(value);
       return;
     }
-    // Reset to 0 right before the animation starts so the final value
-    // is not briefly visible before the first frame.
-    setDisplay(0);
-
     let rafId = 0;
     let disconnected = false;
     const reducedFallback = () => setDisplay(value);
@@ -105,8 +101,14 @@ export function CountUp({
     };
   }, [value, duration, threshold, reducedMotion]);
 
+  const digits = value.toString().length;
+
   return (
-    <span ref={ref} className={className}>
+    <span
+      ref={ref}
+      className={`inline-block tabular-nums ${className ?? ""}`}
+      style={{ minWidth: `${digits}ch` }}
+    >
       {prefix}
       {display}
       {suffix}
