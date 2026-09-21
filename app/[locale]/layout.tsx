@@ -137,12 +137,6 @@ export default async function LocaleLayout({
                 >
                   {tFooter("links.terms")}
                 </Link>
-                <Link
-                  href={`/${locale}/admin`}
-                  className="transition-colors hover:text-primary"
-                >
-                  {t("admin")}
-                </Link>
               </div>
             </div>
           </footer>

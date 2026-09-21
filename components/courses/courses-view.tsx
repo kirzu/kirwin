@@ -50,14 +50,13 @@ export interface CoursesViewProps {
 }
 
 /**
- * Client-side view for the redesigned Courses listing page. Receives the
- * server-resolved course list and renders the original four-day
- * intensive (overview, Day 1–4 highlights, location) followed by the
- * CMS-managed upcoming sessions.
+ * Client-side view for the upcoming-seminars listing page. Receives the
+ * server-resolved course list and renders a hero, a location band, the
+ * CMS-managed upcoming-sessions grid (with search + filters), and a
+ * closing CTA.
  */
 export function CoursesView({ locale, courses, hasCourses }: CoursesViewProps) {
   const t = useTranslations("courses");
-  const tHighlights = useTranslations("courses.highlights");
 
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<CourseFilter>("all");
@@ -95,37 +94,6 @@ export function CoursesView({ locale, courses, hasCourses }: CoursesViewProps) {
 
   const isFiltered = hasCourses && filteredCourses.length === 0;
   const noPublished = !hasCourses;
-
-  const highlightDays = [
-    {
-      day: 1,
-      titleKey: "day1Title",
-      bodyKey: "day1Body",
-      image: "/assets/course-hands-on.jpg",
-      align: "left" as const,
-    },
-    {
-      day: 2,
-      titleKey: "day2Title",
-      bodyKey: "day2Body",
-      image: "/assets/course-stephen.jpg",
-      align: "right" as const,
-    },
-    {
-      day: 3,
-      titleKey: "day3Title",
-      bodyKey: "day3Body",
-      image: "/assets/course-advanced.jpg",
-      align: "left" as const,
-    },
-    {
-      day: 4,
-      titleKey: "day4Title",
-      bodyKey: "day4Body",
-      image: "/assets/stephen-working.jpg",
-      align: "right" as const,
-    },
-  ];
 
   return (
     <div className="text-foreground">
@@ -176,59 +144,6 @@ export function CoursesView({ locale, courses, hasCourses }: CoursesViewProps) {
               </Button>
             </div>
           </FadeIn>
-        </div>
-      </section>
-
-      {/* Overview — clean centered prose block */}
-      <section aria-labelledby="courses-overview-title">
-        <div className="mx-auto flex max-w-3xl flex-col gap-5 px-6 py-14 text-center sm:py-20">
-          <FadeIn direction="up" className="flex flex-col items-center gap-5">
-            <h2
-              id="courses-overview-title"
-              className="font-sans text-2xl font-semibold leading-snug tracking-tight sm:text-3xl"
-            >
-              {t("overviewTitle")}
-            </h2>
-            <p className="max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
-              {t("overviewBody")}
-            </p>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* Course Highlights — alternating image/text rows */}
-      <section
-        aria-labelledby="courses-highlights-title"
-        className="border-t border-border"
-      >
-        <div className="mx-auto flex max-w-5xl flex-col gap-10 px-6 py-14 sm:py-20">
-          <FadeIn direction="up">
-            <div className="max-w-3xl">
-              <h2
-                id="courses-highlights-title"
-                className="font-sans text-2xl font-semibold leading-snug tracking-tight sm:text-3xl"
-              >
-                {t("highlightsTitle")}
-              </h2>
-              <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
-                {t("highlightsIntro")}
-              </p>
-            </div>
-          </FadeIn>
-
-          <div className="flex flex-col gap-12">
-            {highlightDays.map((row) => (
-              <HighlightRow
-                key={row.day}
-                title={tHighlights(row.titleKey)}
-                body={tHighlights(row.bodyKey)}
-                image={row.image}
-                align={row.align}
-                eyebrow={t("dayEyebrow", { day: row.day })}
-                imageAlt={tHighlights("imageAlt")}
-              />
-            ))}
-          </div>
         </div>
       </section>
 
@@ -433,63 +348,6 @@ export function CoursesView({ locale, courses, hasCourses }: CoursesViewProps) {
         </div>
       </section>
     </div>
-  );
-}
-
-interface HighlightRowProps {
-  eyebrow: string;
-  title: string;
-  body: string;
-  image: string;
-  align: "left" | "right";
-  imageAlt: string;
-}
-
-/**
- * Alternating image/text row for the Day 1–4 highlights section. On
- * mobile the image stacks above the text; on desktop the layout flips
- * based on the `align` prop.
- */
-function HighlightRow({
-  eyebrow,
-  title,
-  body,
-  image,
-  align,
-  imageAlt,
-}: HighlightRowProps) {
-  const isImageLeft = align === "left";
-  return (
-    <FadeIn direction={isImageLeft ? "left" : "right"}>
-      <article
-        className={`grid items-center gap-8 md:grid-cols-2 md:gap-12 ${
-          isImageLeft ? "" : "md:[&>*:first-child]:order-2"
-        }`}
-      >
-        <div className="overflow-hidden rounded-sm border border-border">
-          <div className="relative aspect-[4/3] w-full">
-            <Image
-              src={image}
-              alt={imageAlt}
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover"
-            />
-          </div>
-        </div>
-        <div className="flex flex-col gap-4">
-          <p className="text-xs font-medium uppercase tracking-widest text-primary">
-            {eyebrow}
-          </p>
-          <h3 className="font-sans text-2xl font-semibold leading-snug tracking-tight sm:text-3xl">
-            {title}
-          </h3>
-          <p className="text-base leading-7 text-muted-foreground sm:text-lg">
-            {body}
-          </p>
-        </div>
-      </article>
-    </FadeIn>
   );
 }
 

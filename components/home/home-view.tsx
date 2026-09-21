@@ -172,43 +172,34 @@ export function HomeView({
         </div>
       </section>
 
-      {/* Featured courses — preview grid with a single prominent CTA */}
-      <section aria-labelledby="home-courses-title">
-        <div className="mx-auto flex max-w-5xl flex-col gap-8 px-6 py-14 sm:py-20">
-          <FadeIn direction="up">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-              <div className="max-w-2xl">
-                <h2
-                  id="home-courses-title"
-                  className="font-sans text-2xl font-semibold leading-snug tracking-tight text-foreground sm:text-3xl"
-                >
-                  {t("courses.title")}
-                </h2>
-                <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
-                  {t("courses.previewBody")}
-                </p>
-              </div>
-              <Button asChild variant="outline" className="rounded-sm">
-                <a href={`/${locale}/courses`}>
-                  {t("courses.viewAllCta")}
-                  <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
-                </a>
-              </Button>
-            </div>
-          </FadeIn>
-
-          {featuredCourses.length === 0 ? (
-            <FadeIn direction="up" delay={0.05}>
-              <div className="border-t border-border pt-5">
-                <h3 className="font-sans text-lg font-medium leading-snug text-foreground">
-                  {t("courses.previewTitle")}
-                </h3>
-                <p className="mt-2 text-sm leading-7 text-muted-foreground">
-                  {t("courses.previewEmpty")}
-                </p>
+      {/* Featured courses — preview grid with a single prominent CTA.
+          Hidden entirely when there are no featured courses so the page
+          does not show an empty band. */}
+      {featuredCourses.length > 0 ? (
+        <section aria-labelledby="home-courses-title">
+          <div className="mx-auto flex max-w-5xl flex-col gap-8 px-6 py-14 sm:py-20">
+            <FadeIn direction="up">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+                <div className="max-w-2xl">
+                  <h2
+                    id="home-courses-title"
+                    className="font-sans text-2xl font-semibold leading-snug tracking-tight text-foreground sm:text-3xl"
+                  >
+                    {t("courses.title")}
+                  </h2>
+                  <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
+                    {t("courses.previewBody")}
+                  </p>
+                </div>
+                <Button asChild variant="outline" className="rounded-sm">
+                  <a href={`/${locale}/courses`}>
+                    {t("courses.viewAllCta")}
+                    <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
               </div>
             </FadeIn>
-          ) : (
+
             <StaggerChildren
               className="grid gap-6 sm:grid-cols-2"
               stagger={0.12}
@@ -239,9 +230,9 @@ export function HomeView({
                 </StaggerItem>
               ))}
             </StaggerChildren>
-          )}
-        </div>
-      </section>
+          </div>
+        </section>
+      ) : null}
 
       {/* About Stephen — portrait + bio + credentials */}
       <section aria-labelledby="home-about-title">
