@@ -116,6 +116,28 @@
 }
 
 @layer components {
+  /* Animated nav underline. The parent link owns colour transitions;
+   * this pseudo-element transitions `transform` only (GPU-friendly)
+   * to slide the bar in/out on hover and when active.
+   *
+   * `prefers-reduced-motion: reduce` collapses the transform back to
+   * `none` so the underline appears instantly without animation. */
+  .nav-underline {
+    transform: scaleX(0);
+    transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .group:hover .nav-underline:not(.nav-underline--active),
+  .group:focus-visible .nav-underline:not(.nav-underline--active) {
+    transform: scaleX(1);
+  }
+  .nav-underline--active {
+    transform: scaleX(1);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .nav-underline {
+      transition: none;
+    }
+  }
   /* Hero background scaffolding. The hero component (added in Chunk 3)
    * stacks soft, slowly drifting radial gradients to form a warm mesh
    * without any image, canvas, or webgl dependency. Animations respect

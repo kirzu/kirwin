@@ -19,6 +19,7 @@ import {
   StaggerItem,
 } from "@/components/animations/stagger-children";
 import { ParallaxImage } from "@/components/animations/parallax-image";
+import { AnimatedStat } from "@/components/animations/count-up";
 
 const milestoneIcons = [Compass, Target, Compass, Target] as const;
 
@@ -167,7 +168,7 @@ export function AboutView({
                       aria-hidden
                       className="mt-3 h-1 w-4 shrink-0 bg-primary"
                     />
-                    <span>{line}</span>
+                    <AnimatedStat>{line}</AnimatedStat>
                   </li>
                 ))}
               </ul>

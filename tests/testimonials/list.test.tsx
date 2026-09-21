@@ -99,27 +99,28 @@ describe("TestimonialsView", () => {
   it("renders every seeded testimonial with its name and quote", () => {
     render(<TestimonialsView locale="en" testimonials={seedTestimonials} />);
 
-    // Names.
-    expect(screen.getByText("Alex")).toBeInTheDocument();
-    expect(screen.getByText("Walter")).toBeInTheDocument();
-    expect(screen.getByText("Danielle")).toBeInTheDocument();
+    // Each testimonial is rendered twice: once in the desktop grid
+    // (md+) and once in the mobile carousel (md-). Use getAllByText.
+    expect(screen.getAllByText("Alex").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Walter").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Danielle").length).toBeGreaterThan(0);
 
     // Quotes — assert each unique substring appears.
     expect(
-      screen.getByText(
+      screen.getAllByText(
         "Stephen has become more of a ritual to me every time I do a big race",
-      ),
-    ).toBeInTheDocument();
+      ).length,
+    ).toBeGreaterThan(0);
     expect(
-      screen.getByText(
+      screen.getAllByText(
         "Stephen basically saved my life as well as thousands of dollars as a professional football player",
-      ),
-    ).toBeInTheDocument();
+      ).length,
+    ).toBeGreaterThan(0);
     expect(
-      screen.getByText(
+      screen.getAllByText(
         "While I was living back In England I attended many appointments and sadly nobody compared to what Stephen was able to do in just one session",
-      ),
-    ).toBeInTheDocument();
+      ).length,
+    ).toBeGreaterThan(0);
   });
 
   it("renders a 5-star rating for each testimonial", () => {
@@ -127,9 +128,10 @@ describe("TestimonialsView", () => {
       <TestimonialsView locale="en" testimonials={seedTestimonials} />,
     );
 
-    // Each testimonial card renders 5 star SVG icons.
+    // Each testimonial card renders 5 star SVG icons. Cards are rendered
+    // twice (desktop grid + mobile carousel), so 2x the testimonials.
     const articles = container.querySelectorAll("article");
-    expect(articles.length).toBe(seedTestimonials.length);
+    expect(articles.length).toBe(seedTestimonials.length * 2);
 
     articles.forEach((article) => {
       const stars = article.querySelectorAll("svg");
@@ -139,7 +141,7 @@ describe("TestimonialsView", () => {
     // A screen-reader label summarises the rating; the component renders
     // an sr-only span with the translation key.
     const srOnlyLabels = screen.getAllByText("ratingLabel");
-    expect(srOnlyLabels.length).toBe(seedTestimonials.length);
+    expect(srOnlyLabels.length).toBe(seedTestimonials.length * 2);
   });
 
   it("renders a clickable video thumbnail for every testimonial that supplies a youtubeUrl", () => {
@@ -148,16 +150,18 @@ describe("TestimonialsView", () => {
     );
 
     const articles = container.querySelectorAll("article");
-    expect(articles.length).toBe(seedTestimonials.length);
+    expect(articles.length).toBe(seedTestimonials.length * 2);
 
     for (const testimonial of seedTestimonials) {
-      const article = Array.from(articles).find(
-        (node) => within(node).queryByText(testimonial.title),
+      const matching = Array.from(articles).filter((node) =>
+        within(node).queryByText(testimonial.title),
       );
-      expect(article).toBeTruthy();
-      const button = article?.querySelector("button");
-      expect(button).toBeTruthy();
-      expect(button?.getAttribute("aria-label")).toBe("playVideo");
+      expect(matching.length).toBeGreaterThan(0);
+      matching.forEach((article) => {
+        const button = article.querySelector("button");
+        expect(button).toBeTruthy();
+        expect(button?.getAttribute("aria-label")).toBe("playVideo");
+      });
     }
   });
 
@@ -178,9 +182,11 @@ describe("TestimonialsView", () => {
       <TestimonialsView locale="en" testimonials={withoutVideo} />,
     );
 
-    const article = container.querySelector("article");
-    expect(article).toBeTruthy();
-    expect(article?.querySelector("button")).toBeNull();
+    const articles = container.querySelectorAll("article");
+    expect(articles.length).toBeGreaterThan(0);
+    articles.forEach((article) => {
+      expect(article.querySelector("button")).toBeNull();
+    });
   });
 
   it("renders each testimonial inside its own article element", () => {
@@ -189,13 +195,13 @@ describe("TestimonialsView", () => {
     );
 
     const articles = container.querySelectorAll("article");
-    expect(articles.length).toBe(seedTestimonials.length);
+    expect(articles.length).toBe(seedTestimonials.length * 2);
 
     for (const testimonial of seedTestimonials) {
-      const article = Array.from(articles).find((node) =>
+      const matching = Array.from(articles).filter((node) =>
         within(node).queryByText(testimonial.title),
       );
-      expect(article).toBeTruthy();
+      expect(matching.length).toBeGreaterThan(0);
     }
   });
 

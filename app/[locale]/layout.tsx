@@ -11,6 +11,7 @@ import { MainNav } from "@/components/main-nav";
 import { MobileMenu } from "@/components/mobile-menu";
 import { CookieBanner } from "@/components/cookie-banner";
 import { MobileBookingCta } from "@/components/mobile-booking-cta";
+import { ScrollProgress } from "@/components/scroll-progress";
 import "../globals.css";
 
 const inter = Inter({
@@ -112,6 +113,7 @@ export default async function LocaleLayout({
     <html lang={locale} className={`${inter.variable} ${lora.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col font-sans">
         <NextIntlClientProvider locale={locale} messages={messages as never}>
+          <ScrollProgress />
           <header className="sticky top-0 z-50 border-b border-zinc-200 bg-background dark:border-zinc-800">
             <nav className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-4 text-sm sm:px-6">
               <a

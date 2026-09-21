@@ -381,7 +381,7 @@ function CourseCardItem({
 }: CourseCardItemProps) {
   const thumb = course.imageUrl ?? FALLBACK_THUMB;
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-sm border border-border bg-background">
+    <article className="group flex h-full flex-col overflow-hidden rounded-sm border border-border bg-background transition-[box-shadow,transform] duration-300 ease-out motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-md motion-safe:focus-within:-translate-y-0.5">
       <div className="grid h-full grid-rows-1 sm:grid-cols-[120px_1fr] md:grid-cols-[160px_1fr]">
         <div className="relative aspect-[4/3] w-full overflow-hidden sm:aspect-auto sm:h-full">
           <Image
@@ -389,7 +389,7 @@ function CourseCardItem({
             alt={course.title}
             fill
             sizes="(max-width: 640px) 100vw, 160px"
-            className="object-cover"
+            className="object-cover transition-transform duration-500 ease-out motion-safe:group-hover:scale-[1.04]"
           />
         </div>
         <div className="flex flex-1 flex-col gap-3 p-5">

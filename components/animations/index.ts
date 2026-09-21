@@ -8,3 +8,9 @@ export {
 export { ParallaxImage, type ParallaxImageProps } from "./parallax-image";
 export { useScrollReveal, type UseScrollRevealOptions } from "./use-scroll-reveal";
 export { useReducedMotion } from "./use-reduced-motion";
+export {
+  CountUp,
+  AnimatedStat,
+  type CountUpProps,
+  type AnimatedStatProps,
+} from "./count-up";

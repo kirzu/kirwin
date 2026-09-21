@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import type { Locale } from "@/i18n.config";
@@ -16,6 +16,11 @@ import {
   StaggerChildren,
   StaggerItem,
 } from "@/components/animations/stagger-children";
+import { useReducedMotion } from "@/components/animations/use-reduced-motion";
+
+const CAROUSEL_AUTOPLAY_MS = 6000;
+/** Minimum horizontal swipe distance (px) that triggers a slide change. */
+const SWIPE_THRESHOLD = 40;
 
 
 export type TestimonialListItem = {
@@ -35,8 +40,10 @@ export interface TestimonialsViewProps {
 
 /**
  * Client-side view for the public testimonials page. Renders a soft
- * hero, a staggered 1/2-col grid of quote cards, and an empty state
- * when no testimonials have been published.
+ * hero, a staggered 1/2-col grid of quote cards on desktop, and a
+ * horizontal swipeable carousel (with prev/next arrows + auto-rotation)
+ * on small screens. Falls back to the empty state when no testimonials
+ * have been published.
  */
 export function TestimonialsView({
   locale,
@@ -93,22 +100,10 @@ export function TestimonialsView({
               </p>
             </FadeIn>
           ) : (
-            <StaggerChildren
-              className="grid gap-8 sm:grid-cols-2"
-              stagger={0.12}
-              y={32}
-            >
-              {testimonials.map((testimonial) => (
-                <StaggerItem key={testimonial.id} className="h-full">
-                  <TestimonialCard
-                    testimonial={testimonial}
-                    onPlay={() =>
-                      setActiveVideoId(extractYouTubeId(testimonial.youtubeUrl))
-                    }
-                  />
-                </StaggerItem>
-              ))}
-            </StaggerChildren>
+            <TestimonialsGrid
+              testimonials={testimonials}
+              onPlay={(id) => setActiveVideoId(id)}
+            />
           )}
         </div>
       </section>
@@ -173,6 +168,182 @@ interface TestimonialCardProps {
 }
 
 /**
+ * Layout switcher: renders the staggered 2-column grid on `md+` and a
+ * horizontal swipeable carousel on small screens. Both share the same
+ * `TestimonialCard` so the visual design stays consistent across
+ * breakpoints.
+ *
+ * Carousel behaviour:
+ *  - Auto-advances every {@link CAROUSEL_AUTOPLAY_MS} ms.
+ *  - Pauses on hover and resumes on leave.
+ *  - Auto-rotate is skipped entirely when the user prefers reduced
+ *    motion — visitors who turn off animation still get manual arrow
+ *    controls and swipe gestures.
+ *  - Swipe gestures handled via `onPointerDown`/`onPointerMove`/
+ *    `onPointerUp` so they work with both touch and mouse drags.
+ */
+function TestimonialsGrid({
+  testimonials,
+  onPlay,
+}: {
+  testimonials: TestimonialListItem[];
+  onPlay: (youtubeId: string | null) => void;
+}) {
+  const t = useTranslations("testimonials");
+  const reducedMotion = useReducedMotion();
+  const [activeIndex, setActiveIndex] = React.useState(0);
+  const [isPaused, setIsPaused] = React.useState(false);
+
+  const goTo = React.useCallback(
+    (next: number) => {
+      const len = testimonials.length;
+      if (len === 0) return;
+      setActiveIndex(((next % len) + len) % len);
+    },
+    [testimonials.length],
+  );
+
+  const advance = React.useCallback(() => {
+    goTo(activeIndex + 1);
+  }, [activeIndex, goTo]);
+
+  // Auto-rotate. Skipped when reduced motion is preferred or when the
+  // pointer is over the carousel.
+  React.useEffect(() => {
+    if (reducedMotion) return;
+    if (isPaused) return;
+    if (testimonials.length < 2) return;
+    const id = window.setInterval(advance, CAROUSEL_AUTOPLAY_MS);
+    return () => window.clearInterval(id);
+  }, [advance, isPaused, reducedMotion, testimonials.length]);
+
+  // Swipe gesture plumbing.
+  const pointerStartX = React.useRef<number | null>(null);
+  const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    pointerStartX.current = event.clientX;
+  };
+  const handlePointerUp = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (pointerStartX.current == null) return;
+    const delta = event.clientX - pointerStartX.current;
+    if (Math.abs(delta) >= SWIPE_THRESHOLD) {
+      goTo(activeIndex + (delta < 0 ? 1 : -1));
+    }
+    pointerStartX.current = null;
+  };
+  const handlePointerCancel = () => {
+    pointerStartX.current = null;
+  };
+
+  return (
+    <>
+      {/* Desktop / tablet grid — uses the existing staggered reveal. */}
+      <StaggerChildren
+        className="hidden gap-8 md:grid md:grid-cols-2"
+        stagger={0.12}
+        y={32}
+      >
+        {testimonials.map((testimonial) => (
+          <StaggerItem key={testimonial.id} className="h-full">
+            <TestimonialCard
+              testimonial={testimonial}
+              onPlay={() =>
+                onPlay(extractYouTubeId(testimonial.youtubeUrl))
+              }
+            />
+          </StaggerItem>
+        ))}
+      </StaggerChildren>
+
+      {/* Mobile carousel — single card at a time with prev/next + swipe. */}
+      {testimonials.length > 0 ? (
+        <div
+          className="md:hidden"
+          aria-roledescription="carousel"
+          aria-label={t("title")}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onFocusCapture={() => setIsPaused(true)}
+          onBlurCapture={() => setIsPaused(false)}
+        >
+          <div
+            className="relative overflow-hidden"
+            onPointerDown={handlePointerDown}
+            onPointerUp={handlePointerUp}
+            onPointerCancel={handlePointerCancel}
+            onPointerLeave={handlePointerCancel}
+          >
+            <div
+              className="flex transition-transform duration-500 ease-out motion-reduce:transition-none"
+              style={{
+                transform: `translateX(-${activeIndex * 100}%)`,
+                willChange: "transform",
+              }}
+            >
+              {testimonials.map((testimonial) => (
+                <div
+                  key={testimonial.id}
+                  className="w-full shrink-0 px-1"
+                  aria-roledescription="slide"
+                  aria-label={`${activeIndex + 1} / ${testimonials.length}`}
+                >
+                  <TestimonialCard
+                    testimonial={testimonial}
+                    onPlay={() =>
+                      onPlay(extractYouTubeId(testimonial.youtubeUrl))
+                    }
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-6 flex items-center justify-between gap-4">
+            <Button
+              type="button"
+              size="icon"
+              variant="outline"
+              onClick={() => goTo(activeIndex - 1)}
+              aria-label={t("previous")}
+              disabled={testimonials.length < 2}
+              className="min-h-11 min-w-11 rounded-sm"
+            >
+              <ChevronLeft aria-hidden className="h-5 w-5" />
+            </Button>
+            <div className="flex items-center gap-2" aria-hidden>
+              {testimonials.map((testimonial, idx) => (
+                <button
+                  key={testimonial.id}
+                  type="button"
+                  onClick={() => goTo(idx)}
+                  aria-label={`${idx + 1} / ${testimonials.length}`}
+                  aria-current={idx === activeIndex ? "true" : undefined}
+                  className={`h-2.5 w-2.5 rounded-full transition-colors duration-200 ${
+                    idx === activeIndex
+                      ? "bg-primary"
+                      : "bg-muted-foreground/30 hover:bg-muted-foreground/60"
+                  }`}
+                />
+              ))}
+            </div>
+            <Button
+              type="button"
+              size="icon"
+              variant="outline"
+              onClick={() => goTo(activeIndex + 1)}
+              aria-label={t("next")}
+              disabled={testimonials.length < 2}
+              className="min-h-11 min-w-11 rounded-sm"
+            >
+              <ChevronRight aria-hidden className="h-5 w-5" />
+            </Button>
+          </div>
+        </div>
+      ) : null}
+    </>
+  );
+}
+
+/**
  * Single testimonial card: 5-star rating, large pull quote, author
  * name, and (when available) a clickable video thumbnail that opens the
  * YouTube video in a clean modal player.
@@ -212,14 +383,14 @@ function TestimonialCard({ testimonial, onPlay }: TestimonialCardProps) {
               src={testimonial.imageUrl}
               alt=""
               fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              className="object-cover transition-transform duration-500 ease-out motion-safe:group-hover:scale-105"
               sizes="(max-width: 640px) 100vw, 50vw"
             />
           ) : (
             <div className="absolute inset-0 bg-gradient-to-br from-muted to-muted-foreground/20" />
           )}
           <span className="absolute inset-0 flex items-center justify-center bg-black/20 transition-colors group-hover:bg-black/30">
-            <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/90 text-foreground shadow-lg transition-transform group-hover:scale-110">
+            <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/90 text-foreground shadow-lg transition-transform motion-safe:group-hover:scale-110">
               <Play className="ml-1 h-6 w-6 fill-current" aria-hidden />
             </span>
           </span>
