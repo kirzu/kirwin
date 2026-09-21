@@ -9,6 +9,8 @@ import { getMessages as loadLocaleMessages } from "@/lib/i18n";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { MainNav } from "@/components/main-nav";
 import { MobileMenu } from "@/components/mobile-menu";
+import { CookieBanner } from "@/components/cookie-banner";
+import { MobileBookingCta } from "@/components/mobile-booking-cta";
 import "../globals.css";
 
 const inter = Inter({
@@ -33,9 +35,16 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://kirwinbodyworks.com";
+
 /**
  * Per-locale metadata. The site name/description live in the message
  * catalogue so editors can update them without touching this file.
+ *
+ * Open Graph / Twitter defaults are also resolved here so social share
+ * cards pick up the site name, description, and portrait without each
+ * page having to redefine them.
  */
 export async function generateMetadata({
   params,
@@ -44,9 +53,34 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   if (!isLocale(params.locale)) return {};
   const t = await getTranslations({ locale: params.locale, namespace: "site" });
+  const name = t("name");
+  const description = t("description");
   return {
-    title: t("name"),
-    description: t("description"),
+    metadataBase: new URL(SITE_URL),
+    title: name,
+    description,
+    openGraph: {
+      title: name,
+      description,
+      url: `/${params.locale}`,
+      siteName: name,
+      locale: params.locale.replace("-", "_"),
+      type: "website",
+      images: [
+        {
+          url: "/assets/stephen-portrait.jpg",
+          width: 1200,
+          height: 630,
+          alt: name,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: name,
+      description,
+      images: ["/assets/stephen-portrait.jpg"],
+    },
   };
 }
 
@@ -140,6 +174,8 @@ export default async function LocaleLayout({
               </div>
             </div>
           </footer>
+          <MobileBookingCta />
+          <CookieBanner />
         </NextIntlClientProvider>
       </body>
     </html>
