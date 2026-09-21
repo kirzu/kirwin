@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 /**
  * Public-site navigation bar.
  *
- * Renders the five public pages (Home, About, Courses, Testimonials,
+ * Renders the public pages (Home, About, Courses, Book, Testimonials,
  * Contact) as a list of links. The current route is detected via
  * `usePathname` and the matching link is given `aria-current="page"`
  * plus an active style so it reads as the active item.
@@ -36,6 +36,7 @@ export function MainNav({
     home: string;
     about: string;
     courses: string;
+    bookings: string;
     testimonials: string;
     contact: string;
   };
@@ -48,6 +49,7 @@ export function MainNav({
     { href: `/${locale}`, key: "home" },
     { href: `/${locale}/about`, key: "about" },
     { href: `/${locale}/courses`, key: "courses" },
+    { href: `/${locale}/bookings`, key: "bookings" },
     { href: `/${locale}/testimonials`, key: "testimonials" },
     { href: `/${locale}/contact`, key: "contact" },
   ];
@@ -100,7 +102,7 @@ function isActiveRoute(
   pathname: string,
   href: string,
   locale: Locale,
-  key: "home" | "about" | "courses" | "testimonials" | "contact",
+  key: "home" | "about" | "courses" | "bookings" | "testimonials" | "contact",
 ): boolean {
   if (key === "home") {
     return pathname === `/${locale}` || pathname === "/";

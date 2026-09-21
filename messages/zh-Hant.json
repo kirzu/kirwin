@@ -12,6 +12,7 @@
     "home": "首頁",
     "about": "關於",
     "courses": "課程",
+    "bookings": "預約",
     "contact": "聯絡",
     "testimonials": "客戶評價",
     "admin": "管理後台"
@@ -529,6 +530,18 @@
         "backToCourses": "返回課程列表"
       }
     }
+  },
+  "bookings": {
+    "title": "預約療程",
+    "subtitle": "預約身體工作服務，或報名即將舉行的研討會。",
+    "intro": "所有預約均透過 Cliniko 安全預約系統處理。選擇適合您的時間，Stephen 將在工作室與您會面。",
+    "cta": "透過 Cliniko 預約",
+    "coursesTitle": "想參加研討會？",
+    "coursesBody": "瀏覽目前的身體工作坊課程，預約您的梯次席次。",
+    "coursesCta": "瀏覽課程",
+    "contactTitle": "先想諮詢？",
+    "contactBody": "歡迎聯絡，Stephen 將於兩個工作日內回覆。",
+    "contactCta": "聯絡我們"
   },
   "common": {
     "loading": "載入中…",

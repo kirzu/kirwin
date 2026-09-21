@@ -93,6 +93,7 @@ export default async function LocaleLayout({
                     home: t("home"),
                     about: t("about"),
                     courses: t("courses"),
+                    bookings: t("bookings"),
                     testimonials: t("testimonials"),
                     contact: t("contact"),
                   }}
@@ -108,6 +109,7 @@ export default async function LocaleLayout({
                   home: t("home"),
                   about: t("about"),
                   courses: t("courses"),
+                  bookings: t("bookings"),
                   testimonials: t("testimonials"),
                   contact: t("contact"),
                 }}

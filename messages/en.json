@@ -12,6 +12,7 @@
     "home": "Home",
     "about": "About",
     "courses": "Courses",
+    "bookings": "Book",
     "contact": "Contact",
     "testimonials": "Testimonials",
     "admin": "Admin"
@@ -529,6 +530,18 @@
         "backToCourses": "Back to courses"
       }
     }
+  },
+  "bookings": {
+    "title": "Book an appointment",
+    "subtitle": "Schedule a bodywork session or reserve your place in an upcoming seminar.",
+    "intro": "All appointments are managed through our secure Cliniko scheduler. Choose a time that works for you and Stephen will see you at the studio.",
+    "cta": "Book through Cliniko",
+    "coursesTitle": "Prefer a seminar?",
+    "coursesBody": "Browse the current schedule of bodywork seminars and reserve your seat in an upcoming cohort.",
+    "coursesCta": "Browse seminars",
+    "contactTitle": "Questions first?",
+    "contactBody": "Reach out and Stephen will reply within two business days.",
+    "contactCta": "Get in touch"
   },
   "common": {
     "loading": "Loading…",

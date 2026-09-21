@@ -21,7 +21,7 @@ import type { Locale } from "@/i18n.config";
  * remain visible. Tapping the hamburger opens a right-side `Sheet`
  * (full-height drawer) containing:
  *
- *   - The same 5 public nav links as `MainNav`, stacked vertically
+ *   - The same public nav links as `MainNav`, stacked vertically
  *     with ≥44px tap targets (`min-h-11 py-3`) so the menu is
  *     comfortable on touch devices.
  *   - The `LanguageSwitcher` in a vertical, full-width pill layout
@@ -43,6 +43,7 @@ export function MobileMenu({
     home: string;
     about: string;
     courses: string;
+    bookings: string;
     testimonials: string;
     contact: string;
   };
