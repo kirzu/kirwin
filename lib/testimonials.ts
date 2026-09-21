@@ -55,6 +55,6 @@ export const ORIGINAL_TESTIMONIALS: StaticTestimonial[] = [
       "His approach to bodywork is highly intuitive and uses a variety of techniques and makes me completely comfortable",
     rating: 5,
     youtubeUrl: "https://www.youtube.com/shorts/yleywQGhYrY",
-    imageUrl: null,
+    imageUrl: "https://img.youtube.com/vi/yleywQGhYrY/maxresdefault.jpg",
   },
 ];
