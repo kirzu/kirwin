@@ -12,6 +12,8 @@ import { MobileMenu } from "@/components/mobile-menu";
 import { CookieBanner } from "@/components/cookie-banner";
 import { MobileBookingCta } from "@/components/mobile-booking-cta";
 import { ScrollProgress } from "@/components/scroll-progress";
+import { FilmGrain } from "@/components/film-grain";
+import { PageTransition } from "@/components/page-transition";
 import "../globals.css";
 
 const inter = Inter({
@@ -154,7 +156,9 @@ export default async function LocaleLayout({
               />
             </nav>
           </header>
-          <main className="flex-1">{children}</main>
+          <main className="flex-1">
+            <PageTransition>{children}</PageTransition>
+          </main>
           <footer className="border-t border-zinc-200 dark:border-zinc-800">
             <div className="mx-auto flex max-w-5xl flex-col gap-4 px-4 py-6 text-xs text-zinc-500 dark:text-zinc-400 sm:flex-row sm:items-center sm:justify-between sm:px-6">
               <span>
@@ -163,13 +167,13 @@ export default async function LocaleLayout({
               <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
                 <Link
                   href={`/${locale}/privacy`}
-                  className="transition-colors hover:text-primary"
+                  className="link-underline transition-colors hover:text-primary"
                 >
                   {tFooter("links.privacy")}
                 </Link>
                 <Link
                   href={`/${locale}/terms`}
-                  className="transition-colors hover:text-primary"
+                  className="link-underline transition-colors hover:text-primary"
                 >
                   {tFooter("links.terms")}
                 </Link>
@@ -178,6 +182,10 @@ export default async function LocaleLayout({
           </footer>
           <MobileBookingCta />
           <CookieBanner />
+          {/* Subtle, fixed film-grain overlay. Sits above page content
+           * but below fixed interactive surfaces (header, modals). The
+           * overlay is static, so no reduced-motion handling is needed. */}
+          <FilmGrain opacity={0.05} zIndex={1} />
         </NextIntlClientProvider>
       </body>
     </html>

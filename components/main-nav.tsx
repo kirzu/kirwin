@@ -74,7 +74,7 @@ export function MainNav({
             ? "block w-full rounded-sm border-l-4 border-primary bg-primary/10 px-4 py-3 min-h-11 text-base font-medium text-primary"
             : "block w-full rounded-sm border-l-4 border-transparent px-4 py-3 min-h-11 text-base font-medium text-zinc-800 transition-colors hover:bg-muted hover:text-primary dark:text-zinc-100"
           : [
-              "group nav-text-swap relative inline-flex items-center pb-1 text-sm font-medium transition-colors",
+              "group nav-text-swap link-underline relative inline-flex items-center pb-1 text-sm font-medium transition-colors",
               isActive
                 ? "text-primary"
                 : "text-zinc-700 hover:text-primary dark:text-zinc-300",

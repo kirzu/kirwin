@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/components/animations/animated-section";
 import { FadeIn } from "@/components/animations/fade-in";
 import { SplitText, MagneticButton } from "@/components/animations";
+import { LineReveal } from "@/components/animations";
 import { CLINIKO_BOOKING_URL } from "@/lib/cliniko";
 
 export interface BookingsViewProps {
@@ -80,8 +81,9 @@ export function BookingsView({ locale }: BookingsViewProps) {
       </section>
 
       {/* Secondary section — seminars or contact */}
-      <section aria-labelledby="bookings-next-title" className="border-t border-border">
-        <div className="mx-auto max-w-5xl px-6 py-14 sm:py-20">
+      <section aria-labelledby="bookings-next-title">
+        <div className="mx-auto max-w-5xl px-6 py-20 sm:py-28 lg:py-32">
+          <LineReveal className="-mb-6" />
           <h2 id="bookings-next-title" className="sr-only">
             {t("title")}
           </h2>

@@ -26,7 +26,8 @@
       "logoAlt": "Stephen Kirwin Bodywork Seminars logo"
     },
     "offerings": {
-      "title": "What we offer"
+      "title": "What we offer",
+      "eyebrow": "Practitioner training"
     },
     "training": {
       "title": "Hands-on neuromuscular therapy courses",
@@ -52,6 +53,7 @@
     },
     "experience": {
       "title": "Twenty-nine years of practice, condensed into every seminar.",
+      "eyebrow": "Credentials",
       "body": "Stephen Kirwin has spent more than two decades helping clients move out of pain and into a fuller relationship with their bodies. He studied at the University of Colorado, Boulder and the Boulder College of Massage Therapy, and has built a practice rooted in neuromuscular therapy and deep tissue bodywork. Today he teaches from Hong Kong, training practitioners across Asia in a precise, evidence-informed approach to therapeutic care.",
       "credentials": [
         "University of Colorado, Boulder",
@@ -65,6 +67,7 @@
     },
     "courses": {
       "title": "Ready to deepen your practice?",
+      "eyebrow": "Upcoming seminars",
       "body": "Browse the current schedule of bodywork seminars and reserve your seat. New cohorts open throughout the year in Hong Kong and across Asia.",
       "viewAllCta": "View all seminars",
       "previewTitle": "Featured seminars",
@@ -75,6 +78,7 @@
     },
     "testimonials": {
       "title": "From the treatment room",
+      "eyebrow": "What clients say",
       "intro": "Hear from athletes and clients who have worked with Stephen.",
       "cta": "Read more testimonials",
       "imageAlt": "Portrait of {name}",
@@ -204,7 +208,12 @@
     "ctaTitle": "Train with Stephen.",
     "ctaBody": "Browse the current schedule of bodywork seminars and reserve your seat in an upcoming cohort.",
     "ctaPrimary": "See upcoming courses",
-    "ctaSecondary": "Read Stephen's full story"
+    "ctaSecondary": "Read Stephen's full story",
+    "bioEyebrow": "Credentials",
+    "approachEyebrow": "A layered approach",
+    "partnersEyebrow": "Trusted partners",
+    "milestonesEyebrow": "Twenty-nine years",
+    "faqEyebrow": "Frequently asked"
   },
   "courses": {
     "title": "Upcoming seminars",
@@ -256,7 +265,9 @@
     "imageAlt": "Hands-on bodywork seminar in session.",
     "ctaTitle": "New cohorts open throughout the year.",
     "ctaBody": "Browse the current schedule and reserve your seat early — seminars fill quickly.",
-    "ctaPrimary": "View all seminars"
+    "ctaPrimary": "View all seminars",
+    "locationEyebrow": "Find us",
+    "listingEyebrow": "Upcoming seminars"
   },
   "courseDetail": {
     "back": "Back to all courses",
@@ -346,7 +357,8 @@
       "email": "Please enter a valid email address.",
       "messageTooShort": "Please write at least 10 characters.",
       "rateLimit": "You recently sent a message. Please wait an hour before sending another."
-    }
+    },
+    "detailsEyebrow": "Reach out"
   },
   "blog": {
     "title": "Blog",

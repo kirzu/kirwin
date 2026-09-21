@@ -21,3 +21,8 @@ export {
 } from "./magnetic-button";
 export { TiltCard, type TiltCardProps } from "./tilt-card";
 export { ImageReveal, type ImageRevealProps } from "./image-reveal";
+export { LineReveal, type LineRevealProps } from "./line-reveal";
+export {
+  SectionEyebrow,
+  type SectionEyebrowProps,
+} from "./section-eyebrow";

@@ -26,7 +26,8 @@
       "logoAlt": "Stephen Kirwin 身體工作坊標誌"
     },
     "offerings": {
-      "title": "課程內容"
+      "title": "課程內容",
+      "eyebrow": "實務者培訓"
     },
     "training": {
       "title": "神經肌肉療法的實作課程",
@@ -52,6 +53,7 @@
     },
     "experience": {
       "title": "二十九年的實務經驗,濃縮於每一堂課。",
+      "eyebrow": "重點資歷",
       "body": "Stephen Kirwin 投入身體工作超過二十年,協助客戶走出疼痛,重新與身體建立更完整的關係。他曾於美國科羅拉多大學波德分校與波德按摩治療學院學習,並以神經肌肉療法與深層組織身體工作為執業核心。如今他立足香港,於亞洲各地培訓實務工作者,傳遞精準、以實證為基礎的療癒照護方法。",
       "credentials": [
         "美國科羅拉多大學波德分校",
@@ -65,6 +67,7 @@
     },
     "courses": {
       "title": "準備好深化您的實務能力了嗎?",
+      "eyebrow": "近期開課梯次",
       "body": "瀏覽目前的身體工作坊課程並預約您的席次。新梯次於全年在香港及亞洲各地陸續開放。",
       "viewAllCta": "查看所有課程",
       "previewTitle": "精選課程",
@@ -75,6 +78,7 @@
     },
     "testimonials": {
       "title": "來自治療室的回饋",
+      "eyebrow": "客戶回饋",
       "intro": "聽聽曾與 Stephen 合作的運動員與客戶分享他們的經驗。",
       "cta": "閱讀更多客戶評價",
       "imageAlt": "{name} 的肖像",
@@ -204,7 +208,12 @@
     "ctaTitle": "與 Stephen 一起學習。",
     "ctaBody": "瀏覽目前的身體工作坊課程,預約您即將參與的梯次席次。",
     "ctaPrimary": "查看近期課程",
-    "ctaSecondary": "閱讀 Stephen 的完整故事"
+    "ctaSecondary": "閱讀 Stephen 的完整故事",
+    "bioEyebrow": "重點資歷",
+    "approachEyebrow": "多層次手法",
+    "partnersEyebrow": "合作夥伴",
+    "milestonesEyebrow": "二十九年的歷程",
+    "faqEyebrow": "常見問題"
   },
   "courses": {
     "title": "即將舉行的研討會",
@@ -256,7 +265,9 @@
     "imageAlt": "實作身體工作坊課程現場。",
     "ctaTitle": "新梯次於全年陸續開放。",
     "ctaBody": "歡迎瀏覽目前課程並提早預約席次,熱門梯次向來額滿迅速。",
-    "ctaPrimary": "查看所有課程"
+    "ctaPrimary": "查看所有課程",
+    "locationEyebrow": "場地位置",
+    "listingEyebrow": "近期開課梯次"
   },
   "courseDetail": {
     "back": "返回所有課程",
@@ -346,7 +357,8 @@
       "email": "請輸入有效的電子郵件地址。",
       "messageTooShort": "請輸入至少 10 個字元。",
       "rateLimit": "您最近已傳送過訊息，請稍後一小時再試。"
-    }
+    },
+    "detailsEyebrow": "聯絡方式"
   },
   "blog": {
     "title": "部落格",

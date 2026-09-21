@@ -45,6 +45,14 @@
     --brand-secondary-dark: #344c34;
     --brand-warm: #faf8f5;
     --brand-warm-dark: #2f2015;
+
+    /* Warm shadow tokens used by the luxury card / image treatments.
+     * Defined as HSL strings so we can re-use them with opacity utilities
+     * later if needed. */
+    --shadow-warm: 0 1px 2px hsl(28 31% 13% / 0.04),
+      0 8px 24px -8px hsl(28 31% 13% / 0.08);
+    --shadow-warm-lg: 0 1px 3px hsl(28 31% 13% / 0.05),
+      0 16px 40px -12px hsl(28 31% 13% / 0.12);
   }
 
   .dark {
@@ -74,6 +82,12 @@
     --brand-secondary-dark: #c7d8c7;
     --brand-warm: #2f2015;
     --brand-warm-dark: #faf8f5;
+
+    /* Warm shadows tuned for the dark surface. */
+    --shadow-warm: 0 1px 2px hsl(0 0% 0% / 0.3),
+      0 8px 24px -8px hsl(0 0% 0% / 0.5);
+    --shadow-warm-lg: 0 1px 3px hsl(0 0% 0% / 0.4),
+      0 16px 40px -12px hsl(0 0% 0% / 0.6);
   }
 }
 
@@ -99,6 +113,73 @@
   }
   h1, h2, h3, h4 {
     @apply font-display tracking-tight;
+  }
+  /* Display headings should run tighter than the default body line
+   * height. Tailwind's `leading-tight` is ~1.25, which is the right
+   * shape for our display serif at the sizes we use. */
+  h1, h2, h3, h4 {
+    line-height: 1.15;
+  }
+  /* Typography rhythm: a slightly larger gap between the section
+   * heading and the body copy. */
+  .section-heading + p,
+  .section-heading + .section-subtitle {
+    margin-top: 1.25rem;
+  }
+
+  /* Custom scrollbar — thin, warm-toned, understated. WebKit
+   * supports the full pseudo-element set; Firefox uses the pair of
+   * standard properties below. */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground) / 0.45) transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--muted-foreground) / 0.35);
+    border: 2px solid transparent;
+    background-clip: content-box;
+    border-radius: 9999px;
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--muted-foreground) / 0.6);
+  }
+  *::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+  /* Inline text link micro-interaction. Sliding underline that grows
+   * from the left edge on hover/focus. Applied via the `.link-underline`
+   * class on `<a>` elements (footer links, inline body copy links).
+   * The transform stays on the GPU and respects reduced-motion. */
+  .link-underline {
+    position: relative;
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 280ms cubic-bezier(0.22, 1, 0.36, 1),
+      color 200ms ease;
+  }
+  .link-underline:hover,
+  .link-underline:focus-visible {
+    background-size: 100% 1px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .link-underline {
+      transition: none;
+    }
+    .link-underline:hover,
+    .link-underline:focus-visible {
+      background-size: 100% 1px;
+    }
   }
 }
 
@@ -415,5 +496,26 @@
   .blog-article img {
     border-radius: 0.5rem;
     margin: 1.75em 0;
+  }
+
+  /* Luxury card / surface treatment. A very soft, warm shadow that
+   * sits between the page background and the content so cards feel
+   * raised without looking tinted. `.luxe-card` adds the shadow;
+   * `.luxe-card--hover` lifts it gently on hover. */
+  .luxe-card {
+    box-shadow: var(--shadow-warm);
+  }
+  .luxe-card--hover {
+    transition: box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .luxe-card--hover:hover,
+  .luxe-card--hover:focus-within {
+    box-shadow: var(--shadow-warm-lg);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .luxe-card--hover {
+      transition: none;
+    }
   }
 }

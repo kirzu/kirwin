@@ -26,6 +26,7 @@ import {
   MagneticButton,
   TiltCard,
 } from "@/components/animations";
+import { LineReveal, SectionEyebrow } from "@/components/animations";
 import { CLINIKO_BOOKING_URL } from "@/lib/cliniko";
 
 const HERO_IMAGE = "/assets/course-hands-on.jpg";
@@ -155,17 +156,18 @@ export function CoursesView({ locale, courses, hasCourses }: CoursesViewProps) {
       {/* Location band — embedded Google Map iframe */}
       <section
         aria-labelledby="courses-location-title"
-        className="border-t border-border"
       >
-        <div className="mx-auto flex max-w-5xl flex-col gap-6 px-6 py-14 sm:py-20">
+        <div className="mx-auto flex max-w-5xl flex-col gap-8 px-6 py-20 sm:py-28 lg:py-32">
+          <LineReveal className="-mb-6" />
           <FadeIn direction="up" className="flex flex-col items-center gap-4 text-center">
+            <SectionEyebrow className="mb-1">{t("locationEyebrow")}</SectionEyebrow>
             <h2
               id="courses-location-title"
-              className="font-sans text-2xl font-semibold leading-snug tracking-tight sm:text-3xl"
+              className="font-display text-3xl font-medium leading-tight tracking-tight sm:text-4xl lg:text-5xl"
             >
               {t("locationTitle")}
             </h2>
-            <p className="max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
+            <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
               {t("locationAddress")}
             </p>
             <p className="text-sm font-medium uppercase tracking-widest text-muted-foreground">
@@ -187,14 +189,15 @@ export function CoursesView({ locale, courses, hasCourses }: CoursesViewProps) {
       {/* Search + filters + listing (CMS courses) */}
       <section
         aria-labelledby="courses-listing-title"
-        className="border-t border-border"
       >
-        <div className="mx-auto flex max-w-5xl flex-col gap-8 px-6 py-14 sm:py-20">
+        <div className="mx-auto flex max-w-5xl flex-col gap-10 px-6 py-20 sm:py-28 lg:py-32">
+          <LineReveal className="-mb-6" />
           <FadeIn direction="up">
             <div className="flex flex-col gap-3">
+              <SectionEyebrow className="mb-1">{t("listingEyebrow")}</SectionEyebrow>
               <h2
                 id="courses-listing-title"
-                className="font-sans text-2xl font-semibold leading-snug tracking-tight sm:text-3xl"
+                className="font-display text-3xl font-medium leading-tight tracking-tight sm:text-4xl lg:text-5xl"
               >
                 {t("upcomingTitle")}
               </h2>
@@ -331,12 +334,13 @@ export function CoursesView({ locale, courses, hasCourses }: CoursesViewProps) {
       </section>
 
       {/* Closing CTA */}
-      <section aria-labelledby="courses-cta-title" className="border-t border-border">
-        <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 px-6 py-16 text-center sm:py-20">
+      <section aria-labelledby="courses-cta-title">
+        <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 px-6 py-20 text-center sm:py-28 lg:py-32">
+          <LineReveal className="-mb-6" />
           <FadeIn direction="up" className="flex flex-col items-center gap-6">
             <h2
               id="courses-cta-title"
-              className="font-sans text-2xl font-semibold leading-snug tracking-tight sm:text-3xl"
+              className="font-display text-3xl font-medium leading-tight tracking-tight sm:text-4xl lg:text-5xl"
             >
               <SplitText
                 text={t("ctaTitle")}
@@ -345,7 +349,7 @@ export function CoursesView({ locale, courses, hasCourses }: CoursesViewProps) {
                 duration={650}
               />
             </h2>
-            <p className="max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
+            <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
               {t("ctaBody")}
             </p>
             <div className="flex flex-wrap justify-center gap-3 pt-2">
@@ -395,7 +399,7 @@ function CourseCardItem({
 }: CourseCardItemProps) {
   const thumb = course.imageUrl ?? FALLBACK_THUMB;
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-sm border border-border bg-background transition-[box-shadow,transform] duration-300 ease-out motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-md motion-safe:focus-within:-translate-y-0.5">
+    <article className="luxe-card luxe-card--hover group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-background transition-[box-shadow,transform] duration-300 ease-out motion-safe:hover:-translate-y-0.5 motion-safe:focus-within:-translate-y-0.5">
       <div className="grid h-full grid-rows-1 sm:grid-cols-[120px_1fr] md:grid-cols-[160px_1fr]">
         <div className="relative aspect-[4/3] w-full overflow-hidden sm:aspect-auto sm:h-full">
           <Image

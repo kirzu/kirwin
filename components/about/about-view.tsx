@@ -22,6 +22,7 @@ import { ParallaxImage } from "@/components/animations/parallax-image";
 import { AnimatedStat } from "@/components/animations/count-up";
 import { SplitText } from "@/components/animations/split-text";
 import { ImageReveal } from "@/components/animations/image-reveal";
+import { LineReveal, SectionEyebrow } from "@/components/animations";
 import { MagneticButton } from "@/components/animations/magnetic-button";
 
 const milestoneIcons = [Compass, Target, Compass, Target] as const;
@@ -131,14 +132,14 @@ export function AboutView({
       {/* Biography — portrait + paragraphs + credentials */}
       <section
         aria-labelledby="about-bio-title"
-        className="border-t border-border"
       >
-        <div className="mx-auto grid max-w-5xl gap-12 px-6 py-14 sm:py-20 md:grid-cols-5 md:gap-16">
+        <div className="mx-auto grid max-w-5xl gap-12 px-6 py-20 sm:py-28 lg:py-32 md:grid-cols-5 md:gap-16">
+          <LineReveal className="col-span-full -mb-4 md:hidden" />
           <FadeIn direction="left" className="md:col-span-2">
             <ImageReveal
               direction="right"
               duration={900}
-              className="overflow-hidden rounded-sm border border-border"
+              className="overflow-hidden rounded-tl-3xl rounded-br-3xl rounded-tr-lg rounded-bl-lg border border-border"
             >
               <figure>
                 <div className="relative aspect-[4/5] w-full">
@@ -164,13 +165,14 @@ export function AboutView({
             className="md:col-span-3"
           >
             <div className="flex flex-col gap-6">
+              <SectionEyebrow>{t("bioEyebrow")}</SectionEyebrow>
               <h2
                 id="about-bio-title"
-                className="font-sans text-2xl font-semibold leading-snug tracking-tight text-foreground sm:text-3xl"
+                className="font-display text-3xl font-medium leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl"
               >
                 Stephen Kirwin
               </h2>
-              <div className="flex flex-col gap-5 text-base leading-7 text-muted-foreground sm:text-lg">
+              <div className="mt-2 flex flex-col gap-5 text-base leading-7 text-muted-foreground sm:text-lg">
                 {bioParagraphs.map((paragraph, index) => (
                   <p key={`about-bio-${index}`}>{paragraph}</p>
                 ))}
@@ -198,18 +200,19 @@ export function AboutView({
       {/* Modality approach + Wellness partners — flat two-column lists */}
       <section
         aria-labelledby="about-approach-title"
-        className="border-t border-border"
       >
-        <div className="mx-auto flex max-w-5xl flex-col gap-12 px-6 py-14 sm:py-20 md:flex-row md:gap-16">
+        <div className="mx-auto flex max-w-5xl flex-col gap-12 px-6 py-20 sm:py-28 lg:py-32 md:flex-row md:gap-16">
+          <LineReveal className="-mb-4 md:hidden" />
           <FadeIn direction="up" className="md:flex-1">
             <div className="flex flex-col gap-5">
+              <SectionEyebrow className="mb-1">{t("approachEyebrow")}</SectionEyebrow>
               <h2
                 id="about-approach-title"
-                className="font-sans text-2xl font-semibold leading-snug tracking-tight sm:text-3xl"
+                className="font-display text-3xl font-medium leading-tight tracking-tight sm:text-4xl lg:text-5xl"
               >
                 {t("approachTitle")}
               </h2>
-              <p className="max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">
+              <p className="mt-4 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">
                 {t("approachBody")}
               </p>
               <ul className="mt-2 flex flex-col gap-2 border-t border-border pt-5">
@@ -237,10 +240,11 @@ export function AboutView({
             className="md:flex-1"
           >
             <div className="flex flex-col gap-5">
-              <h2 className="font-sans text-2xl font-semibold leading-snug tracking-tight sm:text-3xl">
+              <SectionEyebrow className="mb-1">{t("partnersEyebrow")}</SectionEyebrow>
+              <h2 className="font-display text-3xl font-medium leading-tight tracking-tight sm:text-4xl lg:text-5xl">
                 {t("partnersTitle")}
               </h2>
-              <p className="max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">
+              <p className="mt-4 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">
                 {t("partnersBody")}
               </p>
               <ul className="mt-2 flex flex-col gap-2 border-t border-border pt-5">
@@ -265,18 +269,19 @@ export function AboutView({
       {/* Timeline / approach milestones — 2+2 asymmetric grid */}
       <section
         aria-labelledby="about-milestones-title"
-        className="border-t border-border"
       >
-        <div className="mx-auto flex max-w-5xl flex-col gap-8 px-6 py-14 sm:py-20">
+        <div className="mx-auto flex max-w-5xl flex-col gap-10 px-6 py-20 sm:py-28 lg:py-32">
+          <LineReveal className="-mb-6" />
           <FadeIn direction="up">
             <div className="max-w-3xl">
+              <SectionEyebrow className="mb-3">{t("milestonesEyebrow")}</SectionEyebrow>
               <h2
                 id="about-milestones-title"
-                className="font-sans text-2xl font-semibold leading-snug tracking-tight sm:text-3xl"
+                className="font-display text-3xl font-medium leading-tight tracking-tight sm:text-4xl lg:text-5xl"
               >
                 {t("milestonesTitle")}
               </h2>
-              <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
+              <p className="mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
                 {t("milestonesIntro")}
               </p>
             </div>
@@ -323,18 +328,19 @@ export function AboutView({
       {/* FAQ */}
       <section
         aria-labelledby="about-faq-title"
-        className="border-t border-border"
       >
-        <div className="mx-auto flex max-w-3xl flex-col gap-8 px-6 py-14 sm:py-20">
+        <div className="mx-auto flex max-w-3xl flex-col gap-10 px-6 py-20 sm:py-28 lg:py-32">
+          <LineReveal className="-mb-6" />
           <FadeIn direction="up">
             <div className="max-w-3xl">
+              <SectionEyebrow className="mb-3">{t("faqEyebrow")}</SectionEyebrow>
               <h2
                 id="about-faq-title"
-                className="font-sans text-2xl font-semibold leading-snug tracking-tight sm:text-3xl"
+                className="font-display text-3xl font-medium leading-tight tracking-tight sm:text-4xl lg:text-5xl"
               >
                 {t("faqTitle")}
               </h2>
-              <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
+              <p className="mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
                 {t("faqIntro")}
               </p>
             </div>
@@ -359,16 +365,17 @@ export function AboutView({
       </section>
 
       {/* Closing CTA */}
-      <section aria-labelledby="about-cta-title" className="border-t border-border">
-        <div className="mx-auto flex max-w-5xl flex-col gap-6 px-6 py-14 sm:py-20">
+      <section aria-labelledby="about-cta-title">
+        <div className="mx-auto flex max-w-5xl flex-col gap-6 px-6 py-20 sm:py-28 lg:py-32">
+          <LineReveal className="-mb-6" />
           <FadeIn direction="up" className="flex flex-col gap-6">
             <h2
               id="about-cta-title"
-              className="max-w-3xl font-sans text-2xl font-semibold leading-snug tracking-tight sm:text-3xl"
+              className="max-w-3xl font-display text-3xl font-medium leading-tight tracking-tight sm:text-4xl lg:text-5xl"
             >
               {t("ctaTitle")}
             </h2>
-            <p className="max-w-3xl text-base leading-7 text-muted-foreground sm:text-lg">
+            <p className="mt-3 max-w-3xl text-base leading-7 text-muted-foreground sm:text-lg">
               {t("ctaBody")}
             </p>
             <div className="flex flex-wrap gap-3 pt-2">

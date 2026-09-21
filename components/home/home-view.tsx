@@ -23,6 +23,7 @@ import { SplitText } from "@/components/animations/split-text";
 import { MagneticButton } from "@/components/animations/magnetic-button";
 import { TiltCard } from "@/components/animations/tilt-card";
 import { ImageReveal } from "@/components/animations/image-reveal";
+import { LineReveal, SectionEyebrow } from "@/components/animations";
 import { AnimatedHeroBackground } from "./animated-hero-background";
 
 const trainingIcons = [Compass, Hand, Target, ClipboardCheck] as const;
@@ -140,16 +141,17 @@ export function HomeView({
 
       {/* What we offer — 2x2 grid of training items */}
       <section aria-labelledby="home-offerings-title">
-        <div className="mx-auto flex max-w-5xl flex-col gap-8 px-6 py-14 sm:py-20">
+        <div className="mx-auto flex max-w-5xl flex-col gap-10 px-6 py-20 sm:py-28 lg:py-32">
           <FadeIn direction="up">
             <div className="max-w-3xl">
+              <SectionEyebrow className="mb-3">{t("offerings.eyebrow")}</SectionEyebrow>
               <h2
                 id="home-offerings-title"
-                className="font-sans text-2xl font-semibold leading-snug tracking-tight text-foreground sm:text-3xl"
+                className="font-display text-3xl font-medium leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl"
               >
                 {t("offerings.title")}
               </h2>
-              <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
+              <p className="mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
                 {t("training.intro")}
               </p>
             </div>
@@ -190,17 +192,18 @@ export function HomeView({
           does not show an empty band. */}
       {featuredCourses.length > 0 ? (
         <section aria-labelledby="home-courses-title">
-          <div className="mx-auto flex max-w-5xl flex-col gap-8 px-6 py-14 sm:py-20">
+          <div className="mx-auto flex max-w-5xl flex-col gap-10 px-6 py-20 sm:py-28 lg:py-32">
             <FadeIn direction="up">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                 <div className="max-w-2xl">
+                  <SectionEyebrow className="mb-3">{t("courses.eyebrow")}</SectionEyebrow>
                   <h2
                     id="home-courses-title"
-                    className="font-sans text-2xl font-semibold leading-snug tracking-tight text-foreground sm:text-3xl"
+                    className="font-display text-3xl font-medium leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl"
                   >
                     {t("courses.title")}
                   </h2>
-                  <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
+                  <p className="mt-5 text-base leading-7 text-muted-foreground sm:text-lg">
                     {t("courses.previewBody")}
                   </p>
                 </div>
@@ -221,7 +224,7 @@ export function HomeView({
               {featuredCourses.map((course) => (
                 <StaggerItem key={course.id} className="h-full">
                   <TiltCard className="h-full" maxTiltX={5} maxTiltY={5}>
-                    <article className="flex h-full flex-col border border-border bg-background">
+                    <article className="luxe-card luxe-card--hover flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-background">
                       <div className="flex flex-1 flex-col gap-4 p-6">
                         <h3 className="font-sans text-xl font-medium leading-snug text-foreground">
                           {course.title}
@@ -251,12 +254,12 @@ export function HomeView({
 
       {/* About Stephen — portrait + bio + credentials */}
       <section aria-labelledby="home-about-title">
-        <div className="mx-auto grid max-w-5xl gap-12 px-6 py-14 sm:py-20 md:grid-cols-5 md:gap-16">
+        <div className="mx-auto grid max-w-5xl gap-12 px-6 py-20 sm:py-28 lg:py-32 md:grid-cols-5 md:gap-16">
           <FadeIn direction="left" className="md:col-span-2">
             <ImageReveal
               direction="right"
               duration={900}
-              className="overflow-hidden rounded-sm border border-border"
+              className="overflow-hidden rounded-tl-3xl rounded-br-3xl rounded-tr-lg rounded-bl-lg border border-border"
             >
               <figure>
                 <div className="relative aspect-[4/5] w-full">
@@ -279,13 +282,14 @@ export function HomeView({
             className="md:col-span-3"
           >
             <div className="flex flex-col gap-6">
+              <SectionEyebrow>{t("experience.eyebrow")}</SectionEyebrow>
               <h2
                 id="home-about-title"
-                className="font-sans text-2xl font-semibold leading-snug tracking-tight text-foreground sm:text-3xl"
+                className="font-display text-3xl font-medium leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl"
               >
                 {t("experience.title")}
               </h2>
-              <p className="text-base leading-7 text-muted-foreground sm:text-lg">
+              <p className="mt-2 text-base leading-7 text-muted-foreground sm:text-lg">
                 {t("experience.body")}
               </p>
 
@@ -305,7 +309,7 @@ export function HomeView({
               </ul>
 
               <div>
-                <Button asChild variant="link" className="h-auto px-0 text-base">
+                <Button asChild variant="link" className="link-underline h-auto px-0 text-base">
                   <a href={`/${locale}/about`}>
                     {t("experience.cta")}
                     <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
@@ -320,18 +324,19 @@ export function HomeView({
       {/* Testimonials teaser — one strong quote + link to full list */}
       <section
         aria-labelledby="home-testimonials-title"
-        className="border-t border-border"
       >
-        <div className="mx-auto flex max-w-5xl flex-col gap-8 px-6 py-14 sm:py-20">
+        <div className="mx-auto flex max-w-5xl flex-col gap-10 px-6 py-20 sm:py-28 lg:py-32">
+          <LineReveal />
           <FadeIn direction="up">
             <div className="max-w-2xl">
+              <SectionEyebrow className="mb-3">{t("testimonials.eyebrow")}</SectionEyebrow>
               <h2
                 id="home-testimonials-title"
-                className="font-sans text-2xl font-semibold leading-snug tracking-tight text-foreground sm:text-3xl"
+                className="font-display text-3xl font-medium leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl"
               >
                 {t("testimonials.title")}
               </h2>
-              <p className="mt-3 text-base leading-7 text-muted-foreground sm:text-lg">
+              <p className="mt-5 text-base leading-7 text-muted-foreground sm:text-lg">
                 {t("testimonials.intro")}
               </p>
             </div>
@@ -374,7 +379,7 @@ export function HomeView({
                     t("testimonials.fallbackName")}
                 </figcaption>
                 <div className="pt-2">
-                  <Button asChild variant="link" className="h-auto px-0 text-base">
+                  <Button asChild variant="link" className="link-underline h-auto px-0 text-base">
                     <a href={`/${locale}/testimonials`}>
                       {t("testimonials.cta")}
                       <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
@@ -390,17 +395,17 @@ export function HomeView({
       {/* Closing CTA — two pathways: courses and contact */}
       <section
         aria-labelledby="home-cta-title"
-        className="border-t border-border"
       >
-        <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 px-6 py-16 text-center sm:py-20">
-          <FadeIn direction="up" className="flex flex-col items-center gap-6">
+        <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 px-6 py-20 text-center sm:py-28 lg:py-32">
+          <LineReveal />
+          <FadeIn direction="up" className="mt-4 flex flex-col items-center gap-6">
             <h2
               id="home-cta-title"
-              className="font-sans text-2xl font-semibold leading-snug tracking-tight text-foreground sm:text-3xl"
+              className="font-display text-3xl font-medium leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl"
             >
               {t("cta.title")}
             </h2>
-            <p className="max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
+            <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
               {t("cta.body")}
             </p>
             <div className="flex flex-wrap justify-center gap-3 pt-2">

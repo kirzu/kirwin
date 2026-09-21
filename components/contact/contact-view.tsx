@@ -12,6 +12,7 @@ import {
   MagneticButton,
   ImageReveal,
 } from "@/components/animations";
+import { LineReveal, SectionEyebrow } from "@/components/animations";
 import ContactForm from "@/app/[locale]/contact/contact-form";
 import { CLINIKO_BOOKING_URL } from "@/lib/cliniko";
 
@@ -109,20 +110,21 @@ export function ContactView({ locale, phoneHref, emailHref, mapHref }: ContactVi
       {/* Details + form — two-column layout with animated reveal */}
       <section
         aria-labelledby="contact-details-title"
-        className="border-t border-border"
       >
-        <div className="mx-auto flex max-w-6xl flex-col gap-12 px-6 py-14 sm:py-20 lg:flex-row lg:gap-16">
+        <div className="mx-auto flex max-w-6xl flex-col gap-12 px-6 py-20 sm:py-28 lg:py-32 lg:flex-row lg:gap-16">
+          <LineReveal className="-mb-6" />
           {/* Left column: contact details, hours, map */}
           <FadeIn direction="left" className="lg:basis-[44%]">
             <div className="flex flex-col gap-10">
               <div className="flex flex-col gap-4">
+                <SectionEyebrow>{t("detailsEyebrow")}</SectionEyebrow>
                 <h2
                   id="contact-details-title"
-                  className="font-sans text-2xl font-semibold leading-snug tracking-tight sm:text-3xl"
+                  className="font-display text-3xl font-medium leading-tight tracking-tight sm:text-4xl lg:text-5xl"
                 >
                   {t("detailsTitle")}
                 </h2>
-                <p className="max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">
+                <p className="mt-4 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">
                   {t("detailsIntro")}
                 </p>
               </div>
@@ -142,7 +144,7 @@ export function ContactView({ locale, phoneHref, emailHref, mapHref }: ContactVi
                           href={detail.href}
                           target={detail.external ? "_blank" : undefined}
                           rel={detail.external ? "noreferrer noopener" : undefined}
-                          className="transition-colors hover:text-primary"
+                          className="link-underline transition-colors hover:text-primary"
                         >
                           {detail.value}
                         </a>
@@ -203,17 +205,17 @@ export function ContactView({ locale, phoneHref, emailHref, mapHref }: ContactVi
       {/* Closing CTA */}
       <section
         aria-labelledby="contact-cta-title"
-        className="border-t border-border"
       >
-        <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 px-6 py-16 text-center sm:py-20">
+        <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 px-6 py-20 text-center sm:py-28 lg:py-32">
+          <LineReveal className="-mb-6" />
           <FadeIn direction="up" className="flex flex-col items-center gap-6">
             <h2
               id="contact-cta-title"
-              className="font-sans text-2xl font-semibold leading-snug tracking-tight sm:text-3xl"
+              className="font-display text-3xl font-medium leading-tight tracking-tight sm:text-4xl lg:text-5xl"
             >
               {t("cta.title")}
             </h2>
-            <p className="max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
+            <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
               {t("cta.body")}
             </p>
             <div className="flex flex-wrap justify-center gap-3 pt-2">
