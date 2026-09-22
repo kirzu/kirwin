@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Inter, Lora } from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -14,6 +14,7 @@ import { MobileBookingCta } from "@/components/mobile-booking-cta";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { FilmGrain } from "@/components/film-grain";
 import { PageTransition } from "@/components/page-transition";
+import { Instagram } from "lucide-react";
 import "../globals.css";
 
 const inter = Inter({
@@ -22,15 +23,15 @@ const inter = Inter({
 });
 
 /**
- * Display serif for headings, hero copy, and decorative type. Wired into
+ * Display sans for headings, hero copy, and decorative type. Manrope is a
+ * modern geometric sans that pairs well with Inter. Wired into
  * `--font-display` so `font-display` (configured in `tailwind.config.js`)
- * resolves to Lora everywhere in the app.
+ * resolves to Manrope everywhere in the app.
  */
-const lora = Lora({
+const display = Manrope({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
@@ -112,7 +113,7 @@ export default async function LocaleLayout({
   const tFooter = await getTranslations({ locale, namespace: "footer" });
 
   return (
-    <html lang={locale} className={`${inter.variable} ${lora.variable} h-full antialiased`}>
+    <html lang={locale} className={`${inter.variable} ${display.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col font-sans">
         <NextIntlClientProvider locale={locale} messages={messages as never}>
           <ScrollProgress />
@@ -165,6 +166,20 @@ export default async function LocaleLayout({
                 {tFooter("copyright", { year: new Date().getFullYear() })}
               </span>
               <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                <a
+                  href="https://www.instagram.com/stephenkirwinbodyworks/"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-label={tFooter("social.instagramLabel")}
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-sm text-zinc-500 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 dark:text-zinc-400"
+                  data-testid="footer-instagram"
+                >
+                  <Instagram aria-hidden="true" className="h-5 w-5" />
+                </a>
+                {/* TODO: add Facebook and LinkedIn icon links here once their
+                 * URLs are provided. Keep the same lucide icon + target/rel
+                 * pattern as the Instagram link above.
+                 */}
                 <Link
                   href={`/${locale}/privacy`}
                   className="link-underline transition-colors hover:text-primary"

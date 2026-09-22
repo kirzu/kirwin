@@ -5,6 +5,7 @@ import {
   ArrowRight,
   ClipboardCheck,
   Compass,
+  GraduationCap,
   Hand,
   Quote,
   Sparkles,
@@ -56,6 +57,11 @@ export interface HomeViewProps {
  * translations and a small set of pre-shaped data (training items,
  * credentials, course preview, and a featured testimonial) so the
  * animation primitives can run without crossing the server/client boundary.
+ *
+ * The page is organised around a single question — "Do you want a
+ * session, or do you want to train?" — which is answered by two large
+ * choice cards directly under the hero. Everything below supports that
+ * primary decision.
  */
 export function HomeView({
   locale,
@@ -79,7 +85,7 @@ export function HomeView({
           className="absolute inset-0 -z-10 bg-background/70 dark:bg-background/50"
         />
 
-        <div className="mx-auto flex max-w-5xl flex-col gap-8 px-6 pb-24 pt-16 sm:pb-32 sm:pt-24">
+        <div className="mx-auto flex max-w-5xl flex-col gap-8 px-6 pb-16 pt-16 sm:pb-20 sm:pt-24">
           <FadeIn duration={0.7}>
             <Image
               src="/assets/logo.png"
@@ -113,33 +119,121 @@ export function HomeView({
               {t("hero.subtitle")}
             </p>
           </AnimatedSection>
-
-          <FadeIn direction="up" delay={0.35} duration={0.8}>
-            <div className="flex flex-wrap gap-3 pt-2">
-              <MagneticButton>
-                <Button asChild size="lg" shimmer className="rounded-sm">
-                  <a href={`/${locale}/courses`}>
-                    {t("hero.primaryCta")}
-                    <ArrowRight aria-hidden="true" className="ml-2 h-4 w-4" />
-                  </a>
-                </Button>
-              </MagneticButton>
-              <MagneticButton>
-                <Button
-                  asChild
-                  size="lg"
-                  variant="outline"
-                  className="rounded-sm border-foreground/40 bg-transparent text-foreground hover:bg-foreground/10"
-                >
-                  <a href={`/${locale}/contact`}>{t("hero.secondaryCta")}</a>
-                </Button>
-              </MagneticButton>
-            </div>
-          </FadeIn>
         </div>
       </section>
 
-      {/* What we offer — 2x2 grid of training items */}
+      {/* Choice cards — the primary decision on the page */}
+      <section
+        aria-labelledby="home-choice-title"
+        className="border-b border-border"
+      >
+        <div className="mx-auto flex max-w-5xl flex-col gap-10 px-6 py-14 sm:py-20">
+          <FadeIn direction="up">
+            <div className="max-w-2xl">
+              <SectionEyebrow className="mb-3">{t("choice.eyebrow")}</SectionEyebrow>
+              <h2
+                id="home-choice-title"
+                className="font-display text-2xl font-medium leading-tight tracking-tight text-foreground sm:text-3xl lg:text-4xl"
+              >
+                {t("choice.title")}
+              </h2>
+              <p className="mt-4 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">
+                {t("choice.body")}
+              </p>
+            </div>
+          </FadeIn>
+
+          <StaggerChildren
+            className="grid gap-6 md:grid-cols-2"
+            stagger={0.12}
+            y={32}
+          >
+            {/* Massage choice */}
+            <StaggerItem className="h-full">
+              <TiltCard className="h-full" maxTiltX={4} maxTiltY={4}>
+                <article
+                  data-testid="home-choice-massage"
+                  className="luxe-card luxe-card--hover flex h-full flex-col gap-5 rounded-2xl border border-border bg-background p-7 sm:p-8"
+                >
+                  <div className="flex flex-col gap-3">
+                    <SectionEyebrow>
+                      {t("choice.massageEyebrow")}
+                    </SectionEyebrow>
+                    <h3 className="font-display text-2xl font-medium leading-snug tracking-tight text-foreground sm:text-3xl">
+                      {t("choice.massageTitle")}
+                    </h3>
+                    <p className="text-base leading-7 text-muted-foreground">
+                      {t("choice.massageBody")}
+                    </p>
+                  </div>
+                  <div className="mt-auto pt-2">
+                    <MagneticButton>
+                      <Button
+                        asChild
+                        size="lg"
+                        shimmer
+                        className="min-h-11 w-full rounded-sm sm:w-auto"
+                      >
+                        <a
+                          href={`/${locale}/bookings`}
+                          data-testid="home-choice-massage-cta"
+                        >
+                          <Sparkles aria-hidden className="mr-2 h-4 w-4" />
+                          {t("choice.massageCta")}
+                          <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
+                        </a>
+                      </Button>
+                    </MagneticButton>
+                  </div>
+                </article>
+              </TiltCard>
+            </StaggerItem>
+
+            {/* Courses choice */}
+            <StaggerItem className="h-full">
+              <TiltCard className="h-full" maxTiltX={4} maxTiltY={4}>
+                <article
+                  data-testid="home-choice-courses"
+                  className="luxe-card luxe-card--hover flex h-full flex-col gap-5 rounded-2xl border border-border bg-background p-7 sm:p-8"
+                >
+                  <div className="flex flex-col gap-3">
+                    <SectionEyebrow>
+                      {t("choice.coursesEyebrow")}
+                    </SectionEyebrow>
+                    <h3 className="font-display text-2xl font-medium leading-snug tracking-tight text-foreground sm:text-3xl">
+                      {t("choice.coursesTitle")}
+                    </h3>
+                    <p className="text-base leading-7 text-muted-foreground">
+                      {t("choice.coursesBody")}
+                    </p>
+                  </div>
+                  <div className="mt-auto pt-2">
+                    <MagneticButton>
+                      <Button
+                        asChild
+                        size="lg"
+                        variant="outline"
+                        className="min-h-11 w-full rounded-sm sm:w-auto"
+                      >
+                        <a
+                          href={`/${locale}/courses`}
+                          data-testid="home-choice-courses-cta"
+                        >
+                          <GraduationCap aria-hidden className="mr-2 h-4 w-4" />
+                          {t("choice.coursesCta")}
+                          <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
+                        </a>
+                      </Button>
+                    </MagneticButton>
+                  </div>
+                </article>
+              </TiltCard>
+            </StaggerItem>
+          </StaggerChildren>
+        </div>
+      </section>
+
+      {/* What we offer — short training summary */}
       <section aria-labelledby="home-offerings-title">
         <div className="mx-auto flex max-w-5xl flex-col gap-10 px-6 py-20 sm:py-28 lg:py-32">
           <FadeIn direction="up">
@@ -322,9 +416,7 @@ export function HomeView({
       </section>
 
       {/* Testimonials teaser — one strong quote + link to full list */}
-      <section
-        aria-labelledby="home-testimonials-title"
-      >
+      <section aria-labelledby="home-testimonials-title">
         <div className="mx-auto flex max-w-5xl flex-col gap-10 px-6 py-20 sm:py-28 lg:py-32">
           <LineReveal />
           <FadeIn direction="up">
@@ -365,10 +457,7 @@ export function HomeView({
                 </div>
               )}
               <div className="flex flex-col gap-4">
-                <Quote
-                  aria-hidden
-                  className="h-5 w-5 text-primary"
-                />
+                <Quote aria-hidden className="h-5 w-5 text-primary" />
                 <blockquote className="font-display text-xl leading-snug text-foreground sm:text-2xl">
                   {featuredTestimonial?.quote ??
                     t("testimonials.fallbackQuote")}
@@ -392,10 +481,8 @@ export function HomeView({
         </div>
       </section>
 
-      {/* Closing CTA — two pathways: courses and contact */}
-      <section
-        aria-labelledby="home-cta-title"
-      >
+      {/* Closing CTA — both pathways remain reachable */}
+      <section aria-labelledby="home-cta-title">
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 px-6 py-20 text-center sm:py-28 lg:py-32">
           <LineReveal />
           <FadeIn direction="up" className="mt-4 flex flex-col items-center gap-6">
@@ -411,7 +498,7 @@ export function HomeView({
             <div className="flex flex-wrap justify-center gap-3 pt-2">
               <MagneticButton>
                 <Button asChild size="lg" shimmer className="rounded-sm">
-                  <a href={`/${locale}/courses`}>
+                  <a href={`/${locale}/bookings`}>
                     {t("cta.primaryCta")}
                     <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
                   </a>
@@ -419,7 +506,7 @@ export function HomeView({
               </MagneticButton>
               <MagneticButton>
                 <Button asChild size="lg" variant="outline" className="rounded-sm">
-                  <a href={`/${locale}/contact`}>{t("cta.secondaryCta")}</a>
+                  <a href={`/${locale}/courses`}>{t("cta.secondaryCta")}</a>
                 </Button>
               </MagneticButton>
             </div>

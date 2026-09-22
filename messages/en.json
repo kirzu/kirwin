@@ -19,42 +19,55 @@
   },
   "home": {
     "hero": {
-      "title": "Train in neuromuscular therapy and deep tissue bodywork with a practitioner who has taught across Asia.",
-      "subtitle": "Hands-on neuromuscular therapy and deep tissue bodywork seminars.",
-      "primaryCta": "Book appointment",
-      "secondaryCta": "Browse courses",
-      "logoAlt": "Stephen Kirwin Bodywork Seminars logo"
+      "title": "Book a massage with Stephen Kirwin — or study under him.",
+      "subtitle": "Therapeutic bodywork in Wan Chai, plus small-cohort neuromuscular therapy seminars across Asia.",
+      "primaryCta": "Book a massage with Stephen",
+      "secondaryCta": "Study under Stephen",
+      "logoAlt": "Stephen Kirwin Bodyworks logo"
+    },
+    "choice": {
+      "eyebrow": "Choose your path",
+      "title": "Two ways to work with Stephen.",
+      "body": "Whether you are looking for a therapeutic session or want to train in the same hands-on method, start here.",
+      "massageEyebrow": "Therapeutic bodywork",
+      "massageTitle": "Book a massage with Stephen",
+      "massageBody": "Reserve a neuromuscular therapy or deep tissue session at the Wan Chai studio.",
+      "massageCta": "Book a massage",
+      "coursesEyebrow": "Practitioner training",
+      "coursesTitle": "Study under Stephen",
+      "coursesBody": "Join a small-cohort seminar and learn the assessment-driven bodywork method Stephen has refined for twenty-nine years.",
+      "coursesCta": "Browse seminars"
     },
     "offerings": {
       "title": "What we offer",
-      "eyebrow": "Practitioner training"
+      "eyebrow": "At the studio"
     },
     "training": {
-      "title": "Hands-on neuromuscular therapy courses",
-      "intro": "Our seminars focus on practical skills you can apply in the treatment room from day one. Each module builds on the last so you graduate with a complete, integrated approach to therapeutic care.",
+      "title": "Hands-on therapeutic bodywork",
+      "intro": "Stephen's sessions blend neuromuscular therapy, deep tissue, and structural alignment to release chronic holding patterns, reduce pain, and restore function — anchored in twenty-nine years of clinical practice.",
       "items": [
         {
-          "title": "Learn deep tissue and corrective bodywork",
-          "body": "Read the body with confidence through postural analysis, range-of-motion testing, and precise palpation of soft tissue."
+          "title": "Neuromuscular therapy",
+          "body": "Precise, assessment-driven soft-tissue work that targets trigger points, muscular holding patterns, and posture-related pain."
         },
         {
-          "title": "Small classes with expert guidance",
-          "body": "Apply targeted neuromuscular therapy to release chronic holding patterns, reduce pain, and restore function."
+          "title": "Deep tissue bodywork",
+          "body": "Layered, sustained pressure that releases chronic tension and restores range of motion."
         },
         {
-          "title": "Assessment across multiple modalities",
-          "body": "Layer deep tissue work with structural alignment so your sessions are effective, sustainable, and safe for the practitioner."
+          "title": "Structural alignment",
+          "body": "Read the body through postural analysis and range-of-motion testing to design sessions that are effective and sustainable."
         },
         {
           "title": "Treatment planning you can repeat",
-          "body": "Build clear, measurable treatment plans your clients understand, with progress markers that keep them coming back."
+          "body": "Clear, measurable plans so you understand what to expect and how progress is tracked between sessions."
         }
       ]
     },
     "experience": {
-      "title": "Twenty-nine years of practice, condensed into every seminar.",
+      "title": "Twenty-nine years of practice, condensed into every session.",
       "eyebrow": "Credentials",
-      "body": "Stephen Kirwin has spent more than two decades helping clients move out of pain and into a fuller relationship with their bodies. He studied at the University of Colorado, Boulder and the Boulder College of Massage Therapy, and has built a practice rooted in neuromuscular therapy and deep tissue bodywork. Today he teaches from Hong Kong, training practitioners across Asia in a precise, evidence-informed approach to therapeutic care.",
+      "body": "Stephen Kirwin has spent more than two decades helping clients move out of pain and into a fuller relationship with their bodies. He studied at the University of Colorado, Boulder and the Boulder College of Massage Therapy, and has built a practice rooted in neuromuscular therapy and deep tissue bodywork. Today he sees clients and teaches from Hong Kong.",
       "credentials": [
         "University of Colorado, Boulder",
         "Boulder College of Massage Therapy",
@@ -63,17 +76,17 @@
         "Based in Hong Kong"
       ],
       "cta": "Read Stephen's full story",
-      "imageAlt": "Stephen working with a client during a bodywork seminar."
+      "imageAlt": "Stephen working with a client during a bodywork session."
     },
     "courses": {
-      "title": "Ready to deepen your practice?",
+      "title": "Ready to train in the same method?",
       "eyebrow": "Upcoming seminars",
-      "body": "Browse the current schedule of bodywork seminars and reserve your seat. New cohorts open throughout the year in Hong Kong and across Asia.",
+      "body": "If you are a practitioner looking to deepen your hands-on approach, browse the current schedule of bodywork seminars and reserve your seat.",
       "viewAllCta": "View all seminars",
       "previewTitle": "Featured seminars",
       "previewBody": "A glimpse of upcoming cohorts. Reserve your seat early — seminars fill quickly.",
       "previewEmpty": "New seminar dates will be announced soon. Subscribe via the contact page to be the first to know.",
-      "previewReserve": "Book appointment",
+      "previewReserve": "View seminar",
       "durationLabel": "Duration"
     },
     "testimonials": {
@@ -86,10 +99,10 @@
       "fallbackName": "Alex"
     },
     "cta": {
-      "title": "Train with Stephen.",
-      "body": "Book your appointment directly through our online booking system, or browse the current schedule of bodywork seminars.",
-      "primaryCta": "Book appointment",
-      "secondaryCta": "Browse courses"
+      "title": "Ready to book a session?",
+      "body": "Reserve a therapeutic session directly through our online booking system, or browse upcoming seminars if you are a practitioner looking to train.",
+      "primaryCta": "Book a massage",
+      "secondaryCta": "Browse seminars"
     }
   },
   "about": {
@@ -409,6 +422,9 @@
     "links": {
       "privacy": "Privacy policy",
       "terms": "Terms of service"
+    },
+    "social": {
+      "instagramLabel": "Follow Stephen Kirwin Bodyworks on Instagram"
     }
   },
   "admin": {
@@ -544,16 +560,16 @@
     }
   },
   "bookings": {
-    "title": "Book an appointment",
-    "subtitle": "Schedule a bodywork session or reserve your place in an upcoming seminar.",
-    "intro": "All appointments are managed through our secure Cliniko scheduler. Choose a time that works for you and Stephen will see you at the studio.",
-    "cta": "Book through Cliniko",
-    "coursesTitle": "Prefer a seminar?",
-    "coursesBody": "Browse the current schedule of bodywork seminars and reserve your seat in an upcoming cohort.",
-    "coursesCta": "Browse seminars",
-    "contactTitle": "Questions first?",
-    "contactBody": "Reach out and Stephen will reply within two business days.",
-    "contactCta": "Get in touch"
+    "title": "Book a massage",
+    "subtitle": "Reserve a therapeutic bodywork session with Stephen at the Wan Chai studio.",
+    "intro": "Choose a time that works for you and Stephen will see you at the studio.",
+    "iframeTitle": "Cliniko online booking scheduler",
+    "fallbackTitle": "Can\u2019t see the scheduler?",
+    "fallbackBody": "Open the Cliniko booking page in a new tab to reserve your session.",
+    "fallbackCta": "Open Cliniko scheduler",
+    "afterTitle": "After you book",
+    "afterBody": "Stephen will confirm your session by email. Reach out through the contact page if you have any questions before your visit.",
+    "afterCta": "Get in touch"
   },
   "common": {
     "loading": "Loading…",
@@ -565,6 +581,6 @@
     "accept": "Accept"
   },
   "mobileBookingCta": {
-    "label": "Book appointment"
+    "label": "Book a massage"
   }
 }

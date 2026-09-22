@@ -251,15 +251,16 @@ describe("HomeView", () => {
     );
 
     expect(screen.getByText("cta.title")).toBeInTheDocument();
-    // Both primary and secondary CTAs point to /en/courses and /en/contact.
+    // Both primary and secondary CTAs point to /en/bookings and /en/courses
+    // so visitors can either book a massage or browse seminars.
+    const bookingsLinks = screen
+      .getAllByRole("link")
+      .filter((link) => link.getAttribute("href") === "/en/bookings");
     const coursesLinks = screen
       .getAllByRole("link")
       .filter((link) => link.getAttribute("href") === "/en/courses");
-    const contactLinks = screen
-      .getAllByRole("link")
-      .filter((link) => link.getAttribute("href") === "/en/contact");
 
+    expect(bookingsLinks.length).toBeGreaterThan(0);
     expect(coursesLinks.length).toBeGreaterThan(0);
-    expect(contactLinks.length).toBeGreaterThan(0);
   });
 });

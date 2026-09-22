@@ -14,6 +14,10 @@ type TrainingItem = { title: string; body: string };
 /**
  * Per-locale metadata for the home page. The site name/description live in
  * the message catalogue so editors can localise them without touching code.
+ *
+ * The page now leads with massage booking and surfaces seminars as a
+ * secondary path, so the title is drawn from `home.choice.title` — the
+ * "Two ways to work with Stephen" headline used by the choice cards.
  */
 export async function generateMetadata({
   params,
@@ -22,9 +26,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   if (!isLocale(params.locale)) return {};
   const t = await getTranslations({ locale: params.locale, namespace: "site" });
-  const tHome = await getTranslations({ locale: params.locale, namespace: "home.hero" });
+  const tChoice = await getTranslations({
+    locale: params.locale,
+    namespace: "home.choice",
+  });
   return {
-    title: tHome("title"),
+    title: tChoice("title"),
     description: t("description"),
   };
 }

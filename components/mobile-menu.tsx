@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Instagram, Menu, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -51,6 +52,7 @@ export function MobileMenu({
   switchToTemplate: string;
 }) {
   const [open, setOpen] = useState(false);
+  const tFooter = useTranslations("footer");
 
   function close() {
     setOpen(false);
@@ -110,6 +112,25 @@ export function MobileMenu({
                 variant="drawer"
                 onNavigate={close}
               />
+            </div>
+
+            <div className="flex flex-col gap-2 border-t border-border pt-5">
+              <a
+                href="https://www.instagram.com/stephenkirwinbodyworks/"
+                target="_blank"
+                rel="noreferrer noopener"
+                onClick={close}
+                aria-label={tFooter("social.instagramLabel")}
+                className="inline-flex h-11 items-center gap-2 rounded-sm px-3 text-base font-medium text-foreground transition-colors hover:bg-muted hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                data-testid="mobile-menu-instagram"
+              >
+                <Instagram aria-hidden="true" className="h-5 w-5" />
+                Instagram
+              </a>
+              {/* TODO: add Facebook and LinkedIn icon links here once their
+               * URLs are provided. Use the same lucide icon + target/rel
+               * pattern as the Instagram link above.
+               */}
             </div>
           </nav>
         </SheetContent>

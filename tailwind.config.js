@@ -17,7 +17,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        display: ["var(--font-display)", "Georgia", "Cambria", "serif"],
+        display: ["var(--font-display)", "system-ui", "sans-serif"],
       },
       colors: {
         brand: {

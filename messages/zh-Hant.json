@@ -19,42 +19,55 @@
   },
   "home": {
     "hero": {
-      "title": "與一位曾在亞洲各地授課的實踐者，學習神經肌肉治療與深層組織身體工作。",
-      "subtitle": "著重神經肌肉療法與深層組織身體工作的實作研討會。",
-      "primaryCta": "預約療程",
-      "secondaryCta": "瀏覽課程",
+      "title": "向 Stephen Kirwin 預約按摩,或跟隨他學習。",
+      "subtitle": "灣仔的治療性身體工作,以及亞洲各地的小班制神經肌肉療法研討會。",
+      "primaryCta": "向 Stephen 預約按摩",
+      "secondaryCta": "跟隨 Stephen 學習",
       "logoAlt": "Stephen Kirwin 身體工作坊標誌"
     },
+    "choice": {
+      "eyebrow": "選擇您的方向",
+      "title": "兩種方式與 Stephen 合作。",
+      "body": "無論您希望預約一次治療性的身體工作,或想學習同樣的實作方法,都可以從這裡開始。",
+      "massageEyebrow": "治療性身體工作",
+      "massageTitle": "向 Stephen 預約按摩",
+      "massageBody": "在灣仔工作室預約神經肌肉療法或深層組織身體工作。",
+      "massageCta": "預約按摩",
+      "coursesEyebrow": "實務者培訓",
+      "coursesTitle": "跟隨 Stephen 學習",
+      "coursesBody": "加入小班制研討會,學習 Stephen 二十九年來精煉出的、以評估為本的身體工作方法。",
+      "coursesCta": "瀏覽課程"
+    },
     "offerings": {
-      "title": "課程內容",
-      "eyebrow": "實務者培訓"
+      "title": "服務內容",
+      "eyebrow": "工作室提供"
     },
     "training": {
-      "title": "神經肌肉療法的實作課程",
-      "intro": "我們的課程著重於您在治療室第一天就能應用的實務技巧。每一個模組都承先啟後,讓您結業時具備完整且整合性的療癒照護方法。",
+      "title": "治療性身體工作",
+      "intro": "Stephen 的療程融合神經肌肉療法、深層組織與結構調整,釋放長期緊繃的模式、緩解疼痛並恢復功能——奠基於二十九年的臨床實務。",
       "items": [
         {
-          "title": "學習深層組織與調整性身體工作",
-          "body": "透過姿勢分析、活動度測試與精準的軟組織觸診,自信地讀懂身體的訊息。"
+          "title": "神經肌肉療法",
+          "body": "以精準、以評估為本的軟組織手法處理激痛點、肌肉代償模式與姿勢相關的疼痛。"
         },
         {
-          "title": "小班制並由專家親自指導",
-          "body": "運用精準的神經肌肉療法釋放長期緊繃的模式,緩解疼痛並恢復功能。"
+          "title": "深層組織身體工作",
+          "body": "以分層、持續的壓力釋放長期緊繃,恢復活動範圍。"
         },
         {
-          "title": "橫跨多種手法的整合評估",
-          "body": "將深層組織手法與結構調整結合,使療程有效、可持續,並兼顧施術者的安全。"
+          "title": "結構調整",
+          "body": "透過姿勢分析與活動度測試讀懂身體,設計有效且可永續執行的療程。"
         },
         {
           "title": "可重複執行的療程規劃",
-          "body": "建立客戶能理解、成效可衡量的療程計畫,並以明確的進展指標留住客戶。"
+          "body": "建立客戶能理解、成效可衡量的療程計畫,讓您清楚每次的進展。"
         }
       ]
     },
     "experience": {
-      "title": "二十九年的實務經驗,濃縮於每一堂課。",
+      "title": "二十九年的實務經驗,濃縮於每一次療程。",
       "eyebrow": "重點資歷",
-      "body": "Stephen Kirwin 投入身體工作超過二十年,協助客戶走出疼痛,重新與身體建立更完整的關係。他曾於美國科羅拉多大學波德分校與波德按摩治療學院學習,並以神經肌肉療法與深層組織身體工作為執業核心。如今他立足香港,於亞洲各地培訓實務工作者,傳遞精準、以實證為基礎的療癒照護方法。",
+      "body": "Stephen Kirwin 投入身體工作超過二十年,協助客戶走出疼痛,重新與身體建立更完整的關係。他曾於美國科羅拉多大學波德分校與波德按摩治療學院學習,並以神經肌肉療法與深層組織身體工作為執業核心。如今他立足香港,接待客戶並從事教學。",
       "credentials": [
         "美國科羅拉多大學波德分校",
         "波德按摩治療學院",
@@ -66,14 +79,14 @@
       "imageAlt": "Stephen 與客戶於身體工作坊中進行實作。"
     },
     "courses": {
-      "title": "準備好深化您的實務能力了嗎?",
+      "title": "準備好學習同樣的方法了嗎?",
       "eyebrow": "近期開課梯次",
-      "body": "瀏覽目前的身體工作坊課程並預約您的席次。新梯次於全年在香港及亞洲各地陸續開放。",
+      "body": "若您是希望深化手法工作的實務工作者,歡迎瀏覽目前的身體工作坊課程並預約您的席次。",
       "viewAllCta": "查看所有課程",
       "previewTitle": "精選課程",
       "previewBody": "近期開課梯次搶先看。建議提早預約席次,課程向來額滿迅速。",
       "previewEmpty": "新梯次日期將於近期公佈。歡迎透過聯絡頁面訂閱,取得第一手資訊。",
-      "previewReserve": "預約療程",
+      "previewReserve": "查看課程",
       "durationLabel": "課程時長"
     },
     "testimonials": {
@@ -86,9 +99,9 @@
       "fallbackName": "Alex"
     },
     "cta": {
-      "title": "與 Stephen 一起學習。",
-      "body": "歡迎直接透過線上預約系統安排療程,或瀏覽目前的身體工作坊課程。",
-      "primaryCta": "預約療程",
+      "title": "準備好預約療程了嗎?",
+      "body": "歡迎直接透過線上預約系統預約治療性療程,或瀏覽近期開課梯次,如果您是希望受訓的實務工作者。",
+      "primaryCta": "預約按摩",
       "secondaryCta": "瀏覽課程"
     }
   },
@@ -409,6 +422,9 @@
     "links": {
       "privacy": "隱私權政策",
       "terms": "使用條款"
+    },
+    "social": {
+      "instagramLabel": "追蹤 Stephen Kirwin Bodyworks 的 Instagram"
     }
   },
   "admin": {
@@ -544,16 +560,16 @@
     }
   },
   "bookings": {
-    "title": "預約療程",
-    "subtitle": "預約身體工作服務，或報名即將舉行的研討會。",
-    "intro": "所有預約均透過 Cliniko 安全預約系統處理。選擇適合您的時間，Stephen 將在工作室與您會面。",
-    "cta": "透過 Cliniko 預約",
-    "coursesTitle": "想參加研討會？",
-    "coursesBody": "瀏覽目前的身體工作坊課程，預約您的梯次席次。",
-    "coursesCta": "瀏覽課程",
-    "contactTitle": "先想諮詢？",
-    "contactBody": "歡迎聯絡，Stephen 將於兩個工作日內回覆。",
-    "contactCta": "聯絡我們"
+    "title": "預約按摩",
+    "subtitle": "預約 Stephen 在灣仔工作室的治療性身體工作療程。",
+    "intro": "選擇適合您的時間，Stephen 將在工作室與您會面。",
+    "iframeTitle": "Cliniko 線上預約系統",
+    "fallbackTitle": "無法顯示預約系統？",
+    "fallbackBody": "於新分頁開啟 Cliniko 預約頁面以預約您的療程。",
+    "fallbackCta": "開啟 Cliniko 預約系統",
+    "afterTitle": "預約完成後",
+    "afterBody": "Stephen 將透過電子郵件確認您的療程。如有任何疑問，歡迎透過聯絡頁面與我們聯絡。",
+    "afterCta": "聯絡我們"
   },
   "common": {
     "loading": "載入中…",
@@ -565,6 +581,6 @@
     "accept": "接受"
   },
   "mobileBookingCta": {
-    "label": "預約療程"
+    "label": "預約按摩"
   }
 }
