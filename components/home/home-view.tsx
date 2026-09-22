@@ -151,7 +151,7 @@ export function HomeView({
           >
             {/* Massage choice */}
             <StaggerItem className="h-full">
-              <TiltCard className="h-full" maxTiltX={4} maxTiltY={4}>
+              <TiltCard className="h-full" innerClassName="h-full" maxTiltX={4} maxTiltY={4}>
                 <article
                   data-testid="home-choice-massage"
                   className="luxe-card luxe-card--hover flex h-full flex-col gap-5 rounded-2xl border border-border bg-background p-7 sm:p-8"
@@ -192,7 +192,7 @@ export function HomeView({
 
             {/* Courses choice */}
             <StaggerItem className="h-full">
-              <TiltCard className="h-full" maxTiltX={4} maxTiltY={4}>
+              <TiltCard className="h-full" innerClassName="h-full" maxTiltX={4} maxTiltY={4}>
                 <article
                   data-testid="home-choice-courses"
                   className="luxe-card luxe-card--hover flex h-full flex-col gap-5 rounded-2xl border border-border bg-background p-7 sm:p-8"
