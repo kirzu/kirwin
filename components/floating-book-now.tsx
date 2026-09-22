@@ -1,10 +1,11 @@
 "use client";
 
-import { CalendarCheck, MessageCircle } from "lucide-react";
+import { CalendarCheck } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { locales, type Locale } from "@/i18n.config";
 import { useReducedMotion } from "@/components/animations/use-reduced-motion";
+import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
 
 /**
  * WhatsApp direct-chat deep link. The number is the same one displayed
@@ -74,7 +75,7 @@ export function FloatingBookNow() {
           "dark:border-zinc-800",
         ].join(" ")}
       >
-        <MessageCircle aria-hidden="true" className="h-5 w-5" />
+        <WhatsAppIcon aria-hidden="true" className="h-5 w-5" />
       </a>
 
       {/* Book now — bottom right, primary pill button */}

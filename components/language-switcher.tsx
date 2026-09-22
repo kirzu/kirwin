@@ -67,7 +67,7 @@ export function LanguageSwitcher({
               "rounded-full border border-zinc-300 transition-colors hover:border-zinc-500 hover:text-zinc-900 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-zinc-500 dark:hover:text-zinc-50",
               isDrawer
                 ? "min-h-11 px-4 py-3 text-center text-sm font-medium text-zinc-800 dark:text-zinc-100"
-                : "min-h-11 inline-flex items-center justify-center px-4 text-zinc-700"
+                : "min-h-11 inline-flex items-center justify-center px-3 text-zinc-700"
             )}
           >
             {showLabel ? label : short}

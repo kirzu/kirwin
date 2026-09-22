@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import type { Locale } from "@/i18n.config";
 import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/components/animations/animated-section";
@@ -13,6 +13,7 @@ import {
   ImageReveal,
 } from "@/components/animations";
 import { SectionEyebrow } from "@/components/animations";
+import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
 import ContactForm from "@/app/[locale]/contact/contact-form";
 import { CLINIKO_BOOKING_URL } from "@/lib/cliniko";
 
@@ -129,7 +130,7 @@ export function ContactView({ locale, phoneHref, emailHref, mapHref }: ContactVi
                   rel="noreferrer noopener"
                   data-testid="contact-whatsapp-cta"
                 >
-                  <MessageCircle aria-hidden="true" className="mr-2 h-4 w-4" />
+                  <WhatsAppIcon aria-hidden="true" className="mr-2 h-4 w-4" />
                   {t("whatsappCta")}
                 </a>
               </Button>
@@ -170,7 +171,7 @@ export function ContactView({ locale, phoneHref, emailHref, mapHref }: ContactVi
                         className="link-underline inline-flex items-center gap-2 transition-colors hover:text-primary"
                       >
                         {detail.label === t("whatsappLabel") ? (
-                          <MessageCircle aria-hidden="true" className="h-4 w-4" />
+                          <WhatsAppIcon aria-hidden="true" className="h-4 w-4" />
                         ) : null}
                         {detail.value}
                       </a>
