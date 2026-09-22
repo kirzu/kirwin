@@ -8,9 +8,11 @@ import { locales, isLocale, type Locale } from "@/i18n.config";
 import { getMessages as loadLocaleMessages } from "@/lib/i18n";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { MainNav } from "@/components/main-nav";
+import { HeaderBookNow } from "@/components/header-book-now";
 import { MobileMenu } from "@/components/mobile-menu";
 import { CookieBanner } from "@/components/cookie-banner";
 import { MobileBookingCta } from "@/components/mobile-booking-cta";
+import { FloatingBookNow } from "@/components/floating-book-now";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { FilmGrain } from "@/components/film-grain";
 import { PageTransition } from "@/components/page-transition";
@@ -119,12 +121,15 @@ export default async function LocaleLayout({
           <ScrollProgress />
           <header className="sticky top-0 z-50 border-b border-zinc-200 bg-background dark:border-zinc-800">
             <nav className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-4 text-sm sm:px-6">
-              <a
-                href={`/${locale}`}
-                className="truncate font-semibold tracking-tight text-zinc-900 dark:text-zinc-50"
-              >
-                {tSite("name")}
-              </a>
+              <div className="flex items-center gap-3 sm:gap-4">
+                <HeaderBookNow locale={locale} />
+                <a
+                  href={`/${locale}`}
+                  className="truncate font-semibold tracking-tight text-zinc-900 dark:text-zinc-50"
+                >
+                  {tSite("name")}
+                </a>
+              </div>
               <div className="hidden md:flex md:flex-1 md:items-center md:justify-end md:gap-6">
                 <MainNav
                   locale={locale}
@@ -196,6 +201,7 @@ export default async function LocaleLayout({
             </div>
           </footer>
           <MobileBookingCta />
+          <FloatingBookNow />
           <CookieBanner />
           {/* Subtle, fixed film-grain overlay. Sits above page content
            * but below fixed interactive surfaces (header, modals). The

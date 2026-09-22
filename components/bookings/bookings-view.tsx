@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/components/animations/animated-section";
 import { FadeIn } from "@/components/animations/fade-in";
 import { LineReveal, SectionEyebrow } from "@/components/animations";
+import { MassageOptionsSection } from "@/components/massage-options-section";
 import { CLINIKO_BOOKING_URL } from "@/lib/cliniko";
 
 export interface BookingsViewProps {
@@ -57,6 +58,12 @@ export function BookingsView({ locale }: BookingsViewProps) {
       </section>
 
       {/* Embedded Cliniko scheduler */}
+      <MassageOptionsSection
+        locale={locale}
+        namespace="bookings"
+        ariaLabelledById="bookings-massage-options-title"
+        showCta={false}
+      />
       <section
         aria-labelledby="bookings-scheduler-title"
         className="bg-muted/30"

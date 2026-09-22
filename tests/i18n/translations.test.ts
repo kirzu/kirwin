@@ -54,6 +54,8 @@ const IDENTICAL_ALLOWED: ReadonlySet<string> = new Set([
   "contact.emailValue", // Email address — locale-invariant.
   "contact.instagramLabel", // "Instagram" — proper noun.
   "contact.instagramHandle", // "@stephenkirwin.bodywork" — handle.
+  "contact.whatsappLabel", // "WhatsApp" — proper noun / brand.
+  "contact.whatsappHandle", // "+852 6906 5503" — phone number, locale-invariant.
   "contact.fields.emailPlaceholder", // "[email protected]" — example placeholder.
   "contact.fields.phonePlaceholder", // "+852 0000 0000" — phone placeholder.
   "about.bioCaption", // "Stephen Kirwin" — proper name.

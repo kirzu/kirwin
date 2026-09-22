@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MessageCircle } from "lucide-react";
 import type { Locale } from "@/i18n.config";
 import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/components/animations/animated-section";
@@ -17,6 +17,13 @@ import ContactForm from "@/app/[locale]/contact/contact-form";
 import { CLINIKO_BOOKING_URL } from "@/lib/cliniko";
 
 const INSTAGRAM_URL = "https://www.instagram.com/stephenkirwinbodyworks/";
+
+/**
+ * WhatsApp deep link for the contact grid. Uses the same number as the
+ * phone number and the floating WhatsApp button so visitors reach
+ * Stephen on the channel they expect.
+ */
+const WHATSAPP_HREF = "https://wa.me/85269065503";
 
 // OpenStreetMap embed centred on 218 Jaffe Road, Wan Chai, Hong Kong.
 // The previous `maps.google.com/maps?q=...&output=embed` URL 404s, so we
@@ -49,6 +56,12 @@ export function ContactView({ locale, phoneHref, emailHref, mapHref }: ContactVi
       label: t("instagramLabel"),
       value: t("instagramHandle"),
       href: INSTAGRAM_URL,
+      external: true,
+    },
+    {
+      label: t("whatsappLabel"),
+      value: t("whatsappHandle"),
+      href: WHATSAPP_HREF,
       external: true,
     },
   ];
@@ -109,6 +122,17 @@ export function ContactView({ locale, phoneHref, emailHref, mapHref }: ContactVi
                   <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
                 </a>
               </Button>
+              <Button asChild size="lg" variant="outline" className="rounded-sm">
+                <a
+                  href={WHATSAPP_HREF}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  data-testid="contact-whatsapp-cta"
+                >
+                  <MessageCircle aria-hidden="true" className="mr-2 h-4 w-4" />
+                  {t("whatsappCta")}
+                </a>
+              </Button>
             </div>
           </FadeIn>
         </div>
@@ -143,8 +167,11 @@ export function ContactView({ locale, phoneHref, emailHref, mapHref }: ContactVi
                         href={detail.href}
                         target={detail.external ? "_blank" : undefined}
                         rel={detail.external ? "noreferrer noopener" : undefined}
-                        className="link-underline transition-colors hover:text-primary"
+                        className="link-underline inline-flex items-center gap-2 transition-colors hover:text-primary"
                       >
+                        {detail.label === t("whatsappLabel") ? (
+                          <MessageCircle aria-hidden="true" className="h-4 w-4" />
+                        ) : null}
                         {detail.value}
                       </a>
                     ) : (

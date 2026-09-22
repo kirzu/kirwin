@@ -98,6 +98,35 @@
       "fallbackQuote": "Stephen has become more of a ritual to me every time I do a big race.",
       "fallbackName": "Alex"
     },
+    "massageOptions": {
+      "eyebrow": "Massage options",
+      "title": "Therapeutic bodywork sessions",
+      "intro": "Stephen offers a range of massage therapies from his studio in Wan Chai. Choose the session that best matches what your body needs today.",
+      "deepTissue": {
+        "title": "Deep Tissue Massage",
+        "description": "Layered, sustained pressure that releases chronic tension and restores range of motion."
+      },
+      "injuryRecovery": {
+        "title": "Injury Recovery",
+        "description": "Targeted bodywork that supports healing after strains, sprains, and overuse injuries."
+      },
+      "fullBody": {
+        "title": "Full Body Massage",
+        "description": "A complete, full-body session that releases tension from head to toe and leaves you fully reset."
+      },
+      "neuromuscular": {
+        "title": "Neuromuscular Therapy",
+        "description": "Precise, assessment-driven soft-tissue work that targets trigger points and posture-related pain."
+      },
+      "triggerPoint": {
+        "title": "Trigger Point Therapy",
+        "description": "Focused pressure on hyperirritable spots in the muscle to relieve referred pain and holding patterns."
+      },
+      "myofascialRelease": {
+        "title": "Myofascial Release",
+        "description": "Sustained, gentle pressure into the connective tissue to restore length, glide, and ease of movement."
+      }
+    },
     "cta": {
       "title": "Ready to book a session?",
       "body": "Reserve a therapeutic session directly through our online booking system, or browse upcoming seminars if you are a practitioner looking to train.",
@@ -371,7 +400,10 @@
       "messageTooShort": "Please write at least 10 characters.",
       "rateLimit": "You recently sent a message. Please wait an hour before sending another."
     },
-    "detailsEyebrow": "Reach out"
+    "detailsEyebrow": "Reach out",
+    "whatsappLabel": "WhatsApp",
+    "whatsappHandle": "+852 6906 5503",
+    "whatsappCta": "Chat on WhatsApp"
   },
   "blog": {
     "title": "Blog",
@@ -569,12 +601,50 @@
     "fallbackCta": "Open Cliniko scheduler",
     "afterTitle": "After you book",
     "afterBody": "Stephen will confirm your session by email. Reach out through the contact page if you have any questions before your visit.",
-    "afterCta": "Get in touch"
+    "afterCta": "Get in touch",
+    "massageOptions": {
+      "eyebrow": "Massage options",
+      "title": "Therapeutic bodywork sessions",
+      "intro": "Stephen offers a range of massage therapies from his studio in Wan Chai. Choose the session that best matches what your body needs today.",
+      "deepTissue": {
+        "title": "Deep Tissue Massage",
+        "description": "Layered, sustained pressure that releases chronic tension and restores range of motion."
+      },
+      "injuryRecovery": {
+        "title": "Injury Recovery",
+        "description": "Targeted bodywork that supports healing after strains, sprains, and overuse injuries."
+      },
+      "fullBody": {
+        "title": "Full Body Massage",
+        "description": "A complete, full-body session that releases tension from head to toe and leaves you fully reset."
+      },
+      "neuromuscular": {
+        "title": "Neuromuscular Therapy",
+        "description": "Precise, assessment-driven soft-tissue work that targets trigger points and posture-related pain."
+      },
+      "triggerPoint": {
+        "title": "Trigger Point Therapy",
+        "description": "Focused pressure on hyperirritable spots in the muscle to relieve referred pain and holding patterns."
+      },
+      "myofascialRelease": {
+        "title": "Myofascial Release",
+        "description": "Sustained, gentle pressure into the connective tissue to restore length, glide, and ease of movement."
+      }
+    }
   },
   "common": {
     "loading": "Loading…",
     "comingSoon": "Coming soon",
-    "back": "Back"
+    "back": "Back",
+    "bookNow": "Book now",
+    "whatsapp": "WhatsApp us"
+  },
+  "floatingActions": {
+    "bookLabel": "Book now — opens booking page",
+    "whatsappLabel": "Chat with us on WhatsApp"
+  },
+  "header": {
+    "bookNowLabel": "Book now — opens booking page"
   },
   "cookieBanner": {
     "message": "We use cookies to improve your experience. By continuing to use this site, you agree to our use of cookies.",

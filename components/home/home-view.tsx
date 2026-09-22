@@ -25,6 +25,7 @@ import { MagneticButton } from "@/components/animations/magnetic-button";
 import { TiltCard } from "@/components/animations/tilt-card";
 import { ImageReveal } from "@/components/animations/image-reveal";
 import { LineReveal, SectionEyebrow } from "@/components/animations";
+import { MassageOptionsSection } from "@/components/massage-options-section";
 import { AnimatedHeroBackground } from "./animated-hero-background";
 
 const trainingIcons = [Compass, Hand, Target, ClipboardCheck] as const;
@@ -232,6 +233,14 @@ export function HomeView({
           </StaggerChildren>
         </div>
       </section>
+
+      {/* Massage options — preview of the core therapeutic sessions offered at the Wan Chai studio. */}
+      <MassageOptionsSection
+        locale={locale}
+        namespace="home"
+        ariaLabelledById="home-massage-options-title"
+        showCta={false}
+      />
 
       {/* What we offer — short training summary */}
       <section aria-labelledby="home-offerings-title">
