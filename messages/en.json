@@ -19,24 +19,17 @@
   },
   "home": {
     "hero": {
-      "title": "Book a bodywork session with Stephen Kirwin — or study under him.",
-      "subtitle": "Therapeutic bodywork in Wan Chai, plus small-cohort neuromuscular therapy seminars across Asia.",
+      "title": "Book a bodywork session with Stephen Kirwin.",
+      "subtitle": "Therapeutic bodywork in Wan Chai — neuromuscular therapy, deep tissue, and structural alignment, anchored in twenty-nine years of clinical practice.",
       "primaryCta": "Book a bodywork session with Stephen",
       "secondaryCta": "Study under Stephen",
       "logoAlt": "Stephen Kirwin Bodyworks logo"
     },
-    "choice": {
-      "eyebrow": "Choose your path",
-      "title": "Two ways to work with Stephen.",
-      "body": "Whether you are looking for a therapeutic session or want to train in the same hands-on method, start here.",
-      "massageEyebrow": "Therapeutic bodywork",
-      "massageTitle": "Book a bodywork session with Stephen",
-      "massageBody": "Reserve a neuromuscular therapy or deep tissue session at the Wan Chai studio.",
-      "massageCta": "Book a session",
-      "coursesEyebrow": "Practitioner training",
-      "coursesTitle": "Study under Stephen",
-      "coursesBody": "Join a small-cohort seminar and learn the assessment-driven bodywork method Stephen has refined for twenty-nine years.",
-      "coursesCta": "Browse seminars"
+    "booking": {
+      "eyebrow": "Therapeutic bodywork",
+      "title": "Book a bodywork session with Stephen",
+      "body": "Reserve a neuromuscular therapy or deep tissue session at the Wan Chai studio.",
+      "cta": "Book a session"
     },
     "offerings": {
       "title": "What we offer",
@@ -127,11 +120,16 @@
         "description": "Sustained, gentle pressure into the connective tissue to restore length, glide, and ease of movement."
       }
     },
+    "courseInterest": {
+      "eyebrow": "Courses",
+      "heading": "Courses",
+      "body": "No upcoming seminars are scheduled right now. To register interest in future courses, leave your details and you'll be the first to know.",
+      "cta": "Leave your details"
+    },
     "cta": {
       "title": "Ready to book a session?",
-      "body": "Reserve a therapeutic session directly through our online booking system, or browse upcoming seminars if you are a practitioner looking to train.",
-      "primaryCta": "Book a session",
-      "secondaryCta": "Browse seminars"
+      "body": "Reserve a therapeutic session directly through our online booking system.",
+      "primaryCta": "Book a session"
     }
   },
   "about": {

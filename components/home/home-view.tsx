@@ -5,7 +5,6 @@ import {
   ArrowRight,
   ClipboardCheck,
   Compass,
-  GraduationCap,
   Hand,
   Quote,
   Sparkles,
@@ -30,15 +29,6 @@ import { AnimatedHeroBackground } from "./animated-hero-background";
 
 const trainingIcons = [Compass, Hand, Target, ClipboardCheck] as const;
 
-export type HomeCoursePreview = {
-  id: string;
-  slug: string;
-  title: string;
-  description: string | null;
-  durationLabel: string | null;
-  priceLabel: string;
-};
-
 export type HomeFeaturedTestimonial = {
   name: string;
   quote: string;
@@ -49,7 +39,6 @@ export interface HomeViewProps {
   locale: Locale;
   trainingItems: Array<{ title: string; body: string }>;
   credentials: string[];
-  featuredCourses: HomeCoursePreview[];
   featuredTestimonial?: HomeFeaturedTestimonial | null;
 }
 
@@ -59,16 +48,14 @@ export interface HomeViewProps {
  * credentials, course preview, and a featured testimonial) so the
  * animation primitives can run without crossing the server/client boundary.
  *
- * The page is organised around a single question — "Do you want a
- * session, or do you want to train?" — which is answered by two large
- * choice cards directly under the hero. Everything below supports that
- * primary decision.
+ * The page leads with massage: a single prominent booking card sits
+ * directly under the hero, and practitioner training is demoted to a
+ * small course-interest note near the bottom of the page.
  */
 export function HomeView({
   locale,
   trainingItems,
   credentials,
-  featuredCourses,
   featuredTestimonial = null,
 }: HomeViewProps) {
   const t = useTranslations("home");
@@ -123,114 +110,50 @@ export function HomeView({
         </div>
       </section>
 
-      {/* Choice cards — the primary decision on the page */}
+      {/* Booking card — the single prominent action on the page */}
       <section
-        aria-labelledby="home-choice-title"
+        aria-labelledby="home-booking-title"
         className="border-b border-border"
       >
-        <div className="mx-auto flex max-w-5xl flex-col gap-10 px-6 py-14 sm:py-20">
+        <div className="mx-auto flex max-w-3xl flex-col px-6 py-14 sm:py-20">
           <FadeIn direction="up">
-            <div className="max-w-2xl">
-              <SectionEyebrow className="mb-3">{t("choice.eyebrow")}</SectionEyebrow>
-              <h2
-                id="home-choice-title"
-                className="font-display text-2xl font-medium leading-tight tracking-tight text-foreground sm:text-3xl lg:text-4xl"
+            <TiltCard maxTiltX={4} maxTiltY={4}>
+              <article
+                data-testid="home-choice-massage"
+                className="luxe-card luxe-card--hover flex flex-col items-center gap-6 rounded-2xl border border-border bg-background p-7 text-center sm:p-10"
               >
-                {t("choice.title")}
-              </h2>
-              <p className="mt-4 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">
-                {t("choice.body")}
-              </p>
-            </div>
+                <div className="flex flex-col items-center gap-3">
+                  <SectionEyebrow>{t("booking.eyebrow")}</SectionEyebrow>
+                  <h2
+                    id="home-booking-title"
+                    className="font-display text-2xl font-medium leading-snug tracking-tight text-foreground sm:text-3xl lg:text-4xl"
+                  >
+                    {t("booking.title")}
+                  </h2>
+                  <p className="max-w-xl text-base leading-7 text-muted-foreground">
+                    {t("booking.body")}
+                  </p>
+                </div>
+                <MagneticButton>
+                  <Button
+                    asChild
+                    size="lg"
+                    shimmer
+                    className="min-h-11 rounded-sm"
+                  >
+                    <a
+                      href={`/${locale}/bookings`}
+                      data-testid="home-choice-massage-cta"
+                    >
+                      <Sparkles aria-hidden className="mr-2 h-4 w-4" />
+                      {t("booking.cta")}
+                      <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
+                    </a>
+                  </Button>
+                </MagneticButton>
+              </article>
+            </TiltCard>
           </FadeIn>
-
-          <StaggerChildren
-            className="grid gap-6 md:grid-cols-2"
-            stagger={0.12}
-            y={32}
-          >
-            {/* Bodywork choice */}
-            <StaggerItem className="h-full">
-              <TiltCard className="h-full" innerClassName="h-full" maxTiltX={4} maxTiltY={4}>
-                <article
-                  data-testid="home-choice-massage"
-                  className="luxe-card luxe-card--hover flex h-full flex-col gap-5 rounded-2xl border border-border bg-background p-7 sm:p-8"
-                >
-                  <div className="flex flex-col gap-3">
-                    <SectionEyebrow>
-                      {t("choice.massageEyebrow")}
-                    </SectionEyebrow>
-                    <h3 className="font-display text-2xl font-medium leading-snug tracking-tight text-foreground sm:text-3xl">
-                      {t("choice.massageTitle")}
-                    </h3>
-                    <p className="text-base leading-7 text-muted-foreground">
-                      {t("choice.massageBody")}
-                    </p>
-                  </div>
-                  <div className="mt-auto pt-2">
-                    <MagneticButton>
-                      <Button
-                        asChild
-                        size="lg"
-                        shimmer
-                        className="min-h-11 w-full rounded-sm sm:w-auto"
-                      >
-                        <a
-                          href={`/${locale}/bookings`}
-                          data-testid="home-choice-massage-cta"
-                        >
-                          <Sparkles aria-hidden className="mr-2 h-4 w-4" />
-                          {t("choice.massageCta")}
-                          <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
-                        </a>
-                      </Button>
-                    </MagneticButton>
-                  </div>
-                </article>
-              </TiltCard>
-            </StaggerItem>
-
-            {/* Courses choice */}
-            <StaggerItem className="h-full">
-              <TiltCard className="h-full" innerClassName="h-full" maxTiltX={4} maxTiltY={4}>
-                <article
-                  data-testid="home-choice-courses"
-                  className="luxe-card luxe-card--hover flex h-full flex-col gap-5 rounded-2xl border border-border bg-background p-7 sm:p-8"
-                >
-                  <div className="flex flex-col gap-3">
-                    <SectionEyebrow>
-                      {t("choice.coursesEyebrow")}
-                    </SectionEyebrow>
-                    <h3 className="font-display text-2xl font-medium leading-snug tracking-tight text-foreground sm:text-3xl">
-                      {t("choice.coursesTitle")}
-                    </h3>
-                    <p className="text-base leading-7 text-muted-foreground">
-                      {t("choice.coursesBody")}
-                    </p>
-                  </div>
-                  <div className="mt-auto pt-2">
-                    <MagneticButton>
-                      <Button
-                        asChild
-                        size="lg"
-                        variant="outline"
-                        className="min-h-11 w-full rounded-sm sm:w-auto"
-                      >
-                        <a
-                          href={`/${locale}/courses`}
-                          data-testid="home-choice-courses-cta"
-                        >
-                          <GraduationCap aria-hidden className="mr-2 h-4 w-4" />
-                          {t("choice.coursesCta")}
-                          <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
-                        </a>
-                      </Button>
-                    </MagneticButton>
-                  </div>
-                </article>
-              </TiltCard>
-            </StaggerItem>
-          </StaggerChildren>
         </div>
       </section>
 
@@ -289,71 +212,6 @@ export function HomeView({
           </StaggerChildren>
         </div>
       </section>
-
-      {/* Featured courses — preview grid with a single prominent CTA.
-          Hidden entirely when there are no featured courses so the page
-          does not show an empty band. */}
-      {featuredCourses.length > 0 ? (
-        <section aria-labelledby="home-courses-title">
-          <div className="mx-auto flex max-w-5xl flex-col gap-10 px-6 py-20 sm:py-28 lg:py-32">
-            <FadeIn direction="up">
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-                <div className="max-w-2xl">
-                  <SectionEyebrow className="mb-3">{t("courses.eyebrow")}</SectionEyebrow>
-                  <h2
-                    id="home-courses-title"
-                    className="font-display text-3xl font-medium leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl"
-                  >
-                    {t("courses.title")}
-                  </h2>
-                  <p className="mt-5 text-base leading-7 text-muted-foreground sm:text-lg">
-                    {t("courses.previewBody")}
-                  </p>
-                </div>
-                <Button asChild variant="outline" className="rounded-sm">
-                  <a href={`/${locale}/courses`}>
-                    {t("courses.viewAllCta")}
-                    <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
-                  </a>
-                </Button>
-              </div>
-            </FadeIn>
-
-            <StaggerChildren
-              className="grid gap-6 sm:grid-cols-2"
-              stagger={0.12}
-              y={36}
-            >
-              {featuredCourses.map((course) => (
-                <StaggerItem key={course.id} className="h-full">
-                  <TiltCard className="h-full" maxTiltX={5} maxTiltY={5}>
-                    <article className="luxe-card luxe-card--hover flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-background">
-                      <div className="flex flex-1 flex-col gap-4 p-6">
-                        <h3 className="font-sans text-xl font-medium leading-snug text-foreground">
-                          {course.title}
-                        </h3>
-                        {course.description ? (
-                          <p className="line-clamp-3 text-sm leading-7 text-muted-foreground">
-                            {course.description}
-                          </p>
-                        ) : null}
-                      </div>
-                      <div className="flex items-center justify-end gap-4 border-t border-border px-6 py-4">
-                        <Button asChild size="default" className="min-h-11 rounded-sm">
-                          <a href={`/${locale}/courses/${course.slug}`}>
-                            {t("courses.previewReserve")}
-                            <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
-                          </a>
-                        </Button>
-                      </div>
-                    </article>
-                  </TiltCard>
-                </StaggerItem>
-              ))}
-            </StaggerChildren>
-          </div>
-        </section>
-      ) : null}
 
       {/* About Stephen — portrait + bio + credentials */}
       <section aria-labelledby="home-about-title">
@@ -490,7 +348,35 @@ export function HomeView({
         </div>
       </section>
 
-      {/* Closing CTA — both pathways remain reachable */}
+      {/* Course interest — small print; training is a quiet secondary path */}
+      <section aria-labelledby="home-course-interest-title">
+        <div className="mx-auto flex max-w-2xl flex-col items-center gap-2 px-6 pb-2 text-center sm:pb-4">
+          <p className="text-xs uppercase tracking-wide text-muted-foreground">
+            {t("courseInterest.eyebrow")}
+          </p>
+          <h2 id="home-course-interest-title" className="sr-only">
+            {t("courseInterest.heading")}
+          </h2>
+          <p className="text-xs leading-6 text-muted-foreground sm:text-sm">
+            {t("courseInterest.body")}
+          </p>
+          <Button
+            asChild
+            variant="link"
+            className="link-underline h-auto px-0 text-sm"
+          >
+            <a
+              href={`/${locale}/contact`}
+              data-testid="home-course-interest-cta"
+            >
+              {t("courseInterest.cta")}
+              <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
+            </a>
+          </Button>
+        </div>
+      </section>
+
+      {/* Closing CTA */}
       <section aria-labelledby="home-cta-title">
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 px-6 py-20 text-center sm:py-28 lg:py-32">
           <LineReveal />
@@ -511,11 +397,6 @@ export function HomeView({
                     {t("cta.primaryCta")}
                     <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
                   </a>
-                </Button>
-              </MagneticButton>
-              <MagneticButton>
-                <Button asChild size="lg" variant="outline" className="rounded-sm">
-                  <a href={`/${locale}/courses`}>{t("cta.secondaryCta")}</a>
                 </Button>
               </MagneticButton>
             </div>

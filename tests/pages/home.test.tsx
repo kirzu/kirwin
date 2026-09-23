@@ -12,8 +12,7 @@
  *    themselves are covered by `tests/animations/animations.test.tsx`).
  *  - Stub `next-intl`'s `useTranslations` to return a key-based lookup
  *    so we can assert against the translation keys the component reads.
- *  - Provide realistic training items, credentials, and featured
- *    courses via props.
+ *  - Provide realistic training items and credentials via props.
  */
 import { describe, it, expect, vi } from "vitest";
 import React from "react";
@@ -118,25 +117,6 @@ const credentials = [
   "22+ years of clinical practice",
 ];
 
-const featuredCourses = [
-  {
-    id: "course-1",
-    slug: "mfr-intensive",
-    title: "MFR Intensive",
-    description: "A hands-on intensive covering myofascial release techniques.",
-    durationLabel: "3 days",
-    priceLabel: "HK$ 4,800",
-  },
-  {
-    id: "course-2",
-    slug: "neuro-essentials",
-    title: "Neuromuscular Essentials",
-    description: "Foundational neuromuscular therapy for clinical practice.",
-    durationLabel: "2 days",
-    priceLabel: "HK$ 3,200",
-  },
-];
-
 describe("HomeView", () => {
   it("renders the hero headline via the translation key", () => {
     render(
@@ -144,7 +124,6 @@ describe("HomeView", () => {
         locale="en"
         trainingItems={trainingItems}
         credentials={credentials}
-        featuredCourses={featuredCourses}
       />,
     );
 
@@ -158,7 +137,6 @@ describe("HomeView", () => {
         locale="en"
         trainingItems={trainingItems}
         credentials={credentials}
-        featuredCourses={featuredCourses}
       />,
     );
 
@@ -173,7 +151,6 @@ describe("HomeView", () => {
         locale="en"
         trainingItems={trainingItems}
         credentials={credentials}
-        featuredCourses={featuredCourses}
       />,
     );
 
@@ -187,29 +164,39 @@ describe("HomeView", () => {
     }
   });
 
-  it("renders the featured courses section when courses are provided", () => {
+  it("renders a single prominent booking card with a bookings CTA", () => {
     render(
       <HomeView
         locale="en"
         trainingItems={trainingItems}
         credentials={credentials}
-        featuredCourses={featuredCourses}
       />,
     );
 
-    // Section title is rendered (translation key passthrough).
-    expect(screen.getByText("courses.title")).toBeInTheDocument();
+    expect(screen.getByText("booking.title")).toBeInTheDocument();
 
-    // Each featured course should render its title.
-    for (const course of featuredCourses) {
-      expect(screen.getByText(course.title)).toBeInTheDocument();
-    }
+    const bookingCta = screen.getByTestId("home-choice-massage-cta");
+    expect(bookingCta.getAttribute("href")).toBe("/en/bookings");
 
-    // Course links should resolve to /{locale}/courses/{slug}.
-    const firstLink = screen
-      .getAllByRole("link")
-      .find((link) => link.getAttribute("href") === "/en/courses/mfr-intensive");
-    expect(firstLink).toBeDefined();
+    // The courses choice card is gone — no courses CTA remains.
+    expect(
+      screen.queryByTestId("home-choice-courses-cta"),
+    ).not.toBeInTheDocument();
+  });
+
+  it("renders the course-interest small print with a contact link", () => {
+    render(
+      <HomeView
+        locale="en"
+        trainingItems={trainingItems}
+        credentials={credentials}
+      />,
+    );
+
+    expect(screen.getByText("courseInterest.body")).toBeInTheDocument();
+
+    const interestCta = screen.getByTestId("home-course-interest-cta");
+    expect(interestCta.getAttribute("href")).toBe("/en/contact");
   });
 
   it("renders the credentials as a simple list when credentials are provided", () => {
@@ -218,7 +205,6 @@ describe("HomeView", () => {
         locale="en"
         trainingItems={trainingItems}
         credentials={credentials}
-        featuredCourses={featuredCourses}
       />,
     );
 
@@ -240,27 +226,26 @@ describe("HomeView", () => {
     }
   });
 
-  it("renders the closing CTA with a courses link and a contact link", () => {
+  it("renders the closing CTA as massage-only with a contact link nearby", () => {
     render(
       <HomeView
         locale="en"
         trainingItems={trainingItems}
         credentials={credentials}
-        featuredCourses={featuredCourses}
       />,
     );
 
     expect(screen.getByText("cta.title")).toBeInTheDocument();
-    // Both primary and secondary CTAs point to /en/bookings and /en/courses
-    // so visitors can either book a session or browse seminars.
     const bookingsLinks = screen
       .getAllByRole("link")
       .filter((link) => link.getAttribute("href") === "/en/bookings");
+    expect(bookingsLinks.length).toBeGreaterThan(0);
+
+    // Courses are demoted: no prominent courses link remains in the view;
+    // the training path is the small-print course-interest contact link.
     const coursesLinks = screen
       .getAllByRole("link")
-      .filter((link) => link.getAttribute("href") === "/en/courses");
-
-    expect(bookingsLinks.length).toBeGreaterThan(0);
-    expect(coursesLinks.length).toBeGreaterThan(0);
+      .filter((link) => link.getAttribute("href")?.startsWith("/en/courses"));
+    expect(coursesLinks.length).toBe(0);
   });
 });

@@ -13,12 +13,17 @@ import { test, expect } from "@playwright/test";
 test.describe("Home page", () => {
   test("renders the en homepage", async ({ page }) => {
     await page.goto("/en");
-    // The choice cards now lead with a bookings CTA — make sure the
-    // massage choice link resolves to the localised path.
+    // A single booking card leads with a bookings CTA — make sure it
+    // resolves to the localised path.
     await expect(
       page.locator('[data-testid="home-choice-massage-cta"]').first(),
     ).toHaveAttribute("href", "/en/bookings");
+    // Courses stay reachable via the nav, while the demoted training path
+    // surfaces as small print linking to the contact page.
     await expect(page.locator('a[href="/en/courses"]').first()).toBeVisible();
+    await expect(
+      page.locator('[data-testid="home-course-interest-cta"]'),
+    ).toHaveAttribute("href", "/en/contact");
     // Body should mention the English hero subtitle somewhere on the page.
     await expect(page.locator("body")).toContainText(
       "Therapeutic bodywork in Wan Chai",
@@ -42,13 +47,13 @@ test.describe("Home page", () => {
     await expect(zhLink).toBeVisible();
     await zhLink.click();
     await expect(page).toHaveURL(/\/zh-Hant(\/|$)/);
-    // Once on the zh-Hant home we should still see the choice CTA.
+    // Once on the zh-Hant home we should still see the booking CTA.
     await expect(
       page.locator('[data-testid="home-choice-massage-cta"]').first(),
     ).toHaveAttribute("href", "/zh-Hant/bookings");
   });
 
-  test("choice cards navigate to bookings and courses", async ({ page }) => {
+  test("booking card navigates to bookings", async ({ page }) => {
     await page.goto("/en");
 
     await page
@@ -59,12 +64,5 @@ test.describe("Home page", () => {
     await expect(
       page.getByTestId("bookings-cliniko-iframe"),
     ).toBeVisible();
-
-    await page.goto("/en");
-    await page
-      .locator('[data-testid="home-choice-courses-cta"]')
-      .first()
-      .click();
-    await page.waitForURL(/\/en\/courses$/, { timeout: 10_000 });
   });
 });

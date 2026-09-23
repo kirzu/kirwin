@@ -19,24 +19,17 @@
   },
   "home": {
     "hero": {
-      "title": "向 Stephen Kirwin 預約身體工作療程,或跟隨他學習。",
-      "subtitle": "灣仔的治療性身體工作,以及亞洲各地的小班制神經肌肉療法研討會。",
+      "title": "向 Stephen Kirwin 預約身體工作療程。",
+      "subtitle": "灣仔的治療性身體工作——融合神經肌肉療法、深層組織與結構調整,奠基於二十九年的臨床實務。",
       "primaryCta": "向 Stephen 預約身體工作",
       "secondaryCta": "跟隨 Stephen 學習",
       "logoAlt": "Stephen Kirwin 身體工作坊標誌"
     },
-    "choice": {
-      "eyebrow": "選擇您的方向",
-      "title": "兩種方式與 Stephen 合作。",
-      "body": "無論您希望預約一次治療性的身體工作,或想學習同樣的實作方法,都可以從這裡開始。",
-      "massageEyebrow": "治療性身體工作",
-      "massageTitle": "向 Stephen 預約身體工作",
-      "massageBody": "在灣仔工作室預約神經肌肉療法或深層組織身體工作。",
-      "massageCta": "預約療程",
-      "coursesEyebrow": "實務者培訓",
-      "coursesTitle": "跟隨 Stephen 學習",
-      "coursesBody": "加入小班制研討會,學習 Stephen 二十九年來精煉出的、以評估為本的身體工作方法。",
-      "coursesCta": "瀏覽課程"
+    "booking": {
+      "eyebrow": "治療性身體工作",
+      "title": "向 Stephen 預約身體工作",
+      "body": "在灣仔工作室預約神經肌肉療法或深層組織身體工作。",
+      "cta": "預約療程"
     },
     "offerings": {
       "title": "服務內容",
@@ -127,11 +120,16 @@
         "description": "以溫和而持續的壓力深入結締組織,恢復其長度、滑動與活動的自在感。"
       }
     },
+    "courseInterest": {
+      "eyebrow": "課程",
+      "heading": "課程",
+      "body": "目前暫無已排定的研討會。如欲登記未來課程,請留下您的聯絡資料,您將第一時間獲得通知。",
+      "cta": "登記您的資料"
+    },
     "cta": {
       "title": "準備好預約療程了嗎?",
-      "body": "歡迎直接透過線上預約系統預約治療性療程,或瀏覽近期開課梯次,如果您是希望受訓的實務工作者。",
-      "primaryCta": "預約療程",
-      "secondaryCta": "瀏覽課程"
+      "body": "歡迎直接透過線上預約系統預約治療性療程。",
+      "primaryCta": "預約療程"
     }
   },
   "about": {
