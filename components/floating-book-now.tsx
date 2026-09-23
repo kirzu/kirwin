@@ -63,7 +63,7 @@ export function FloatingBookNow() {
         aria-label={t("whatsappLabel")}
         data-testid="floating-whatsapp"
         className={[
-          "fixed bottom-6 left-6 z-50 inline-flex h-12 w-12 items-center justify-center",
+          "fixed bottom-[4.75rem] md:bottom-6 left-6 z-50 inline-flex h-12 w-12 items-center justify-center",
           "rounded-full border border-zinc-200 bg-background text-foreground",
           "shadow-[0_8px_24px_-8px_rgba(63,42,22,0.35)]",
           "transition-[transform,box-shadow,background-color] duration-200 ease-luxury",
@@ -84,7 +84,7 @@ export function FloatingBookNow() {
         aria-label={t("bookLabel")}
         data-testid="floating-book-now"
         className={[
-          "fixed bottom-6 right-6 z-50 inline-flex h-12 items-center gap-2 rounded-full",
+          "hidden md:inline-flex fixed bottom-6 right-6 z-50 inline-flex h-12 items-center gap-2 rounded-full",
           "bg-primary px-6 text-sm font-semibold text-primary-foreground",
           "shadow-[0_10px_28px_-10px_rgba(180,94,62,0.55)]",
           "transition-[transform,box-shadow,background-color] duration-200 ease-luxury",
