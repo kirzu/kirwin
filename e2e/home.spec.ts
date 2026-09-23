@@ -24,6 +24,11 @@ test.describe("Home page", () => {
     await expect(
       page.locator('[data-testid="home-course-interest-cta"]'),
     ).toHaveAttribute("href", "/en/contact");
+    // The quiet courses companion card also points at the contact page.
+    await expect(page.getByTestId("home-courses-card")).toBeVisible();
+    await expect(
+      page.locator('[data-testid="home-courses-card-cta"]'),
+    ).toHaveAttribute("href", "/en/contact");
     // Body should mention the English hero subtitle somewhere on the page.
     await expect(page.locator("body")).toContainText(
       "Therapeutic bodywork in Wan Chai",
@@ -35,6 +40,9 @@ test.describe("Home page", () => {
     await expect(
       page.locator('[data-testid="home-choice-massage-cta"]').first(),
     ).toHaveAttribute("href", "/zh-Hant/bookings");
+    await expect(
+      page.locator('[data-testid="home-courses-card-cta"]'),
+    ).toHaveAttribute("href", "/zh-Hant/contact");
     await expect(page.locator('a[href="/zh-Hant/courses"]').first()).toBeVisible();
     // Any non-empty Chinese content proves the zh-Hant catalogue rendered.
     const bodyText = await page.locator("body").innerText();

@@ -31,6 +31,12 @@
       "body": "Reserve a neuromuscular therapy or deep tissue session at the Wan Chai studio.",
       "cta": "Book a session"
     },
+    "coursesNext": {
+      "eyebrow": "Courses",
+      "heading": "Upcoming courses",
+      "body": "To register interest in upcoming courses, please leave us your details and you'll be the first to be informed.",
+      "cta": "Leave your details"
+    },
     "offerings": {
       "title": "What we offer",
       "eyebrow": "At the studio"

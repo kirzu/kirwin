@@ -48,9 +48,10 @@ export interface HomeViewProps {
  * credentials, course preview, and a featured testimonial) so the
  * animation primitives can run without crossing the server/client boundary.
  *
- * The page leads with massage: a single prominent booking card sits
- * directly under the hero, and practitioner training is demoted to a
- * small course-interest note near the bottom of the page.
+ * The page leads with massage: a prominent booking card sits directly
+ * under the hero, flanked by a quiet, visually demoted courses companion
+ * card. Practitioner training is further demoted to a small
+ * course-interest note near the bottom of the page.
  */
 export function HomeView({
   locale,
@@ -110,17 +111,22 @@ export function HomeView({
         </div>
       </section>
 
-      {/* Booking card — the single prominent action on the page */}
+      {/* Booking card — the prominent action, with a quiet courses companion */}
       <section
         aria-labelledby="home-booking-title"
         className="border-b border-border"
       >
-        <div className="mx-auto flex max-w-3xl flex-col px-6 py-14 sm:py-20">
-          <FadeIn direction="up">
-            <TiltCard maxTiltX={4} maxTiltY={4}>
+        <div className="mx-auto grid max-w-5xl gap-6 px-6 py-14 sm:py-20 md:grid-cols-2 md:gap-8">
+          <FadeIn direction="up" className="h-full">
+            <TiltCard
+              maxTiltX={4}
+              maxTiltY={4}
+              className="h-full"
+              innerClassName="h-full"
+            >
               <article
                 data-testid="home-choice-massage"
-                className="luxe-card luxe-card--hover flex flex-col items-center gap-6 rounded-2xl border border-border bg-background p-7 text-center sm:p-10"
+                className="luxe-card luxe-card--hover flex h-full flex-col items-center justify-center gap-6 rounded-2xl border border-border bg-background p-7 text-center sm:p-10"
               >
                 <div className="flex flex-col items-center gap-3">
                   <SectionEyebrow>{t("booking.eyebrow")}</SectionEyebrow>
@@ -153,6 +159,35 @@ export function HomeView({
                 </MagneticButton>
               </article>
             </TiltCard>
+          </FadeIn>
+
+          <FadeIn direction="up" delay={0.15} className="h-full">
+            <article
+              data-testid="home-courses-card"
+              className="flex h-full flex-col items-start justify-center gap-3 rounded-2xl border border-border/70 bg-muted/50 p-7 text-left sm:p-8"
+            >
+              <SectionEyebrow>{t("coursesNext.eyebrow")}</SectionEyebrow>
+              <h3 className="font-display text-lg font-medium leading-snug tracking-tight text-foreground sm:text-xl">
+                {t("coursesNext.heading")}
+              </h3>
+              <p className="max-w-md text-sm leading-6 text-muted-foreground">
+                {t("coursesNext.body")}
+              </p>
+              <Button
+                asChild
+                variant="outline"
+                size="sm"
+                className="mt-2 rounded-sm"
+              >
+                <a
+                  href={`/${locale}/contact`}
+                  data-testid="home-courses-card-cta"
+                >
+                  {t("coursesNext.cta")}
+                  <ArrowRight aria-hidden className="ml-2 h-4 w-4" />
+                </a>
+              </Button>
+            </article>
           </FadeIn>
         </div>
       </section>

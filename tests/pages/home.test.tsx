@@ -184,6 +184,26 @@ describe("HomeView", () => {
     ).not.toBeInTheDocument();
   });
 
+  it("renders a quiet courses companion card linking to contact", () => {
+    render(
+      <HomeView
+        locale="en"
+        trainingItems={trainingItems}
+        credentials={credentials}
+      />,
+    );
+
+    expect(screen.getByText("coursesNext.eyebrow")).toBeInTheDocument();
+    expect(screen.getByText("coursesNext.heading")).toBeInTheDocument();
+    expect(screen.getByText("coursesNext.body")).toBeInTheDocument();
+
+    const coursesCard = screen.getByTestId("home-courses-card");
+    expect(coursesCard).toBeInTheDocument();
+
+    const coursesCta = screen.getByTestId("home-courses-card-cta");
+    expect(coursesCta.getAttribute("href")).toBe("/en/contact");
+  });
+
   it("renders the course-interest small print with a contact link", () => {
     render(
       <HomeView
@@ -242,7 +262,8 @@ describe("HomeView", () => {
     expect(bookingsLinks.length).toBeGreaterThan(0);
 
     // Courses are demoted: no prominent courses link remains in the view;
-    // the training path is the small-print course-interest contact link.
+    // the training path is the quiet companion card + small-print
+    // course-interest contact link.
     const coursesLinks = screen
       .getAllByRole("link")
       .filter((link) => link.getAttribute("href")?.startsWith("/en/courses"));
