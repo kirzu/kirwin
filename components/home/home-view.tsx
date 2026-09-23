@@ -149,7 +149,7 @@ export function HomeView({
             stagger={0.12}
             y={32}
           >
-            {/* Massage choice */}
+            {/* Bodywork choice */}
             <StaggerItem className="h-full">
               <TiltCard className="h-full" innerClassName="h-full" maxTiltX={4} maxTiltY={4}>
                 <article
@@ -234,7 +234,7 @@ export function HomeView({
         </div>
       </section>
 
-      {/* Massage options — preview of the core therapeutic sessions offered at the Wan Chai studio. */}
+      {/* Bodywork options — preview of the core therapeutic sessions offered at the Wan Chai studio. */}
       <MassageOptionsSection
         locale={locale}
         namespace="home"

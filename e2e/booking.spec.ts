@@ -4,10 +4,10 @@ import { test, expect } from "@playwright/test";
  * End-to-end test for the public booking page.
  *
  * The page now embeds the Cliniko scheduler directly so visitors can
- * book a massage without leaving the site. The test confirms:
+ * book a session without leaving the site. The test confirms:
  *   - The /bookings route renders the embedded Cliniko iframe.
  *   - The fallback link to the Cliniko scheduler is reachable.
- *   - The booking page copy is massage-focused in both locales.
+ *   - The booking page copy is session-focused in both locales.
  */
 test.describe("Booking flow", () => {
   test("submit reaches the confirmation page", async ({ page }) => {
@@ -29,8 +29,8 @@ test.describe("Booking flow", () => {
       /stephen-kirwin-bodywork-therapies-ltd\.au5\.cliniko\.com\/bookings/,
     );
 
-    // The page is massage-focused in the en catalogue.
-    await expect(page.locator("body")).toContainText("Book a massage");
+    // The page is session-focused in the en catalogue.
+    await expect(page.locator("body")).toContainText("Book a session");
   });
 
   test("renders the zh-Hant bookings page with the embedded scheduler", async ({

@@ -21,7 +21,7 @@ import { SectionEyebrow } from "@/components/animations/section-eyebrow";
 import { type Locale } from "@/i18n.config";
 
 /**
- * Reusable "Massage options" grid shared by the home page and the
+ * Reusable "Bodywork sessions" grid shared by the home page and the
  * /bookings page. Lists the six core therapeutic sessions Stephen
  * offers from the Wan Chai studio, each rendered as a luxe card with
  * a Lucide icon, title, and one-sentence description.

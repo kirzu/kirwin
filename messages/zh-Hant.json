@@ -19,9 +19,9 @@
   },
   "home": {
     "hero": {
-      "title": "向 Stephen Kirwin 預約按摩,或跟隨他學習。",
+      "title": "向 Stephen Kirwin 預約身體工作療程,或跟隨他學習。",
       "subtitle": "灣仔的治療性身體工作,以及亞洲各地的小班制神經肌肉療法研討會。",
-      "primaryCta": "向 Stephen 預約按摩",
+      "primaryCta": "向 Stephen 預約身體工作",
       "secondaryCta": "跟隨 Stephen 學習",
       "logoAlt": "Stephen Kirwin 身體工作坊標誌"
     },
@@ -30,9 +30,9 @@
       "title": "兩種方式與 Stephen 合作。",
       "body": "無論您希望預約一次治療性的身體工作,或想學習同樣的實作方法,都可以從這裡開始。",
       "massageEyebrow": "治療性身體工作",
-      "massageTitle": "向 Stephen 預約按摩",
+      "massageTitle": "向 Stephen 預約身體工作",
       "massageBody": "在灣仔工作室預約神經肌肉療法或深層組織身體工作。",
-      "massageCta": "預約按摩",
+      "massageCta": "預約療程",
       "coursesEyebrow": "實務者培訓",
       "coursesTitle": "跟隨 Stephen 學習",
       "coursesBody": "加入小班制研討會,學習 Stephen 二十九年來精煉出的、以評估為本的身體工作方法。",
@@ -99,11 +99,11 @@
       "fallbackName": "Alex"
     },
     "massageOptions": {
-      "eyebrow": "按摩選項",
+      "eyebrow": "身體工作療程",
       "title": "治療性身體護理療程",
-      "intro": "Stephen 在灣仔工作室提供多元化的按摩療法,可依據您當下身體的需要,選擇最合適的療程。",
+      "intro": "Stephen 在灣仔工作室提供多元化的手法治療,可依據您當下身體的需要,選擇最合適的療程。",
       "deepTissue": {
-        "title": "深層組織按摩",
+        "title": "深層組織身體工作",
         "description": "以分層、持續的壓力釋放長期緊繃,恢復活動範圍。"
       },
       "injuryRecovery": {
@@ -111,7 +111,7 @@
         "description": "針對性的身體工作,協助拉傷、扭傷與過度使用傷害的修復。"
       },
       "fullBody": {
-        "title": "全身按摩",
+        "title": "全身身體工作",
         "description": "完整的全身療程,由頭到腳釋放張力,讓您徹底煥然一新。"
       },
       "neuromuscular": {
@@ -130,7 +130,7 @@
     "cta": {
       "title": "準備好預約療程了嗎?",
       "body": "歡迎直接透過線上預約系統預約治療性療程,或瀏覽近期開課梯次,如果您是希望受訓的實務工作者。",
-      "primaryCta": "預約按摩",
+      "primaryCta": "預約療程",
       "secondaryCta": "瀏覽課程"
     }
   },
@@ -160,7 +160,7 @@
       "肌筋膜放鬆 (Myofascial Release)",
       "激痛點療法 (Trigger Point Therapy)",
       "顱荐椎療法 (Craniosacral Therapy)",
-      "深層組織按摩 (Deep Tissue Massage)"
+      "深層組織身體工作 (Deep Tissue Bodywork)"
     ],
     "partnersTitle": "合作養生據點",
     "partnersBody": "Stephen 曾與亞洲、歐洲等地的指標性養生中心與目的地水療品牌合作。",
@@ -592,7 +592,7 @@
     }
   },
   "bookings": {
-    "title": "預約按摩",
+    "title": "預約療程",
     "subtitle": "預約 Stephen 在灣仔工作室的治療性身體工作療程。",
     "intro": "選擇適合您的時間，Stephen 將在工作室與您會面。",
     "iframeTitle": "Cliniko 線上預約系統",
@@ -603,11 +603,11 @@
     "afterBody": "Stephen 將透過電子郵件確認您的療程。如有任何疑問，歡迎透過聯絡頁面與我們聯絡。",
     "afterCta": "聯絡我們",
     "massageOptions": {
-      "eyebrow": "按摩選項",
+      "eyebrow": "身體工作療程",
       "title": "治療性身體護理療程",
-      "intro": "Stephen 在灣仔工作室提供多元化的按摩療法,可依據您當下身體的需要,選擇最合適的療程。",
+      "intro": "Stephen 在灣仔工作室提供多元化的手法治療,可依據您當下身體的需要,選擇最合適的療程。",
       "deepTissue": {
-        "title": "深層組織按摩",
+        "title": "深層組織身體工作",
         "description": "以分層、持續的壓力釋放長期緊繃,恢復活動範圍。"
       },
       "injuryRecovery": {
@@ -615,7 +615,7 @@
         "description": "針對性的身體工作,協助拉傷、扭傷與過度使用傷害的修復。"
       },
       "fullBody": {
-        "title": "全身按摩",
+        "title": "全身身體工作",
         "description": "完整的全身療程,由頭到腳釋放張力,讓您徹底煥然一新。"
       },
       "neuromuscular": {
@@ -651,6 +651,6 @@
     "accept": "接受"
   },
   "mobileBookingCta": {
-    "label": "預約按摩"
+    "label": "預約療程"
   }
 }

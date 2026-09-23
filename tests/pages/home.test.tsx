@@ -252,7 +252,7 @@ describe("HomeView", () => {
 
     expect(screen.getByText("cta.title")).toBeInTheDocument();
     // Both primary and secondary CTAs point to /en/bookings and /en/courses
-    // so visitors can either book a massage or browse seminars.
+    // so visitors can either book a session or browse seminars.
     const bookingsLinks = screen
       .getAllByRole("link")
       .filter((link) => link.getAttribute("href") === "/en/bookings");
