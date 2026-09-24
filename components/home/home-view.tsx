@@ -25,6 +25,7 @@ import { TiltCard } from "@/components/animations/tilt-card";
 import { ImageReveal } from "@/components/animations/image-reveal";
 import { LineReveal, SectionEyebrow } from "@/components/animations";
 import { MassageOptionsSection } from "@/components/massage-options-section";
+import { PricingSection } from "@/components/pricing-section";
 import { AnimatedHeroBackground } from "./animated-hero-background";
 
 const trainingIcons = [Compass, Hand, Target, ClipboardCheck] as const;
@@ -198,6 +199,13 @@ export function HomeView({
         namespace="home"
         ariaLabelledById="home-massage-options-title"
         showCta={false}
+      />
+
+      {/* Session fees — a quiet pricing strip so visitors see fees without leaving the homepage. */}
+      <PricingSection
+        locale={locale}
+        ariaLabelledById="home-pricing-title"
+        testId="home-pricing"
       />
 
       {/* What we offer — short training summary */}

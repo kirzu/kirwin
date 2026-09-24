@@ -636,6 +636,23 @@
       }
     }
   },
+  "pricing": {
+    "eyebrow": "Pricing",
+    "title": "Session fees",
+    "intro": "Clear, straightforward fees. Book a single session when it suits you, or reserve a block of ten sessions at a reduced per-session rate.",
+    "singleHeading": "Single sessions",
+    "packageHeading": "Packages — a block of ten",
+    "single60": "60-minute session",
+    "single90": "90-minute session",
+    "package60": "10 × 60-minute sessions",
+    "package90": "10 × 90-minute sessions",
+    "priceSingle60": "HK$1,400",
+    "priceSingle90": "HK$1,690",
+    "pricePackage60": "HK$1,200 per session",
+    "pricePackage90": "HK$1,490 per session",
+    "footnote": "Package rates apply when ten sessions are reserved as a block.",
+    "cta": "Enquire about packages"
+  },
   "common": {
     "loading": "Loading…",
     "comingSoon": "Coming soon",

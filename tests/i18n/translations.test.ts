@@ -77,6 +77,11 @@ const IDENTICAL_ALLOWED: ReadonlySet<string> = new Set([
   "about.milestones[2].year", // "1998–2005" — date range.
   "home.testimonials.fallbackQuote", // Real client quote — kept verbatim.
   "home.testimonials.fallbackName", // "Alex" — proper name.
+  // Session pricing — currency amounts are locale-invariant.
+  "pricing.priceSingle60",
+  "pricing.priceSingle90",
+  "pricing.pricePackage60",
+  "pricing.pricePackage90",
 ]);
 
 describe("i18n message catalogues", () => {

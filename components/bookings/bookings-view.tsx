@@ -8,6 +8,7 @@ import { AnimatedSection } from "@/components/animations/animated-section";
 import { FadeIn } from "@/components/animations/fade-in";
 import { LineReveal, SectionEyebrow } from "@/components/animations";
 import { MassageOptionsSection } from "@/components/massage-options-section";
+import { PricingSection } from "@/components/pricing-section";
 import { CLINIKO_BOOKING_URL } from "@/lib/cliniko";
 
 export interface BookingsViewProps {
@@ -64,6 +65,15 @@ export function BookingsView({ locale }: BookingsViewProps) {
         ariaLabelledById="bookings-massage-options-title"
         showCta={false}
       />
+
+      {/* Session fees — single sessions and ten-session packages */}
+      <PricingSection
+        locale={locale}
+        ariaLabelledById="bookings-pricing-title"
+        testId="bookings-pricing"
+      />
+
+      {/* Embedded Cliniko scheduler */}
       <section
         aria-labelledby="bookings-scheduler-title"
         className="bg-muted/30"

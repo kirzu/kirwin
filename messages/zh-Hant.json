@@ -636,6 +636,23 @@
       }
     }
   },
+  "pricing": {
+    "eyebrow": "收費",
+    "title": "療程收費",
+    "intro": "收費清晰簡單。可按次預約單節療程,或一次預約十節療程組合,享每節優惠價。",
+    "singleHeading": "單節療程",
+    "packageHeading": "療程組合 — 十節",
+    "single60": "60 分鐘療程",
+    "single90": "90 分鐘療程",
+    "package60": "10 節 × 60 分鐘",
+    "package90": "10 節 × 90 分鐘",
+    "priceSingle60": "HK$1,400",
+    "priceSingle90": "HK$1,690",
+    "pricePackage60": "每節 HK$1,200",
+    "pricePackage90": "每節 HK$1,490",
+    "footnote": "組合價適用於一次預約十節療程。",
+    "cta": "查詢療程組合"
+  },
   "common": {
     "loading": "載入中…",
     "comingSoon": "即將推出",
