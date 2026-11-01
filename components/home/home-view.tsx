@@ -80,10 +80,10 @@ export function HomeView({
             <Image
               src="/assets/logo.png"
               alt={t("hero.logoAlt")}
-              width={112}
-              height={112}
+              width={485}
+              height={279}
               priority
-              className="h-20 w-20 rounded-sm opacity-90 sm:h-24 sm:w-24"
+              className="h-20 w-auto object-contain opacity-90 sm:h-24"
             />
           </FadeIn>
 
