@@ -5,6 +5,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { locales, isLocale, type Locale } from "@/i18n.config";
+import { SITE_URL } from "@/lib/seo";
 import { getMessages as loadLocaleMessages } from "@/lib/i18n";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { MainNav } from "@/components/main-nav";
@@ -39,9 +40,6 @@ const display = Manrope({
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
-
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://kirwinbodyworks.com";
 
 /**
  * Per-locale metadata. The site name/description live in the message

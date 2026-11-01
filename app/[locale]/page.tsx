@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { isLocale, type Locale } from "@/i18n.config";
+import { alternatesFor } from "@/lib/seo";
 import { prisma } from "@/lib/prisma";
 import {
   HomeView,
@@ -30,6 +31,7 @@ export async function generateMetadata({
   return {
     title: tHero("title"),
     description: t("description"),
+    alternates: alternatesFor(params.locale, ""),
   };
 }
 

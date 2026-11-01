@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { isLocale, type Locale } from "@/i18n.config";
+import { alternatesFor } from "@/lib/seo";
 import { ContactView } from "@/components/contact/contact-view";
 
 /**
@@ -17,6 +18,7 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("intro"),
+    alternates: alternatesFor(params.locale, "/contact"),
   };
 }
 

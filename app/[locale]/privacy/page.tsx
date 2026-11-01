@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { isLocale, type Locale } from "@/i18n.config";
+import { alternatesFor } from "@/lib/seo";
 import { getPrivacyDocument } from "@/lib/legal";
 import { LegalPage } from "@/components/legal/legal-page";
 
@@ -14,6 +15,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale: params.locale, namespace: "footer" });
   return {
     title: t("links.privacy"),
+    alternates: alternatesFor(params.locale, "/privacy"),
   };
 }
 

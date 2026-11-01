@@ -121,7 +121,7 @@ export function TestimonialsView({
         open={activeVideoId !== null}
         onOpenChange={(open) => !open && setActiveVideoId(null)}
       >
-        <DialogContent className="max-w-4xl border-none bg-black p-0 shadow-2xl">
+        <DialogContent className="max-w-4xl border-none bg-black p-0 text-white shadow-2xl [&_[data-slot=dialog-close]]:rounded-full [&_[data-slot=dialog-close]]:bg-white/10 [&_[data-slot=dialog-close]]:p-1.5 [&_[data-slot=dialog-close]]:opacity-100 [&_[data-slot=dialog-close]]:hover:bg-white/20 [&_[data-slot=dialog-close]]:hover:opacity-100">
           <DialogTitle className="sr-only">
             {t("videoDialogTitle")}
           </DialogTitle>

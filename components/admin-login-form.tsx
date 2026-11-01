@@ -46,18 +46,18 @@ function LoginForm({ locale }: { locale: string }) {
   }
 
   return (
-    <Card className="w-full max-w-md overflow-hidden border-brand-sand/60 shadow-sm">
+    <Card className="w-full max-w-md overflow-hidden border-border shadow-sm">
       <div
         aria-hidden
         className="h-1.5 w-full bg-gradient-to-r from-terracotta-500 via-brand-500 to-sage-500"
       />
       <CardHeader className="space-y-3 px-6 pt-6">
-        <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-brand-50 text-brand-700 ring-1 ring-brand-sand/70">
+        <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-brand-50 text-brand-700 ring-1 ring-border">
           <LockKeyhole className="h-5 w-5" aria-hidden />
         </div>
-        <CardTitle className="font-display text-2xl text-brand-900">
+        <h1 className="font-display text-2xl text-brand-900">
           {t("title")}
-        </CardTitle>
+        </h1>
         <CardDescription className="text-muted-foreground">
           Kirwin Admin · sign in to manage your site.
         </CardDescription>
@@ -74,7 +74,7 @@ function LoginForm({ locale }: { locale: string }) {
               type="email"
               required
               autoComplete="email"
-              className="border-brand-sand bg-background focus-visible:ring-brand-500"
+              className="border-border bg-background focus-visible:ring-brand-500"
             />
           </div>
           <div className="space-y-2">
@@ -87,7 +87,7 @@ function LoginForm({ locale }: { locale: string }) {
               type="password"
               required
               autoComplete="current-password"
-              className="border-brand-sand bg-background focus-visible:ring-brand-500"
+              className="border-border bg-background focus-visible:ring-brand-500"
             />
           </div>
           {error && (

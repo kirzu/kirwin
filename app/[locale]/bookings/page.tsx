@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { isLocale, type Locale } from "@/i18n.config";
+import { alternatesFor } from "@/lib/seo";
 import { BookingsView } from "@/components/bookings/bookings-view";
 
 export async function generateMetadata({
@@ -17,6 +18,7 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("subtitle"),
+    alternates: alternatesFor(params.locale, "/bookings"),
   };
 }
 

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { isLocale, type Locale } from "@/i18n.config";
+import { alternatesFor } from "@/lib/seo";
 import { prisma } from "@/lib/prisma";
 import { formatDuration, formatPriceHkd } from "@/lib/format";
 import {
@@ -66,6 +67,7 @@ export async function generateMetadata({
   return {
     title,
     description,
+    alternates: alternatesFor(locale, `/courses/${params.slug}`),
   };
 }
 

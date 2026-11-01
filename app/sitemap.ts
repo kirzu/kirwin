@@ -1,8 +1,6 @@
 import type { MetadataRoute } from "next";
 import { locales, defaultLocale } from "@/i18n.config";
-
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://kirwinbodyworks.com";
+import { SITE_URL } from "@/lib/seo";
 
 const PUBLIC_ROUTES = [
   "",
