@@ -5,13 +5,29 @@ import { locales, type Locale } from "@/i18n.config";
  * sitemap and robots).
  *
  * The canonical host is `www.` — the apex domain 308-redirects to it — so
- * every absolute URL we emit must use `www.` to avoid pointing crawlers at
- * a redirect. Override per environment with `NEXT_PUBLIC_SITE_URL` (Vercel
- * preview deployments), otherwise the production default is used.
+ * every absolute URL we emit must use `www.`; pointing crawlers at a
+ * redirecting URL is a duplicate-content smell. `NEXT_PUBLIC_SITE_URL` is
+ * still honoured per environment (Vercel previews, localhost), but a value
+ * on the bare apex is normalised to `www.` so production stays correct even
+ * if the env var lags behind the DNS setup.
  */
-export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.kirwinbodyworks.com"
-).replace(/\/$/, "");
+const RAW_SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.kirwinbodyworks.com";
+
+function canonicalHost(raw: string): string {
+  try {
+    const url = new URL(raw);
+    if (url.hostname === "kirwinbodyworks.com") {
+      url.hostname = "www.kirwinbodyworks.com";
+    }
+    return url.origin;
+  } catch {
+    // Not a parseable absolute URL — fall back to the raw value.
+    return raw.replace(/\/$/, "");
+  }
+}
+
+export const SITE_URL = canonicalHost(RAW_SITE_URL);
 
 /**
  * Canonical + hreflang `alternates` for a public page.
