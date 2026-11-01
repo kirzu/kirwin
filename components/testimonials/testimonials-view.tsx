@@ -322,7 +322,7 @@ function TestimonialsGrid({
             >
               <ChevronLeft aria-hidden className="h-5 w-5" />
             </Button>
-            <div className="flex items-center gap-2" aria-hidden>
+            <div className="flex items-center">
               {testimonials.map((testimonial, idx) => (
                 <button
                   key={testimonial.id}
@@ -330,12 +330,17 @@ function TestimonialsGrid({
                   onClick={() => goTo(idx)}
                   aria-label={`${idx + 1} / ${testimonials.length}`}
                   aria-current={idx === activeIndex ? "true" : undefined}
-                  className={`h-2.5 w-2.5 rounded-full transition-colors duration-200 ${
-                    idx === activeIndex
-                      ? "bg-primary"
-                      : "bg-muted-foreground/30 hover:bg-muted-foreground/60"
-                  }`}
-                />
+                  className="group flex h-11 w-8 items-center justify-center rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                >
+                  <span
+                    aria-hidden
+                    className={`h-2.5 w-2.5 rounded-full transition-colors duration-200 ${
+                      idx === activeIndex
+                        ? "bg-primary"
+                        : "bg-muted-foreground/30 group-hover:bg-muted-foreground/60"
+                    }`}
+                  />
+                </button>
               ))}
             </div>
             <Button

@@ -165,7 +165,7 @@ export default async function LocaleLayout({
             <PageTransition>{children}</PageTransition>
           </main>
           <footer className="border-t border-zinc-200 dark:border-zinc-800">
-            <div className="mx-auto flex max-w-5xl flex-col gap-4 px-4 py-6 text-xs text-zinc-500 dark:text-zinc-400 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+            <div className="mx-auto flex max-w-5xl flex-col gap-4 px-4 pt-6 pb-24 text-xs text-zinc-500 dark:text-zinc-400 sm:flex-row sm:items-center sm:justify-between sm:px-6 md:pb-6">
               <span>
                 {tFooter("copyright", { year: new Date().getFullYear() })}
               </span>

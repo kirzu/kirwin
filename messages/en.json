@@ -446,6 +446,8 @@
     "ratingLabel": "Rating",
     "playVideo": "Play video testimonial from {name}",
     "videoDialogTitle": "Video testimonial",
+    "previous": "Previous testimonial",
+    "next": "Next testimonial",
     "heroCta": "Browse seminars",
     "cta": {
       "title": "Experience it for yourself.",

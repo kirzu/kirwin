@@ -446,6 +446,8 @@
     "ratingLabel": "評分",
     "playVideo": "播放 {name} 的影片推薦",
     "videoDialogTitle": "影片推薦",
+    "previous": "上一則客戶評價",
+    "next": "下一則客戶評價",
     "heroCta": "瀏覽研討會",
     "cta": {
       "title": "親身體驗看看。",
