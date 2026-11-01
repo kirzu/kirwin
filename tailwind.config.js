@@ -101,6 +101,13 @@ module.exports = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      /* Exposes the site's signature easing curve as `ease-luxury`.
+       * Several components already reference this utility; without it
+       * here Tailwind silently emits nothing and they fall back to the
+       * browser default curve. */
+      transitionTimingFunction: {
+        luxury: "cubic-bezier(0.22, 1, 0.36, 1)",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },

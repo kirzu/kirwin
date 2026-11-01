@@ -71,7 +71,7 @@ export function MainNav({
             ? "block w-full rounded-sm border-l-4 border-primary bg-primary/10 px-4 py-3 min-h-11 text-base font-medium text-primary"
             : "block w-full rounded-sm border-l-4 border-transparent px-4 py-3 min-h-11 text-base font-medium text-zinc-800 transition-colors hover:bg-muted hover:text-primary dark:text-zinc-100"
           : [
-              "group nav-link relative inline-flex items-center rounded-sm px-2 pb-1.5 pt-0.5 text-sm font-medium transition-colors",
+              "group nav-link relative inline-flex items-center rounded-sm px-2 pb-1.5 pt-0.5 text-sm font-medium transition-colors duration-300 ease-luxury",
               isActive
                 ? "text-primary"
                 : "text-zinc-700 hover:text-primary dark:text-zinc-300 dark:hover:text-zinc-50",
@@ -89,7 +89,7 @@ export function MainNav({
                 <span
                   aria-hidden
                   className={[
-                    "nav-underline pointer-events-none absolute inset-x-0 -bottom-0.5 h-0.5 rounded-full bg-gradient-to-r from-primary to-terracotta-400",
+                    "nav-underline pointer-events-none absolute inset-x-0 -bottom-0.5 h-px rounded-full",
                     isActive
                       ? "nav-underline--active scale-x-100"
                       : "scale-x-0 group-hover:scale-x-100 group-focus-visible:scale-x-100",
