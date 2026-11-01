@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { Locale } from "@/i18n.config";
 import { cn } from "@/lib/utils";
-import { useReducedMotion } from "@/components/animations/use-reduced-motion";
 
 /**
  * Public-site navigation bar.
@@ -16,10 +15,9 @@ import { useReducedMotion } from "@/components/animations/use-reduced-motion";
  *
  * `orientation` controls the visual style:
  *   - `"horizontal"` (default): desktop header bar — small, dimmed
- *     text with a bottom border that fills with the primary colour on
- *     hover or when active. Hovering/focusing a link slides the
- *     visible label up and out while a duplicate label slides up from
- *     below into its place (text-swap effect).
+ *     text. On hover/focus a soft glow pill fades in behind the label,
+ *     the label lifts a hair, and a gradient underline sweeps out from
+ *     the centre. The active item keeps the underline pinned.
  *   - `"vertical"`: mobile drawer — large, full-width rows with a
  *     ≥44px tap target (`min-h-11 py-3`) so the menu is comfortable
  *     to use on touch devices.
@@ -47,7 +45,6 @@ export function MainNav({
   onNavigate?: () => void;
 }) {
   const pathname = usePathname() ?? "/";
-  const reducedMotion = useReducedMotion();
 
   const items: { href: string; key: keyof typeof labels }[] = [
     { href: `/${locale}`, key: "home" },
@@ -74,11 +71,10 @@ export function MainNav({
             ? "block w-full rounded-sm border-l-4 border-primary bg-primary/10 px-4 py-3 min-h-11 text-base font-medium text-primary"
             : "block w-full rounded-sm border-l-4 border-transparent px-4 py-3 min-h-11 text-base font-medium text-zinc-800 transition-colors hover:bg-muted hover:text-primary dark:text-zinc-100"
           : [
-              "group nav-text-swap link-underline relative inline-flex items-center pb-1 text-sm font-medium transition-colors",
+              "group nav-link relative inline-flex items-center rounded-sm px-2 pb-1.5 pt-0.5 text-sm font-medium transition-colors",
               isActive
                 ? "text-primary"
-                : "text-zinc-700 hover:text-primary dark:text-zinc-300",
-              reducedMotion ? "nav-text-swap--reduced" : "",
+                : "text-zinc-700 hover:text-primary dark:text-zinc-300 dark:hover:text-zinc-50",
             ].join(" ");
         return (
           <li key={key} className={isVertical ? "w-full" : undefined}>
@@ -88,22 +84,12 @@ export function MainNav({
               onClick={onNavigate}
               className={linkClass}
             >
-              <span className="nav-text-swap__track">
-                <span className="nav-text-swap__layer">
-                  {labels[key]}
-                </span>
-                <span
-                  aria-hidden="true"
-                  className="nav-text-swap__layer nav-text-swap__layer--alt"
-                >
-                  {labels[key]}
-                </span>
-              </span>
+              <span className="nav-label relative z-10">{labels[key]}</span>
               {!isVertical ? (
                 <span
                   aria-hidden
                   className={[
-                    "nav-underline pointer-events-none absolute inset-x-0 -bottom-0.5 h-0.5 origin-left rounded-full bg-primary",
+                    "nav-underline pointer-events-none absolute inset-x-0 -bottom-0.5 h-0.5 rounded-full bg-gradient-to-r from-primary to-terracotta-400",
                     isActive
                       ? "nav-underline--active scale-x-100"
                       : "scale-x-0 group-hover:scale-x-100 group-focus-visible:scale-x-100",
