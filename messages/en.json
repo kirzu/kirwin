@@ -11,7 +11,7 @@
   "nav": {
     "home": "Home",
     "about": "About",
-    "courses": "Courses",
+    "courses": "Seminars",
     "bookings": "Book",
     "contact": "Contact",
     "testimonials": "Testimonials",
@@ -29,12 +29,12 @@
       "eyebrow": "Therapeutic bodywork",
       "title": "Book a bodywork session with Stephen",
       "body": "Reserve a neuromuscular therapy or deep tissue session at the Wan Chai studio.",
-      "cta": "Book a session"
+      "cta": "Book now"
     },
     "coursesNext": {
       "eyebrow": "Courses",
-      "heading": "Upcoming courses",
-      "body": "To register interest in upcoming courses, please leave us your details and you'll be the first to be informed.",
+      "heading": "Upcoming seminars",
+      "body": "To register interest in upcoming seminars, please leave us your details and you'll be the first to be informed.",
       "cta": "Leave your details"
     },
     "offerings": {
@@ -66,11 +66,11 @@
     "experience": {
       "title": "Twenty-nine years of practice, condensed into every session.",
       "eyebrow": "Credentials",
-      "body": "Stephen Kirwin has spent more than two decades helping clients move out of pain and into a fuller relationship with their bodies. He studied at the University of Colorado, Boulder and the Boulder College of Massage Therapy, and has built a practice rooted in neuromuscular therapy and deep tissue bodywork. Today he sees clients and teaches from Hong Kong.",
+      "body": "For 29 years, Stephen Kirwin has helped clients move out of pain and into a fuller relationship with their bodies. He studied at the University of Colorado, Boulder and the Boulder College of Massage Therapy, and has built a practice rooted in neuromuscular therapy and deep tissue bodywork. Today he sees clients and teaches from Hong Kong.",
       "credentials": [
         "University of Colorado, Boulder",
         "Boulder College of Massage Therapy",
-        "22+ years of clinical practice",
+        "29 years of clinical practice",
         "Specialist in neuromuscular therapy and deep tissue bodywork",
         "Based in Hong Kong"
       ],
@@ -80,10 +80,10 @@
     "courses": {
       "title": "Ready to train in the same method?",
       "eyebrow": "Upcoming seminars",
-      "body": "If you are a practitioner looking to deepen your hands-on approach, browse the current schedule of bodywork seminars and reserve your seat.",
+      "body": "If you are a practitioner looking to deepen your hands-on approach, browse the current schedule of bodywork seminars.",
       "viewAllCta": "View all seminars",
       "previewTitle": "Featured seminars",
-      "previewBody": "A glimpse of upcoming cohorts. Reserve your seat early — seminars fill quickly.",
+      "previewBody": "A glimpse of upcoming cohorts. Places are limited and fill quickly.",
       "previewEmpty": "New seminar dates will be announced soon. Subscribe via the contact page to be the first to know.",
       "previewReserve": "View seminar",
       "durationLabel": "Duration"
@@ -129,18 +129,18 @@
     "courseInterest": {
       "eyebrow": "Courses",
       "heading": "Courses",
-      "body": "No upcoming seminars are scheduled right now. To register interest in future courses, leave your details and you'll be the first to know.",
+      "body": "No upcoming seminars are scheduled right now. To register interest in future dates, leave your details and you'll be the first to know.",
       "cta": "Leave your details"
     },
     "cta": {
       "title": "Ready to book a session?",
       "body": "Reserve a therapeutic session directly through our online booking system.",
-      "primaryCta": "Book a session"
+      "primaryCta": "Book now"
     }
   },
   "about": {
     "title": "Twenty-nine years of practice, condensed into every seminar.",
-    "intro": "Stephen Kirwin is a neuromuscular therapist and bodywork educator with over two decades of clinical practice and a roster of elite athletes, performers, and wellness destinations behind him. Meet the practitioner behind the seminars.",
+    "intro": "Stephen Kirwin is a neuromuscular therapist and bodywork educator with 29 years of clinical practice and a roster of elite athletes, performers, and wellness destinations behind him. Meet the practitioner behind the seminars.",
     "bio": [
       "Stephen Kirwin is a neuromuscular therapist and bodywork educator with more than twenty-nine years of clinical practice. He studied at the University of Colorado, Boulder and the Boulder College of Massage Therapy, then went on to refine his hands-on approach in the treatment room for decades.",
       "From 1995 to 1998 he worked at the CU Physical Therapy Center in Boulder, followed by seven years running his own private practice in Boulder from 1998 to 2005. Those years built the assessment-driven, results-focused method that still anchors every seminar he teaches today.",
@@ -153,7 +153,7 @@
       "Boulder College of Massage Therapy",
       "CU Physical Therapy Center (1995–1998)",
       "Boulder private practice (1998–2005)",
-      "29+ years of clinical practice",
+      "29 years of clinical practice",
       "Specialist in neuromuscular therapy and deep tissue bodywork",
       "Based in Hong Kong"
     ],
@@ -232,7 +232,7 @@
       },
       {
         "question": "How do I register?",
-        "answer": "Browse the upcoming sessions on the courses page and reserve your seat through the booking form. Each cohort is intentionally small, so early registration is recommended."
+        "answer": "Browse the upcoming seminars and book your place through the booking form. Each cohort is intentionally small, so early registration is recommended."
       },
       {
         "question": "Will I receive a certificate?",
@@ -240,7 +240,7 @@
       },
       {
         "question": "What should I bring?",
-        "answer": "Comfortable clothing that allows full range of motion, a notebook, and a willingness to give and receive hands-on work. Massage tables and all oils are provided on site."
+        "answer": "Comfortable clothing that allows full range of motion, a notebook, and a willingness to give and receive hands-on work. Treatment tables and all oils are provided on site."
       },
       {
         "question": "What topics will be covered?",
@@ -252,8 +252,8 @@
       }
     ],
     "ctaTitle": "Train with Stephen.",
-    "ctaBody": "Browse the current schedule of bodywork seminars and reserve your seat in an upcoming cohort.",
-    "ctaPrimary": "See upcoming courses",
+    "ctaBody": "Browse the current schedule of bodywork seminars and join an upcoming cohort.",
+    "ctaPrimary": "See upcoming seminars",
     "ctaSecondary": "Read Stephen's full story",
     "bioEyebrow": "Credentials",
     "approachEyebrow": "A layered approach",
@@ -265,19 +265,19 @@
     "title": "Upcoming seminars",
     "subtitle": "Intensive Training in neuromuscular therapy and restorative bodywork.",
     "overviewTitle": "Four days of intensive training.",
-    "overviewBody": "Join us for an intensive four-day course designed to equip aspiring massage therapists with essential skills in both general massage therapy and specialized neuromuscular therapy techniques. This hands-on program combines theoretical knowledge with practical applications to enhance your competence and confidence in the field.",
+    "overviewBody": "Join us for an intensive four-day seminar designed to equip aspiring bodywork practitioners with essential skills in general bodywork and specialized neuromuscular techniques. This hands-on program combines theoretical knowledge with practical applications to enhance your competence and confidence in the field.",
     "highlightsTitle": "What you will cover each day.",
-    "highlightsIntro": "A progressive four-day intensive that moves from foundational massage through advanced neuromuscular therapy and into the practice of running a sustainable bodywork business.",
-    "heroPrimaryCta": "Book appointment",
+    "highlightsIntro": "A progressive four-day intensive that moves from foundational bodywork through advanced neuromuscular therapy and into the practice of running a sustainable bodywork business.",
+    "heroPrimaryCta": "Book now",
     "heroSecondaryCta": "Contact Stephen",
     "highlights": {
       "imageAlt": "Hands-on bodywork training session.",
-      "day1Title": "Day 1: Foundations of Massage Therapy",
-      "day1Body": "An introduction to massage modalities, anatomy and physiology, the basic techniques that anchor every session, and the communication skills that turn a treatment into a therapeutic relationship.",
+      "day1Title": "Day 1: Foundations of Bodywork",
+      "day1Body": "An introduction to bodywork modalities, anatomy and physiology, the basic techniques that anchor every session, and the communication skills that turn a treatment into a therapeutic relationship.",
       "day2Title": "Day 2: Neuromuscular Therapy Basics",
       "day2Body": "Neuromuscular anatomy and trigger points, assessment strategies for reading the body, and structured hands-on practice to build confidence with the foundational NMT approach.",
       "day3Title": "Day 3: Advanced Techniques and Applications",
-      "day3Body": "Integrating NMT with traditional massage, designing treatment protocols for common client presentations, and guided practice that refines your hands-on decision making.",
+      "day3Body": "Integrating NMT with traditional bodywork, designing treatment protocols for common client presentations, and guided practice that refines your hands-on decision making.",
       "day4Title": "Day 4: Business Practices and Ethics",
       "day4Body": "Building a sustainable bodywork practice, the ethics and boundaries that protect both client and practitioner, and the final assessments that earn your certificate of completion."
     },
@@ -286,8 +286,8 @@
     "locationAddress": "218 Jaffe Road, Suite 602, Wan Chai, Hong Kong.",
     "locationHours": "Mon - Fri  12:00 - 19:00",
     "mapTitle": "Studio location",
-    "upcomingTitle": "Reserve your seat.",
-    "empty": "No courses are published yet. Please check back soon.",
+    "upcomingTitle": "Book your place.",
+    "empty": "No seminars are published yet. Please check back soon.",
     "durationLabel": "Duration",
     "durationValue": "{duration}",
     "durationTba": "Duration TBA",
@@ -295,7 +295,7 @@
     "maxParticipantsValue": "Up to {seats} participants",
     "priceLabel": "Price",
     "viewDetails": "View details",
-    "bookCta": "Book appointment",
+    "bookCta": "Book now",
     "searchLabel": "Search seminars",
     "searchPlaceholder": "Search by title or focus…",
     "filters": {
@@ -310,13 +310,13 @@
     "clearFilters": "Clear filters",
     "imageAlt": "Hands-on bodywork seminar in session.",
     "ctaTitle": "New cohorts open throughout the year.",
-    "ctaBody": "Browse the current schedule and reserve your seat early — seminars fill quickly.",
+    "ctaBody": "Browse the current schedule — cohorts fill quickly and places are limited.",
     "ctaPrimary": "View all seminars",
     "locationEyebrow": "Find us",
     "listingEyebrow": "Upcoming seminars"
   },
   "courseDetail": {
-    "back": "Back to all courses",
+    "back": "Back to all seminars",
     "overviewTitle": "About this seminar",
     "overviewEmpty": "A detailed overview will be published soon. Reach out if you would like early details.",
     "atAGlanceTitle": "At a glance",
@@ -326,10 +326,10 @@
     "maxParticipantsLabel": "Cohort size",
     "maxParticipantsValue": "Up to {seats} participants",
     "priceLabel": "Price",
-    "ctaTitle": "Reserve your seat",
-    "ctaBody": "Each cohort is intentionally small. Reserve your seat now to lock in your spot before the seminar fills.",
-    "ctaFineprint": "Secure your seat in under two minutes. You will not be charged until your booking is confirmed.",
-    "bookCta": "Book appointment",
+    "ctaTitle": "Join a seminar",
+    "ctaBody": "Each cohort is intentionally small. Book early to lock in your place before it fills.",
+    "ctaFineprint": "Secure your seat in under two minutes — a deposit at checkout holds your place.",
+    "bookCta": "Book now",
     "noUpcomingSessions": "No upcoming sessions are currently scheduled for this seminar. Please check back soon.",
     "syllabusTitle": "What you will cover",
     "syllabusIntro": "A practical, layered curriculum that builds session by session so you graduate with a clear, repeatable method.",
@@ -344,12 +344,12 @@
     "instructorCredentials": [
       "University of Colorado, Boulder",
       "Boulder College of Massage Therapy",
-      "22+ years of clinical practice"
+      "29 years of clinical practice"
     ],
     "instructorBody": "Stephen teaches small-cohort seminars across Asia from Hong Kong, anchored in neuromuscular therapy and deep tissue bodywork.",
     "instructorCta": "Read Stephen's full story",
     "imageAlt": "Hands-on bodywork seminar in session.",
-    "heroCta": "Book appointment",
+    "heroCta": "Book now",
     "cta": {
       "title": "Have questions about this seminar?",
       "body": "Reach out to ask about cohorts, prerequisites, or what to expect on the day. Stephen replies personally within two business days.",
@@ -359,7 +359,7 @@
   "contact": {
     "title": "Contact Stephen Kirwin",
     "intro": "Questions about seminars, private cohorts, or therapeutic bodywork? Reach out and Stephen will get back to you within two business days.",
-    "heroImageAlt": "A quiet therapy room in the Central practice where Stephen sees clients and teaches seminars.",
+    "heroImageAlt": "A quiet therapy room at the Wan Chai studio where Stephen sees clients and teaches seminars.",
     "detailsTitle": "Contact details",
     "detailsIntro": "Call, email, or drop by the studio during opening hours. For seminars and private cohorts, the form below is the fastest route to a reply.",
     "phoneLabel": "Phone",
@@ -377,7 +377,7 @@
     "cta": {
       "title": "Ready to book a session?",
       "body": "Book your appointment directly through our online booking system, or send a message and Stephen will get back to you within two business days.",
-      "primaryCta": "Book appointment"
+      "primaryCta": "Book now"
     },
     "mapTitle": "Studio location",
     "formTitle": "Send a message",
@@ -426,13 +426,13 @@
     "articleImageAlt": "Featured image for {title}",
     "instructorEyebrow": "Your instructor",
     "instructorName": "Stephen Kirwin",
-    "instructorBody": "Stephen teaches small-cohort seminars across Asia from Hong Kong, anchored in twenty-two years of neuromuscular therapy and deep tissue bodywork.",
+    "instructorBody": "Stephen teaches small-cohort seminars across Asia from his Hong Kong studio, drawing on twenty-nine years of neuromuscular and deep-tissue practice.",
     "instructorCredentials": [
       "University of Colorado, Boulder",
       "Boulder College of Massage Therapy",
-      "22+ years of clinical practice"
+      "29 years of clinical practice"
     ],
-    "instructorCta": "Read Stephen's full story",
+    "instructorCta": "Meet Stephen",
     "instructorImageAlt": "Portrait of Stephen Kirwin, neuromuscular therapist and bodywork seminar instructor.",
     "newsletterEyebrow": "Stay close",
     "newsletterTitle": "New notes from the seminar.",
@@ -441,16 +441,16 @@
   },
   "testimonials": {
     "title": "What clients say",
-    "subtitle": "Hear from athletes and clients who have worked with Stephen.",
+    "subtitle": "Athletes and clients describe what changed after working with Stephen.",
     "empty": "No testimonials have been published yet.",
     "ratingLabel": "Rating",
     "playVideo": "Play video testimonial from {name}",
     "videoDialogTitle": "Video testimonial",
-    "heroCta": "Browse courses",
+    "heroCta": "Browse seminars",
     "cta": {
       "title": "Experience it for yourself.",
-      "body": "Browse the current schedule of bodywork seminars and reserve your seat in an upcoming cohort.",
-      "primaryCta": "Browse courses"
+      "body": "Browse the upcoming schedule and join a small cohort.",
+      "primaryCta": "Browse seminars"
     }
   },
   "footer": {
@@ -460,7 +460,7 @@
       "terms": "Terms of service"
     },
     "social": {
-      "instagramLabel": "Follow Stephen Kirwin Bodyworks on Instagram"
+      "instagramLabel": "Follow Stephen Kirwin Bodywork Seminars on Instagram"
     }
   },
   "admin": {
@@ -532,7 +532,7 @@
       "referenceHeading": "Booking details",
       "referenceDescription": "Keep this reference handy if you need to contact us.",
       "reference": "Booking reference",
-      "course": "Course",
+      "course": "Seminar",
       "session": "Session date and time",
       "attendee": "Attendee name",
       "emailLabel": "Email",
@@ -540,12 +540,12 @@
       "phoneNotProvided": "Not provided",
       "notes": "Notes",
       "status": "Booking status",
-      "backToCourses": "Back to courses",
+      "backToCourses": "Back to seminars",
       "footer": "Need to make a change? Reply to your confirmation email and we will help you out.",
       "missingReference": "No booking reference was provided.",
-      "missingReferenceBody": "Please return to the courses page and try again, or follow the link from your confirmation email.",
+      "missingReferenceBody": "Please return to the seminars page and try again, or follow the link from your confirmation email.",
       "notFound": "We could not find that booking.",
-      "notFoundBody": "Please check the link or return to the courses page to start again.",
+      "notFoundBody": "Please check the link or return to the seminars page to start again.",
       "errorTitle": "We could not load your booking.",
       "loading": "Loading booking details…"
     },
@@ -560,7 +560,7 @@
         "missingFields": "Some required details are missing. Please refresh and try again.",
         "bookingNotFound": "We could not find that booking. Please refresh and try again.",
         "invalidPaymentStatus": "This booking is no longer awaiting payment.",
-        "invalidPrice": "The course price is unavailable. Please contact us to complete your booking."
+        "invalidPrice": "The seminar price is unavailable. Please contact us to complete your booking."
       },
       "success": {
         "eyebrow": "Payment successful",
@@ -568,14 +568,14 @@
         "headline": "Payment received. See you in class.",
         "genericTitle": "Payment complete.",
         "intro": "Your payment has been received and your seat is confirmed. A receipt is on its way to your inbox.",
-        "genericIntro": "Your payment has been received. Browse upcoming courses or revisit your booking details at any time.",
+        "genericIntro": "Your payment has been received. Browse upcoming seminars or revisit your booking details at any time.",
         "referenceHeading": "Your booking",
         "referenceDescription": "Keep this reference handy if you need to contact us about your booking.",
         "reference": "Booking reference",
         "sessionId": "Stripe session",
         "viewBooking": "View booking details",
         "footer": "Need to make a change? Reply to your confirmation email and we will help you out.",
-        "backToCourses": "Back to courses"
+        "backToCourses": "Back to seminars"
       },
       "cancel": {
         "eyebrow": "Payment cancelled",
@@ -583,7 +583,7 @@
         "headline": "No payment was taken.",
         "genericTitle": "Payment cancelled.",
         "intro": "No charge has been made. Your booking is still reserved and you can complete payment whenever you are ready.",
-        "genericIntro": "No charge has been made. Your booking is still reserved. Browse upcoming courses or return any time to complete payment.",
+        "genericIntro": "No charge has been made. Your booking is still reserved. Browse upcoming seminars or return any time to complete payment.",
         "referenceHeading": "Your booking",
         "referenceDescription": "Your seat is still held for you.",
         "reference": "Booking reference",
@@ -591,7 +591,7 @@
         "viewBooking": "Return to booking",
         "tryAgain": "Try payment again",
         "footer": "If you ran into trouble, reply to your confirmation email and we will help you out.",
-        "backToCourses": "Back to courses"
+        "backToCourses": "Back to seminars"
       }
     }
   },
@@ -672,6 +672,6 @@
     "accept": "Accept"
   },
   "mobileBookingCta": {
-    "label": "Book a session"
+    "label": "Book now"
   }
 }
