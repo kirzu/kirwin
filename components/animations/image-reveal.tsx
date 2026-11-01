@@ -70,6 +70,19 @@ export function ImageReveal({
       setVisible(true);
       return;
     }
+
+    // Hide the element on first paint only when it starts off-screen, so
+    // the mask reveal actually plays when the user scrolls it into view.
+    // Without this the element is always visible and the reveal never runs.
+    const rect = node.getBoundingClientRect();
+    const viewportH = window.innerHeight || 0;
+    const inViewportNow = rect.top < viewportH && rect.bottom > 0;
+    if (inViewportNow) {
+      setVisible(true);
+      return;
+    }
+    setVisible(false);
+
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
@@ -98,9 +111,10 @@ export function ImageReveal({
     ...style,
     clipPath,
     WebkitClipPath: clipPath,
-    transition: reducedMotion
-      ? "none"
-      : `clip-path ${duration}ms cubic-bezier(0.22, 1, 0.36, 1), -webkit-clip-path ${duration}ms cubic-bezier(0.22, 1, 0.36, 1)`,
+    transition:
+      reducedMotion || !visible
+        ? "none"
+        : `clip-path ${duration}ms cubic-bezier(0.22, 1, 0.36, 1), -webkit-clip-path ${duration}ms cubic-bezier(0.22, 1, 0.36, 1)`,
     willChange: reducedMotion ? undefined : "clip-path",
   };
 

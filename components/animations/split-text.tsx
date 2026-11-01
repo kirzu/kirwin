@@ -150,11 +150,10 @@ export function SplitText({
                 ? "translate3d(0, var(--split-offset), 0)"
                 : "translate3d(0, 0, 0)",
               opacity: hidden ? 0 : 1,
-              transition: armed
-                ? reducedMotion
-                  ? "none"
-                  : `transform var(--split-duration) cubic-bezier(0.22, 1, 0.36, 1) calc(var(--split-delay) + (var(--split-i) * var(--split-stagger))), opacity var(--split-duration) cubic-bezier(0.22, 1, 0.36, 1) calc(var(--split-delay) + (var(--split-i) * var(--split-stagger)))`
-                : "none",
+              transition:
+                armed && visible && !reducedMotion
+                  ? `transform var(--split-duration) cubic-bezier(0.22, 1, 0.36, 1) calc(var(--split-delay) + (var(--split-i) * var(--split-stagger))), opacity var(--split-duration) cubic-bezier(0.22, 1, 0.36, 1) calc(var(--split-delay) + (var(--split-i) * var(--split-stagger)))`
+                  : "none",
               ["--split-i" as keyof CSSProperties]: i,
             }}
           >

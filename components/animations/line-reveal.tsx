@@ -155,9 +155,10 @@ export function LineReveal({
           backgroundColor: color,
           transform,
           transformOrigin,
-          transition: reducedMotion
-            ? "none"
-            : `transform ${duration}ms cubic-bezier(0.22, 1, 0.36, 1)`,
+          transition:
+            reducedMotion || !visible
+              ? "none"
+              : `transform ${duration}ms cubic-bezier(0.22, 1, 0.36, 1)`,
           willChange: reducedMotion ? undefined : "transform",
         }}
       />
