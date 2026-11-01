@@ -18,70 +18,71 @@
      * retunes the whole site. */
     --ease-luxury: cubic-bezier(0.22, 1, 0.36, 1);
 
-    --background: 40 33% 97%;
-    --foreground: 28 31% 13%;
-    --card: 40 33% 99%;
-    --card-foreground: 28 31% 13%;
-    --popover: 40 33% 99%;
-    --popover-foreground: 28 31% 13%;
-    --primary: 18 47% 44%;
-    --primary-foreground: 40 33% 97%;
-    --secondary: 120 14% 35%;
-    --secondary-foreground: 40 33% 99%;
-    --muted: 35 25% 91%;
-    --muted-foreground: 28 15% 40%;
-    --accent: 120 14% 35%;
-    --accent-foreground: 40 33% 99%;
+    --background: 220 14% 98%;
+    --foreground: 220 12% 16%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 12% 16%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 12% 16%;
+    --primary: 215 100% 34%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 35%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 220 14% 94%;
+    --muted-foreground: 220 9% 38%;
+    --accent: 215 100% 34%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 30 20% 85%;
-    --input: 30 20% 85%;
-    --ring: 18 47% 44%;
+    --border: 220 13% 88%;
+    --input: 220 13% 88%;
+    --ring: 215 100% 34%;
     --radius: 0.375rem;
 
-    --brand-primary: #b45e3e;
-    --brand-primary-dark: #7d3f2b;
-    --brand-secondary: #537953;
-    --brand-secondary-dark: #344c34;
-    --brand-warm: #faf8f5;
-    --brand-warm-dark: #2f2015;
+    /* SKBT palette — royal blue (#0048ad), graphite (#585858), silver (#d8d8d8). */
+    --brand-primary: #0048ad;
+    --brand-primary-dark: #003176;
+    --brand-secondary: #585858;
+    --brand-secondary-dark: #454545;
+    --brand-warm: #f7f9fc;
+    --brand-warm-dark: #12161c;
 
     /* Warm shadow tokens used by the luxury card / image treatments.
      * Defined as HSL strings so we can re-use them with opacity utilities
      * later if needed. */
-    --shadow-warm: 0 1px 2px hsl(28 31% 13% / 0.04),
-      0 8px 24px -8px hsl(28 31% 13% / 0.08);
-    --shadow-warm-lg: 0 1px 3px hsl(28 31% 13% / 0.05),
-      0 16px 40px -12px hsl(28 31% 13% / 0.12);
+    --shadow-warm: 0 1px 2px hsl(220 20% 16% / 0.04),
+      0 8px 24px -8px hsl(220 20% 16% / 0.08);
+    --shadow-warm-lg: 0 1px 3px hsl(220 20% 16% / 0.05),
+      0 16px 40px -12px hsl(220 20% 16% / 0.12);
   }
 
   .dark {
-    --background: 28 31% 8%;
-    --foreground: 40 25% 94%;
-    --card: 28 31% 10%;
-    --card-foreground: 40 25% 94%;
-    --popover: 28 31% 10%;
-    --popover-foreground: 40 25% 94%;
-    --primary: 18 47% 55%;
-    --primary-foreground: 28 31% 8%;
-    --secondary: 120 14% 45%;
-    --secondary-foreground: 28 31% 8%;
-    --muted: 28 20% 16%;
-    --muted-foreground: 35 15% 60%;
-    --accent: 120 14% 45%;
-    --accent-foreground: 28 31% 8%;
+    --background: 220 15% 9%;
+    --foreground: 220 10% 94%;
+    --card: 220 15% 12%;
+    --card-foreground: 220 10% 94%;
+    --popover: 220 15% 12%;
+    --popover-foreground: 220 10% 94%;
+    --primary: 215 90% 62%;
+    --primary-foreground: 220 15% 9%;
+    --secondary: 0 0% 60%;
+    --secondary-foreground: 220 15% 9%;
+    --muted: 220 12% 17%;
+    --muted-foreground: 220 8% 62%;
+    --accent: 215 90% 62%;
+    --accent-foreground: 220 15% 9%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 28 20% 18%;
-    --input: 28 20% 18%;
-    --ring: 18 47% 55%;
+    --border: 220 12% 20%;
+    --input: 220 12% 20%;
+    --ring: 215 90% 62%;
 
-    --brand-primary: #d5927a;
-    --brand-primary-dark: #f0d7cf;
-    --brand-secondary: #9eb99e;
-    --brand-secondary-dark: #c7d8c7;
-    --brand-warm: #2f2015;
-    --brand-warm-dark: #faf8f5;
+    --brand-primary: #7fb0f0;
+    --brand-primary-dark: #cfe1fa;
+    --brand-secondary: #b3b3b3;
+    --brand-secondary-dark: #d8d8d8;
+    --brand-warm: #12161c;
+    --brand-warm-dark: #f7f9fc;
 
     /* Warm shadows tuned for the dark surface. */
     --shadow-warm: 0 1px 2px hsl(0 0% 0% / 0.3),
