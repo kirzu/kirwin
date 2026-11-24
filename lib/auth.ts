@@ -2,6 +2,7 @@ import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
+import { rateLimit } from "@/lib/rate-limit";
 import type { Role } from "@prisma/client";
 
 // Dev-only fallback secret. In production, NEXTAUTH_SECRET must be set.
@@ -47,8 +48,23 @@ export const authOptions: NextAuthOptions = {
           return null;
         }
 
+        const email = credentials.email.toLowerCase().trim();
+
+        // Brute-force guard: at most 8 attempts per email inside 15 minutes.
+        // Per-instance (see lib/rate-limit.ts) but it removes unlimited
+        // online guessing against a known admin address.
+        const attempt = rateLimit(`login:${email}`, {
+          windowMs: 15 * 60 * 1000,
+          max: 8,
+        });
+        if (!attempt.ok) {
+          // eslint-disable-next-line no-console
+          console.warn("[auth] login attempt rate limit hit");
+          return null;
+        }
+
         const user = await prisma.user.findUnique({
-          where: { email: credentials.email.toLowerCase().trim() },
+          where: { email },
         });
 
         if (!user) {

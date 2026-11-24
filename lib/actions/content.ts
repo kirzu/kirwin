@@ -3,6 +3,8 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
+import { requireAdmin } from "@/lib/require-admin";
+import { serverErrorMessage } from "@/lib/server-errors";
 
 export type ContentSectionActionResult = {
   status: "error";
@@ -98,6 +100,7 @@ export async function getSectionById(id: string) {
 export async function createSection(
   formData: FormData,
 ): Promise<ContentSectionActionResult | void> {
+  await requireAdmin();
   const locale = readLocale(formData);
   const { data, error } = readContentSectionFormData(formData);
   if (error) return { status: "error", message: error };
@@ -108,9 +111,7 @@ export async function createSection(
     return {
       status: "error",
       message:
-        err instanceof Error
-          ? err.message
-          : "Failed to create content section.",
+        serverErrorMessage("content.createSection", err),
     };
   }
 
@@ -128,6 +129,7 @@ export async function updateSection(
   id: string,
   formData: FormData,
 ): Promise<ContentSectionActionResult | void> {
+  await requireAdmin();
   const locale = readLocale(formData);
   const { data, error } = readContentSectionFormData(formData);
   if (error) return { status: "error", message: error };
@@ -145,9 +147,7 @@ export async function updateSection(
     return {
       status: "error",
       message:
-        err instanceof Error
-          ? err.message
-          : "Failed to update content section.",
+        serverErrorMessage("content.updateSection", err),
     };
   }
 
@@ -163,6 +163,7 @@ export async function deleteSection(
   id: string,
   localeOrFormData: string | FormData = "en",
 ): Promise<ContentSectionActionResult | void> {
+  await requireAdmin();
   const locale =
     typeof localeOrFormData === "string"
       ? localeOrFormData
@@ -173,9 +174,7 @@ export async function deleteSection(
     return {
       status: "error",
       message:
-        err instanceof Error
-          ? err.message
-          : "Failed to delete content section.",
+        serverErrorMessage("content.deleteSection", err),
     };
   }
 

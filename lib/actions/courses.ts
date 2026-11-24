@@ -3,6 +3,8 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
+import { requireAdmin } from "@/lib/require-admin";
+import { serverErrorMessage } from "@/lib/server-errors";
 import { slugifyTitle } from "@/lib/utils/course-slug";
 
 export type CourseActionResult = {
@@ -165,6 +167,7 @@ export async function getCourseById(id: string) {
 export async function createCourse(
   formData: FormData,
 ): Promise<CourseActionResult | void> {
+  await requireAdmin();
   const locale = readLocale(formData);
   const { data, error } = readCourseFormData(formData);
   if (error) return { status: "error", message: error };
@@ -175,7 +178,7 @@ export async function createCourse(
     return {
       status: "error",
       message:
-        err instanceof Error ? err.message : "Failed to create course.",
+        serverErrorMessage("courses.createCourse", err),
     };
   }
 
@@ -193,6 +196,7 @@ export async function updateCourse(
   id: string,
   formData: FormData,
 ): Promise<CourseActionResult | void> {
+  await requireAdmin();
   const locale = readLocale(formData);
   const { data, error } = readCourseFormData(formData);
   if (error) return { status: "error", message: error };
@@ -203,7 +207,7 @@ export async function updateCourse(
     return {
       status: "error",
       message:
-        err instanceof Error ? err.message : "Failed to update course.",
+        serverErrorMessage("courses.updateCourse", err),
     };
   }
 
@@ -222,6 +226,7 @@ export async function deleteCourse(
   id: string,
   localeOrFormData: string | FormData = "en",
 ): Promise<CourseActionResult | void> {
+  await requireAdmin();
   const locale =
     typeof localeOrFormData === "string"
       ? localeOrFormData
@@ -232,7 +237,7 @@ export async function deleteCourse(
     return {
       status: "error",
       message:
-        err instanceof Error ? err.message : "Failed to delete course.",
+        serverErrorMessage("courses.deleteCourse", err),
     };
   }
 

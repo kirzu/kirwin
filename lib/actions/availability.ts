@@ -3,6 +3,8 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
+import { requireAdmin } from "@/lib/require-admin";
+import { serverErrorMessage } from "@/lib/server-errors";
 
 export type AvailabilityActionResult = {
   status: "error";
@@ -147,6 +149,7 @@ function revalidateAvailabilityPaths(locale: string, courseSlug?: string | null)
 export async function createCourseAvailability(
   formData: FormData,
 ): Promise<AvailabilityActionResult | void> {
+  await requireAdmin();
   const locale = readLocale(formData);
   const { data, error } = readAvailabilityFormData(formData);
   if (error) return { status: "error", message: error };
@@ -168,7 +171,7 @@ export async function createCourseAvailability(
     return {
       status: "error",
       message:
-        err instanceof Error ? err.message : "Failed to create availability slot.",
+        serverErrorMessage("availability.create", err),
     };
   }
 
@@ -180,6 +183,7 @@ export async function updateAvailability(
   id: string,
   formData: FormData,
 ): Promise<AvailabilityActionResult | void> {
+  await requireAdmin();
   const locale = readLocale(formData);
   const { data, error } = readAvailabilityFormData(formData);
   if (error) return { status: "error", message: error };
@@ -201,7 +205,7 @@ export async function updateAvailability(
     return {
       status: "error",
       message:
-        err instanceof Error ? err.message : "Failed to update availability slot.",
+        serverErrorMessage("availability.update", err),
     };
   }
 
@@ -213,6 +217,7 @@ export async function deleteAvailability(
   id: string,
   localeOrFormData: string | FormData = "en",
 ): Promise<AvailabilityActionResult | void> {
+  await requireAdmin();
   const locale =
     typeof localeOrFormData === "string"
       ? localeOrFormData
@@ -228,7 +233,7 @@ export async function deleteAvailability(
     return {
       status: "error",
       message:
-        err instanceof Error ? err.message : "Failed to delete availability slot.",
+        serverErrorMessage("availability.delete", err),
     };
   }
 

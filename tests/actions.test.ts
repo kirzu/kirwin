@@ -45,6 +45,12 @@ vi.mock("next/navigation", () => ({
   }),
 }));
 
+// Admin server actions now require an ADMIN session. These are unit tests of
+// the action bodies, so the guard is stubbed out here.
+vi.mock("@/lib/require-admin", () => ({
+  requireAdmin: vi.fn(async () => {}),
+}));
+
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";

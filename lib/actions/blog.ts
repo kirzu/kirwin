@@ -3,6 +3,8 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
+import { requireAdmin } from "@/lib/require-admin";
+import { serverErrorMessage } from "@/lib/server-errors";
 import { slugifyTitle } from "@/lib/utils/course-slug";
 
 export type BlogPostActionResult = {
@@ -157,6 +159,7 @@ export async function getPostById(id: string) {
 export async function createPost(
   formData: FormData,
 ): Promise<BlogPostActionResult | void> {
+  await requireAdmin();
   const locale = readLocale(formData);
   const { data, error } = readBlogPostFormData(formData);
   if (error) return { status: "error", message: error };
@@ -167,7 +170,7 @@ export async function createPost(
     return {
       status: "error",
       message:
-        err instanceof Error ? err.message : "Failed to create testimonial.",
+        serverErrorMessage("blog.createPost", err),
     };
   }
 
@@ -185,6 +188,7 @@ export async function updatePost(
   id: string,
   formData: FormData,
 ): Promise<BlogPostActionResult | void> {
+  await requireAdmin();
   const locale = readLocale(formData);
   const { data, error } = readBlogPostFormData(formData);
   if (error) return { status: "error", message: error };
@@ -195,7 +199,7 @@ export async function updatePost(
     return {
       status: "error",
       message:
-        err instanceof Error ? err.message : "Failed to update testimonial.",
+        serverErrorMessage("blog.updatePost", err),
     };
   }
 
@@ -212,6 +216,7 @@ export async function deletePost(
   id: string,
   localeOrFormData: string | FormData = "en",
 ): Promise<BlogPostActionResult | void> {
+  await requireAdmin();
   const locale =
     typeof localeOrFormData === "string"
       ? localeOrFormData
@@ -222,7 +227,7 @@ export async function deletePost(
     return {
       status: "error",
       message:
-        err instanceof Error ? err.message : "Failed to delete testimonial.",
+        serverErrorMessage("blog.deletePost", err),
     };
   }
 

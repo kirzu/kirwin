@@ -31,6 +31,12 @@ vi.mock("next/navigation", () => ({
   }),
 }));
 
+// Admin server actions now require an ADMIN session. These are unit tests of
+// the action bodies, so the guard is stubbed out here.
+vi.mock("@/lib/require-admin", () => ({
+  requireAdmin: vi.fn(async () => {}),
+}));
+
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -316,7 +322,7 @@ describe("createCourseAvailability", () => {
     });
 
     const result = await createCourseAvailability(form);
-    expect(result).toEqual({ status: "error", message: "DB down" });
+    expect(result).toEqual({ status: "error", message: "Something went wrong. Please try again." });
     expect(mockedRedirect).not.toHaveBeenCalled();
     expect(mockedRevalidate).not.toHaveBeenCalled();
   });
@@ -386,7 +392,7 @@ describe("updateAvailability", () => {
     });
 
     const result = await updateAvailability("a1", form);
-    expect(result).toEqual({ status: "error", message: "not found" });
+    expect(result).toEqual({ status: "error", message: "Something went wrong. Please try again." });
     expect(mockedRedirect).not.toHaveBeenCalled();
   });
 });
@@ -445,7 +451,7 @@ describe("deleteAvailability", () => {
   it("returns error and does not redirect when prisma.delete throws", async () => {
     mockedPrisma.availability.delete.mockRejectedValue(new Error("FK constraint"));
     const result = await deleteAvailability("a1", "en");
-    expect(result).toEqual({ status: "error", message: "FK constraint" });
+    expect(result).toEqual({ status: "error", message: "Something went wrong. Please try again." });
     expect(mockedRedirect).not.toHaveBeenCalled();
     expect(mockedRevalidate).not.toHaveBeenCalled();
   });

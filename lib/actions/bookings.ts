@@ -3,6 +3,8 @@
 import { revalidatePath } from "next/cache";
 import { BookingStatus, type Booking } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
+import { requireAdmin } from "@/lib/require-admin";
+import { serverErrorMessage } from "@/lib/server-errors";
 import { isLocale, defaultLocale, type Locale } from "@/i18n.config";
 
 export type BookingActionResult = {
@@ -68,6 +70,7 @@ export async function updateBookingStatus(
   status: BookingStatus,
   locale: string = defaultLocale,
 ): Promise<BookingActionResult | { booking: BookingWithCourse }> {
+  await requireAdmin();
   const parsedStatus = parseBookingStatus(status);
   if (!parsedStatus) {
     return { status: "error", message: "Invalid booking status." };
@@ -90,7 +93,7 @@ export async function updateBookingStatus(
     return {
       status: "error",
       message:
-        err instanceof Error ? err.message : "Failed to update booking status.",
+        serverErrorMessage("bookings.updateStatus", err),
     };
   }
 }

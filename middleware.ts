@@ -7,6 +7,15 @@ const intlMiddleware = createIntlMiddleware({
   locales: [...locales],
   defaultLocale,
   localePrefix: "always",
+  // The site is HTTPS-only, so mark the locale cookie Secure. It carries no
+  // personal data, so HttpOnly is unnecessary (and would break nothing —
+  // next-intl does not expose it here).
+  localeCookie: {
+    name: "NEXT_LOCALE",
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
+    maxAge: 60 * 60 * 24 * 365,
+  },
 });
 
 /**

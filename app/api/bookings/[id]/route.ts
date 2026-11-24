@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { clientIpFrom, rateLimit } from "@/lib/rate-limit";
 
 /**
  * GET /api/bookings/[id]?email=<booking-email>
@@ -24,6 +25,22 @@ export async function GET(
   const id = params.id;
   if (!id || typeof id !== "string") {
     return NextResponse.json({ error: "missing id" }, { status: 400 });
+  }
+
+  // Throttle per IP: without this the endpoint can be used to test email
+  // addresses against a known booking id at speed.
+  const limit = rateLimit(`bookings-lookup:${clientIpFrom(request.headers)}`, {
+    windowMs: 60 * 1000,
+    max: 30,
+  });
+  if (!limit.ok) {
+    return NextResponse.json(
+      { error: "too many requests" },
+      {
+        status: 429,
+        headers: { "Retry-After": String(Math.ceil(limit.retryAfterMs / 1000)) },
+      },
+    );
   }
 
   const suppliedEmail = new URL(request.url).searchParams.get("email");
