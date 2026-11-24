@@ -109,10 +109,6 @@
         "title": "運動損傷恢復",
         "description": "針對性的身體工作,協助拉傷、扭傷與過度使用傷害的修復。"
       },
-      "fullBody": {
-        "title": "全身身體工作",
-        "description": "完整的全身療程,由頭到腳釋放張力,讓您徹底煥然一新。"
-      },
       "neuromuscular": {
         "title": "神經肌肉治療",
         "description": "以精準、以評估為本的軟組織手法處理激痛點與姿勢相關的疼痛。"
@@ -619,10 +615,6 @@
       "injuryRecovery": {
         "title": "運動損傷恢復",
         "description": "針對性的身體工作,協助拉傷、扭傷與過度使用傷害的修復。"
-      },
-      "fullBody": {
-        "title": "全身身體工作",
-        "description": "完整的全身療程,由頭到腳釋放張力,讓您徹底煥然一新。"
       },
       "neuromuscular": {
         "title": "神經肌肉治療",

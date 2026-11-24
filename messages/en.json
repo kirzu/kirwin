@@ -109,10 +109,6 @@
         "title": "Injury Recovery",
         "description": "Targeted bodywork that supports healing after strains, sprains, and overuse injuries."
       },
-      "fullBody": {
-        "title": "Full Body Bodywork",
-        "description": "A complete, full-body session that releases tension from head to toe and leaves you fully reset."
-      },
       "neuromuscular": {
         "title": "Neuromuscular Therapy",
         "description": "Precise, assessment-driven soft-tissue work that targets trigger points and posture-related pain."
@@ -619,10 +615,6 @@
       "injuryRecovery": {
         "title": "Injury Recovery",
         "description": "Targeted bodywork that supports healing after strains, sprains, and overuse injuries."
-      },
-      "fullBody": {
-        "title": "Full Body Bodywork",
-        "description": "A complete, full-body session that releases tension from head to toe and leaves you fully reset."
       },
       "neuromuscular": {
         "title": "Neuromuscular Therapy",

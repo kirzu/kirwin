@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  Activity,
   CircleDot,
   HeartPulse,
   Layers,
@@ -22,7 +21,7 @@ import { type Locale } from "@/i18n.config";
 
 /**
  * Reusable "Bodywork sessions" grid shared by the home page and the
- * /bookings page. Lists the six core therapeutic sessions Stephen
+ * /bookings page. Lists the five core therapeutic sessions Stephen
  * offers from the Wan Chai studio, each rendered as a luxe card with
  * a Lucide icon, title, and one-sentence description.
  *
@@ -39,7 +38,6 @@ import { type Locale } from "@/i18n.config";
 const ICONS: Record<string, LucideIcon> = {
   deepTissue: Layers,
   injuryRecovery: HeartPulse,
-  fullBody: Activity,
   neuromuscular: Target,
   triggerPoint: CircleDot,
   myofascialRelease: Sparkles,
@@ -48,7 +46,6 @@ const ICONS: Record<string, LucideIcon> = {
 const ORDER = [
   "deepTissue",
   "injuryRecovery",
-  "fullBody",
   "neuromuscular",
   "triggerPoint",
   "myofascialRelease",

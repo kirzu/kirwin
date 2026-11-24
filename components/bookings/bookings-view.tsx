@@ -27,7 +27,7 @@ export function BookingsView({ locale }: BookingsViewProps) {
   const t = useTranslations("bookings");
 
   return (
-    <div className="text-foreground">
+    <div className="flex flex-col text-foreground">
       {/* Hero */}
       <section
         aria-labelledby="bookings-hero-title"
@@ -73,10 +73,13 @@ export function BookingsView({ locale }: BookingsViewProps) {
         testId="bookings-pricing"
       />
 
-      {/* Embedded Cliniko scheduler */}
+      {/* Embedded Cliniko scheduler. On phones this is visually first
+          (order-first) so tapping "Book now" lands directly on the
+          scheduler instead of the marketing sections; on md+ the
+          original order is kept. DOM order is unchanged. */}
       <section
         aria-labelledby="bookings-scheduler-title"
-        className="bg-muted/30"
+        className="order-first bg-muted/30 md:order-none"
       >
         <div className="mx-auto flex max-w-5xl flex-col gap-8 px-6 py-14 sm:py-20">
           <h2 id="bookings-scheduler-title" className="sr-only">
